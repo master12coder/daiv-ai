@@ -363,22 +363,21 @@ _AVOID_WORDS = re.compile(
 def _is_recommended_context(text: str, stone_name: str) -> bool:
     """Check if a stone name appears in a recommendation context.
 
-    Returns True if the stone appears near 'recommend/wear' words
-    WITHOUT nearby 'avoid/never/prohibited' words.
-    """
-    stone_lower = stone_name.lower()
-    text_lower = text.lower()
+    Uses word-boundary matching to avoid false positives like
+    "Moti" inside "emotional".
 
-    # Find all occurrences of the stone name
-    idx = 0
-    while True:
-        pos = text_lower.find(stone_lower, idx)
-        if pos == -1:
-            break
+    Returns True if the stone appears as a whole word near
+    'recommend/wear' words WITHOUT nearby 'avoid/never/prohibited' words.
+    """
+    # Build a word-boundary regex for the stone name
+    stone_pattern = re.compile(r"\b" + re.escape(stone_name) + r"\b", re.IGNORECASE)
+
+    for match in stone_pattern.finditer(text):
+        pos = match.start()
         # Look at a window around the mention
         window_start = max(0, pos - 150)
-        window_end = min(len(text_lower), pos + len(stone_lower) + 150)
-        window = text_lower[window_start:window_end]
+        window_end = min(len(text), pos + len(stone_name) + 150)
+        window = text[window_start:window_end]
 
         has_recommend = bool(_RECOMMEND_WORDS.search(window))
         has_avoid = bool(_AVOID_WORDS.search(window))
@@ -386,8 +385,6 @@ def _is_recommended_context(text: str, stone_name: str) -> bool:
         # If recommended without avoidance qualifier, flag it
         if has_recommend and not has_avoid:
             return True
-
-        idx = pos + 1
 
     return False
 
@@ -419,7 +416,10 @@ def validate_interpretation(
             stone_names = [p.strip() for p in parts if p.strip()]
 
         for sn in stone_names:
-            if sn.lower() in text.lower() and _is_recommended_context(text, sn):
+            # Use word-boundary regex to avoid substring false positives
+            # e.g. "Moti" matching inside "emotional"
+            sn_pattern = re.compile(r"\b" + re.escape(sn) + r"\b", re.IGNORECASE)
+            if sn_pattern.search(text) and _is_recommended_context(text, sn):
                 errors.append(
                     f"DANGER: {stone} ({planet}'s stone) appears to be RECOMMENDED "
                     f"but is PROHIBITED for {lagna_sign} lagna. "
