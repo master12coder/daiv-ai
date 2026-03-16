@@ -198,6 +198,74 @@ class LifeEventsDB:
             return ChartRecord(**dict(row))
         return None
 
+    def get_chart_id(self, name: str) -> int | None:
+        """Get chart ID by name. Returns None if not found."""
+        row = self._conn.execute(
+            "SELECT id FROM charts WHERE name = ? LIMIT 1", (name,)
+        ).fetchone()
+        return row["id"] if row else None
+
+    def get_or_create_chart_from_data(self, chart_data: Any) -> int:
+        """Get or create a chart record from a ChartData object.
+
+        Args:
+            chart_data: A ChartData object from compute/chart.py.
+
+        Returns:
+            The chart's database ID.
+        """
+        existing = self.get_chart_id(chart_data.name)
+        if existing is not None:
+            return existing
+
+        moon = chart_data.planets.get("Moon")
+        record = ChartRecord(
+            name=chart_data.name,
+            dob=chart_data.dob,
+            tob=chart_data.tob,
+            place=chart_data.place,
+            lagna=chart_data.lagna_sign,
+            moon_sign=moon.sign if moon else "",
+            moon_nakshatra=moon.nakshatra if moon else "",
+            gender=chart_data.gender,
+        )
+        return self.add_chart(record)
+
+    def add_event_simple(
+        self,
+        chart_id: int,
+        event_type: str,
+        event_date: str,
+        description: str,
+    ) -> int:
+        """Add a life event with minimal required fields.
+
+        Args:
+            chart_id: Chart database ID.
+            event_type: Event type (marriage, career, health, etc.).
+            event_date: Date string (YYYY-MM or DD/MM/YYYY).
+            description: Event description.
+
+        Returns:
+            The event's database ID.
+        """
+        event = LifeEvent(
+            chart_id=chart_id,
+            event_type=event_type,
+            event_date=event_date,
+            description=description,
+        )
+        return self.add_event(event)
+
+    def get_events_as_dicts(self, chart_id: int) -> list[dict[str, Any]]:
+        """Get events for a chart as plain dicts (for CLI display)."""
+        rows = self._conn.execute(
+            "SELECT event_type, event_date, description, outcome "
+            "FROM events WHERE chart_id = ? ORDER BY event_date",
+            (chart_id,),
+        ).fetchall()
+        return [dict(r) for r in rows]
+
     def close(self) -> None:
         """Close the database connection."""
         self._conn.close()

@@ -1,0 +1,236 @@
+book: BPHS
+chapter: 81
+title: "Muhurta — Auspicious Timing"
+description: "Rules for selecting auspicious timings (Muhurta) for important life events, covering Nakshatras, Tithis, Yogas, and inauspicious periods from BPHS chapters 81-84."
+rules:
+  # === NAKSHATRA SELECTION FOR EVENTS ===
+  - verse: 1
+    topic: muhurta_nakshatra
+    planets: []
+    houses: []
+    text_sanskrit: "Vivaha Muhurte Rohini Uttara Phalguni Uttara Ashadha Uttara Bhadrapada Revati Mrigashira Magha Hasta Swati Anuradha Shravana Dhanishtha Shubhani"
+    text_english: "Auspicious Nakshatras for marriage (Vivaha): Rohini, Uttara Phalguni, Uttara Ashadha, Uttara Bhadrapada, Revati, Mrigashira, Magha, Hasta, Swati, Anuradha, and Mula (for second marriage). These fixed and soft Nakshatras ensure marital stability and harmony."
+    text_hindi: "विवाह मुहूर्त हेतु शुभ नक्षत्र: रोहिणी, उत्तरा फाल्गुनी, उत्तरा आषाढ़ा, उत्तरा भाद्रपद, रेवती, मृगशिरा, मघा, हस्त, स्वाती, अनुराधा और मूल (द्वितीय विवाह हेतु)। ये स्थिर और मृदु नक्षत्र वैवाहिक स्थिरता और सामंजस्य सुनिश्चित करते हैं।"
+    rule_type: muhurta
+
+  - verse: 2
+    topic: muhurta_nakshatra
+    planets: []
+    houses: []
+    text_sanskrit: "Yatra Muhurte Ashwini Mrigashira Pushya Hasta Anuradha Revati Shubhani"
+    text_english: "Auspicious Nakshatras for travel (Yatra): Ashwini, Mrigashira, Pushya, Hasta, Anuradha, Revati, and Punarvasu. These light and moveable Nakshatras favour safe journeys and successful travels."
+    text_hindi: "यात्रा मुहूर्त हेतु शुभ नक्षत्र: अश्विनी, मृगशिरा, पुष्य, हस्त, अनुराधा, रेवती और पुनर्वसु। ये लघु और चर नक्षत्र सुरक्षित यात्रा और सफलता के अनुकूल हैं।"
+    rule_type: muhurta
+
+  - verse: 3
+    topic: muhurta_nakshatra
+    planets: []
+    houses: []
+    text_sanskrit: "Vyapara Arambhe Rohini Ashwini Pushya Hasta Uttara Traya Revati Anuradha Shubhani"
+    text_english: "Auspicious Nakshatras for starting a new business (Vyapara): Rohini, Ashwini, Pushya, Hasta, Uttara Phalguni, Uttara Ashadha, Uttara Bhadrapada, Revati, Anuradha, Dhanishtha, and Shravana. Pushya is considered supreme for all commercial ventures."
+    text_hindi: "नवीन व्यापार आरम्भ हेतु शुभ नक्षत्र: रोहिणी, अश्विनी, पुष्य, हस्त, उत्तरा फाल्गुनी, उत्तरा आषाढ़ा, उत्तरा भाद्रपद, रेवती, अनुराधा, धनिष्ठा और श्रवण। पुष्य सभी व्यापारिक कार्यों के लिए सर्वश्रेष्ठ माना जाता है।"
+    rule_type: muhurta
+
+  - verse: 4
+    topic: muhurta_nakshatra
+    planets: []
+    houses: []
+    text_sanskrit: "Griha Pravesha Muhurte Uttara Traya Rohini Pushya Hasta Revati Anuradha Dhanishtha Shravana Shubhani"
+    text_english: "Auspicious Nakshatras for house-warming (Griha Pravesha): Uttara Phalguni, Uttara Ashadha, Uttara Bhadrapada, Rohini, Pushya, Hasta, Revati, Anuradha, Dhanishtha, and Shravana. Fixed (Sthira) Nakshatras are preferred for permanent residence."
+    text_hindi: "गृह प्रवेश मुहूर्त हेतु शुभ नक्षत्र: उत्तरा फाल्गुनी, उत्तरा आषाढ़ा, उत्तरा भाद्रपद, रोहिणी, पुष्य, हस्त, रेवती, अनुराधा, धनिष्ठा और श्रवण। स्थायी निवास हेतु स्थिर नक्षत्र श्रेष्ठ हैं।"
+    rule_type: muhurta
+
+  - verse: 5
+    topic: muhurta_nakshatra
+    planets: []
+    houses: []
+    text_sanskrit: "Vidya Arambhe Ashwini Pushya Hasta Shravana Dhanishtha Rohini Punarvasu Revati Shubhani"
+    text_english: "Auspicious Nakshatras for commencing education (Vidya Arambha): Ashwini, Pushya, Hasta, Shravana, Dhanishtha, Rohini, Punarvasu, Revati, Mrigashira, and Chitra. Wednesday and Thursday are preferred weekdays for starting studies."
+    text_hindi: "विद्या आरम्भ हेतु शुभ नक्षत्र: अश्विनी, पुष्य, हस्त, श्रवण, धनिष्ठा, रोहिणी, पुनर्वसु, रेवती, मृगशिरा और चित्रा। अध्ययन आरम्भ के लिए बुधवार और गुरुवार श्रेष्ठ वार हैं।"
+    rule_type: muhurta
+
+  - verse: 6
+    topic: muhurta_nakshatra
+    planets: []
+    houses: []
+    text_sanskrit: "Upanayana Muhurte Hasta Chitra Swati Pushya Dhanishtha Shravana Revati Punarvasu Mrigashira Shubhani"
+    text_english: "Auspicious Nakshatras for the sacred thread ceremony (Upanayana): Hasta, Chitra, Swati, Pushya, Dhanishtha, Shravana, Revati, Punarvasu, and Mrigashira. The ceremony should be performed during Shukla Paksha when Jupiter and Venus are not combust."
+    text_hindi: "उपनयन मुहूर्त हेतु शुभ नक्षत्र: हस्त, चित्रा, स्वाती, पुष्य, धनिष्ठा, श्रवण, रेवती, पुनर्वसु और मृगशिरा। यह संस्कार शुक्ल पक्ष में करना चाहिए जब गुरु और शुक्र अस्त न हों।"
+    rule_type: muhurta
+
+  # === TITHI RULES ===
+  - verse: 7
+    topic: muhurta_tithi
+    planets: []
+    houses: []
+    text_sanskrit: "Rikta Tithayah Chaturthi Navami Chaturdashi Varjayeyt"
+    text_english: "Rikta (empty) Tithis — Chaturthi (4th), Navami (9th), and Chaturdashi (14th) — should be avoided for all auspicious activities. These Tithis are considered inauspicious for initiations, marriages, travels, and new ventures. Amavasya (new moon) is also to be avoided for shubha karya."
+    text_hindi: "रिक्ता तिथियाँ — चतुर्थी (4), नवमी (9) और चतुर्दशी (14) — सभी शुभ कार्यों में त्याज्य हैं। ये तिथियाँ दीक्षा, विवाह, यात्रा और नवीन कार्यारम्भ में अशुभ मानी जाती हैं। अमावस्या भी शुभ कार्य हेतु वर्जित है।"
+    rule_type: muhurta
+
+  - verse: 8
+    topic: muhurta_tithi
+    planets: []
+    houses: []
+    text_sanskrit: "Shubha Tithayah Dvitiya Tritiya Panchami Saptami Dashami Dwadashi Trayodashi Purnima"
+    text_english: "Auspicious (Shubha) Tithis for general good works: Dvitiya (2nd), Tritiya (3rd), Panchami (5th), Saptami (7th), Dashami (10th), Dwadashi (12th), Trayodashi (13th), and Purnima (full moon). Pratipada (1st) of Shukla Paksha is also suitable for new beginnings."
+    text_hindi: "सामान्य शुभ कार्यों हेतु शुभ तिथियाँ: द्वितीया (2), तृतीया (3), पञ्चमी (5), सप्तमी (7), दशमी (10), द्वादशी (12), त्रयोदशी (13) और पूर्णिमा। शुक्ल पक्ष की प्रतिपदा (1) भी नवीन आरम्भ के लिए उपयुक्त है।"
+    rule_type: muhurta
+
+  - verse: 9
+    topic: muhurta_tithi
+    planets: []
+    houses: []
+    text_sanskrit: "Vivaha Tithau Dvitiya Tritiya Panchami Saptami Ekadashi Dwadashi Trayodashi Shubhani"
+    text_english: "Tithis specifically auspicious for marriage: Dvitiya (2nd), Tritiya (3rd), Panchami (5th), Saptami (7th), Ekadashi (11th), Dwadashi (12th), and Trayodashi (13th) of Shukla Paksha. Shashthi (6th) is acceptable if other factors are strong. Avoid Krishna Paksha for marriage entirely."
+    text_hindi: "विवाह हेतु विशेष शुभ तिथियाँ: शुक्ल पक्ष की द्वितीया (2), तृतीया (3), पञ्चमी (5), सप्तमी (7), एकादशी (11), द्वादशी (12) और त्रयोदशी (13)। षष्ठी (6) अन्य कारक बलवान हों तो स्वीकार्य। विवाह हेतु कृष्ण पक्ष सर्वथा वर्जित।"
+    rule_type: muhurta
+
+  - verse: 10
+    topic: muhurta_tithi
+    planets: []
+    houses: []
+    text_sanskrit: "Bhadra Tithi Vishti Karana Sarva Karyeshu Varjayeyt"
+    text_english: "Bhadra (Vishti Karana) must be avoided in all auspicious activities. Bhadra occurs in the later half of Chaturthi, Ekadashi, and Ashtami of both Pakshas. During Bhadra, no journey should be commenced, no marriage performed, and no new ventures started."
+    text_hindi: "भद्रा (विष्टि करण) सभी शुभ कार्यों में वर्जित है। भद्रा दोनों पक्षों की चतुर्थी, एकादशी और अष्टमी के उत्तरार्ध में आती है। भद्रा काल में न यात्रा आरम्भ करें, न विवाह करें, और न नवीन कार्य प्रारम्भ करें।"
+    rule_type: muhurta
+
+  # === YOGA AND KARANA RULES ===
+  - verse: 11
+    topic: muhurta_yoga
+    planets: []
+    houses: []
+    text_sanskrit: "Siddhi Yoga Amrita Yoga Shubha Yoga Sarva Karyeshu Shubhaha"
+    text_english: "Auspicious Yogas for all good works: Siddhi Yoga, Amrita Yoga, and Shubha Yoga. These arise from specific combinations of weekday, Nakshatra, and Tithi. Siddhi Yoga: Wednesday+Pushya, Friday+Revati, Saturday+Rohini. Amrita Yoga: Sunday+Hasta, Monday+Mrigashira, Thursday+Ashwini, Tuesday+Uttara Ashadha."
+    text_hindi: "सभी शुभ कार्यों हेतु शुभ योग: सिद्धि योग, अमृत योग और शुभ योग। ये वार, नक्षत्र और तिथि के विशेष संयोग से बनते हैं। सिद्धि योग: बुधवार+पुष्य, शुक्रवार+रेवती, शनिवार+रोहिणी। अमृत योग: रविवार+हस्त, सोमवार+मृगशिरा, गुरुवार+अश्विनी, मंगलवार+उत्तरा आषाढ़ा।"
+    rule_type: muhurta
+
+  - verse: 12
+    topic: muhurta_yoga
+    planets: []
+    houses: []
+    text_sanskrit: "Vishkambha Atiganda Shoola Vyaghata Vajra Parigha Vaidhriti Vyatipata Ashubha Yogaha"
+    text_english: "Inauspicious Yogas to be avoided: Vishkambha (1st), Atiganda (6th), Shoola (9th), Vyaghata (13th), Vajra (15th), Parigha (19th), Vaidhriti (27th), and Vyatipata (17th). These Yogas bring obstacles, danger, and misfortune when auspicious activities are commenced."
+    text_hindi: "वर्जित अशुभ योग: विष्कम्भ (1), अतिगण्ड (6), शूल (9), व्याघात (13), वज्र (15), परिघ (19), वैधृति (27) और व्यतीपात (17)। इन योगों में शुभ कार्य आरम्भ करने पर बाधा, संकट और दुर्भाग्य होता है।"
+    rule_type: muhurta
+
+  - verse: 13
+    topic: muhurta_yoga
+    planets: []
+    houses: []
+    text_sanskrit: "Sarvartha Siddhi Yoga Shreshthaha Sarva Karyeshu"
+    text_english: "Sarvartha Siddhi Yoga is the most auspicious combination for all purposes. It arises on: Sunday+Pushya/Hasta/Ashwini/Uttara Traya; Monday+Rohini/Mrigashira/Shravana/Hasta; Tuesday+Ashwini/Uttara Traya; Wednesday+Rohini/Anuradha/Hasta; Thursday+Ashwini/Pushya/Revati/Anuradha; Friday+Ashwini/Pushya/Anuradha/Revati; Saturday+Rohini/Swati/Shravana."
+    text_hindi: "सर्वार्थ सिद्धि योग सभी कार्यों हेतु सर्वश्रेष्ठ शुभ संयोग है। यह बनता है: रवि+पुष्य/हस्त/अश्विनी/उत्तरा त्रय; सोम+रोहिणी/मृगशिरा/श्रवण/हस्त; मंगल+अश्विनी/उत्तरा त्रय; बुध+रोहिणी/अनुराधा/हस्त; गुरु+अश्विनी/पुष्य/रेवती/अनुराधा; शुक्र+अश्विनी/पुष्य/अनुराधा/रेवती; शनि+रोहिणी/स्वाती/श्रवण।"
+    rule_type: muhurta
+
+  - verse: 14
+    topic: muhurta_yoga
+    planets: []
+    houses: []
+    text_sanskrit: "Guru Pushya Yoga Sarva Uttamaha Dhana Vyapara Karyeshu"
+    text_english: "Guru Pushya Yoga (Thursday + Pushya Nakshatra) is the most supreme Muhurta for wealth-related activities, purchasing gold and jewellery, starting new business ventures, opening bank accounts, and beginning investments. This Yoga overrides many other doshas."
+    text_hindi: "गुरु पुष्य योग (गुरुवार + पुष्य नक्षत्र) धन सम्बन्धी कार्यों, स्वर्ण और आभूषण खरीद, नवीन व्यापार आरम्भ, बैंक खाता खोलने और निवेश प्रारम्भ के लिए सर्वोत्तम मुहूर्त है। यह योग अनेक अन्य दोषों को निरस्त करता है।"
+    rule_type: muhurta
+
+  - verse: 15
+    topic: muhurta_yoga
+    planets: []
+    houses: []
+    text_sanskrit: "Ravi Pushya Yoga Shubhaha Rajya Karya Prashasta"
+    text_english: "Ravi Pushya Yoga (Sunday + Pushya Nakshatra) is highly auspicious for government-related work, seeking authority, leadership roles, and administrative matters. It is also favourable for installing idols, starting religious ceremonies, and health-related treatments."
+    text_hindi: "रवि पुष्य योग (रविवार + पुष्य नक्षत्र) सरकारी कार्य, अधिकार प्राप्ति, नेतृत्व और प्रशासनिक मामलों के लिए अत्यन्त शुभ है। मूर्ति स्थापना, धार्मिक अनुष्ठान आरम्भ और स्वास्थ्य उपचार के लिए भी अनुकूल है।"
+    rule_type: muhurta
+
+  # === RAHU KAAL AND INAUSPICIOUS PERIODS ===
+  - verse: 16
+    topic: muhurta_rahu_kaal
+    planets: [Rahu]
+    houses: []
+    text_sanskrit: "Rahu Kala Nishiddha Samayaha"
+    text_english: "Rahu Kaal timings to be strictly avoided for any new or auspicious activity: Monday 7:30-9:00, Saturday 9:00-10:30, Friday 10:30-12:00, Wednesday 12:00-1:30, Thursday 1:30-3:00, Tuesday 3:00-4:30, Sunday 4:30-6:00 (approximate times for 6AM sunrise; adjust proportionally for actual sunrise). No journey, purchase, or ceremony should begin during Rahu Kaal."
+    text_hindi: "राहु काल — किसी भी नवीन या शुभ कार्य हेतु सर्वथा वर्जित: सोमवार 7:30-9:00, शनिवार 9:00-10:30, शुक्रवार 10:30-12:00, बुधवार 12:00-1:30, गुरुवार 1:30-3:00, मंगलवार 3:00-4:30, रविवार 4:30-6:00 (6 बजे सूर्योदय के अनुसार अनुमानित; वास्तविक सूर्योदय से समायोजित करें)। राहु काल में यात्रा, क्रय या अनुष्ठान आरम्भ न करें।"
+    rule_type: muhurta
+
+  - verse: 17
+    topic: muhurta_rahu_kaal
+    planets: []
+    houses: []
+    text_sanskrit: "Yamaganda Kala Nishiddha Samayaha"
+    text_english: "Yamaganda (Yama Ghantaka) timings to avoid: Monday 10:30-12:00, Saturday 1:30-3:00, Friday 3:00-4:30, Wednesday 7:30-9:00, Thursday 9:00-10:30, Tuesday 12:00-1:30, Sunday 12:00-1:30 (approximate for 6AM sunrise). Yamaganda is especially dangerous for health-related activities and travel."
+    text_hindi: "यमघण्ट (यमगण्ड) वर्जित समय: सोमवार 10:30-12:00, शनिवार 1:30-3:00, शुक्रवार 3:00-4:30, बुधवार 7:30-9:00, गुरुवार 9:00-10:30, मंगलवार 12:00-1:30, रविवार 12:00-1:30 (6 बजे सूर्योदय अनुमानित)। यमघण्ट स्वास्थ्य सम्बन्धी कार्यों और यात्रा के लिए विशेष रूप से खतरनाक है।"
+    rule_type: muhurta
+
+  - verse: 18
+    topic: muhurta_gulika
+    planets: [Saturn]
+    houses: []
+    text_sanskrit: "Gulika Kala Varjayeyt"
+    text_english: "Gulika Kaal (son of Saturn) timings to avoid: Monday 1:30-3:00, Saturday 7:30-9:00 (before sunrise segment), Friday 7:30-9:00, Wednesday 10:30-12:00, Thursday 12:00-1:30, Tuesday 9:00-10:30, Sunday 3:00-4:30. Starting anything during Gulika Kaal brings delays, losses, and poisonous outcomes."
+    text_hindi: "गुलिक काल (शनि पुत्र) वर्जित समय: सोमवार 1:30-3:00, शनिवार 7:30-9:00 (सूर्योदय पूर्व खण्ड), शुक्रवार 7:30-9:00, बुधवार 10:30-12:00, गुरुवार 12:00-1:30, मंगलवार 9:00-10:30, रविवार 3:00-4:30। गुलिक काल में कार्यारम्भ विलम्ब, हानि और विषैले परिणाम देता है।"
+    rule_type: muhurta
+
+  # === PLANETARY CONDITIONS FOR MUHURTA ===
+  - verse: 19
+    topic: muhurta_planet_condition
+    planets: [Jupiter, Venus]
+    houses: []
+    text_sanskrit: "Guru Shukra Asta Vivaha Varjayeyt"
+    text_english: "Marriage must not be performed when Jupiter (Guru) or Venus (Shukra) are combust (Asta — too close to the Sun and invisible). Jupiter combustion lasts approximately one month, Venus combustion varies. This is one of the most important prohibitions in Muhurta Shastra."
+    text_hindi: "गुरु या शुक्र अस्त होने पर विवाह सर्वथा वर्जित है। गुरु का अस्त काल लगभग एक मास और शुक्र का अस्त काल परिवर्तनशील होता है। यह मुहूर्त शास्त्र का सबसे महत्त्वपूर्ण निषेध है।"
+    rule_type: muhurta
+
+  - verse: 20
+    topic: muhurta_planet_condition
+    planets: [Moon]
+    houses: []
+    text_sanskrit: "Chandra Bala Muhurte Avashyakam"
+    text_english: "Lunar strength (Chandra Bala) is essential for Muhurta selection. The Moon should not be in the 4th, 8th, or 12th house from the natal Moon (Janma Rashi) at the time of the event. The transiting Moon should not be conjunct or aspected by malefics. Moon in the 1st, 3rd, 6th, 7th, 10th, or 11th from Janma Rashi is auspicious."
+    text_hindi: "मुहूर्त चयन में चन्द्र बल अनिवार्य है। कार्य के समय चन्द्रमा जन्म राशि से 4, 8 या 12वें भाव में न हो। गोचर चन्द्रमा पाप ग्रहों से युत या दृष्ट न हो। जन्म राशि से 1, 3, 6, 7, 10 या 11वें भाव में चन्द्रमा शुभ है।"
+    rule_type: muhurta
+
+  - verse: 21
+    topic: muhurta_planet_condition
+    planets: []
+    houses: [1, 7, 8]
+    text_sanskrit: "Lagna Shuddhi Muhurte Pradhana"
+    text_english: "Purity of the Muhurta Lagna (Ascendant) is paramount. The Lagna should not have malefics in the 1st, 7th, or 8th houses. Jupiter's aspect on the Lagna or the 7th house greatly strengthens any Muhurta. A benefic in the Lagna and the 8th house free of malefics ensures success."
+    text_hindi: "मुहूर्त लग्न की शुद्धि सर्वोपरि है। लग्न के 1, 7 या 8वें भाव में पाप ग्रह न हों। लग्न या सप्तम भाव पर गुरु की दृष्टि मुहूर्त को अत्यन्त बलवान करती है। लग्न में शुभ ग्रह और अष्टम भाव पाप ग्रह रहित हो तो सफलता सुनिश्चित है।"
+    rule_type: muhurta
+
+  # === MONTH AND SEASON RULES ===
+  - verse: 22
+    topic: muhurta_month
+    planets: []
+    houses: []
+    text_sanskrit: "Vivaha Mase Magha Phalguna Vaishakha Jyeshtha Margashirsha Shubhani"
+    text_english: "Auspicious months for marriage: Magha (Jan-Feb), Phalguna (Feb-Mar), Vaishakha (Apr-May), Jyeshtha (May-Jun), and Margashirsha (Nov-Dec). The months of Ashwin (Sep-Oct) and Kartik (Oct-Nov) are acceptable after Dussehra. Chaturmas (Ashadha to Kartik) is generally avoided for weddings."
+    text_hindi: "विवाह हेतु शुभ मास: माघ (जन-फर), फाल्गुन (फर-मार्च), वैशाख (अप्रै-मई), ज्येष्ठ (मई-जून) और मार्गशीर्ष (नव-दिस)। दशहरे के बाद अश्विन (सित-अक्तू) और कार्तिक (अक्तू-नव) स्वीकार्य हैं। चातुर्मास (आषाढ़ से कार्तिक) में विवाह प्रायः वर्जित है।"
+    rule_type: muhurta
+
+  - verse: 23
+    topic: muhurta_month
+    planets: []
+    houses: []
+    text_sanskrit: "Adhika Masa Kshaya Masa Varjayeyt Shubha Karyeshu"
+    text_english: "Adhika Masa (intercalary month, also called Purushottama Masa or Mal Masa) is to be avoided for all auspicious activities including marriages, Upanayana, and new ventures. Kshaya Masa (omitted month) is similarly inauspicious. These months are suitable only for spiritual practices and charitable acts."
+    text_hindi: "अधिक मास (पुरुषोत्तम मास या मल मास) सभी शुभ कार्यों — विवाह, उपनयन और नवीन कार्यारम्भ — में वर्जित है। क्षय मास भी इसी प्रकार अशुभ है। ये मास केवल आध्यात्मिक साधना और दान-पुण्य कार्यों के लिए उपयुक्त हैं।"
+    rule_type: muhurta
+
+  # === SPECIAL MUHURTA CONSIDERATIONS ===
+  - verse: 24
+    topic: muhurta_special
+    planets: []
+    houses: []
+    text_sanskrit: "Abhijit Muhurta Sarva Karya Siddhi Karaha"
+    text_english: "Abhijit Muhurta is the most universally auspicious time of each day. It spans approximately 24 minutes before and after local noon (two ghatikas around midday). This Muhurta destroys all inauspicious influences and is suitable for all good works. Even malefic Nakshatras and Tithis lose their negativity during Abhijit Muhurta."
+    text_hindi: "अभिजित मुहूर्त प्रत्येक दिन का सर्वाधिक शुभ समय है। यह स्थानीय मध्याह्न के लगभग 24 मिनट पहले और बाद तक (मध्याह्न के दो घटिका) का होता है। यह मुहूर्त सभी अशुभ प्रभावों को नष्ट करता है और सभी शुभ कार्यों के लिए उपयुक्त है। अभिजित मुहूर्त में पाप नक्षत्र और तिथियाँ भी अपनी नकारात्मकता खो देती हैं।"
+    rule_type: muhurta
+
+  - verse: 25
+    topic: muhurta_special
+    planets: []
+    houses: []
+    text_sanskrit: "Panchaka Dosha Dakshinayana Nakshatre Varjayeyt"
+    text_english: "Panchaka Dosha occurs when the Moon transits the last five Nakshatras — Dhanishtha (last two quarters), Shatabhisha, Purva Bhadrapada, Uttara Bhadrapada, and Revati. During Panchaka, avoid southward travel, constructing roofs, making beds for the sick, funeral rites, and collecting wood/fuel. Panchaka is especially dangerous for death-related ceremonies."
+    text_hindi: "पञ्चक दोष चन्द्रमा के अन्तिम पाँच नक्षत्रों — धनिष्ठा (अन्तिम दो चरण), शतभिषा, पूर्वा भाद्रपद, उत्तरा भाद्रपद और रेवती — में गोचर करने पर होता है। पञ्चक में दक्षिण दिशा की यात्रा, छत निर्माण, रोगी के लिए शय्या बनाना, अन्त्येष्टि और ईंधन संग्रह वर्जित है। पञ्चक मृत्यु सम्बन्धी कर्मकाण्ड के लिए विशेष रूप से खतरनाक है।"
+    rule_type: muhurta

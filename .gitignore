@@ -41,3 +41,4 @@ htmlcov/
 # Distribution
 *.tar.gz
 *.whl
+data/life_events.db

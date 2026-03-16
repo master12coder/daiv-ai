@@ -1,0 +1,332 @@
+book: BPHS
+chapter: 15
+title: "Raja Yoga and Dhana Yoga Formations"
+rules:
+  # === RAJA YOGA FORMATIONS (Trikona + Kendra Lord Conjunctions) ===
+
+  - verse: 1
+    topic: raja_yoga
+    planets: []
+    houses: [9, 10]
+    text_sanskrit: "Dharmakarmadhipati Yoga — Navamadashama Adipathi Sambandha"
+    text_english: "Dharmakarmadhipati Raja Yoga: The lords of the 9th (dharma) and 10th (karma) houses conjunct, aspect each other, or exchange signs. This is the most powerful Raja Yoga. The native attains the highest position in profession, earns fame, commands authority, and is blessed by fortune and righteous action working in unison."
+    text_hindi: "धर्मकर्माधिपति राजयोग: 9वें (धर्म) और 10वें (कर्म) भाव के स्वामी युति, परस्पर दृष्टि या राशि परिवर्तन में हों। यह सर्वाधिक शक्तिशाली राजयोग है। जातक व्यवसाय में सर्वोच्च पद प्राप्त करता है, यश अर्जित करता है, अधिकार सम्पन्न होता है, और भाग्य तथा धर्मकर्म की एकता से कृपा प्राप्त करता है।"
+    rule_type: yoga
+
+  - verse: 2
+    topic: raja_yoga
+    planets: []
+    houses: [1, 5]
+    text_sanskrit: "Lagnesh Panchamesh Yoga"
+    text_english: "Raja Yoga of 1st and 5th lords: The Lagna lord and the 5th lord conjunct or mutually aspect each other. Gives intelligence applied to personal ambition, fame through creative or intellectual pursuits, political success, and favour from rulers. The native's merit (Purva Punya) directly supports self-advancement."
+    text_hindi: "लग्नेश-पंचमेश राजयोग: लग्न स्वामी और 5वें भाव का स्वामी युति या परस्पर दृष्टि में हों। व्यक्तिगत महत्वाकांक्षा में बुद्धि का प्रयोग, सृजनात्मक या बौद्धिक कार्यों से यश, राजनीतिक सफलता और शासकों की कृपा देता है। जातक का पूर्व पुण्य सीधे आत्मउन्नति में सहायक होता है।"
+    rule_type: yoga
+
+  - verse: 3
+    topic: raja_yoga
+    planets: []
+    houses: [1, 9]
+    text_sanskrit: "Lagnesh Bhagyesh Yoga"
+    text_english: "Raja Yoga of 1st and 9th lords: The Lagna lord and 9th lord conjunct or form a mutual relationship. Gives fortune favouring the native directly, foreign travel bringing prosperity, blessings of the father and guru, religious inclination leading to high status, and destiny aligning with personal effort."
+    text_hindi: "लग्नेश-भाग्येश राजयोग: लग्न स्वामी और 9वें भाव का स्वामी युति या परस्पर सम्बन्ध में हों। भाग्य सीधे जातक का साथ देता है, विदेश यात्रा से समृद्धि, पिता और गुरु का आशीर्वाद, धार्मिक प्रवृत्ति से उच्च पद, और भाग्य तथा पुरुषार्थ का सामंजस्य होता है।"
+    rule_type: yoga
+
+  - verse: 4
+    topic: raja_yoga
+    planets: []
+    houses: [4, 5]
+    text_sanskrit: "Sukhesh Panchamesh Yoga"
+    text_english: "Raja Yoga of 4th and 5th lords: The lords of the 4th (sukha) and 5th (putra/purva punya) houses conjunct or exchange. Gives happiness through children, academic excellence, property through merit, comfort in educational institutions, and political authority rooted in public welfare."
+    text_hindi: "सुखेश-पंचमेश राजयोग: 4थे (सुख) और 5वें (पुत्र/पूर्व पुण्य) भाव के स्वामी युति या परिवर्तन में हों। सन्तान से सुख, शैक्षिक उत्कृष्टता, योग्यता से सम्पत्ति, शिक्षण संस्थानों में सुविधा और जनकल्याण पर आधारित राजनीतिक अधिकार देता है।"
+    rule_type: yoga
+
+  - verse: 5
+    topic: raja_yoga
+    planets: []
+    houses: [4, 9]
+    text_sanskrit: "Sukhesh Bhagyesh Yoga"
+    text_english: "Raja Yoga of 4th and 9th lords: The lords of the 4th and 9th houses in conjunction or mutual aspect. Gives landed property, vehicles, domestic happiness supported by fortune, ancestral wealth, prestigious residence, and success in homeland. The native enjoys comfort in native land through destined fortune."
+    text_hindi: "सुखेश-भाग्येश राजयोग: 4थे और 9वें भाव के स्वामी युति या परस्पर दृष्टि में हों। भूसम्पत्ति, वाहन, भाग्य से सम्पन्न गृह सुख, पैतृक सम्पदा, प्रतिष्ठित निवास और स्वदेश में सफलता देता है। जातक भाग्य योग से मातृभूमि में सुख भोगता है।"
+    rule_type: yoga
+
+  - verse: 6
+    topic: raja_yoga
+    planets: []
+    houses: [5, 10]
+    text_sanskrit: "Panchamesh Dashamesh Yoga"
+    text_english: "Raja Yoga of 5th and 10th lords: The lords of the 5th and 10th houses conjunct or aspect each other. Gives authority earned through intelligence, success in governance and administration, children who attain high positions, fame through creative professional achievements, and royal patronage."
+    text_hindi: "पंचमेश-दशमेश राजयोग: 5वें और 10वें भाव के स्वामी युति या परस्पर दृष्टि में हों। बुद्धि से अर्जित अधिकार, शासन और प्रशासन में सफलता, उच्च पदस्थ सन्तान, सृजनात्मक व्यावसायिक उपलब्धियों से यश और राज संरक्षण देता है।"
+    rule_type: yoga
+
+  - verse: 7
+    topic: raja_yoga
+    planets: []
+    houses: [7, 9]
+    text_sanskrit: "Saptamesh Bhagyesh Yoga"
+    text_english: "Raja Yoga of 7th and 9th lords: The lords of the 7th and 9th houses conjunct or in mutual relationship. Gives a fortunate marriage, prosperity through spouse and partnerships, foreign business success, rise in status after marriage, and dharmic union. Business partnerships bring both wealth and prestige."
+    text_hindi: "सप्तमेश-भाग्येश राजयोग: 7वें और 9वें भाव के स्वामी युति या परस्पर सम्बन्ध में हों। भाग्यशाली विवाह, जीवनसाथी और साझेदारी से समृद्धि, विदेशी व्यापार सफलता, विवाह के बाद पद वृद्धि और धार्मिक विवाह देता है। व्यापारिक साझेदारी धन और प्रतिष्ठा दोनों लाती है।"
+    rule_type: yoga
+
+  - verse: 8
+    topic: raja_yoga
+    planets: []
+    houses: [7, 10]
+    text_sanskrit: "Saptamesh Dashamesh Yoga"
+    text_english: "Raja Yoga of 7th and 10th lords: The lords of the 7th and 10th houses conjunct or exchange. Gives professional success through partnerships, rise in career after marriage, authority in trade and commerce, diplomatic skills leading to high position, and fame through public dealings."
+    text_hindi: "सप्तमेश-दशमेश राजयोग: 7वें और 10वें भाव के स्वामी युति या परिवर्तन में हों। साझेदारी से व्यावसायिक सफलता, विवाह के बाद करियर में उन्नति, व्यापार-वाणिज्य में अधिकार, कूटनीतिक कौशल से उच्च पद और जन-व्यवहार से ख्याति देता है।"
+    rule_type: yoga
+
+  - verse: 9
+    topic: raja_yoga
+    planets: []
+    houses: [1, 4, 5, 7, 9, 10]
+    text_sanskrit: "Bahuvarga Raja Yoga"
+    text_english: "Multiple Raja Yoga: When three or more Kendra and Trikona lords are mutually connected through conjunction, aspect, or exchange, an exceptionally powerful Raja Yoga forms. The native rises to supreme authority — equivalent to a king or head of state. Rarer and more potent than single-pair Raja Yogas."
+    text_hindi: "बहुवर्ग राजयोग: जब तीन या अधिक केन्द्र और त्रिकोण स्वामी युति, दृष्टि या परिवर्तन से परस्पर सम्बन्धित हों, तो अत्यन्त शक्तिशाली राजयोग बनता है। जातक सर्वोच्च अधिकार प्राप्त करता है — राजा या राष्ट्राध्यक्ष के समान। एकल-युग्म राजयोगों से दुर्लभ और अधिक प्रभावी।"
+    rule_type: yoga
+
+  - verse: 10
+    topic: raja_yoga
+    planets: [Jupiter, Venus]
+    houses: [1, 4, 7, 10]
+    text_sanskrit: "Guru Shukra Kendra Yoga"
+    text_english: "Raja Yoga of Jupiter and Venus in Kendras: When Jupiter and Venus are both placed in Kendra houses, especially if one or both own a Trikona, a powerful Raja Yoga forms. Gives abundant wealth with wisdom, balanced enjoyment of material and spiritual life, respect in society, and patronage from the learned and the wealthy alike."
+    text_hindi: "गुरु-शुक्र केन्द्र योग: जब गुरु और शुक्र दोनों केन्द्र भावों में स्थित हों, विशेषतः यदि एक या दोनों त्रिकोण के स्वामी हों, तो शक्तिशाली राजयोग बनता है। ज्ञान सहित प्रचुर धन, भौतिक और आध्यात्मिक जीवन का सन्तुलित भोग, समाज में सम्मान, और विद्वानों व धनवानों दोनों से संरक्षण देता है।"
+    rule_type: yoga
+
+  # === DHANA YOGA FORMATIONS ===
+
+  - verse: 11
+    topic: dhana_yoga
+    planets: []
+    houses: [2, 11]
+    text_sanskrit: "Dvitiya Ekadasha Adipathi Yoga"
+    text_english: "Dhana Yoga of 2nd and 11th lords: The lords of the 2nd (accumulated wealth) and 11th (gains/income) houses conjunct, exchange, or aspect each other. Gives steady income leading to wealth accumulation, multiple sources of revenue, and financial security. The native earns well and saves well."
+    text_hindi: "द्वितीय-एकादश अधिपति योग: 2रे (संचित धन) और 11वें (लाभ/आय) भाव के स्वामी युति, परिवर्तन या परस्पर दृष्टि में हों। स्थिर आय से धन संचय, अनेक आय स्रोत और आर्थिक सुरक्षा देता है। जातक अच्छा कमाता और अच्छा बचाता है।"
+    rule_type: yoga
+
+  - verse: 12
+    topic: dhana_yoga
+    planets: []
+    houses: [5, 9]
+    text_sanskrit: "Pancham Navama Adipathi Dhana Yoga"
+    text_english: "Dhana Yoga of 5th and 9th lords: The lords of the 5th (Purva Punya) and 9th (Bhagya) houses conjunct or are mutually connected. Called Lakshmi Yoga by some authorities. Gives wealth through past-life merit, speculative gains, inheritance from father's side, prosperity through righteous means, and fortune favouring children's success."
+    text_hindi: "पंचम-नवम अधिपति धनयोग: 5वें (पूर्व पुण्य) और 9वें (भाग्य) भाव के स्वामी युति या परस्पर सम्बन्धित हों। कुछ आचार्य इसे लक्ष्मी योग कहते हैं। पूर्वजन्म के पुण्य से धन, सट्टे से लाभ, पितृपक्ष से विरासत, धार्मिक साधनों से समृद्धि और सन्तान की सफलता में भाग्य का साथ देता है।"
+    rule_type: yoga
+
+  - verse: 13
+    topic: dhana_yoga
+    planets: []
+    houses: [2, 5, 9, 11]
+    text_sanskrit: "Chaturgraha Dhana Yoga"
+    text_english: "Grand Dhana Yoga: When the lords of the 2nd, 5th, 9th, and 11th houses are all interconnected through conjunction, mutual aspect, or exchange, an exceptionally powerful Dhana Yoga forms. Gives enormous wealth — the native amasses a fortune comparable to a treasury. Multiple streams of income, inherited wealth, and speculative success all converge."
+    text_hindi: "चतुर्ग्रह धनयोग: जब 2रे, 5वें, 9वें और 11वें भावों के स्वामी सभी युति, परस्पर दृष्टि या परिवर्तन से जुड़े हों, तो अत्यन्त शक्तिशाली धनयोग बनता है। अपार धन देता है — जातक कोषागार के समान सम्पत्ति एकत्र करता है। अनेक आय स्रोत, पैतृक सम्पत्ति और सट्टे की सफलता सब मिलती है।"
+    rule_type: yoga
+
+  - verse: 14
+    topic: dhana_yoga
+    planets: [Jupiter]
+    houses: [2, 5, 9, 11]
+    text_sanskrit: "Guru Dhana Yoga"
+    text_english: "Jupiter's Dhana Yoga: Jupiter placed in or aspecting the 2nd, 5th, 9th, or 11th house while being the lord of one of these houses. Jupiter's aspect on wealth houses is highly auspicious for accumulation. Gives wealth through teaching, counselling, law, religion, or finance. The native earns through wisdom and ethical means."
+    text_hindi: "गुरु धनयोग: गुरु 2रे, 5वें, 9वें या 11वें भाव में स्थित या इनको देखता हो और इनमें से किसी का स्वामी भी हो। गुरु की धन भावों पर दृष्टि संचय के लिए अत्यन्त शुभ है। शिक्षण, परामर्श, विधि, धर्म या वित्त से धन देता है। जातक ज्ञान और नैतिक साधनों से कमाता है।"
+    rule_type: yoga
+
+  - verse: 15
+    topic: dhana_yoga
+    planets: []
+    houses: [1, 2, 11]
+    text_sanskrit: "Lagnesh Dhana Yoga"
+    text_english: "Lagna Lord Dhana Yoga: The Lagna lord conjunct with the 2nd or 11th lord, or placed in the 2nd or 11th house. The native earns through personal effort and self-initiative. Wealth is self-made rather than inherited. The stronger the Lagna lord, the greater the earning capacity through individual enterprise."
+    text_hindi: "लग्नेश धनयोग: लग्न स्वामी 2रे या 11वें भाव के स्वामी से युक्त हो, या 2रे या 11वें भाव में स्थित हो। जातक व्यक्तिगत प्रयास और स्वपहल से कमाता है। धन विरासत के बजाय स्वअर्जित होता है। लग्न स्वामी जितना बलवान, व्यक्तिगत उद्यम से उतनी अधिक कमाने की क्षमता।"
+    rule_type: yoga
+
+  - verse: 16
+    topic: dhana_yoga
+    planets: []
+    houses: [2, 9]
+    text_sanskrit: "Dvitiyesh Bhagyesh Dhana Yoga"
+    text_english: "Dhana Yoga of 2nd and 9th lords: The lords of the 2nd and 9th houses conjunct or exchange. Wealth comes through fortune, father's blessings, long-distance trade, religious or charitable work, and higher learning. The native accumulates wealth that is destined — it comes with relative ease and through righteous channels."
+    text_hindi: "द्वितीयेश-भाग्येश धनयोग: 2रे और 9वें भाव के स्वामी युति या परिवर्तन में हों। भाग्य, पिता का आशीर्वाद, दूरदेशीय व्यापार, धार्मिक या परोपकारी कार्य और उच्च शिक्षा से धन आता है। जातक भाग्य से निर्धारित धन संचित करता है — यह सरलता से और धार्मिक मार्गों से आता है।"
+    rule_type: yoga
+
+  # === VIPREET RAJA YOGA ===
+
+  - verse: 17
+    topic: vipreet_raja_yoga
+    planets: []
+    houses: [6, 8]
+    text_sanskrit: "Harsha Yoga — Shashtesh Ashtame"
+    text_english: "Harsha Yoga (Vipreet Raja Yoga): The lord of the 6th house placed in the 8th house. The native overcomes enemies through their own destruction, gains from insurance and legacies, wins lawsuits unexpectedly, and transforms obstacles into opportunities. Enemies destroy themselves without the native's direct involvement."
+    text_hindi: "हर्ष योग (विपरीत राजयोग): 6ठे भाव का स्वामी 8वें भाव में स्थित हो। जातक शत्रुओं की स्वयं की विनाश से उन पर विजय प्राप्त करता है, बीमा और विरासत से लाभ, अप्रत्याशित रूप से मुकदमे जीतता है, और बाधाओं को अवसरों में बदलता है। शत्रु जातक की प्रत्यक्ष सहभागिता के बिना स्वयं नष्ट होते हैं।"
+    rule_type: yoga
+
+  - verse: 18
+    topic: vipreet_raja_yoga
+    planets: []
+    houses: [6, 12]
+    text_sanskrit: "Harsha Yoga Variant — Shashtesh Dvadasha"
+    text_english: "Harsha Yoga variant: The lord of the 6th house placed in the 12th house. Enemies are banished or sent away, debts dissolve through settlement or write-off, diseases are cured through foreign or alternative medicine, and legal troubles end through out-of-court resolution. The native escapes adversity through expenditure or foreign connections."
+    text_hindi: "हर्ष योग प्रभेद: 6ठे भाव का स्वामी 12वें भाव में स्थित हो। शत्रु निर्वासित या दूर भेजे जाते हैं, ऋण समझौते या माफी से समाप्त होते हैं, विदेशी या वैकल्पिक चिकित्सा से रोग ठीक होते हैं, और कानूनी परेशानी अदालत के बाहर समझौते से समाप्त होती है। जातक व्यय या विदेशी सम्पर्क से विपत्ति से बचता है।"
+    rule_type: yoga
+
+  - verse: 19
+    topic: vipreet_raja_yoga
+    planets: []
+    houses: [8, 6]
+    text_sanskrit: "Sarala Yoga — Ashtamesh Shashthe"
+    text_english: "Sarala Yoga (Vipreet Raja Yoga): The lord of the 8th house placed in the 6th house. Gives victory in crisis situations, survival through dangerous circumstances, gains through settling others' disputes, success in occult healing, and overcoming chronic enemies through transformation. The native thrives in competitive and adversarial environments."
+    text_hindi: "सरल योग (विपरीत राजयोग): 8वें भाव का स्वामी 6ठे भाव में स्थित हो। संकट स्थितियों में विजय, खतरनाक परिस्थितियों में बचाव, दूसरों के विवाद सुलझाने से लाभ, तान्त्रिक चिकित्सा में सफलता और परिवर्तन से दीर्घकालिक शत्रुओं पर विजय देता है। जातक प्रतिस्पर्धी और विरोधी वातावरण में फलता-फूलता है।"
+    rule_type: yoga
+
+  - verse: 20
+    topic: vipreet_raja_yoga
+    planets: []
+    houses: [8, 12]
+    text_sanskrit: "Sarala Yoga Variant — Ashtamesh Dvadashe"
+    text_english: "Sarala Yoga variant: The lord of the 8th house placed in the 12th house. Dangers dissipate through expenditure or foreign relocation, chronic threats resolve through spiritual practice, sudden upheavals lead to liberation, and the native escapes accidents or crises through seemingly miraculous means. Hidden enemies neutralize each other."
+    text_hindi: "सरल योग प्रभेद: 8वें भाव का स्वामी 12वें भाव में स्थित हो। व्यय या विदेश स्थानान्तरण से खतरे समाप्त होते हैं, आध्यात्मिक साधना से दीर्घकालिक संकट हल होते हैं, अचानक उथल-पुथल मुक्ति की ओर ले जाती है, और जातक चमत्कारिक ढंग से दुर्घटना या संकट से बचता है। छिपे शत्रु एक-दूसरे को निष्क्रिय करते हैं।"
+    rule_type: yoga
+
+  - verse: 21
+    topic: vipreet_raja_yoga
+    planets: []
+    houses: [12, 6]
+    text_sanskrit: "Vimala Yoga — Dvadashesh Shashthe"
+    text_english: "Vimala Yoga (Vipreet Raja Yoga): The lord of the 12th house placed in the 6th house. Losses are converted into competitive advantage, expenditure is channelled into defeating enemies or clearing debts, foreign connections help overcome local adversaries, and spiritual merit protects against daily adversities. The native turns every setback into strength."
+    text_hindi: "विमल योग (विपरीत राजयोग): 12वें भाव का स्वामी 6ठे भाव में स्थित हो। हानि प्रतिस्पर्धात्मक लाभ में बदलती है, व्यय शत्रुओं को पराजित करने या ऋण चुकाने में लगता है, विदेशी सम्पर्क स्थानीय विरोधियों पर विजय में सहायक होते हैं, और आध्यात्मिक पुण्य दैनिक विपत्तियों से रक्षा करता है। जातक हर विफलता को शक्ति में बदलता है।"
+    rule_type: yoga
+
+  - verse: 22
+    topic: vipreet_raja_yoga
+    planets: []
+    houses: [12, 8]
+    text_sanskrit: "Vimala Yoga Variant — Dvadashesh Ashtame"
+    text_english: "Vimala Yoga variant: The lord of the 12th house placed in the 8th house. Expenditure on research and occult studies yields hidden wealth, foreign investments bring unexpected returns, losses transform into inheritance or insurance gains, and spiritual practice protects against sudden calamities. The native benefits from what initially appears to be loss."
+    text_hindi: "विमल योग प्रभेद: 12वें भाव का स्वामी 8वें भाव में स्थित हो। शोध और गुप्त विद्या पर व्यय से छिपा धन मिलता है, विदेशी निवेश अप्रत्याशित प्रतिफल लाते हैं, हानि विरासत या बीमा लाभ में बदलती है, और आध्यात्मिक साधना अचानक विपत्तियों से रक्षा करती है। जातक को आरम्भ में हानि प्रतीत होने वाली बातों से लाभ होता है।"
+    rule_type: yoga
+
+  # === NEECH BHANGA RAJA YOGA ===
+
+  - verse: 23
+    topic: neech_bhanga_raja_yoga
+    planets: []
+    houses: []
+    text_sanskrit: "Neecha Bhanga Raja Yoga — Neechastha Graha Uchcha Adhipathi Kendre"
+    text_english: "Neech Bhanga Raja Yoga (condition 1): A debilitated planet whose debilitation is cancelled because the lord of its exaltation sign is in a Kendra from Lagna or Moon. The native rises from humble or difficult beginnings to extraordinary heights. The initial weakness becomes the source of greatest strength — like a person who conquers their biggest flaw."
+    text_hindi: "नीच भंग राजयोग (शर्त 1): नीच ग्रह जिसकी नीचता इसलिए भंग हो कि उसकी उच्च राशि का स्वामी लग्न या चन्द्रमा से केन्द्र में हो। जातक विनम्र या कठिन परिस्थितियों से असाधारण ऊँचाइयों तक पहुँचता है। आरम्भिक दुर्बलता सबसे बड़ी शक्ति का स्रोत बनती है — जैसे कोई व्यक्ति अपनी सबसे बड़ी कमी को जीत ले।"
+    rule_type: yoga
+
+  - verse: 24
+    topic: neech_bhanga_raja_yoga
+    planets: []
+    houses: []
+    text_sanskrit: "Neecha Bhanga Raja Yoga — Neechastha Graha Rashi Adhipathi Kendre"
+    text_english: "Neech Bhanga Raja Yoga (condition 2): A debilitated planet whose debilitation lord (ruler of the sign of debilitation) is in a Kendra from Lagna or Moon. The oppressor becomes the protector — the very planet that rules the sign of weakness lifts the native through angular strength. Gives dramatic reversal of fortune."
+    text_hindi: "नीच भंग राजयोग (शर्त 2): नीच ग्रह जिसकी नीच राशि का स्वामी लग्न या चन्द्रमा से केन्द्र में हो। दमनकर्ता रक्षक बन जाता है — वही ग्रह जो दुर्बलता की राशि का शासक है, कोणीय शक्ति से जातक को ऊपर उठाता है। भाग्य का नाटकीय पलटाव देता है।"
+    rule_type: yoga
+
+  - verse: 25
+    topic: neech_bhanga_raja_yoga
+    planets: []
+    houses: []
+    text_sanskrit: "Neecha Bhanga Raja Yoga — Neechastha Uchcha Graha Yutihi"
+    text_english: "Neech Bhanga Raja Yoga (condition 3): A debilitated planet conjunct with its exaltation lord in the same sign. The debilitated planet gains the direct support and strength of the planet that would be exalted in its current position. Like a fallen warrior being helped up by a strong ally on the same battlefield."
+    text_hindi: "नीच भंग राजयोग (शर्त 3): नीच ग्रह अपनी उच्च राशि के स्वामी के साथ एक ही राशि में युक्त हो। नीच ग्रह को उस ग्रह का प्रत्यक्ष समर्थन और शक्ति मिलती है जो उसकी वर्तमान स्थिति में उच्च होता। जैसे गिरा हुआ योद्धा उसी रणभूमि में एक शक्तिशाली सहयोगी द्वारा उठाया जाए।"
+    rule_type: yoga
+
+  - verse: 26
+    topic: neech_bhanga_raja_yoga
+    planets: []
+    houses: [1, 4, 7, 10]
+    text_sanskrit: "Neecha Bhanga Raja Yoga — Neechastha Graha Kendre"
+    text_english: "Neech Bhanga Raja Yoga (condition 4): A debilitated planet placed in a Kendra (1st, 4th, 7th, or 10th house). The angular placement itself provides sufficient strength to cancel debilitation. Kendras are the pillars of a horoscope and their occupants gain directional strength. Gives professional success despite initial disadvantages."
+    text_hindi: "नीच भंग राजयोग (शर्त 4): नीच ग्रह केन्द्र (1, 4, 7, 10वें भाव) में स्थित हो। कोणीय स्थिति स्वयं नीचता भंग के लिए पर्याप्त शक्ति प्रदान करती है। केन्द्र कुण्डली के स्तम्भ हैं और उनमें स्थित ग्रह दिग्बल प्राप्त करते हैं। आरम्भिक प्रतिकूलताओं के बावजूद व्यावसायिक सफलता देता है।"
+    rule_type: yoga
+
+  - verse: 27
+    topic: neech_bhanga_raja_yoga
+    planets: []
+    houses: []
+    text_sanskrit: "Neecha Bhanga Raja Yoga — Neechastha Graha Navamsha Uchcha"
+    text_english: "Neech Bhanga Raja Yoga (condition 5): A debilitated planet in the Rashi chart that is exalted in the Navamsha (D-9). The inner strength (Navamsha) compensates for the outer weakness (Rashi). The native appears weak outwardly but possesses extraordinary inner resilience and capability that manifests over time."
+    text_hindi: "नीच भंग राजयोग (शर्त 5): राशि चक्र में नीच ग्रह जो नवांश (D-9) में उच्च हो। आन्तरिक शक्ति (नवांश) बाह्य दुर्बलता (राशि) की क्षतिपूर्ति करती है। जातक बाहर से दुर्बल दिखता है किन्तु असाधारण आन्तरिक दृढ़ता और क्षमता रखता है जो समय के साथ प्रकट होती है।"
+    rule_type: yoga
+
+  # === LAKSHMI YOGA ===
+
+  - verse: 28
+    topic: lakshmi_yoga
+    planets: [Venus]
+    houses: [1, 9]
+    text_sanskrit: "Lakshmi Yoga — Lagnesh Bali Bhagyesh Svochche Svakshetre Va Kendre"
+    text_english: "Lakshmi Yoga: The lord of the 9th house is exalted or in its own sign, placed in a Kendra or Trikona, and the Lagna lord is strong. Named after Goddess Lakshmi herself. Gives immense wealth, beauty, virtue, royal comfort, and high moral character. The native is blessed with all forms of prosperity — material, intellectual, and spiritual. Venus's involvement strengthens the Yoga further."
+    text_hindi: "लक्ष्मी योग: 9वें भाव का स्वामी उच्च या स्वराशि में हो, केन्द्र या त्रिकोण में स्थित हो, और लग्न स्वामी बलवान हो। देवी लक्ष्मी के नाम पर। अपार धन, सौन्दर्य, सद्गुण, राजसी सुख और उच्च नैतिक चरित्र देता है। जातक सभी प्रकार की समृद्धि से कृतार्थ होता है — भौतिक, बौद्धिक और आध्यात्मिक। शुक्र की सहभागिता योग को और प्रबल करती है।"
+    rule_type: yoga
+
+  - verse: 29
+    topic: lakshmi_yoga
+    planets: [Venus, Mercury]
+    houses: [1, 9]
+    text_sanskrit: "Lakshmi Yoga Visheshaha"
+    text_english: "Lakshmi Yoga (special condition): When Venus is the 9th lord and is placed in own sign (Taurus or Libra) in a Kendra, while the Lagna lord is also strong in a Kendra or Trikona. This is the purest form of Lakshmi Yoga. The native is wealthy, generous, handsome/beautiful, devoted to Vishnu, and commands respect from rulers. Wealth flows naturally and the native becomes a benefactor."
+    text_hindi: "लक्ष्मी योग (विशेष शर्त): जब शुक्र 9वें भाव का स्वामी हो और केन्द्र में स्वराशि (वृषभ या तुला) में हो, साथ ही लग्न स्वामी भी केन्द्र या त्रिकोण में बलवान हो। यह लक्ष्मी योग का शुद्धतम रूप है। जातक धनवान, उदार, सुन्दर, विष्णु भक्त और शासकों से सम्मानित होता है। धन स्वाभाविक रूप से आता है और जातक दानवीर बनता है।"
+    rule_type: yoga
+
+  # === SARASWATI YOGA ===
+
+  - verse: 30
+    topic: saraswati_yoga
+    planets: [Jupiter, Venus, Mercury]
+    houses: [1, 2, 4, 5, 7, 9, 10]
+    text_sanskrit: "Saraswati Yoga — Guru Shukra Budha Kendra Trikone"
+    text_english: "Saraswati Yoga: Jupiter, Venus, and Mercury are all placed in Kendras, Trikonas, or the 2nd house. Named after Goddess Saraswati of learning. Gives extraordinary intelligence, mastery of multiple sciences and arts, eloquent and persuasive speech, fame through scholarship, literary accomplishments, and expertise in music, poetry, and mathematics. The native becomes a renowned scholar or artist."
+    text_hindi: "सरस्वती योग: गुरु, शुक्र और बुध सभी केन्द्र, त्रिकोण या 2रे भाव में स्थित हों। विद्या की देवी सरस्वती के नाम पर। असाधारण बुद्धि, अनेक विज्ञानों और कलाओं में दक्षता, वाक्पटु और प्रभावशाली वाणी, विद्वत्ता से यश, साहित्यिक उपलब्धियाँ, और संगीत, काव्य तथा गणित में निपुणता देता है। जातक प्रसिद्ध विद्वान या कलाकार बनता है।"
+    rule_type: yoga
+
+  - verse: 31
+    topic: saraswati_yoga
+    planets: [Jupiter, Venus, Mercury]
+    houses: [2]
+    text_sanskrit: "Saraswati Yoga Visheshaha"
+    text_english: "Saraswati Yoga (special condition): When Jupiter is strong (in own sign, exalted, or in a Kendra), and Mercury and Venus are in the 2nd house (speech) or conjunct with Jupiter. The 2nd house involvement specifically enhances oratory, singing voice, and wealth through knowledge. The native commands audiences through speech and becomes a celebrated teacher or orator."
+    text_hindi: "सरस्वती योग (विशेष शर्त): जब गुरु बलवान हो (स्वराशि, उच्च या केन्द्र में), और बुध तथा शुक्र 2रे भाव (वाणी) में हों या गुरु से युक्त हों। 2रे भाव की सहभागिता विशेष रूप से वक्तृत्व, गायन कला और ज्ञान से धन को बढ़ाती है। जातक वाणी से श्रोताओं को मोहित करता है और प्रसिद्ध शिक्षक या वक्ता बनता है।"
+    rule_type: yoga
+
+  # === ADDITIONAL POWERFUL YOGA FORMATIONS ===
+
+  - verse: 32
+    topic: raja_yoga
+    planets: []
+    houses: [1, 4, 5, 7, 9, 10]
+    text_sanskrit: "Yogakaraka Graha Raja Yoga"
+    text_english: "Yogakaraka Planet Raja Yoga: When a single planet rules both a Kendra and a Trikona (e.g., Saturn for Taurus and Libra Lagna, Mars for Cancer and Leo Lagna), it becomes a Yogakaraka — a single planet capable of producing Raja Yoga by itself. When this Yogakaraka is strong and well-placed, the native attains power, wealth, and fame through that planet's significations alone."
+    text_hindi: "योगकारक ग्रह राजयोग: जब एक ही ग्रह केन्द्र और त्रिकोण दोनों का स्वामी हो (जैसे वृषभ और तुला लग्न के लिए शनि, कर्क और सिंह लग्न के लिए मंगल), तो वह योगकारक बन जाता है — एक ग्रह जो अकेले राजयोग उत्पन्न कर सकता है। यह योगकारक बलवान और शुभ स्थिति में हो तो जातक उस ग्रह के कारकत्व से ही शक्ति, धन और यश प्राप्त करता है।"
+    rule_type: yoga
+
+  - verse: 33
+    topic: raja_yoga
+    planets: []
+    houses: [1, 10]
+    text_sanskrit: "Lagnesh Dashamesh Raja Yoga"
+    text_english: "Raja Yoga of 1st and 10th lords: The Lagna lord and 10th lord conjunct, exchange, or mutually aspect. Gives self-made success in career, authority earned through personal merit, commanding personality in professional life, and the native's identity becomes synonymous with their profession. The strongest when in the 1st or 10th house itself."
+    text_hindi: "लग्नेश-दशमेश राजयोग: लग्न स्वामी और 10वें भाव का स्वामी युति, परिवर्तन या परस्पर दृष्टि में हों। करियर में स्वनिर्मित सफलता, व्यक्तिगत योग्यता से अर्जित अधिकार, व्यावसायिक जीवन में प्रभावशाली व्यक्तित्व, और जातक की पहचान उसके व्यवसाय का पर्याय बन जाती है। 1 या 10वें भाव में हों तो सर्वाधिक शक्तिशाली।"
+    rule_type: yoga
+
+  - verse: 34
+    topic: dhana_yoga
+    planets: []
+    houses: [5, 11]
+    text_sanskrit: "Panchamesh Ekadashesh Dhana Yoga"
+    text_english: "Dhana Yoga of 5th and 11th lords: The lords of the 5th and 11th houses conjunct or in mutual relationship. Gives gains from speculation, stock market, gambling (if other factors support), profits from creative ventures, income through children, and fulfilment of desires through intelligence. Past-life merit translates directly into current-life gains."
+    text_hindi: "पंचमेश-एकादशेश धनयोग: 5वें और 11वें भाव के स्वामी युति या परस्पर सम्बन्ध में हों। सट्टे से लाभ, शेयर बाजार, जुआ (अन्य कारक अनुकूल हों तो), सृजनात्मक उद्यमों से लाभ, सन्तान से आय, और बुद्धि से इच्छापूर्ति देता है। पूर्वजन्म का पुण्य सीधे इस जन्म के लाभ में बदलता है।"
+    rule_type: yoga
+
+  - verse: 35
+    topic: raja_yoga
+    planets: []
+    houses: [5, 9]
+    text_sanskrit: "Trikona Adipathi Parivartana Raja Yoga"
+    text_english: "Trikona Lords Exchange Raja Yoga: The lords of the 5th and 9th houses exchange signs (mutual exchange/Parivartana). This is one of the most auspicious Raja Yogas as both Trikona lords strengthen each other simultaneously. Gives fortune blessed by past-life merit, wisdom combined with luck, spiritual evolution alongside material prosperity, and children who bring great honour to the family."
+    text_hindi: "त्रिकोण अधिपति परिवर्तन राजयोग: 5वें और 9वें भाव के स्वामी राशि परिवर्तन (परस्पर विनिमय) करें। यह सर्वाधिक शुभ राजयोगों में से एक है क्योंकि दोनों त्रिकोण स्वामी एक-दूसरे को एक साथ बलवान करते हैं। पूर्वजन्म के पुण्य से कृतार्थ भाग्य, भाग्य सहित ज्ञान, भौतिक समृद्धि के साथ आध्यात्मिक विकास, और परिवार को महान सम्मान दिलाने वाली सन्तान देता है।"
+    rule_type: yoga
