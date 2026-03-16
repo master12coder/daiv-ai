@@ -6,79 +6,88 @@ rules:
     topic: gemstone
     planets: [Sun]
     houses: []
-    text_sanskrit: "Surya Ratnam Manikya"
-    text_english: "Ruby (Manikya) is the gemstone for Sun. Wear in gold on ring finger of right hand on Sunday during Sun hora. Minimum 3 ratti. Strengthens vitality, authority, father."
-    text_hindi: "माणिक्य सूर्य का रत्न है। सोने में दाहिने हाथ की अनामिका में रविवार को सूर्य होरा में धारण करें। न्यूनतम 3 रत्ती। जीवनशक्ति, अधिकार, पिता को बल देता है।"
+    text_sanskrit: "Suryasya Ratnam Manikya"
+    text_english: "Ruby (Manikya) is the gemstone for the Sun. It should be set in gold and worn on the ring finger of the right hand. Minimum weight 3 carats. Worn on Sunday during Shukla Paksha in Sun's Hora. Strengthens authority, vitality, father-relation, and government connection."
+    text_hindi: "माणिक्य (रूबी) सूर्य का रत्न है। सोने में जड़ कर दाहिने हाथ की अनामिका में धारण करें। न्यूनतम भार 3 कैरेट। शुक्ल पक्ष में रविवार को सूर्य की होरा में धारण करें। अधिकार, ओज, पिता सम्बन्ध और सरकारी सम्पर्क को बलवान करता है।"
     rule_type: gemstone
 
   - verse: 2
     topic: gemstone
     planets: [Moon]
     houses: []
-    text_sanskrit: "Chandra Ratnam Moti"
-    text_english: "Pearl (Moti) is the gemstone for Moon. Wear in silver on little finger of right hand on Monday. Minimum 4 ratti. Strengthens mind, emotions, mother."
-    text_hindi: "मोती चन्द्रमा का रत्न है। चाँदी में दाहिने हाथ की कनिष्ठिका में सोमवार को धारण करें। न्यूनतम 4 रत्ती। मन, भावनाएँ, माता को बल देता है।"
+    text_sanskrit: "Chandrasya Ratnam Muktaphalam"
+    text_english: "Pearl (Moti) is the gemstone for the Moon. It should be set in silver and worn on the little finger or ring finger of the right hand. Minimum weight 4 carats. Worn on Monday during Shukla Paksha. Strengthens mind, emotional stability, and mother-relation."
+    text_hindi: "मोती चन्द्रमा का रत्न है। चाँदी में जड़ कर दाहिने हाथ की कनिष्ठिका या अनामिका में धारण करें। न्यूनतम भार 4 कैरेट। शुक्ल पक्ष में सोमवार को धारण करें। मन, भावनात्मक स्थिरता और माता सम्बन्ध को बलवान करता है।"
     rule_type: gemstone
 
   - verse: 3
     topic: gemstone
     planets: [Mars]
     houses: []
-    text_sanskrit: "Mangala Ratnam Moonga"
-    text_english: "Red Coral (Moonga) is the gemstone for Mars. Wear in gold or copper on ring finger on Tuesday. Minimum 6 ratti. Strengthens courage, property, siblings."
-    text_hindi: "मूंगा मंगल का रत्न है। सोने या ताँबे में अनामिका में मंगलवार को धारण करें। न्यूनतम 6 रत्ती। साहस, सम्पत्ति, भाई-बहन को बल देता है।"
+    text_sanskrit: "Kujasya Ratnam Pravalam"
+    text_english: "Red Coral (Moonga/Pravala) is the gemstone for Mars. It should be set in gold or copper and worn on the ring finger of the right hand. Minimum weight 5 carats. Worn on Tuesday during Shukla Paksha. Strengthens courage, property matters, and blood-related health."
+    text_hindi: "मूँगा (प्रवाल) मंगल का रत्न है। सोने या ताम्बे में जड़ कर दाहिने हाथ की अनामिका में धारण करें। न्यूनतम भार 5 कैरेट। शुक्ल पक्ष में मंगलवार को धारण करें। साहस, सम्पत्ति मामले और रक्त सम्बन्धी स्वास्थ्य को बलवान करता है।"
     rule_type: gemstone
 
   - verse: 4
     topic: gemstone
     planets: [Mercury]
     houses: []
-    text_sanskrit: "Budha Ratnam Panna"
-    text_english: "Emerald (Panna) is the gemstone for Mercury. Wear in gold on little finger on Wednesday. Minimum 3.5 ratti. Strengthens intellect, speech, commerce."
-    text_hindi: "पन्ना बुध का रत्न है। सोने में कनिष्ठिका में बुधवार को धारण करें। न्यूनतम 3.5 रत्ती। बुद्धि, वाणी, व्यापार को बल देता है।"
+    text_sanskrit: "Budhasya Ratnam Maraktam"
+    text_english: "Emerald (Panna/Marakta) is the gemstone for Mercury. It should be set in gold and worn on the little finger of the right hand. Minimum weight 3.5 carats. Worn on Wednesday during Shukla Paksha. Strengthens intellect, speech, trade, and education."
+    text_hindi: "पन्ना (मरकत) बुध का रत्न है। सोने में जड़ कर दाहिने हाथ की कनिष्ठिका में धारण करें। न्यूनतम भार 3.5 कैरेट। शुक्ल पक्ष में बुधवार को धारण करें। बुद्धि, वाणी, व्यापार और शिक्षा को बलवान करता है।"
     rule_type: gemstone
 
   - verse: 5
     topic: gemstone
     planets: [Jupiter]
     houses: []
-    text_sanskrit: "Guru Ratnam Pukhraj"
-    text_english: "Yellow Sapphire (Pukhraj) is the gemstone for Jupiter. Wear in gold on index finger on Thursday. Minimum 3 ratti. Strengthens wisdom, children, fortune."
-    text_hindi: "पुखराज गुरु का रत्न है। सोने में तर्जनी में गुरुवार को धारण करें। न्यूनतम 3 रत्ती। ज्ञान, सन्तान, भाग्य को बल देता है।"
+    text_sanskrit: "Guroscha Ratnam Pushparagaha"
+    text_english: "Yellow Sapphire (Pukhraj/Pushparaga) is the gemstone for Jupiter. It should be set in gold and worn on the index finger of the right hand. Minimum weight 3 carats. Worn on Thursday during Shukla Paksha. Strengthens wisdom, wealth, children, and marital happiness for women."
+    text_hindi: "पुखराज (पुष्पराग) गुरु का रत्न है। सोने में जड़ कर दाहिने हाथ की तर्जनी में धारण करें। न्यूनतम भार 3 कैरेट। शुक्ल पक्ष में गुरुवार को धारण करें। ज्ञान, धन, सन्तान और स्त्रियों के वैवाहिक सुख को बलवान करता है।"
     rule_type: gemstone
 
   - verse: 6
     topic: gemstone
     planets: [Venus]
     houses: []
-    text_sanskrit: "Shukra Ratnam Heera"
-    text_english: "Diamond (Heera) is the gemstone for Venus. Wear in platinum or silver on middle finger on Friday. Minimum 0.5 carat. Strengthens marriage, luxury, arts."
-    text_hindi: "हीरा शुक्र का रत्न है। प्लैटिनम या चाँदी में मध्यमा में शुक्रवार को धारण करें। न्यूनतम 0.5 कैरट। विवाह, विलास, कला को बल देता है।"
+    text_sanskrit: "Shukrasya Ratnam Vajram"
+    text_english: "Diamond (Heera/Vajra) is the gemstone for Venus. It should be set in platinum or white gold and worn on the middle finger or ring finger of the right hand. Minimum weight 0.5 carat. Worn on Friday during Shukla Paksha. Strengthens marital happiness, luxury, and artistic talents."
+    text_hindi: "हीरा (वज्र) शुक्र का रत्न है। प्लैटिनम या श्वेत स्वर्ण में जड़ कर दाहिने हाथ की मध्यमा या अनामिका में धारण करें। न्यूनतम भार 0.5 कैरेट। शुक्ल पक्ष में शुक्रवार को धारण करें। वैवाहिक सुख, विलासिता और कलात्मक प्रतिभा को बलवान करता है।"
     rule_type: gemstone
 
   - verse: 7
     topic: gemstone
     planets: [Saturn]
     houses: []
-    text_sanskrit: "Shani Ratnam Neelam"
-    text_english: "Blue Sapphire (Neelam) is the gemstone for Saturn. MUST trial for 3 days before wearing. Wear in silver on middle finger on Saturday. Very powerful — can give instant results both positive and negative."
-    text_hindi: "नीलम शनि का रत्न है। धारण करने से पहले 3 दिन का परीक्षण अनिवार्य। चाँदी में मध्यमा में शनिवार को धारण करें। अत्यन्त शक्तिशाली — सकारात्मक और नकारात्मक दोनों तत्काल परिणाम दे सकता है।"
+    text_sanskrit: "Shaneh Ratnam Neelam"
+    text_english: "Blue Sapphire (Neelam/Nilamani) is the gemstone for Saturn. It should be set in silver or Panch-dhatu and worn on the middle finger of the right hand. Minimum weight 3 carats. Must be trial-worn for 3 days first. Worn on Saturday during Shukla Paksha. Can give rapid results — both positive and negative."
+    text_hindi: "नीलम शनि का रत्न है। चाँदी या पंचधातु में जड़ कर दाहिने हाथ की मध्यमा में धारण करें। न्यूनतम भार 3 कैरेट। पहले 3 दिन परीक्षण के लिए रखें। शुक्ल पक्ष में शनिवार को धारण करें। तीव्र परिणाम दे सकता है — शुभ और अशुभ दोनों।"
     rule_type: gemstone
 
   - verse: 8
     topic: gemstone
     planets: [Rahu]
     houses: []
-    text_sanskrit: "Rahu Ratnam Gomed"
-    text_english: "Hessonite (Gomed) is the gemstone for Rahu. Wear in panchdhatu on middle finger on Saturday. Helps with Rahu-related confusion, foreign matters, technology."
-    text_hindi: "गोमेद राहु का रत्न है। पञ्चधातु में मध्यमा में शनिवार को धारण करें। राहु-सम्बन्धित भ्रम, विदेशी मामले, प्रौद्योगिकी में सहायक।"
+    text_sanskrit: "Rahor Ratnam Gomedaha"
+    text_english: "Hessonite Garnet (Gomed) is the gemstone for Rahu. It should be set in silver or Ashtadhatu and worn on the middle finger of the right hand. Minimum weight 4 carats. Worn on Saturday or Wednesday during Shukla Paksha. Strengthens foreign connections and protects from Rahu's malefic effects."
+    text_hindi: "गोमेद राहु का रत्न है। चाँदी या अष्टधातु में जड़ कर दाहिने हाथ की मध्यमा में धारण करें। न्यूनतम भार 4 कैरेट। शुक्ल पक्ष में शनिवार या बुधवार को धारण करें। विदेशी सम्पर्क को बलवान और राहु के अशुभ प्रभाव से रक्षा करता है।"
     rule_type: gemstone
 
   - verse: 9
     topic: gemstone
     planets: [Ketu]
     houses: []
-    text_sanskrit: "Ketu Ratnam Lehsuniya"
-    text_english: "Cat's Eye (Lehsuniya) is the gemstone for Ketu. Wear in panchdhatu on ring finger. Helps with spiritual growth, sudden events, moksha-related matters."
-    text_hindi: "लहसुनिया केतु का रत्न है। पञ्चधातु में अनामिका में धारण करें। आध्यात्मिक विकास, अचानक घटनाएँ, मोक्ष-सम्बन्धित मामलों में सहायक।"
+    text_sanskrit: "Ketoh Ratnam Vaidooryam"
+    text_english: "Cat's Eye (Lahsuniya/Vaidurya) is the gemstone for Ketu. It should be set in silver or Panch-dhatu and worn on the little finger or ring finger of the right hand. Minimum weight 3 carats. Must be trial-worn for 3 days first. Worn on Thursday or Tuesday during Krishna Paksha. Strengthens spiritual pursuits and protects from Ketu afflictions."
+    text_hindi: "लहसुनिया (वैदूर्य) केतु का रत्न है। चाँदी या पंचधातु में जड़ कर दाहिने हाथ की कनिष्ठिका या अनामिका में धारण करें। न्यूनतम भार 3 कैरेट। पहले 3 दिन परीक्षण के लिए रखें। कृष्ण पक्ष में गुरुवार या मंगलवार को धारण करें। आध्यात्मिक कार्य बलवान और केतु पीड़ा से रक्षा करता है।"
+    rule_type: gemstone
+
+  - verse: 10
+    topic: gemstone
+    planets: []
+    houses: []
+    text_sanskrit: "Ratna Dharana Nishiddha Niyamaha"
+    text_english: "Gemstone contraindications: Never wear the gemstone of a planet that is a functional malefic (lord of 6th, 8th, or 12th). Never wear gemstones of mutually inimical planets together (e.g., Ruby + Blue Sapphire, Pearl + Hessonite). Always consult the birth chart before recommending any gemstone."
+    text_hindi: "रत्न धारण निषेध: कभी भी कार्यकारी पापी ग्रह (6, 8, 12 भाव स्वामी) का रत्न न धारण करें। परस्पर शत्रु ग्रहों के रत्न एक साथ न पहनें (जैसे माणिक्य + नीलम, मोती + गोमेद)। किसी भी रत्न की सलाह देने से पहले सदैव जन्म कुण्डली परामर्श करें।"
     rule_type: gemstone

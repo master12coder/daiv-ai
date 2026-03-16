@@ -126,15 +126,34 @@ def validate_against_scripture(
     Useful for the validation pipeline — check if a pandit's correction
     aligns with or contradicts classical texts.
 
+    First fetches references by planet/house, then ranks those whose
+    English text shares keywords with the statement.
+
     Args:
         statement: The claim to validate
         planet: Planet being discussed
         house: House being discussed
 
     Returns:
-        List of potentially relevant references.
+        List of potentially relevant references, ordered by keyword
+        overlap (best matches first).
     """
-    return query_by_planet(planet, house)
+    candidates = query_by_planet(planet, house)
+    if not candidates:
+        return []
+
+    stmt_words = set(statement.lower().split())
+    # Remove very short or common stop-words to reduce noise
+    stop_words = {"the", "a", "an", "is", "in", "of", "and", "to", "for", "it", "on"}
+    stmt_words -= stop_words
+
+    def _overlap_score(ref: ScriptureReference) -> int:
+        ref_words = set(ref.text_english.lower().split())
+        return len(stmt_words & ref_words)
+
+    scored = [(ref, _overlap_score(ref)) for ref in candidates]
+    scored.sort(key=lambda pair: pair[1], reverse=True)
+    return [ref for ref, _score in scored]
 
 
 def get_citation(ref: ScriptureReference) -> str:

@@ -6,79 +6,88 @@ rules:
     topic: remedy
     planets: [Sun]
     houses: []
-    text_sanskrit: "Surya Graha Shanti"
-    text_english: "Sun remedies: Offer water (arghya) to Sun at sunrise, chant Aditya Hridaya Stotra, donate wheat and jaggery on Sundays, wear Ruby if Sun is benefic for lagna."
-    text_hindi: "सूर्य उपाय: सूर्योदय पर सूर्य को अर्घ्य दें, आदित्य हृदय स्तोत्र का पाठ करें, रविवार को गेहूँ और गुड़ दान करें, यदि सूर्य लग्न के लिए शुभ हो तो माणिक्य धारण करें।"
+    text_sanskrit: "Surya Graha Shanti Vidhanam"
+    text_english: "Sun remedies: Offer water (arghya) to the rising Sun daily with copper vessel, adding red flowers and kumkum. Chant the Aditya Hridaya Stotra or Gayatri Mantra 108 times. Donate wheat, jaggery, red cloth, and copper on Sundays. Wear Ruby only if Sun is a functional benefic for the Lagna."
+    text_hindi: "सूर्य उपाय: प्रतिदिन ताम्बे के पात्र से उदित सूर्य को अर्घ्य दें, लाल पुष्प और कुमकुम मिलाएँ। आदित्य हृदय स्तोत्र या गायत्री मन्त्र 108 बार जपें। रविवार को गेहूँ, गुड़, लाल वस्त्र और ताम्बा दान करें। माणिक्य केवल तभी धारण करें जब सूर्य लग्न के लिए कार्यात्मक शुभ हो।"
     rule_type: remedy
 
   - verse: 2
     topic: remedy
     planets: [Moon]
     houses: []
-    text_sanskrit: "Chandra Graha Shanti"
-    text_english: "Moon remedies: Offer milk to Shivling on Mondays, chant Om Namah Shivaya, donate rice and white items, wear Pearl if Moon is benefic."
-    text_hindi: "चन्द्र उपाय: सोमवार को शिवलिंग पर दूध चढ़ाएँ, ओम नमः शिवाय का जाप करें, चावल और सफ़ेद वस्तुएँ दान करें, चन्द्र शुभ हो तो मोती धारण करें।"
+    text_sanskrit: "Chandra Graha Shanti Vidhanam"
+    text_english: "Moon remedies: Offer milk and water to Shivling on Mondays. Chant Om Namah Shivaya or Chandra Beej Mantra (Om Shram Shreem Shraum Sah Chandramase Namaha). Donate rice, white cloth, silver, and curd on Mondays. Keep a fast on Mondays. Wearing Pearl strengthens a weak but benefic Moon."
+    text_hindi: "चन्द्र उपाय: सोमवार को शिवलिंग पर दूध और जल अर्पित करें। ओम नमः शिवाय या चन्द्र बीज मन्त्र (ओम श्रां श्रीं श्रौं सः चन्द्रमसे नमः) जपें। सोमवार को चावल, श्वेत वस्त्र, चाँदी और दही दान करें। सोमवार का व्रत रखें। दुर्बल किन्तु शुभ चन्द्रमा के लिए मोती बल देता है।"
     rule_type: remedy
 
   - verse: 3
     topic: remedy
     planets: [Mars]
     houses: []
-    text_sanskrit: "Mangala Graha Shanti"
-    text_english: "Mars remedies: Recite Hanuman Chalisa on Tuesdays, donate red lentils, offer sindoor to Hanuman, wear Red Coral if Mars is benefic. Physical exercise channelizes Mars energy."
-    text_hindi: "मंगल उपाय: मंगलवार को हनुमान चालीसा पढ़ें, मसूर दाल दान करें, हनुमान जी को सिन्दूर अर्पित करें, मंगल शुभ हो तो मूंगा धारण करें।"
+    text_sanskrit: "Kuja Graha Shanti Vidhanam"
+    text_english: "Mars remedies: Recite Hanuman Chalisa on Tuesdays and Saturdays. Offer sindoor (vermilion) to Lord Hanuman. Donate red lentils (masoor dal), red cloth, jaggery, and copper on Tuesdays. Physical exercise and sports effectively channelise Mars energy. Wear Red Coral if Mars is a functional benefic."
+    text_hindi: "मंगल उपाय: मंगलवार और शनिवार को हनुमान चालीसा पढ़ें। श्री हनुमान जी को सिन्दूर अर्पित करें। मंगलवार को मसूर दाल, लाल वस्त्र, गुड़ और ताम्बा दान करें। शारीरिक व्यायाम और खेल मंगल की ऊर्जा को प्रभावी रूप से दिशा देते हैं। मूँगा तभी धारण करें जब मंगल कार्यात्मक शुभ हो।"
     rule_type: remedy
 
   - verse: 4
     topic: remedy
     planets: [Mercury]
     houses: []
-    text_sanskrit: "Budha Graha Shanti"
-    text_english: "Mercury remedies: Chant Vishnu Sahasranama on Wednesdays, donate green moong dal, feed green grass to cows, wear Emerald if Mercury is benefic."
-    text_hindi: "बुध उपाय: बुधवार को विष्णु सहस्रनाम पढ़ें, हरी मूंग दाल दान करें, गाय को हरा चारा खिलाएँ, बुध शुभ हो तो पन्ना धारण करें।"
+    text_sanskrit: "Budha Graha Shanti Vidhanam"
+    text_english: "Mercury remedies: Chant Vishnu Sahasranama or Budha Beej Mantra (Om Braam Breem Braum Sah Budhaya Namaha) on Wednesdays. Donate green moong dal, green vegetables, and green cloth on Wednesdays. Feed green grass to cows. Practice writing and learning new skills. Wear Emerald if Mercury is a functional benefic."
+    text_hindi: "बुध उपाय: बुधवार को विष्णु सहस्रनाम या बुध बीज मन्त्र (ओम ब्रां ब्रीं ब्रौं सः बुधाय नमः) जपें। बुधवार को हरी मूँग दाल, हरी सब्जियाँ और हरा वस्त्र दान करें। गाय को हरा चारा खिलाएँ। लेखन और नये कौशल सीखने का अभ्यास करें। बुध कार्यात्मक शुभ हो तो पन्ना धारण करें।"
     rule_type: remedy
 
   - verse: 5
     topic: remedy
     planets: [Jupiter]
     houses: []
-    text_sanskrit: "Guru Graha Shanti"
-    text_english: "Jupiter remedies: Respect teachers and elders, chant Guru mantra on Thursdays, donate chana dal and turmeric, wear Yellow Sapphire if Jupiter is benefic. Read scriptures."
-    text_hindi: "गुरु उपाय: गुरुजनों का सम्मान करें, गुरुवार को गुरु मन्त्र जपें, चना दाल और हल्दी दान करें, गुरु शुभ हो तो पुखराज धारण करें। शास्त्र पढ़ें।"
+    text_sanskrit: "Guru Graha Shanti Vidhanam"
+    text_english: "Jupiter remedies: Respect elders, teachers, and Brahmins. Chant Guru Beej Mantra (Om Graam Greem Graum Sah Gurave Namaha) on Thursdays. Donate chana dal, turmeric, yellow cloth, gold, and bananas on Thursdays. Read and study scriptures regularly. Wear Yellow Sapphire if Jupiter is a functional benefic."
+    text_hindi: "गुरु उपाय: बड़ों, गुरुजनों और ब्राह्मणों का सम्मान करें। गुरुवार को गुरु बीज मन्त्र (ओम ग्रां ग्रीं ग्रौं सः गुरवे नमः) जपें। गुरुवार को चना दाल, हल्दी, पीला वस्त्र, स्वर्ण और केले दान करें। नियमित शास्त्र अध्ययन करें। गुरु कार्यात्मक शुभ हो तो पुखराज धारण करें।"
     rule_type: remedy
 
   - verse: 6
     topic: remedy
     planets: [Venus]
     houses: []
-    text_sanskrit: "Shukra Graha Shanti"
-    text_english: "Venus remedies: Respect wife/women, chant Lakshmi mantra on Fridays, donate white rice and sweets, wear Diamond if Venus is benefic. Engage in arts."
-    text_hindi: "शुक्र उपाय: पत्नी/स्त्रियों का सम्मान करें, शुक्रवार को लक्ष्मी मन्त्र जपें, सफ़ेद चावल और मिठाई दान करें, शुक्र शुभ हो तो हीरा धारण करें।"
+    text_sanskrit: "Shukra Graha Shanti Vidhanam"
+    text_english: "Venus remedies: Respect women and one's wife/partner. Chant Shukra Beej Mantra (Om Draam Dreem Draum Sah Shukraya Namaha) or Lakshmi Stotra on Fridays. Donate white rice, white sweets, white cloth, ghee, and camphor on Fridays. Engage in arts, music, or poetry. Wear Diamond if Venus is a functional benefic."
+    text_hindi: "शुक्र उपाय: स्त्रियों और अपनी पत्नी/साथी का सम्मान करें। शुक्रवार को शुक्र बीज मन्त्र (ओम द्रां द्रीं द्रौं सः शुक्राय नमः) या लक्ष्मी स्तोत्र जपें। शुक्रवार को श्वेत चावल, सफ़ेद मिठाई, श्वेत वस्त्र, घी और कपूर दान करें। कला, संगीत या काव्य में संलग्न हों। शुक्र कार्यात्मक शुभ हो तो हीरा धारण करें।"
     rule_type: remedy
 
   - verse: 7
     topic: remedy
     planets: [Saturn]
     houses: []
-    text_sanskrit: "Shani Graha Shanti"
-    text_english: "Saturn remedies: Serve the underprivileged, pour mustard oil on Shani idol on Saturdays, donate black sesame and iron, wear Blue Sapphire only after 3-day trial. Be disciplined."
-    text_hindi: "शनि उपाय: वंचितों की सेवा करें, शनिवार को शनिदेव पर सरसों का तेल चढ़ाएँ, काला तिल और लोहा दान करें, नीलम केवल 3 दिन परीक्षण के बाद धारण करें।"
+    text_sanskrit: "Shani Graha Shanti Vidhanam"
+    text_english: "Saturn remedies: Serve the underprivileged, elderly, and disabled. Pour mustard oil over a Shani idol on Saturdays and observe the reflection without touching. Chant Shani Beej Mantra (Om Praam Preem Praum Sah Shanaischaraya Namaha). Donate black sesame, iron, mustard oil, blue/black cloth on Saturdays. Wear Blue Sapphire only after a 3-day trial period and only if Saturn is a functional benefic."
+    text_hindi: "शनि उपाय: वंचितों, वृद्धों और विकलांगों की सेवा करें। शनिवार को शनिदेव की मूर्ति पर सरसों का तेल चढ़ाएँ और बिना छुए प्रतिबिम्ब देखें। शनि बीज मन्त्र (ओम प्रां प्रीं प्रौं सः शनैश्चराय नमः) जपें। शनिवार को काला तिल, लोहा, सरसों का तेल, नीला/काला वस्त्र दान करें। नीलम केवल 3 दिन के परीक्षण के बाद और केवल शनि कार्यात्मक शुभ हो तो धारण करें।"
     rule_type: remedy
 
   - verse: 8
     topic: remedy
     planets: [Rahu]
     houses: []
-    text_sanskrit: "Rahu Graha Shanti"
-    text_english: "Rahu remedies: Chant Durga mantra, donate black sesame on Saturdays, keep water for birds, avoid materialism and deception. Wear Hessonite if Rahu is functional benefic."
-    text_hindi: "राहु उपाय: दुर्गा मन्त्र जपें, शनिवार को काला तिल दान करें, पक्षियों के लिए जल रखें, भौतिकवाद और छल से बचें। राहु कार्यात्मक शुभ हो तो गोमेद धारण करें।"
+    text_sanskrit: "Rahu Graha Shanti Vidhanam"
+    text_english: "Rahu remedies: Chant Rahu Beej Mantra (Om Bhram Bhreem Bhraum Sah Rahave Namaha) or Durga Chalisa. Donate black sesame, coconut, blue cloth, and blankets on Saturdays. Keep water for birds daily. Avoid deception, materialism, and intoxicants. Feed fish or offer coconut to flowing water. Wear Hessonite only if Rahu is a functional benefic."
+    text_hindi: "राहु उपाय: राहु बीज मन्त्र (ओम भ्रां भ्रीं भ्रौं सः राहवे नमः) या दुर्गा चालीसा जपें। शनिवार को काला तिल, नारियल, नीला वस्त्र और कम्बल दान करें। प्रतिदिन पक्षियों के लिए जल रखें। छल, भौतिकवाद और नशे से बचें। मछलियों को खिलाएँ या बहते जल में नारियल अर्पित करें। गोमेद केवल राहु कार्यात्मक शुभ हो तो धारण करें।"
     rule_type: remedy
 
   - verse: 9
     topic: remedy
     planets: [Ketu]
     houses: []
-    text_sanskrit: "Ketu Graha Shanti"
-    text_english: "Ketu remedies: Feed dogs, chant Ganesh mantra, practice spiritual discipline, donate seven-grain mix. Wear Cat's Eye if Ketu is benefic. Visit pilgrimage sites."
-    text_hindi: "केतु उपाय: कुत्तों को भोजन दें, गणेश मन्त्र जपें, आध्यात्मिक अनुशासन अपनाएँ, सप्तधान्य मिश्रण दान करें। केतु शुभ हो तो लहसुनिया धारण करें। तीर्थ यात्रा करें।"
+    text_sanskrit: "Ketu Graha Shanti Vidhanam"
+    text_english: "Ketu remedies: Chant Ketu Beej Mantra (Om Sraam Sreem Sraum Sah Ketave Namaha) or Ganesh Atharvashirsha. Feed stray dogs regularly. Donate a seven-grain mix (Saptadhanya), blankets, and brown/grey cloth on Tuesdays or Saturdays. Practice meditation and spiritual discipline. Visit pilgrimage sites. Wear Cat's Eye only if Ketu is a functional benefic."
+    text_hindi: "केतु उपाय: केतु बीज मन्त्र (ओम स्रां स्रीं स्रौं सः केतवे नमः) या गणेश अथर्वशीर्ष जपें। नियमित रूप से आवारा कुत्तों को भोजन दें। मंगलवार या शनिवार को सप्तधान्य मिश्रण, कम्बल और भूरा/स्लेटी वस्त्र दान करें। ध्यान और आध्यात्मिक अनुशासन का अभ्यास करें। तीर्थ यात्रा करें। लहसुनिया केवल केतु कार्यात्मक शुभ हो तो धारण करें।"
+    rule_type: remedy
+
+  - verse: 10
+    topic: remedy
+    planets: []
+    houses: []
+    text_sanskrit: "Upaya Samanya Niyamaha"
+    text_english: "General remedy principles: (1) Remedies should strengthen functional benefics, not malefics. (2) Behavioural remedies (seva, discipline, respect) are always safe and effective. (3) Gemstones amplify the planet's energy — beneficial for benefics, harmful for malefics. (4) Mantras work through consistent daily practice, not one-time chanting. (5) Donations (Daan) should be given with genuine devotion, not as transactions."
+    text_hindi: "उपाय सामान्य नियम: (1) उपाय कार्यात्मक शुभ ग्रहों को बलवान करें, पापी को नहीं। (2) व्यावहारिक उपाय (सेवा, अनुशासन, सम्मान) सदैव सुरक्षित और प्रभावी हैं। (3) रत्न ग्रह की ऊर्जा बढ़ाते हैं — शुभ ग्रह के लिए लाभदायक, पापी के लिए हानिकारक। (4) मन्त्र निरन्तर दैनिक अभ्यास से काम करते हैं, एकबारगी जप से नहीं। (5) दान सच्ची श्रद्धा से दें, लेन-देन के रूप में नहीं।"
     rule_type: remedy
