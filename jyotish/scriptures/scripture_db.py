@@ -51,14 +51,17 @@ def _load_all() -> list[ScriptureReference]:
         return _ALL_REFS
 
     _ALL_REFS = []
-    if _BPHS_DIR.exists():
-        for yaml_file in sorted(_BPHS_DIR.glob("*.yaml")):
-            try:
-                refs = _load_yaml_rules(yaml_file)
-                _ALL_REFS.extend(refs)
-                logger.debug("Loaded %d rules from %s", len(refs), yaml_file.name)
-            except Exception as e:
-                logger.warning("Error loading %s: %s", yaml_file.name, e)
+    # Scan all scripture directories (bphs, lal_kitab, etc.)
+    scriptures_root = _BPHS_DIR.parent
+    for subdir in sorted(scriptures_root.iterdir()):
+        if subdir.is_dir() and not subdir.name.startswith("_"):
+            for yaml_file in sorted(subdir.glob("*.yaml")):
+                try:
+                    refs = _load_yaml_rules(yaml_file)
+                    _ALL_REFS.extend(refs)
+                    logger.debug("Loaded %d rules from %s", len(refs), yaml_file.name)
+                except Exception as e:
+                    logger.warning("Error loading %s: %s", yaml_file.name, e)
 
     logger.info("Total scripture references loaded: %d", len(_ALL_REFS))
     return _ALL_REFS

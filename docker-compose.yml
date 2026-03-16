@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  jyotish:
+    build: .
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+    volumes:
+      - ./data:/app/data
+      - ./charts:/app/charts
