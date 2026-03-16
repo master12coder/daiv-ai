@@ -11,15 +11,7 @@ from jyotish.utils.constants import (
     NAKSHATRA_LORDS,
 )
 from jyotish.compute.chart import ChartData
-
-
-@dataclass
-class DashaPeriod:
-    level: str            # "MD", "AD", "PD"
-    lord: str             # Planet name
-    start: datetime
-    end: datetime
-    parent_lord: str | None = None  # For AD/PD — the parent dasha lord
+from jyotish.domain.models.dasha import DashaPeriod
 
 
 def _dasha_start_index(nakshatra_lord: str) -> int:

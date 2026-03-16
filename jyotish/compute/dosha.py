@@ -7,18 +7,7 @@ from datetime import datetime
 
 from jyotish.utils.constants import SIGN_LORDS, SIGNS
 from jyotish.compute.chart import ChartData, has_aspect
-
-
-@dataclass
-class DoshaResult:
-    name: str
-    name_hindi: str
-    is_present: bool
-    severity: str          # "full", "partial", "cancelled", "none"
-    planets_involved: list[str]
-    houses_involved: list[int]
-    description: str
-    cancellation_reasons: list[str]
+from jyotish.domain.models.dosha import DoshaResult
 
 
 def detect_mangal_dosha(chart: ChartData) -> DoshaResult:

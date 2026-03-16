@@ -6,15 +6,7 @@ from dataclasses import dataclass
 
 from jyotish.utils.constants import SIGNS, PLANETS
 from jyotish.compute.chart import ChartData
-
-
-@dataclass
-class DivisionalPosition:
-    planet: str
-    d1_sign_index: int
-    divisional_sign_index: int
-    divisional_sign: str
-    is_vargottam: bool  # Same sign in D1 and this divisional chart
+from jyotish.domain.models.divisional import DivisionalPosition
 
 
 def compute_navamsha_sign(longitude: float) -> int:

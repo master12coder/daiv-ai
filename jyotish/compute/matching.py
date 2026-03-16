@@ -10,28 +10,7 @@ from jyotish.utils.constants import (
     NAKSHATRA_LORDS, YONI_ENEMIES, BHAKOOT_NEGATIVE_COMBOS,
     NATURAL_FRIENDS, NATURAL_ENEMIES,
 )
-
-
-@dataclass
-class KootaScore:
-    name: str
-    name_hindi: str
-    max_points: float
-    obtained: float
-    description: str
-
-
-@dataclass
-class MatchingResult:
-    person1_nakshatra_index: int
-    person1_moon_sign: int
-    person2_nakshatra_index: int
-    person2_moon_sign: int
-    kootas: list[KootaScore]
-    total_obtained: float
-    total_max: float
-    percentage: float
-    recommendation: str
+from jyotish.domain.models.matching import KootaScore, MatchingResult
 
 
 def _varna_score(sign1: int, sign2: int) -> KootaScore:

@@ -12,27 +12,7 @@ from jyotish.utils.constants import (
 )
 from jyotish.utils.datetime_utils import to_jd, now_ist
 from jyotish.compute.chart import ChartData, _get_nakshatra
-
-
-@dataclass
-class TransitPlanet:
-    name: str
-    longitude: float
-    sign_index: int
-    sign: str
-    degree_in_sign: float
-    nakshatra: str
-    is_retrograde: bool
-    natal_house_activated: int  # Which natal house this transit activates
-
-
-@dataclass
-class TransitData:
-    target_date: str
-    natal_chart_name: str
-    natal_lagna_sign: str
-    transits: list[TransitPlanet]
-    major_transits: list[str]  # Human-readable descriptions of significant transits
+from jyotish.domain.models.transit import TransitPlanet, TransitData
 
 
 def compute_transits(chart: ChartData, target_date: datetime | None = None) -> TransitData:

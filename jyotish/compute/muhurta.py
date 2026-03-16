@@ -9,18 +9,7 @@ from jyotish.utils.constants import (
     MUHURTA_FAVORABLE_NAKSHATRAS, NAKSHATRAS, DAY_NAMES,
 )
 from jyotish.compute.panchang import compute_panchang, PanchangData
-
-
-@dataclass
-class MuhurtaCandidate:
-    date: str
-    day: str
-    nakshatra: str
-    tithi: str
-    yoga: str
-    rahu_kaal: str
-    score: float
-    reasons: list[str]
+from jyotish.domain.models.muhurta import MuhurtaCandidate
 
 
 def find_muhurta(

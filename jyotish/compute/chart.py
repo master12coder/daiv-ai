@@ -17,49 +17,7 @@ from jyotish.utils.constants import (
 from jyotish.utils.datetime_utils import to_jd, parse_birth_datetime
 from jyotish.utils.geo import resolve_or_manual, GeoLocation
 
-
-@dataclass
-class PlanetData:
-    name: str
-    name_hi: str
-    longitude: float          # Sidereal longitude (0-360)
-    sign_index: int           # 0-11
-    sign: str                 # Vedic sign name
-    sign_en: str              # Western sign name
-    sign_hi: str              # Hindi sign name
-    degree_in_sign: float     # 0-30
-    nakshatra_index: int      # 0-26
-    nakshatra: str            # Nakshatra name
-    nakshatra_lord: str       # Dasha lord of nakshatra
-    pada: int                 # 1-4
-    house: int                # 1-12 from lagna
-    is_retrograde: bool
-    speed: float              # deg/day
-    dignity: str              # exalted/debilitated/own/mooltrikona/neutral
-    avastha: str              # Bala/Kumara/Yuva/Vriddha/Mruta
-    is_combust: bool
-    sign_lord: str            # Lord of the sign planet is in
-
-
-@dataclass
-class ChartData:
-    name: str
-    dob: str
-    tob: str
-    place: str
-    gender: str
-    latitude: float
-    longitude: float
-    timezone_name: str
-    julian_day: float
-    ayanamsha: float
-    lagna_longitude: float
-    lagna_sign_index: int
-    lagna_sign: str
-    lagna_sign_en: str
-    lagna_sign_hi: str
-    lagna_degree: float
-    planets: dict[str, PlanetData] = field(default_factory=dict)
+from jyotish.domain.models.chart import PlanetData, ChartData
 
 
 def _get_nakshatra(lon: float) -> tuple[int, int]:

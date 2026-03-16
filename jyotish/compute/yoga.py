@@ -9,17 +9,7 @@ from jyotish.utils.constants import (
     EXALTATION, OWN_SIGNS,
 )
 from jyotish.compute.chart import ChartData, get_house_lord, get_planets_in_house, has_aspect
-
-
-@dataclass
-class YogaResult:
-    name: str
-    name_hindi: str
-    is_present: bool
-    planets_involved: list[str]
-    houses_involved: list[int]
-    description: str
-    effect: str  # benefic, malefic, mixed
+from jyotish.domain.models.yoga import YogaResult
 
 
 def _is_in_kendra(house: int) -> bool:

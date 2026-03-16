@@ -10,17 +10,7 @@ from jyotish.utils.constants import (
     KENDRAS, TRIKONAS, SIGN_LORDS, PLANETS,
 )
 from jyotish.compute.chart import ChartData
-
-
-@dataclass
-class PlanetStrength:
-    planet: str
-    sthana_bala: float    # Positional strength (0-1)
-    dig_bala: float       # Directional strength (0-1)
-    kala_bala: float      # Temporal strength (0-1, simplified)
-    total_relative: float # Combined relative strength (0-1)
-    rank: int             # Rank among all planets (1=strongest)
-    is_strong: bool
+from jyotish.domain.models.strength import PlanetStrength
 
 
 def _sthana_bala(chart: ChartData, planet_name: str) -> float:
