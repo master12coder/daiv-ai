@@ -1,0 +1,18 @@
+{
+  "id": "corr001",
+  "pandit_name": "Pandit Rameshwar Shastri",
+  "date": "2026-03-10",
+  "chart_name": "Rajesh Kumar",
+  "category": "gemstone",
+  "ai_said": "Wear Yellow Sapphire (Pukhraj) for Jupiter to strengthen 9th house",
+  "pandit_said": "Pukhraj is not suitable. For Simha lagna, Jupiter owns 5th (benefic) but also 8th (malefic). In this chart Jupiter is debilitated in Makara. Wearing Pukhraj will activate 8th house problems — hidden expenses, accidents. Instead, recommend Ruby (Manikya) for Sun, the lagna lord.",
+  "pandit_reasoning": "Jupiter is a mixed lord for Simha lagna (5th+8th). When debilitated, the malefic 8th house significations dominate. Lagna lord Sun in good dignity is always the safest recommendation.",
+  "correction_type": "override",
+  "planets_involved": ["Jupiter", "Sun"],
+  "houses_involved": [5, 8, 1],
+  "lagna": "Simha",
+  "status": "validated",
+  "confidence": 0.8,
+  "audio_file": "",
+  "transcript": ""
+}

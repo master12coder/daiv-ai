@@ -1,0 +1,283 @@
+{
+  "chart": {
+    "name": "Rajesh Kumar",
+    "dob": "15/08/1990",
+    "tob": "06:30",
+    "place": "26.9124,75.7873",
+    "gender": "Male",
+    "latitude": 26.9124,
+    "longitude": 75.7873,
+    "timezone": "Asia/Kolkata",
+    "ayanamsha": 23.7261
+  },
+  "lagna": {
+    "sign": "Simha",
+    "sign_en": "Leo",
+    "sign_hi": "सिंह",
+    "degree": 4.35
+  },
+  "planets": {
+    "Sun": {
+      "sign": "Karka",
+      "sign_en": "Cancer",
+      "house": 12,
+      "degree_in_sign": 28.23,
+      "nakshatra": "Ashlesha",
+      "nakshatra_lord": "Mercury",
+      "pada": 4,
+      "dignity": "neutral",
+      "is_retrograde": false,
+      "is_combust": false,
+      "sign_lord": "Moon"
+    },
+    "Moon": {
+      "sign": "Vrishabha",
+      "sign_en": "Taurus",
+      "house": 10,
+      "degree_in_sign": 16.55,
+      "nakshatra": "Rohini",
+      "nakshatra_lord": "Moon",
+      "pada": 2,
+      "dignity": "exalted",
+      "is_retrograde": false,
+      "is_combust": false,
+      "sign_lord": "Venus"
+    },
+    "Mars": {
+      "sign": "Mesha",
+      "sign_en": "Aries",
+      "house": 9,
+      "degree_in_sign": 27.39,
+      "nakshatra": "Krittika",
+      "nakshatra_lord": "Sun",
+      "pada": 1,
+      "dignity": "own",
+      "is_retrograde": false,
+      "is_combust": false,
+      "sign_lord": "Mars"
+    },
+    "Mercury": {
+      "sign": "Simha",
+      "sign_en": "Leo",
+      "house": 1,
+      "degree_in_sign": 25.32,
+      "nakshatra": "Purva Phalguni",
+      "nakshatra_lord": "Venus",
+      "pada": 4,
+      "dignity": "neutral",
+      "is_retrograde": false,
+      "is_combust": false,
+      "sign_lord": "Sun"
+    },
+    "Jupiter": {
+      "sign": "Karka",
+      "sign_en": "Cancer",
+      "house": 12,
+      "degree_in_sign": 5.57,
+      "nakshatra": "Pushya",
+      "nakshatra_lord": "Saturn",
+      "pada": 1,
+      "dignity": "exalted",
+      "is_retrograde": false,
+      "is_combust": false,
+      "sign_lord": "Moon"
+    },
+    "Venus": {
+      "sign": "Karka",
+      "sign_en": "Cancer",
+      "house": 12,
+      "degree_in_sign": 7.64,
+      "nakshatra": "Pushya",
+      "nakshatra_lord": "Saturn",
+      "pada": 2,
+      "dignity": "neutral",
+      "is_retrograde": false,
+      "is_combust": false,
+      "sign_lord": "Moon"
+    },
+    "Saturn": {
+      "sign": "Dhanu",
+      "sign_en": "Sagittarius",
+      "house": 5,
+      "degree_in_sign": 26.16,
+      "nakshatra": "Purva Ashadha",
+      "nakshatra_lord": "Venus",
+      "pada": 4,
+      "dignity": "neutral",
+      "is_retrograde": true,
+      "is_combust": false,
+      "sign_lord": "Jupiter"
+    },
+    "Rahu": {
+      "sign": "Makara",
+      "sign_en": "Capricorn",
+      "house": 6,
+      "degree_in_sign": 13.5,
+      "nakshatra": "Shravana",
+      "nakshatra_lord": "Moon",
+      "pada": 2,
+      "dignity": "neutral",
+      "is_retrograde": true,
+      "is_combust": false,
+      "sign_lord": "Saturn"
+    },
+    "Ketu": {
+      "sign": "Karka",
+      "sign_en": "Cancer",
+      "house": 12,
+      "degree_in_sign": 13.5,
+      "nakshatra": "Pushya",
+      "nakshatra_lord": "Saturn",
+      "pada": 4,
+      "dignity": "neutral",
+      "is_retrograde": true,
+      "is_combust": false,
+      "sign_lord": "Moon"
+    }
+  },
+  "yogas": [
+    {
+      "name": "Yogakaraka Raj Yoga",
+      "name_hindi": "योगकारक राज योग",
+      "effect": "benefic",
+      "description": "Mars owns both kendra and trikona — powerful raj yoga"
+    },
+    {
+      "name": "Raj Yoga",
+      "name_hindi": "राज योग",
+      "effect": "benefic",
+      "description": "Kendra lord Venus conjunct trikona lord Jupiter"
+    },
+    {
+      "name": "Vipreet Raj Yoga",
+      "name_hindi": "विपरीत राज योग",
+      "effect": "mixed",
+      "description": "8th lord (Jupiter) in 12th house — rise through adversity"
+    },
+    {
+      "name": "Amala Yoga",
+      "name_hindi": "अमल योग",
+      "effect": "benefic",
+      "description": "Natural benefic Moon in 10th house — virtuous reputation, clean livelihood"
+    }
+  ],
+  "doshas": [
+    {
+      "name": "Pitra Dosha",
+      "name_hindi": "पितृ दोष",
+      "severity": "partial",
+      "description": "Sun conjunct Ketu"
+    }
+  ],
+  "strengths": [
+    {
+      "planet": "Jupiter",
+      "rank": 1,
+      "total_relative": 0.771
+    },
+    {
+      "planet": "Mars",
+      "rank": 2,
+      "total_relative": 0.758
+    },
+    {
+      "planet": "Moon",
+      "rank": 3,
+      "total_relative": 0.7
+    },
+    {
+      "planet": "Mercury",
+      "rank": 4,
+      "total_relative": 0.65
+    },
+    {
+      "planet": "Saturn",
+      "rank": 5,
+      "total_relative": 0.542
+    },
+    {
+      "planet": "Sun",
+      "rank": 6,
+      "total_relative": 0.429
+    },
+    {
+      "planet": "Rahu",
+      "rank": 7,
+      "total_relative": 0.408
+    },
+    {
+      "planet": "Venus",
+      "rank": 8,
+      "total_relative": 0.346
+    },
+    {
+      "planet": "Ketu",
+      "rank": 9,
+      "total_relative": 0.346
+    }
+  ],
+  "current_dasha": {
+    "mahadasha": {
+      "lord": "Jupiter",
+      "start": "2020-09-14T22:27:32.220000+05:30",
+      "end": "2036-09-14T22:27:32.220000+05:30"
+    },
+    "antardasha": {
+      "lord": "Mercury",
+      "start": "2025-05-16T10:27:32.220000+05:30",
+      "end": "2027-08-22T08:03:32.220000+05:30"
+    },
+    "pratyantardasha": {
+      "lord": "Sun",
+      "start": "2026-03-15T23:58:44.220000+05:30",
+      "end": "2026-04-26T09:27:32.220000+05:30"
+    }
+  },
+  "dasha_timeline": [
+    {
+      "lord": "Moon",
+      "start": "1990-08-15T06:30:00+05:30",
+      "end": "1995-09-15T16:27:32.220000+05:30"
+    },
+    {
+      "lord": "Mars",
+      "start": "1995-09-15T16:27:32.220000+05:30",
+      "end": "2002-09-15T10:27:32.220000+05:30"
+    },
+    {
+      "lord": "Rahu",
+      "start": "2002-09-15T10:27:32.220000+05:30",
+      "end": "2020-09-14T22:27:32.220000+05:30"
+    },
+    {
+      "lord": "Jupiter",
+      "start": "2020-09-14T22:27:32.220000+05:30",
+      "end": "2036-09-14T22:27:32.220000+05:30"
+    },
+    {
+      "lord": "Saturn",
+      "start": "2036-09-14T22:27:32.220000+05:30",
+      "end": "2055-09-15T16:27:32.220000+05:30"
+    },
+    {
+      "lord": "Mercury",
+      "start": "2055-09-15T16:27:32.220000+05:30",
+      "end": "2072-09-14T22:27:32.220000+05:30"
+    },
+    {
+      "lord": "Ketu",
+      "start": "2072-09-14T22:27:32.220000+05:30",
+      "end": "2079-09-15T16:27:32.220000+05:30"
+    },
+    {
+      "lord": "Venus",
+      "start": "2079-09-15T16:27:32.220000+05:30",
+      "end": "2099-09-15T16:27:32.220000+05:30"
+    },
+    {
+      "lord": "Sun",
+      "start": "2099-09-15T16:27:32.220000+05:30",
+      "end": "2105-09-16T04:27:32.220000+05:30"
+    }
+  ]
+}

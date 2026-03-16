@@ -1,0 +1,78 @@
+# Weekly routine — day-planet-color-food-temple mapping
+
+sunday:
+  planet: Sun
+  deity: Surya (Sun God)
+  color: Red, Orange, Saffron
+  food: "Wheat items, jaggery sweets, dal with ghee"
+  fasting: "Optional — eat before sunset, avoid salt"
+  mantra: "ओम् ह्रां ह्रीं ह्रौम् सः सूर्याय नमः"
+  daan: "Wheat, jaggery, copper, red cloth to temple"
+  activity: "Good for: leadership tasks, government work, health initiatives, starting exercise routines"
+  avoid: "Night activities, arguments with father/authority, lying"
+
+monday:
+  planet: Moon
+  deity: Shiva
+  color: White, Silver, Light Blue
+  food: "Rice kheer, milk products, white sweets, curd rice"
+  fasting: "Optional — milk/fruit fast, or single meal"
+  mantra: "ओम् नमः शिवाय"
+  daan: "White items — rice, milk, sugar, white cloth, silver"
+  activity: "Good for: starting new studies, mental work, water-related activities, creativity"
+  avoid: "Property deals, confrontations, arguments"
+
+tuesday:
+  planet: Mars
+  deity: Hanuman
+  color: Red, Orange
+  food: "Red lentils (masoor dal), jaggery, non-sweet items"
+  fasting: "Optional — avoid non-veg, eat one meal"
+  mantra: "ओम् क्रां क्रीं क्रौम् सः भौमाय नमः"
+  daan: "Red lentils, jaggery, red cloth, copper to Hanuman temple"
+  activity: "Good for: physical exercise, property work, surgery decisions, competitive activities"
+  avoid: "Starting new business, travel (some traditions), lending money"
+
+wednesday:
+  planet: Mercury
+  deity: Vishnu, Budh
+  color: Green
+  food: "Green moong dal, green vegetables, khichdi"
+  fasting: "Optional — green vegetable diet"
+  mantra: "ओम् ब्रां ब्रीं ब्रौम् सः बुधाय नमः"
+  daan: "Green moong, green cloth, vegetables to students"
+  activity: "Good for: document work, communication, writing, contracts, accounting, studying"
+  avoid: "Major financial decisions, emotional decisions"
+
+thursday:
+  planet: Jupiter
+  deity: Brihaspati, Vishnu, Dattatreya
+  color: Yellow, Gold
+  food: "Chana dal, besan items, yellow sweets, bananas"
+  fasting: "Optional — banana and chana dal diet, eat single meal"
+  mantra: "ओम् ग्रां ग्रीं ग्रौम् सः गुरुवे नमः"
+  daan: "Chana dal, turmeric, yellow cloth, gold, books to guru/teacher"
+  activity: "Good for: spiritual activities, teaching, legal matters, starting education, religious ceremonies"
+  avoid: "Cutting hair/nails (some traditions), ignoring teachers/elders"
+
+friday:
+  planet: Venus
+  deity: Lakshmi, Durga, Santoshi Maa
+  color: White, Pink, Pastel
+  food: "White rice, curd, sweets, kheer"
+  fasting: "Optional — Santoshi Maa vrat, rice and curd diet, avoid sour items"
+  mantra: "ओम् द्रां द्रीं द्रौम् सः शुक्राय नमः"
+  daan: "White rice, sweets, white cloth, perfume to women"
+  activity: "Good for: arts, music, shopping, fashion, romantic activities, beauty treatments"
+  avoid: "Austerity, starting conflicts, ignoring spouse/partner"
+
+saturday:
+  planet: Saturn
+  deity: Shani Dev, Hanuman, Bhairav
+  color: Black, Dark Blue, Navy
+  food: "Urad dal, mustard oil items, black sesame"
+  fasting: "Important for Shani remedy — urad dal khichdi, avoid salt"
+  mantra: "ओम् प्रां प्रीं प्रौम् सः शनैश्चराय नमः"
+  daan: "Black sesame (til), mustard oil, iron items, dark cloth, shoes to servants/laborers"
+  activity: "Good for: discipline work, organizing, charity, visiting old people, cleaning"
+  avoid: "Starting new ventures, buying iron/oil (some traditions), arrogance"

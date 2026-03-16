@@ -1,0 +1,60 @@
+# Planetary aspects in Vedic astrology
+# Every planet has a standard 7th house aspect
+# Some planets have additional special aspects
+
+standard_aspect:
+  description: "Every planet aspects the 7th house from its position"
+  houses: [7]
+  applicable_to: ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu", "Ketu"]
+
+special_aspects:
+  Mars:
+    additional_aspects: [4, 8]
+    total_aspects: [4, 7, 8]
+    description: "Mars has special 4th and 8th house aspects in addition to 7th"
+    notes: "Mars's 4th aspect represents its protective/defensive nature. 8th aspect represents its transformative power."
+
+  Jupiter:
+    additional_aspects: [5, 9]
+    total_aspects: [5, 7, 9]
+    description: "Jupiter has special 5th and 9th house aspects in addition to 7th"
+    notes: "Jupiter's 5th aspect blesses children and creativity. 9th aspect enhances fortune and dharma."
+
+  Saturn:
+    additional_aspects: [3, 10]
+    total_aspects: [3, 7, 10]
+    description: "Saturn has special 3rd and 10th house aspects in addition to 7th"
+    notes: "Saturn's 3rd aspect tests courage and effort. 10th aspect influences career and public image."
+
+  Rahu:
+    additional_aspects: [5, 9]
+    total_aspects: [5, 7, 9]
+    description: "Rahu has aspects similar to Jupiter (5th and 9th) in addition to 7th"
+    notes: "Some traditions give Rahu only 7th aspect. Parashari tradition assigns 5/9 as well."
+
+  Ketu:
+    additional_aspects: [5, 9]
+    total_aspects: [5, 7, 9]
+    description: "Ketu has aspects similar to Jupiter in addition to 7th"
+    notes: "Ketu's aspects are spiritually oriented — detachment and moksha themes."
+
+aspect_effects:
+  conjunction:
+    orb: 0  # Same sign
+    strength: "Strongest influence — planets merge energies"
+  opposition:
+    houses: 7
+    strength: "Strong — tension or complementarity between houses"
+  trine:
+    houses: [5, 9]
+    strength: "Harmonious — flowing support between houses"
+  square:
+    houses: [4, 10]
+    strength: "Challenging — growth through friction"
+
+mutual_aspects:
+  description: "When two planets aspect each other, it creates a mutual connection (sambandha)"
+  effect: "Mutual aspect between kendra and trikona lords = Raj Yoga formation"
+  examples:
+    - "Mars in 1st, Saturn in 7th = mutual 7th aspect"
+    - "Jupiter in 1st, Saturn in 3rd = Jupiter aspects Saturn (5th), Saturn aspects Jupiter (3rd)"
