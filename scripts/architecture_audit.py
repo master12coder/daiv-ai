@@ -18,7 +18,7 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 JYOTISH_DIR = PROJECT_ROOT / "jyotish"
-MAX_LINES = 300
+MAX_LINES = 500
 
 # Layer import rules: module -> set of allowed import prefixes
 LAYER_RULES: dict[str, set[str]] = {

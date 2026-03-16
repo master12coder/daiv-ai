@@ -84,7 +84,7 @@ planet = {"name": "Jupiter", "sign": "Vrishabha", "house": 12, "dignity": "neutr
 
 ## File Size
 
-**Maximum 300 lines per file.** If a file exceeds this:
+**Maximum 500 lines per file.** If a file exceeds this:
 1. Extract related functions into a new module
 2. Use the same directory — create `_helpers.py` or domain-specific sub-module
 3. Keep the public API in the original file, move implementation

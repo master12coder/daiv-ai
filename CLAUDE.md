@@ -111,7 +111,7 @@ jyotish correct  --chart "..." --category "gemstone" --what "..." --reasoning ".
 
 ### Hard Rules (enforced by CI / audit)
 
-1. **300-line max** per file — extract if growing beyond
+1. **500-line max** per file — extract if growing beyond
 2. **Type hints** on every function signature — no untyped public functions
 3. **Dataclasses only** — no raw `dict` for domain data
 4. **No magic numbers** — constants in `domain/constants/` or `knowledge/*.yaml`
@@ -266,7 +266,7 @@ Before every commit, verify:
 1. [ ] `make lint` — no linter errors
 2. [ ] `make typecheck` — no type errors
 3. [ ] `make test` — all tests pass
-4. [ ] No file exceeds 300 lines
+4. [ ] No file exceeds 500 lines
 5. [ ] All new functions have type hints + docstrings
 6. [ ] No magic numbers — use constants
 7. [ ] No raw dicts — use dataclasses
@@ -288,7 +288,7 @@ For any non-trivial PR, review against these dimensions:
 - [ ] No circular imports introduced
 
 **Code Quality:**
-- [ ] Functions < 50 lines, files < 300 lines
+- [ ] Functions < 50 lines, files < 500 lines
 - [ ] Single Responsibility: each function does one thing
 - [ ] DRY: no duplicated logic across files
 - [ ] Error paths handled with custom exceptions

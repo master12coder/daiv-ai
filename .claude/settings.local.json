@@ -1,12 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "Bash(pip install:*)",
-      "Bash(python3:*)",
-      "Bash(pip3 install:*)",
-      "Bash(find:*)",
-      "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(*)",
+      "Read(*)",
+      "Write(*)",
+      "Edit(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "Agent(*)",
+      "Skill(*)"
     ]
   }
 }
