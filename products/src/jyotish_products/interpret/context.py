@@ -10,7 +10,7 @@ from typing import Any
 import yaml
 
 from jyotish_engine.models.chart import ChartData
-from jyotish_engine.scriptures import scripture_db
+from jyotish_engine.scriptures import query as scripture_db
 
 logger = logging.getLogger(__name__)
 
