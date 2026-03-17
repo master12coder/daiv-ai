@@ -6,20 +6,19 @@ and ashtakavarga bindus. Works fully offline.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+import logging
 from datetime import date, datetime
+from pathlib import Path
 from typing import Any
 
 import yaml
-from pathlib import Path
 
 from jyotish_engine.compute.chart import ChartData
 from jyotish_engine.compute.transit import compute_transits
 from jyotish_engine.compute.panchang import compute_panchang
 from jyotish_engine.compute.ashtakavarga import compute_ashtakavarga
-from jyotish_engine.constants import SIGNS
-from jyotish_engine.constants import MAX_DAY_RATING
-import logging
+from jyotish_engine.constants import SIGNS, MAX_DAY_RATING
+from jyotish_engine.models.daily import TransitImpact, DailySuggestion
 
 logger = logging.getLogger(__name__)
 
@@ -36,35 +35,6 @@ PLANET_COLORS = {
     "Mercury": "Green", "Jupiter": "Yellow", "Venus": "White/Pink",
     "Saturn": "Blue/Black", "Rahu": "Grey/Smoky", "Ketu": "Brown/Grey",
 }
-
-
-@dataclass
-class TransitImpact:
-    """Impact of a single transiting planet on the natal chart."""
-    planet: str
-    transit_sign: str
-    natal_house: int
-    bindus: int
-    is_favorable: bool
-    description: str
-
-
-@dataclass
-class DailySuggestion:
-    """Complete daily suggestion computed without LLM."""
-    date: str
-    vara: str
-    vara_planet: str
-    recommended_color: str
-    recommended_mantra: str
-    good_for: list[str]
-    avoid: list[str]
-    transit_impacts: list[TransitImpact]
-    health_focus: str
-    day_rating: int  # 1-MAX_DAY_RATING
-    rahu_kaal: str
-    nakshatra: str
-    tithi: str
 
 
 def _load_weekly_routine() -> dict[str, Any]:

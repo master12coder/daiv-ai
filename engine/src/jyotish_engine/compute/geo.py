@@ -3,17 +3,18 @@
 from __future__ import annotations
 
 import functools
-from dataclasses import dataclass
 
 from geopy.geocoders import Nominatim
+from pydantic import BaseModel, ConfigDict
 from timezonefinder import TimezoneFinder
 
 import pytz
 
 
-@dataclass(frozen=True)
-class GeoLocation:
+class GeoLocation(BaseModel):
     """Resolved geographic coordinates and timezone for a place."""
+
+    model_config = ConfigDict(frozen=True)
 
     latitude: float
     longitude: float
