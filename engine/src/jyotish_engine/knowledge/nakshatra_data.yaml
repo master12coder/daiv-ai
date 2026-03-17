@@ -1,0 +1,722 @@
+# =============================================================================
+# Nakshatra Data — Complete Encyclopedic Reference for All 27 Nakshatras
+# =============================================================================
+# Each nakshatra spans 13°20' (13 degrees and 20 minutes) of the zodiac.
+# Total: 27 nakshatras x 13°20' = 360°
+# Used in Vimshottari Dasha, Yoni matching, Gana matching, and natal analysis.
+# =============================================================================
+
+nakshatras:
+
+  # ---------------------------------------------------------------------------
+  # 1. ASHWINI
+  # ---------------------------------------------------------------------------
+  - number: 1
+    name_en: Ashwini
+    name_hi: अश्विनी
+    span:
+      start: "0°00' Aries"
+      end: "13°20' Aries"
+      start_degrees: 0.0
+      end_degrees: 13.3333
+    lord: Ketu
+    deity: Ashwini Kumaras (Divine Physicians / Twin Horsemen)
+    symbol: Horse's head
+    gana: Deva
+    nature: Kshipra (Swift / Light)
+    animal: Male Horse
+    element: Earth
+    body_part: Knees, top of the feet
+    psychological_profile: >
+      Ashwini natives are energetic initiators with a natural healing instinct and a love of speed.
+      They are courageous, independent, and restless, often pioneering new ventures with child-like
+      enthusiasm. Their impatience can lead to incomplete projects, but their innate optimism and
+      vitality make them natural first-responders in any crisis.
+
+  # ---------------------------------------------------------------------------
+  # 2. BHARANI
+  # ---------------------------------------------------------------------------
+  - number: 2
+    name_en: Bharani
+    name_hi: भरणी
+    span:
+      start: "13°20' Aries"
+      end: "26°40' Aries"
+      start_degrees: 13.3333
+      end_degrees: 26.6667
+    lord: Venus
+    deity: Yama (God of Death and Dharma)
+    symbol: Yoni (Female reproductive organ) / Triangle
+    gana: Manushya
+    nature: Ugra (Fierce / Severe)
+    animal: Male Elephant
+    element: Earth
+    body_part: Head, bottom of the feet
+    psychological_profile: >
+      Bharani natives carry an intense life-force connected to themes of creation, transformation,
+      and mortality. They are fiercely protective of those they love and possess strong moral
+      conviction rooted in Yama's sense of cosmic justice. Their Venusian lordship grants artistic
+      sensibility and sensual depth, but they must learn restraint to avoid extremes of indulgence
+      or self-denial.
+
+  # ---------------------------------------------------------------------------
+  # 3. KRITTIKA
+  # ---------------------------------------------------------------------------
+  - number: 3
+    name_en: Krittika
+    name_hi: कृत्तिका
+    span:
+      start: "26°40' Aries"
+      end: "10°00' Taurus"
+      start_degrees: 26.6667
+      end_degrees: 40.0
+    lord: Sun
+    deity: Agni (God of Fire)
+    symbol: Razor / Flame / Knife
+    gana: Rakshasa
+    nature: Mishra (Mixed / Sharp)
+    animal: Female Sheep
+    element: Water
+    body_part: Hips, loins, crown of the head
+    psychological_profile: >
+      Krittika natives are sharp, purifying, and direct — they cut through illusion with a flame-like
+      clarity. Their Sun lordship confers authority, dignity, and a commanding presence, while Agni's
+      fire grants them the power to cook, transform, and nurture. They can be blunt or critical, but
+      their honesty is rooted in a deep desire for truth and purity.
+
+  # ---------------------------------------------------------------------------
+  # 4. ROHINI
+  # ---------------------------------------------------------------------------
+  - number: 4
+    name_en: Rohini
+    name_hi: रोहिणी
+    span:
+      start: "10°00' Taurus"
+      end: "23°20' Taurus"
+      start_degrees: 40.0
+      end_degrees: 53.3333
+    lord: Moon
+    deity: Brahma (Creator God) / Prajapati
+    symbol: Ox cart / Chariot / Growing plant
+    gana: Manushya
+    nature: Dhruva (Fixed / Steady)
+    animal: Male Serpent
+    element: Earth
+    body_part: Forehead, ankles, shins
+    psychological_profile: >
+      Rohini natives are magnetic, fertile, and deeply creative — they embody the lush abundance of
+      Taurus at its peak. They have an innate talent for beauty, art, agriculture, and all forms of
+      material manifestation. Emotionally rich but sometimes possessive, they must guard against
+      jealousy and over-attachment to comfort and sensory pleasure.
+
+  # ---------------------------------------------------------------------------
+  # 5. MRIGASHIRA
+  # ---------------------------------------------------------------------------
+  - number: 5
+    name_en: Mrigashira
+    name_hi: मृगशिरा
+    span:
+      start: "23°20' Taurus"
+      end: "6°40' Gemini"
+      start_degrees: 53.3333
+      end_degrees: 66.6667
+    lord: Mars
+    deity: Soma (Moon God / God of the Soma plant)
+    symbol: Deer's head
+    gana: Deva
+    nature: Mridu (Soft / Tender)
+    animal: Female Serpent
+    element: Earth
+    body_part: Eyes, eyebrows
+    psychological_profile: >
+      Mrigashira natives are perpetual seekers — curious, gentle, and restless in their quest for
+      fulfillment. Like the deer that symbolizes them, they are sensitive, alert, and easily startled,
+      combining Martian drive with a refined aesthetic sensibility. They excel in research, travel,
+      and intellectual exploration, but may struggle with fickleness and an inability to commit when
+      the next horizon always beckons.
+
+  # ---------------------------------------------------------------------------
+  # 6. ARDRA
+  # ---------------------------------------------------------------------------
+  - number: 6
+    name_en: Ardra
+    name_hi: आर्द्रा
+    span:
+      start: "6°40' Gemini"
+      end: "20°00' Gemini"
+      start_degrees: 66.6667
+      end_degrees: 80.0
+    lord: Rahu
+    deity: Rudra (Storm God / Fierce form of Shiva)
+    symbol: Teardrop / Diamond / Human head
+    gana: Manushya
+    nature: Tikshna (Sharp / Dreadful)
+    animal: Female Dog
+    element: Water
+    body_part: Eyes, back and front of the head
+    psychological_profile: >
+      Ardra natives are intense intellectuals who thrive on transformation through destruction and
+      renewal. Rahu's influence gives them an unconventional, boundary-breaking quality, while Rudra
+      grants raw emotional power that often manifests as storms followed by clarity. They possess
+      penetrating analytical ability and are drawn to technology, research, and reform, but must learn
+      to channel their turbulent inner weather constructively.
+
+  # ---------------------------------------------------------------------------
+  # 7. PUNARVASU
+  # ---------------------------------------------------------------------------
+  - number: 7
+    name_en: Punarvasu
+    name_hi: पुनर्वसु
+    span:
+      start: "20°00' Gemini"
+      end: "3°20' Cancer"
+      start_degrees: 80.0
+      end_degrees: 93.3333
+    lord: Jupiter
+    deity: Aditi (Mother of the Gods / Goddess of Infinity)
+    symbol: Bow and quiver of arrows / House
+    gana: Deva
+    nature: Chara (Movable / Temporary)
+    animal: Female Cat
+    element: Water
+    body_part: Nose, fingers
+    psychological_profile: >
+      Punarvasu natives embody the principle of return and renewal — they bounce back from adversity
+      with optimism and philosophical resilience. Jupiter's wisdom combines with Aditi's boundless
+      nurturing to create generous, broad-minded individuals who feel at home anywhere. They are
+      natural teachers and counselors, though they may scatter their energies across too many pursuits
+      before finding their true path.
+
+  # ---------------------------------------------------------------------------
+  # 8. PUSHYA
+  # ---------------------------------------------------------------------------
+  - number: 8
+    name_en: Pushya
+    name_hi: पुष्य
+    span:
+      start: "3°20' Cancer"
+      end: "16°40' Cancer"
+      start_degrees: 93.3333
+      end_degrees: 106.6667
+    lord: Saturn
+    deity: Brihaspati (Jupiter / Guru of the Gods)
+    symbol: Cow's udder / Lotus / Arrow / Circle
+    gana: Deva
+    nature: Kshipra (Swift / Light)
+    animal: Male Sheep (Ram)
+    element: Water
+    body_part: Mouth, face, facial expression
+    psychological_profile: >
+      Pushya is considered the most auspicious nakshatra — its natives are deeply nourishing,
+      responsible, and devoted to duty. Saturn's discipline combined with Brihaspati's benevolence
+      produces individuals who sustain communities through selfless service and patient effort.
+      They are traditional, charitable, and spiritually inclined, though Saturn's influence can
+      sometimes manifest as rigidity, melancholy, or excessive self-sacrifice.
+
+  # ---------------------------------------------------------------------------
+  # 9. ASHLESHA
+  # ---------------------------------------------------------------------------
+  - number: 9
+    name_en: Ashlesha
+    name_hi: आश्लेषा
+    span:
+      start: "16°40' Cancer"
+      end: "30°00' Cancer"
+      start_degrees: 106.6667
+      end_degrees: 120.0
+    lord: Mercury
+    deity: Sarpa (Nagas / Serpent deities)
+    symbol: Coiled serpent / Entwined serpents
+    gana: Rakshasa
+    nature: Tikshna (Sharp / Dreadful)
+    animal: Male Cat
+    element: Water
+    body_part: Ears, nails, joints
+    psychological_profile: >
+      Ashlesha natives possess the hypnotic, coiling intelligence of the serpent — penetrating,
+      strategic, and deeply intuitive. Mercury's analytical mind merged with serpentine wisdom
+      creates masterful psychologists, researchers, and occultists who understand hidden motivations.
+      They can be secretive, manipulative, or suspicious when insecure, but at their best they are
+      profoundly transformative healers who work with kundalini and subtle energies.
+
+  # ---------------------------------------------------------------------------
+  # 10. MAGHA
+  # ---------------------------------------------------------------------------
+  - number: 10
+    name_en: Magha
+    name_hi: मघा
+    span:
+      start: "0°00' Leo"
+      end: "13°20' Leo"
+      start_degrees: 120.0
+      end_degrees: 133.3333
+    lord: Ketu
+    deity: Pitris (Ancestral Fathers / Manes)
+    symbol: Royal throne room / Palanquin
+    gana: Rakshasa
+    nature: Ugra (Fierce / Severe)
+    animal: Male Rat
+    element: Water
+    body_part: Nose, lips, chin
+    psychological_profile: >
+      Magha natives carry the weight and dignity of royal lineage — they are proud, authoritative,
+      and deeply connected to ancestral traditions. Ketu's spiritual detachment paradoxically fuels
+      their worldly ambition, creating leaders who command respect through innate nobility rather
+      than force. They must guard against arrogance and excessive attachment to status, learning
+      that true kingship lies in service to the ancestral and spiritual legacy they carry.
+
+  # ---------------------------------------------------------------------------
+  # 11. PURVA PHALGUNI
+  # ---------------------------------------------------------------------------
+  - number: 11
+    name_en: Purva Phalguni
+    name_hi: पूर्वा फाल्गुनी
+    span:
+      start: "13°20' Leo"
+      end: "26°40' Leo"
+      start_degrees: 133.3333
+      end_degrees: 146.6667
+    lord: Venus
+    deity: Bhaga (God of Fortune, Delight, and Marital Bliss)
+    symbol: Front legs of a couch / Hammock / Fig tree
+    gana: Manushya
+    nature: Ugra (Fierce / Severe)
+    animal: Female Rat
+    element: Water
+    body_part: Right hand, genitals, lips
+    psychological_profile: >
+      Purva Phalguni natives are charismatic, pleasure-loving, and creatively gifted — they embody
+      the joyful abundance of Venus in Leo's royal court. They possess a natural talent for
+      performance, romance, and celebration, and their warmth draws people into their orbit. They
+      must balance their love of luxury and leisure with productive effort, as over-indulgence or
+      vanity can undermine their considerable creative potential.
+
+  # ---------------------------------------------------------------------------
+  # 12. UTTARA PHALGUNI
+  # ---------------------------------------------------------------------------
+  - number: 12
+    name_en: Uttara Phalguni
+    name_hi: उत्तरा फाल्गुनी
+    span:
+      start: "26°40' Leo"
+      end: "10°00' Virgo"
+      start_degrees: 146.6667
+      end_degrees: 160.0
+    lord: Sun
+    deity: Aryaman (God of Patronage, Contracts, and Union)
+    symbol: Back legs of a couch / Bed
+    gana: Manushya
+    nature: Dhruva (Fixed / Steady)
+    animal: Male Cow (Bull)
+    element: Fire
+    body_part: Left hand, genitals, spine
+    psychological_profile: >
+      Uttara Phalguni natives combine Leo's regal confidence with Virgo's practical service
+      orientation. Under Aryaman's patronage, they excel at forming lasting partnerships, contracts,
+      and alliances — they are the builders of social institutions. The Sun's leadership merged with
+      a deep sense of social responsibility makes them generous benefactors and reliable friends,
+      though they can become overly controlling or self-righteous when their sense of duty is
+      challenged.
+
+  # ---------------------------------------------------------------------------
+  # 13. HASTA
+  # ---------------------------------------------------------------------------
+  - number: 13
+    name_en: Hasta
+    name_hi: हस्ता
+    span:
+      start: "10°00' Virgo"
+      end: "23°20' Virgo"
+      start_degrees: 160.0
+      end_degrees: 173.3333
+    lord: Moon
+    deity: Savitar (Sun God of the early morning / Vivifier)
+    symbol: Open hand / Palm / Fist
+    gana: Deva
+    nature: Kshipra (Swift / Light)
+    animal: Female Buffalo
+    element: Fire
+    body_part: Hands, fingers
+    psychological_profile: >
+      Hasta natives are skillful, dexterous, and resourceful — their hands are instruments of both
+      craft and healing. The Moon's sensitivity combined with Savitar's creative illumination gives
+      them an intuitive grasp of form, timing, and gesture. They excel in manual arts, comedy,
+      healing modalities, and any work requiring precision and adaptability, though they can be
+      cunning or restless when their considerable talents lack a worthy outlet.
+
+  # ---------------------------------------------------------------------------
+  # 14. CHITRA
+  # ---------------------------------------------------------------------------
+  - number: 14
+    name_en: Chitra
+    name_hi: चित्रा
+    span:
+      start: "23°20' Virgo"
+      end: "6°40' Libra"
+      start_degrees: 173.3333
+      end_degrees: 186.6667
+    lord: Mars
+    deity: Tvashtar / Vishwakarma (Celestial Architect / Divine Craftsman)
+    symbol: Bright jewel / Pearl / Shining light
+    gana: Rakshasa
+    nature: Mridu (Soft / Tender)
+    animal: Female Tiger
+    element: Fire
+    body_part: Forehead, neck
+    psychological_profile: >
+      Chitra natives are the artists and architects of the zodiac — they possess an extraordinary
+      eye for beauty, design, and structural elegance. Mars provides the drive and technical skill
+      while Vishwakarma inspires the vision of divine craftsmanship. They are glamorous, dynamic,
+      and often physically striking, but their perfectionism and fascination with appearances can
+      lead to superficiality or chronic dissatisfaction with what already exists.
+
+  # ---------------------------------------------------------------------------
+  # 15. SWATI
+  # ---------------------------------------------------------------------------
+  - number: 15
+    name_en: Swati
+    name_hi: स्वाती
+    span:
+      start: "6°40' Libra"
+      end: "20°00' Libra"
+      start_degrees: 186.6667
+      end_degrees: 200.0
+    lord: Rahu
+    deity: Vayu (Wind God)
+    symbol: Young shoot swaying in the wind / Coral
+    gana: Deva
+    nature: Chara (Movable / Temporary)
+    animal: Male Buffalo
+    element: Fire
+    body_part: Chest, stomach, intestines
+    psychological_profile: >
+      Swati natives are independent, flexible, and self-propelled — like a young plant bending with
+      the wind but never breaking. Rahu's unconventional ambition combined with Vayu's freedom of
+      movement creates natural entrepreneurs, diplomats, and free thinkers who thrive in diverse
+      environments. They are adaptable and socially graceful, but their independence can become
+      restlessness, and their diplomacy can mask a deep inner uncertainty about belonging.
+
+  # ---------------------------------------------------------------------------
+  # 16. VISHAKHA
+  # ---------------------------------------------------------------------------
+  - number: 16
+    name_en: Vishakha
+    name_hi: विशाखा
+    span:
+      start: "20°00' Libra"
+      end: "3°20' Scorpio"
+      start_degrees: 200.0
+      end_degrees: 213.3333
+    lord: Jupiter
+    deity: Indra and Agni (King of Gods and Fire God)
+    symbol: Triumphal arch / Potter's wheel / Forked branch
+    gana: Rakshasa
+    nature: Mishra (Mixed / Sharp)
+    animal: Male Tiger
+    element: Fire
+    body_part: Arms, breast
+    psychological_profile: >
+      Vishakha natives are single-minded, goal-oriented, and relentlessly ambitious — they are the
+      determined achievers of the nakshatra wheel. The dual deity of Indra and Agni grants them both
+      regal ambition and transformative fire, while Jupiter provides expansive vision and moral
+      purpose. Their intensity and competitive drive can make them formidable leaders or ruthless
+      pursuers of power; the key challenge is to direct their enormous willpower toward dharmic ends
+      rather than personal conquest alone.
+
+  # ---------------------------------------------------------------------------
+  # 17. ANURADHA
+  # ---------------------------------------------------------------------------
+  - number: 17
+    name_en: Anuradha
+    name_hi: अनुराधा
+    span:
+      start: "3°20' Scorpio"
+      end: "16°40' Scorpio"
+      start_degrees: 213.3333
+      end_degrees: 226.6667
+    lord: Saturn
+    deity: Mitra (God of Friendship, Partnership, and Devotion)
+    symbol: Lotus flower / Triumphal archway / Staff
+    gana: Deva
+    nature: Mridu (Soft / Tender)
+    animal: Female Deer (Hare)
+    element: Fire
+    body_part: Stomach, breast, womb
+    psychological_profile: >
+      Anuradha natives are devoted, disciplined, and emotionally resilient — they bloom like the
+      lotus even in the murky depths of Scorpio's waters. Saturn's structure combined with Mitra's
+      gift for friendship creates loyal, organizationally gifted people who build lasting bonds
+      across all social boundaries. They thrive in foreign lands and diverse groups, though they
+      may struggle with melancholy, jealousy, or the pain of unrequited devotion when their deep
+      need for connection is unmet.
+
+  # ---------------------------------------------------------------------------
+  # 18. JYESHTHA
+  # ---------------------------------------------------------------------------
+  - number: 18
+    name_en: Jyeshtha
+    name_hi: ज्येष्ठा
+    span:
+      start: "16°40' Scorpio"
+      end: "30°00' Scorpio"
+      start_degrees: 226.6667
+      end_degrees: 240.0
+    lord: Mercury
+    deity: Indra (King of the Gods)
+    symbol: Circular amulet / Earring / Umbrella
+    gana: Rakshasa
+    nature: Tikshna (Sharp / Dreadful)
+    animal: Male Deer (Male Hare)
+    element: Air
+    body_part: Neck, right side of torso
+    psychological_profile: >
+      Jyeshtha natives are the elder statesmen of the zodiac — they carry an innate sense of
+      seniority, authority, and protective responsibility. Mercury's intellect combined with Indra's
+      warrior kingship creates sharp strategists and natural leaders who guard their territory
+      fiercely. They can be generous protectors or jealous gatekeepers; their central life lesson
+      involves wielding power with humility, as the greatest of Indra's virtues is not conquest but
+      the courage to defend dharma against overwhelming odds.
+
+  # ---------------------------------------------------------------------------
+  # 19. MOOLA
+  # ---------------------------------------------------------------------------
+  - number: 19
+    name_en: Moola
+    name_hi: मूला
+    span:
+      start: "0°00' Sagittarius"
+      end: "13°20' Sagittarius"
+      start_degrees: 240.0
+      end_degrees: 253.3333
+    lord: Ketu
+    deity: Nirrti (Goddess of Destruction and Dissolution)
+    symbol: Bunch of roots tied together / Elephant goad
+    gana: Rakshasa
+    nature: Tikshna (Sharp / Dreadful)
+    animal: Male Dog
+    element: Air
+    body_part: Feet, left side of torso
+    psychological_profile: >
+      Moola natives are root-seekers — they dig beneath surface reality to uncover fundamental
+      truths, often through painful processes of uprooting and demolition. Ketu's spiritual
+      intensity combined with Nirrti's destructive power creates philosophers, investigators, and
+      healers who must first destroy before they can rebuild. Their lives often involve profound
+      crises that become catalysts for deep wisdom; they are drawn to the origins of things and
+      can become powerful herbalists, researchers, or spiritual seekers.
+
+  # ---------------------------------------------------------------------------
+  # 20. PURVA ASHADHA
+  # ---------------------------------------------------------------------------
+  - number: 20
+    name_en: Purva Ashadha
+    name_hi: पूर्वाषाढा
+    span:
+      start: "13°20' Sagittarius"
+      end: "26°40' Sagittarius"
+      start_degrees: 253.3333
+      end_degrees: 266.6667
+    lord: Venus
+    deity: Apas (Water Goddess / Cosmic Waters)
+    symbol: Elephant tusk / Fan / Winnowing basket
+    gana: Manushya
+    nature: Ugra (Fierce / Severe)
+    animal: Male Monkey
+    element: Air
+    body_part: Thighs, back
+    psychological_profile: >
+      Purva Ashadha natives are invincible in spirit — their name means "the undefeated" and they
+      carry an irrepressible confidence in their ultimate victory. Venus grants them charm and
+      artistic refinement, while the cosmic waters of Apas bestow purifying, revitalizing energy.
+      They are persuasive debaters, inspiring leaders, and natural philosophers, but their supreme
+      self-confidence can become arrogance or an inability to accept defeat gracefully when the
+      universe demands humility.
+
+  # ---------------------------------------------------------------------------
+  # 21. UTTARA ASHADHA
+  # ---------------------------------------------------------------------------
+  - number: 21
+    name_en: Uttara Ashadha
+    name_hi: उत्तराषाढा
+    span:
+      start: "26°40' Sagittarius"
+      end: "10°00' Capricorn"
+      start_degrees: 266.6667
+      end_degrees: 280.0
+    lord: Sun
+    deity: Vishvadevas (Ten Universal Gods)
+    symbol: Elephant tusk / Small cot / Planks of a bed
+    gana: Manushya
+    nature: Dhruva (Fixed / Steady)
+    animal: Female Mongoose
+    element: Air
+    body_part: Thighs, waist
+    psychological_profile: >
+      Uttara Ashadha natives are the final victors — where Purva Ashadha initiates the battle,
+      Uttara Ashadha achieves the lasting, unchallengeable triumph. The Sun's authority combined
+      with the Vishvadevas' collective virtue creates principled, universally respected leaders who
+      earn success through righteousness and persistence. They are patient, ethical, and deeply
+      committed to their goals, though their exacting standards and seriousness can sometimes make
+      them inflexible or lonely at the summit of their achievements.
+
+  # ---------------------------------------------------------------------------
+  # 22. SHRAVANA
+  # ---------------------------------------------------------------------------
+  - number: 22
+    name_en: Shravana
+    name_hi: श्रवणा
+    span:
+      start: "10°00' Capricorn"
+      end: "23°20' Capricorn"
+      start_degrees: 280.0
+      end_degrees: 293.3333
+    lord: Moon
+    deity: Vishnu (The Preserver / The All-Pervading)
+    symbol: Three footprints / Ear / Trident
+    gana: Deva
+    nature: Chara (Movable / Temporary)
+    animal: Female Monkey
+    element: Air
+    body_part: Ears, genitals
+    psychological_profile: >
+      Shravana natives are the listeners and learners of the zodiac — their power lies in the
+      ability to hear what others miss, absorbing knowledge from every direction. The Moon's
+      receptivity combined with Vishnu's all-pervading awareness creates wise counselors, scholars,
+      and media professionals who connect people through communication and knowledge. They are
+      organized, goal-oriented, and socially astute, though their talent for listening can become
+      gossip, and their ambition can lead to Machiavellian maneuvering if not grounded in dharma.
+
+  # ---------------------------------------------------------------------------
+  # 23. DHANISHTA
+  # ---------------------------------------------------------------------------
+  - number: 23
+    name_en: Dhanishta
+    name_hi: धनिष्ठा
+    span:
+      start: "23°20' Capricorn"
+      end: "6°40' Aquarius"
+      start_degrees: 293.3333
+      end_degrees: 306.6667
+    lord: Mars
+    deity: Ashta Vasus (Eight Vasus / Elemental Gods of Nature)
+    symbol: Drum (Mridanga) / Flute
+    gana: Rakshasa
+    nature: Chara (Movable / Temporary)
+    animal: Female Lion
+    element: Ether
+    body_part: Back, anus
+    psychological_profile: >
+      Dhanishta natives are wealthy in resources, talent, and rhythm — their name means "the
+      wealthiest" and they resonate with the musical pulse of creation. Mars provides the energy
+      and ambition while the eight Vasus grant mastery over the elemental forces of nature. They
+      are natural musicians, dancers, athletes, and leaders with a generous, group-oriented spirit,
+      though marital difficulties and an aggressive competitive streak can arise when Mars's fire
+      overwhelms their social idealism.
+
+  # ---------------------------------------------------------------------------
+  # 24. SHATABHISHA
+  # ---------------------------------------------------------------------------
+  - number: 24
+    name_en: Shatabhisha
+    name_hi: शतभिषा
+    span:
+      start: "6°40' Aquarius"
+      end: "20°00' Aquarius"
+      start_degrees: 306.6667
+      end_degrees: 320.0
+    lord: Rahu
+    deity: Varuna (God of Cosmic Waters and Celestial Law)
+    symbol: Empty circle / Hundred flowers / Hundred physicians
+    gana: Rakshasa
+    nature: Chara (Movable / Temporary)
+    animal: Female Horse
+    element: Ether
+    body_part: Jaw, right thigh
+    psychological_profile: >
+      Shatabhisha natives are the solitary healers and truth-seekers of the zodiac — the "hundred
+      physicians" who possess vast but often hidden knowledge. Rahu's unconventional, boundary-
+      breaking nature combined with Varuna's command of cosmic law creates enigmatic individuals
+      drawn to alternative medicine, astrology, technology, and mysticism. They are fiercely
+      independent and secretive, preferring to work behind the scenes; their challenge is to
+      overcome isolation and share their considerable healing gifts with the world.
+
+  # ---------------------------------------------------------------------------
+  # 25. PURVA BHADRAPADA
+  # ---------------------------------------------------------------------------
+  - number: 25
+    name_en: Purva Bhadrapada
+    name_hi: पूर्वा भाद्रपदा
+    span:
+      start: "20°00' Aquarius"
+      end: "3°20' Pisces"
+      start_degrees: 320.0
+      end_degrees: 333.3333
+    lord: Jupiter
+    deity: Aja Ekapada (One-footed Goat / Cosmic Fire Serpent)
+    symbol: Front legs of a funeral cot / Sword / Two-faced man
+    gana: Manushya
+    nature: Ugra (Fierce / Severe)
+    animal: Male Lion
+    element: Ether
+    body_part: Left thigh, ribs, soles of feet
+    psychological_profile: >
+      Purva Bhadrapada natives are intense, transformative, and spiritually radical — they stand
+      at the fiery threshold between the material and the transcendent. Jupiter's expansiveness
+      combined with Aja Ekapada's one-pointed, lightning-like cosmic force creates passionate
+      idealists, ascetics, or revolutionaries driven by extreme convictions. They are capable of
+      great sacrifice and great fury; their life's work is to channel their volcanic inner energy
+      toward genuine spiritual or social transformation rather than destructive fanaticism.
+
+  # ---------------------------------------------------------------------------
+  # 26. UTTARA BHADRAPADA
+  # ---------------------------------------------------------------------------
+  - number: 26
+    name_en: Uttara Bhadrapada
+    name_hi: उत्तरा भाद्रपदा
+    span:
+      start: "3°20' Pisces"
+      end: "16°40' Pisces"
+      start_degrees: 333.3333
+      end_degrees: 346.6667
+    lord: Saturn
+    deity: Ahir Budhnya (Serpent of the Deep / Dragon of the Cosmic Depths)
+    symbol: Back legs of a funeral cot / Twins / Serpent in the water
+    gana: Manushya
+    nature: Dhruva (Fixed / Steady)
+    animal: Female Cow
+    element: Ether
+    body_part: Shins, left thigh, soles of feet
+    psychological_profile: >
+      Uttara Bhadrapada natives are the wise, deep-water mystics of the zodiac — they embody the
+      calm after the storm that Purva Bhadrapada unleashes. Saturn's discipline merged with the
+      cosmic serpent of the deep grants them extraordinary patience, endurance, and access to
+      profound unconscious wisdom. They are compassionate, contemplative, and magnetically serene,
+      often drawn to meditation, charity, and counseling. Their challenge is avoiding emotional
+      withdrawal or spiritual bypassing when the depths they inhabit become too comfortable.
+
+  # ---------------------------------------------------------------------------
+  # 27. REVATI
+  # ---------------------------------------------------------------------------
+  - number: 27
+    name_en: Revati
+    name_hi: रेवती
+    span:
+      start: "16°40' Pisces"
+      end: "30°00' Pisces"
+      start_degrees: 346.6667
+      end_degrees: 360.0
+    lord: Mercury
+    deity: Pushan (Nourisher / Protector of Travelers and Flocks)
+    symbol: Fish swimming in the sea / Drum
+    gana: Deva
+    nature: Mridu (Soft / Tender)
+    animal: Female Elephant
+    element: Ether
+    body_part: Feet, ankles, abdomen
+    psychological_profile: >
+      Revati natives are the gentle shepherds at the end of the zodiacal journey — nurturing,
+      prosperous, and deeply compassionate. Mercury's intelligence combined with Pushan's protective
+      guardianship creates kind, creative souls who guide others safely through life's passages.
+      As the final nakshatra, Revati carries the accumulated wisdom of all that came before, granting
+      its natives an intuitive understanding of cycles, completion, and transcendence. They must
+      guard against naivety, vulnerability to deception, and the tendency to sacrifice themselves
+      for those who may not deserve such boundless generosity.

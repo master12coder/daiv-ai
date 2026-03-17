@@ -1,6 +1,7 @@
-.PHONY: help install test test-safety lint typecheck format audit safety-check clean
+.PHONY: help install test lint typecheck format audit all clean run
 
 PYTHON ?= python3
+UV ?= uv
 
 help: ## Show this help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
@@ -10,74 +11,65 @@ help: ## Show this help message
 # Setup
 # ---------------------------------------------------------------------------
 
-install: ## Install package with dev + ollama extras
-	$(PYTHON) -m pip install -e ".[dev,ollama]"
+install: ## Install all packages in dev mode with uv
+	$(UV) sync
 
-install-all: ## Install with all optional backends
-	$(PYTHON) -m pip install -e ".[dev,all]"
+install-pip: ## Install with pip (fallback)
+	$(PYTHON) -m pip install -e engine/ -e products/ -e "apps/[all]"
+	$(PYTHON) -m pip install pytest ruff mypy
 
 # ---------------------------------------------------------------------------
 # Testing
 # ---------------------------------------------------------------------------
 
 test: ## Run full test suite
+	$(PYTHON) -m pytest tests/ -v --tb=short
+
+test-q: ## Run tests quietly
 	$(PYTHON) -m pytest tests/ -q
 
-test-v: ## Run tests with verbose output
-	$(PYTHON) -m pytest tests/ -v
-
-test-cov: ## Run tests with coverage report
-	$(PYTHON) -m pytest tests/ --cov=jyotish --cov-report=term-missing
-
-test-safety: ## Run gemstone and interpretation safety tests only
+test-safety: ## Run safety tests only
 	$(PYTHON) -m pytest tests/ -q -k "safety or gemstone or maraka or prohibited"
-
-test-fast: ## Run unit tests only (skip integration)
-	$(PYTHON) -m pytest tests/ -q --ignore=tests/integration/
 
 # ---------------------------------------------------------------------------
 # Code Quality
 # ---------------------------------------------------------------------------
 
-lint: ## Run ruff linter
-	$(PYTHON) -m ruff check jyotish/ tests/ scripts/
+lint: ## Run ruff linter + format check
+	$(PYTHON) -m ruff check engine/src/ products/src/ apps/src/ tests/ scripts/
+	$(PYTHON) -m ruff format --check engine/src/ products/src/ apps/src/
 
-lint-fix: ## Run ruff linter with auto-fix
-	$(PYTHON) -m ruff check --fix jyotish/ tests/ scripts/
+lint-fix: ## Auto-fix lint issues
+	$(PYTHON) -m ruff check --fix engine/src/ products/src/ apps/src/ tests/ scripts/
+	$(PYTHON) -m ruff format engine/src/ products/src/ apps/src/
 
 typecheck: ## Run mypy type checker
-	$(PYTHON) -m mypy jyotish/ --ignore-missing-imports
-
-format: ## Format code with ruff
-	$(PYTHON) -m ruff format jyotish/ tests/ scripts/
-
-format-check: ## Check formatting without modifying
-	$(PYTHON) -m ruff format --check jyotish/ tests/ scripts/
+	$(PYTHON) -m mypy engine/src/ products/src/ apps/src/ --ignore-missing-imports
 
 # ---------------------------------------------------------------------------
 # Audits
 # ---------------------------------------------------------------------------
 
-audit: ## Run architecture audit
-	$(PYTHON) scripts/architecture_audit.py
-
-safety-check: ## Run gemstone safety audit
-	$(PYTHON) scripts/gemstone_safety_audit.py
-
-audit-all: audit safety-check ## Run all audit scripts
+audit: ## Run all audit scripts
+	$(PYTHON) scripts/check_imports.py
+	$(PYTHON) scripts/check_plugins.py
+	$(PYTHON) scripts/safety_audit.py
 
 # ---------------------------------------------------------------------------
-# Development
+# Combined
 # ---------------------------------------------------------------------------
 
-report: ## Generate sample report (Manish chart, no LLM)
-	$(PYTHON) -m jyotish.cli report --name "Manish Chaurasia" --dob "13/03/1989" --tob "12:17" --place "Varanasi" --gender Male
+all: lint typecheck test audit ## Run everything (CI equivalent)
 
-report-llm: ## Generate sample report with Groq LLM
-	$(PYTHON) -m jyotish.cli report --name "Manish Chaurasia" --dob "13/03/1989" --tob "12:17" --place "Varanasi" --gender Male --llm groq
+# ---------------------------------------------------------------------------
+# Run
+# ---------------------------------------------------------------------------
 
-chart: ## Compute chart only (no interpretation)
-	$(PYTHON) -m jyotish.cli chart --name "Manish Chaurasia" --dob "13/03/1989" --tob "12:17" --place "Varanasi" --gender Male
+run: ## Show CLI help
+	$(PYTHON) -m jyotish_app.cli.main --help
+
+chart: ## Compute Manish's chart
+	$(PYTHON) -m jyotish_app.cli.main chart --name "Manish Chaurasia" --dob "13/03/1989" --tob "12:17" --place "Varanasi" --gender Male
 
 # ---------------------------------------------------------------------------
 # Maintenance
@@ -87,5 +79,3 @@ clean: ## Remove build artifacts and caches
 	rm -rf build/ dist/ *.egg-info .pytest_cache .mypy_cache .ruff_cache
 	find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
 	find . -type f -name "*.pyc" -delete 2>/dev/null || true
-
-check-all: lint typecheck test audit-all ## Run all checks (CI equivalent)

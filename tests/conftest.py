@@ -1,12 +1,23 @@
-"""Shared test fixtures."""
+"""Shared test fixtures — all tests import from here."""
+from __future__ import annotations
 
 import pytest
-from jyotish.compute.chart import compute_chart, ChartData
+
+from jyotish_engine.compute.chart import compute_chart
+from jyotish_engine.models.chart import ChartData
 
 
 @pytest.fixture
 def manish_chart() -> ChartData:
-    """Reference chart: Manish Chaurasia — verified data."""
+    """Reference chart: Manish Chaurasia — verified data.
+
+    Known values:
+        Lagna = Mithuna (Gemini)
+        Moon = Rohini Pada 2
+        Jupiter = maraka (7th lord)
+        Mercury = lagnesh
+        Current MD = Jupiter (maraka)
+    """
     return compute_chart(
         name="Manish Chaurasia",
         dob="13/03/1989",
@@ -20,13 +31,13 @@ def manish_chart() -> ChartData:
 
 @pytest.fixture
 def sample_chart() -> ChartData:
-    """Generic sample chart for testing."""
+    """Secondary test chart for cross-validation."""
     return compute_chart(
         name="Test Person",
-        dob="15/08/1990",
-        tob="06:30",
-        lat=26.9124,
-        lon=75.7873,
+        dob="01/01/2000",
+        tob="06:00",
+        lat=28.6139,
+        lon=77.2090,
         tz_name="Asia/Kolkata",
-        gender="Male",
+        gender="Female",
     )

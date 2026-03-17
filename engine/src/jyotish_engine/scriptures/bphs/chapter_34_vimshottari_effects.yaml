@@ -1,0 +1,430 @@
+book: BPHS
+chapter: 34
+title: "Vimshottari Dasha Effects"
+rules:
+  # === MAHADASHA GENERAL EFFECTS (9 rules, one per planet) ===
+
+  - verse: 1
+    topic: mahadasha_effects
+    planets: [Sun]
+    houses: []
+    text_sanskrit: "Surya Mahadasha Samanya Phalam"
+    text_english: "Sun Mahadasha (6 years): Period of authority, government connections, father's influence, and self-expression. Career advancement through leadership and administrative roles. Health focus on heart, eyes, bones, and vitality. Best results when Sun is strong in Leo, Aries (exalted), or in the 10th house. The native gains recognition, develops self-confidence, and assumes positions of command. Government jobs, political careers, and dealings with authority figures are highlighted."
+    text_hindi: "सूर्य महादशा (6 वर्ष): अधिकार, शासकीय सम्पर्क, पिता का प्रभाव और आत्माभिव्यक्ति का काल। नेतृत्व और प्रशासनिक भूमिकाओं से व्यावसायिक उन्नति। हृदय, नेत्र, अस्थि और जीवनशक्ति पर स्वास्थ्य केन्द्रित। सूर्य सिंह, मेष (उच्च) या 10वें भाव में बलवान हो तो सर्वोत्तम फल। जातक मान्यता प्राप्त करता है, आत्मविश्वास विकसित करता है, और आज्ञा पद ग्रहण करता है। सरकारी नौकरी, राजनीतिक कैरियर और अधिकारियों से व्यवहार प्रमुख होता है।"
+    rule_type: dasha
+
+  - verse: 2
+    topic: mahadasha_effects
+    planets: [Moon]
+    houses: []
+    text_sanskrit: "Chandra Mahadasha Samanya Phalam"
+    text_english: "Moon Mahadasha (10 years): Period of emotional development, public dealings, mother's role, and mental growth. Gains through liquids, dairy, agriculture, travel, hospitality, and nursing/caregiving professions. Health focus on mind, stomach, breasts, and body fluids. Best when Moon is waxing, in Cancer (own sign), or Taurus (exalted). The native becomes sensitive, nurturing, popular with masses, and gains property and domestic happiness."
+    text_hindi: "चन्द्र महादशा (10 वर्ष): भावनात्मक विकास, जन-व्यवहार, माता की भूमिका और मानसिक वृद्धि का काल। तरल पदार्थ, डेयरी, कृषि, यात्रा, आतिथ्य और सेवा व्यवसायों से लाभ। मन, उदर, वक्ष और शारीरिक तरल पदार्थों पर स्वास्थ्य केन्द्रित। चन्द्रमा शुक्ल पक्ष में, कर्क (स्वराशि) या वृषभ (उच्च) में हो तो सर्वोत्तम। जातक संवेदनशील, स्नेही, जनप्रिय बनता है और सम्पत्ति तथा गृह सुख प्राप्त करता है।"
+    rule_type: dasha
+
+  - verse: 3
+    topic: mahadasha_effects
+    planets: [Mars]
+    houses: []
+    text_sanskrit: "Kuja Mahadasha Samanya Phalam"
+    text_english: "Mars Mahadasha (7 years): Period of energy, courage, ambition, and action. Gains through land, property, engineering, military, police, surgery, and sports. Health focus on blood, muscles, head injuries, and fevers. Best when Mars is in Aries, Scorpio (own signs), or Capricorn (exalted). The native becomes bold, competitive, acquires property, and achieves through determined effort. Sibling matters and landed property are major themes."
+    text_hindi: "मंगल महादशा (7 वर्ष): ऊर्जा, साहस, महत्वाकांक्षा और कर्म का काल। भूमि, सम्पत्ति, अभियान्त्रिकी, सेना, पुलिस, शल्य चिकित्सा और खेल से लाभ। रक्त, माँसपेशी, शिर आघात और ज्वर पर स्वास्थ्य केन्द्रित। मंगल मेष, वृश्चिक (स्वराशि) या मकर (उच्च) में हो तो सर्वोत्तम। जातक साहसी, प्रतिस्पर्धी बनता है, सम्पत्ति अर्जित करता है, और दृढ़ प्रयास से सफलता पाता है। भाई-बहन और भूसम्पत्ति प्रमुख विषय हैं।"
+    rule_type: dasha
+
+  - verse: 4
+    topic: mahadasha_effects
+    planets: [Rahu]
+    houses: []
+    text_sanskrit: "Rahu Mahadasha Samanya Phalam"
+    text_english: "Rahu Mahadasha (18 years): Period of worldly ambition, foreign connections, unconventional pursuits, and material obsession. Gains through technology, foreign trade, diplomacy, research, and unorthodox professions. Health focus on nervous disorders, poisoning, skin ailments, and psychosomatic illnesses. Best when Rahu is in Taurus, Aquarius, Gemini, or Virgo. The native experiences sudden rise, foreign travel, and dramatic life changes. Results are amplified versions of the sign lord's effects."
+    text_hindi: "राहु महादशा (18 वर्ष): सांसारिक महत्वाकांक्षा, विदेशी सम्पर्क, अपारम्परिक कार्य और भौतिक आसक्ति का काल। प्रौद्योगिकी, विदेशी व्यापार, कूटनीति, शोध और अपारम्परिक व्यवसायों से लाभ। तन्त्रिका विकार, विषाक्तता, त्वचा रोग और मनोदैहिक रोगों पर स्वास्थ्य केन्द्रित। राहु वृषभ, कुम्भ, मिथुन या कन्या में हो तो सर्वोत्तम। जातक अचानक उन्नति, विदेश यात्रा और नाटकीय जीवन परिवर्तन अनुभव करता है। फल राशि स्वामी के प्रभावों का प्रवर्धित रूप होते हैं।"
+    rule_type: dasha
+
+  - verse: 5
+    topic: mahadasha_effects
+    planets: [Jupiter]
+    houses: []
+    text_sanskrit: "Guru Mahadasha Samanya Phalam"
+    text_english: "Jupiter Mahadasha (16 years): Period of wisdom, expansion, fortune, and spiritual growth. Gains through teaching, law, finance, religion, philosophy, and advisory roles. Health focus on liver, fat metabolism, diabetes, and obesity. Best when Jupiter is in Sagittarius, Pisces (own signs), or Cancer (exalted). The native gains children, wealth, guru's guidance, higher education, and pilgrimage opportunities. Marriage, if pending, often occurs. Most benevolent Mahadasha when Jupiter is strong."
+    text_hindi: "गुरु महादशा (16 वर्ष): ज्ञान, विस्तार, भाग्य और आध्यात्मिक वृद्धि का काल। शिक्षण, विधि, वित्त, धर्म, दर्शन और परामर्श भूमिकाओं से लाभ। यकृत, वसा चयापचय, मधुमेह और मोटापे पर स्वास्थ्य केन्द्रित। गुरु धनु, मीन (स्वराशि) या कर्क (उच्च) में हो तो सर्वोत्तम। जातक सन्तान, धन, गुरु मार्गदर्शन, उच्च शिक्षा और तीर्थयात्रा प्राप्त करता है। विवाह शेष हो तो प्रायः होता है। बलवान गुरु की महादशा सर्वाधिक कल्याणकारी।"
+    rule_type: dasha
+
+  - verse: 6
+    topic: mahadasha_effects
+    planets: [Saturn]
+    houses: []
+    text_sanskrit: "Shani Mahadasha Samanya Phalam"
+    text_english: "Saturn Mahadasha (19 years): Period of discipline, karma, endurance, and delayed rewards. Gains through oil, iron, coal, agriculture, mining, real estate, labour, and service to the masses. Health focus on joints, bones, chronic diseases, and depression. Best when Saturn is in Capricorn, Aquarius (own signs), or Libra (exalted). The native achieves through sustained hard work, patience, and perseverance. Results are slow but permanent. Democratic leadership and service-oriented success are highlighted."
+    text_hindi: "शनि महादशा (19 वर्ष): अनुशासन, कर्म, सहनशक्ति और विलम्बित प्रतिफल का काल। तेल, लोहा, कोयला, कृषि, खनन, भूसम्पत्ति, श्रम और जनसेवा से लाभ। जोड़ों, अस्थियों, दीर्घकालिक रोगों और अवसाद पर स्वास्थ्य केन्द्रित। शनि मकर, कुम्भ (स्वराशि) या तुला (उच्च) में हो तो सर्वोत्तम। जातक निरन्तर कठिन परिश्रम, धैर्य और दृढ़ता से सफलता प्राप्त करता है। फल धीमे किन्तु स्थायी होते हैं। लोकतान्त्रिक नेतृत्व और सेवामूलक सफलता प्रमुख होती है।"
+    rule_type: dasha
+
+  - verse: 7
+    topic: mahadasha_effects
+    planets: [Mercury]
+    houses: []
+    text_sanskrit: "Budha Mahadasha Samanya Phalam"
+    text_english: "Mercury Mahadasha (17 years): Period of intellect, communication, trade, and analytical ability. Gains through commerce, writing, accounting, astrology, IT, media, and teaching. Health focus on nervous system, skin, lungs, and speech disorders. Best when Mercury is in Gemini, Virgo (own signs/exalted). The native develops sharp intellect, succeeds in business, excels in education, and earns through multiple skills. A versatile period favouring adaptability and mental agility."
+    text_hindi: "बुध महादशा (17 वर्ष): बुद्धि, संचार, व्यापार और विश्लेषणात्मक क्षमता का काल। वाणिज्य, लेखन, लेखांकन, ज्योतिष, सूचना प्रौद्योगिकी, मीडिया और शिक्षण से लाभ। तन्त्रिका तन्त्र, त्वचा, फेफड़े और वाक् विकारों पर स्वास्थ्य केन्द्रित। बुध मिथुन, कन्या (स्वराशि/उच्च) में हो तो सर्वोत्तम। जातक तीक्ष्ण बुद्धि विकसित करता है, व्यापार में सफल होता है, शिक्षा में उत्कृष्ट होता है, और अनेक कौशलों से कमाता है। अनुकूलनशीलता और मानसिक चपलता वाला बहुमुखी काल।"
+    rule_type: dasha
+
+  - verse: 8
+    topic: mahadasha_effects
+    planets: [Ketu]
+    houses: []
+    text_sanskrit: "Ketu Mahadasha Samanya Phalam"
+    text_english: "Ketu Mahadasha (7 years): Period of spiritual awakening, detachment, and karmic resolution. Gains through occult sciences, research, alternative healing, and spiritual teaching. Health focus on mysterious ailments, viral infections, surgery, and psychic disturbances. Best when Ketu is in Sagittarius, Pisces, or Scorpio. The native experiences sudden events, past-life karmic culmination, and spiritual transformation. Material interests wane while inner knowledge deepens. A period of letting go and liberation."
+    text_hindi: "केतु महादशा (7 वर्ष): आध्यात्मिक जागृति, वैराग्य और कर्म समाधान का काल। गुप्त विद्या, शोध, वैकल्पिक चिकित्सा और आध्यात्मिक शिक्षण से लाभ। रहस्यमय रोग, विषाणु संक्रमण, शल्य चिकित्सा और मानसिक विकारों पर स्वास्थ्य केन्द्रित। केतु धनु, मीन या वृश्चिक में हो तो सर्वोत्तम। जातक अचानक घटनाओं, पूर्वजन्म कर्म परिणति और आध्यात्मिक रूपान्तरण का अनुभव करता है। भौतिक रुचि क्षीण होती है जबकि आन्तरिक ज्ञान गहन होता है। त्याग और मुक्ति का काल।"
+    rule_type: dasha
+
+  - verse: 9
+    topic: mahadasha_effects
+    planets: [Venus]
+    houses: []
+    text_sanskrit: "Shukra Mahadasha Samanya Phalam"
+    text_english: "Venus Mahadasha (20 years): Period of comfort, romance, artistic expression, and material enjoyment. Gains through arts, entertainment, fashion, luxury goods, vehicles, jewellery, perfumes, and partnerships. Health focus on kidneys, reproductive system, diabetes, and throat. Best when Venus is in Taurus, Libra (own signs), or Pisces (exalted). The longest Mahadasha — it defines two decades of life. Marriage, wealth, vehicles, and all forms of worldly pleasure manifest. The native lives a refined and comfortable life."
+    text_hindi: "शुक्र महादशा (20 वर्ष): सुख, प्रेम, कलात्मक अभिव्यक्ति और भौतिक भोग का काल। कला, मनोरंजन, फैशन, विलास वस्तुएँ, वाहन, आभूषण, सुगन्ध और साझेदारी से लाभ। गुर्दे, प्रजनन तन्त्र, मधुमेह और गले पर स्वास्थ्य केन्द्रित। शुक्र वृषभ, तुला (स्वराशि) या मीन (उच्च) में हो तो सर्वोत्तम। सबसे लम्बी महादशा — जीवन के दो दशक निर्धारित करती है। विवाह, धन, वाहन और सभी प्रकार के सांसारिक सुख प्रकट होते हैं। जातक परिष्कृत और आरामदायक जीवन जीता है।"
+    rule_type: dasha
+
+  # === ANTARDASHA EFFECTS (36 key combinations) ===
+
+  # --- Sun Mahadasha Antardashas ---
+
+  - verse: 10
+    topic: antardasha_effects
+    planets: [Sun, Moon]
+    houses: []
+    text_sanskrit: "Surya Mahadasha Chandra Antardasha"
+    text_english: "Sun-Moon Antardasha: Government favour combined with public popularity. The native gains recognition from authority while also connecting with masses. Mother's support aids career. Travel for official purposes, gains from liquids or agriculture through government channels. Mental peace through positions of authority. If Sun and Moon are mutual friends in the chart, excellent results for fame and domestic harmony."
+    text_hindi: "सूर्य-चन्द्र अन्तर्दशा: शासकीय कृपा के साथ जनप्रियता। जातक अधिकारियों से मान्यता प्राप्त करता है और जनता से भी जुड़ता है। माता का सहयोग कैरियर में सहायक। शासकीय कार्य से यात्रा, सरकारी माध्यमों से तरल पदार्थ या कृषि से लाभ। अधिकार पद से मानसिक शान्ति। कुण्डली में सूर्य-चन्द्र मित्र हों तो यश और गृह सामंजस्य के लिए उत्तम फल।"
+    rule_type: dasha
+
+  - verse: 11
+    topic: antardasha_effects
+    planets: [Sun, Mars]
+    houses: []
+    text_sanskrit: "Surya Mahadasha Kuja Antardasha"
+    text_english: "Sun-Mars Antardasha: Bold leadership, commanding authority, and executive power. Excellent for military, police, surgical, or engineering careers. Land acquisition through government. Victory over enemies and competitors. Risk of ego-driven conflicts, head injuries, or fevers. The native acts with courage and decisiveness but must guard against aggression and impulsiveness."
+    text_hindi: "सूर्य-मंगल अन्तर्दशा: साहसिक नेतृत्व, आज्ञाकारी अधिकार और कार्यकारी शक्ति। सैन्य, पुलिस, शल्य या अभियान्त्रिकी कैरियर के लिए उत्कृष्ट। सरकार से भूमि प्राप्ति। शत्रुओं और प्रतिस्पर्धियों पर विजय। अहंकार से विवाद, शिर आघात या ज्वर का जोखिम। जातक साहस और निर्णायकता से कार्य करता है किन्तु आक्रामकता और आवेश से बचना आवश्यक।"
+    rule_type: dasha
+
+  - verse: 12
+    topic: antardasha_effects
+    planets: [Sun, Jupiter]
+    houses: []
+    text_sanskrit: "Surya Mahadasha Guru Antardasha"
+    text_english: "Sun-Jupiter Antardasha: The most auspicious sub-period within Sun Mahadasha. Government positions in education, law, or finance. Blessings of father and guru combine to elevate the native. Religious leadership, charitable work, and spiritual authority. Children bring honour. Wealth through ethical means, promotions, and recognition from learned authorities."
+    text_hindi: "सूर्य-गुरु अन्तर्दशा: सूर्य महादशा में सर्वाधिक शुभ उपकाल। शिक्षा, विधि या वित्त में सरकारी पद। पिता और गुरु का आशीर्वाद मिलकर जातक को ऊँचा उठाता है। धार्मिक नेतृत्व, दानकार्य और आध्यात्मिक अधिकार। सन्तान से सम्मान। नैतिक साधनों से धन, पदोन्नति और विद्वान अधिकारियों से मान्यता।"
+    rule_type: dasha
+
+  - verse: 13
+    topic: antardasha_effects
+    planets: [Sun, Saturn]
+    houses: []
+    text_sanskrit: "Surya Mahadasha Shani Antardasha"
+    text_english: "Sun-Saturn Antardasha: Natural enmity between Sun and Saturn creates tension. Conflicts with authority or father, career obstacles, governmental delays, and health issues related to bones and heart. However, if both are well-placed, gives authority over labour and masses, success in mining or oil industry, and government service in administrative capacity. The native must exercise patience and humility."
+    text_hindi: "सूर्य-शनि अन्तर्दशा: सूर्य और शनि की नैसर्गिक शत्रुता से तनाव। अधिकारियों या पिता से विवाद, व्यावसायिक बाधाएँ, शासकीय विलम्ब, और अस्थि तथा हृदय सम्बन्धी स्वास्थ्य समस्याएँ। किन्तु दोनों शुभ स्थिति में हों तो श्रमिकों और जनता पर अधिकार, खनन या तेल उद्योग में सफलता, और प्रशासनिक सरकारी सेवा देता है। जातक को धैर्य और विनम्रता का अभ्यास करना आवश्यक।"
+    rule_type: dasha
+
+  # --- Moon Mahadasha Antardashas ---
+
+  - verse: 14
+    topic: antardasha_effects
+    planets: [Moon, Mars]
+    houses: []
+    text_sanskrit: "Chandra Mahadasha Kuja Antardasha"
+    text_english: "Moon-Mars Antardasha: Emotional courage and protective instinct. Property acquisition, gains from agriculture and land. The native acts boldly in defence of family and home. Risk of emotional aggression, blood-related ailments, and domestic conflicts. If Moon-Mars form Chandra-Mangala Yoga in the chart, gives wealth through property and courageous public leadership."
+    text_hindi: "चन्द्र-मंगल अन्तर्दशा: भावनात्मक साहस और रक्षात्मक प्रवृत्ति। सम्पत्ति प्राप्ति, कृषि और भूमि से लाभ। जातक परिवार और गृह की रक्षा में साहसपूर्वक कार्य करता है। भावनात्मक आक्रामकता, रक्त सम्बन्धी रोग और घरेलू विवाद का जोखिम। कुण्डली में चन्द्र-मंगल योग बनता हो तो सम्पत्ति से धन और साहसिक जननेतृत्व देता है।"
+    rule_type: dasha
+
+  - verse: 15
+    topic: antardasha_effects
+    planets: [Moon, Mercury]
+    houses: []
+    text_sanskrit: "Chandra Mahadasha Budha Antardasha"
+    text_english: "Moon-Mercury Antardasha: Imaginative intellect, success in writing, communication with masses, and business acumen. Gains through trade, media, publishing, and public relations. The native thinks creatively and communicates emotionally. Excellent for authors, journalists, and marketers. Risk of overthinking, anxiety, and nervous exhaustion if both are afflicted."
+    text_hindi: "चन्द्र-बुध अन्तर्दशा: कल्पनाशील बुद्धि, लेखन में सफलता, जनता से संवाद और व्यापारिक कुशलता। व्यापार, मीडिया, प्रकाशन और जनसम्पर्क से लाभ। जातक सृजनात्मक सोच और भावनात्मक संवाद करता है। लेखकों, पत्रकारों और विपणनकर्ताओं के लिए उत्कृष्ट। दोनों पीड़ित हों तो अतिचिन्तन, व्याकुलता और तन्त्रिका थकान का जोखिम।"
+    rule_type: dasha
+
+  - verse: 16
+    topic: antardasha_effects
+    planets: [Moon, Jupiter]
+    houses: []
+    text_sanskrit: "Chandra Mahadasha Guru Antardasha"
+    text_english: "Moon-Jupiter Antardasha: Activates Gajakesari Yoga if present. Excellent for wealth, children, education, and emotional well-being. Blessings of mother and guru combine. Gains through teaching, counselling, and nurturing professions. Property expansion, spiritual growth, and domestic happiness peak. Marriage may occur during this period. The most auspicious Antardasha within Moon Mahadasha."
+    text_hindi: "चन्द्र-गुरु अन्तर्दशा: गजकेसरी योग हो तो सक्रिय होता है। धन, सन्तान, शिक्षा और भावनात्मक कल्याण के लिए उत्कृष्ट। माता और गुरु का आशीर्वाद मिलता है। शिक्षण, परामर्श और पालन-पोषण व्यवसायों से लाभ। सम्पत्ति विस्तार, आध्यात्मिक वृद्धि और गृह सुख चरम पर। इस काल में विवाह हो सकता है। चन्द्र महादशा में सर्वाधिक शुभ अन्तर्दशा।"
+    rule_type: dasha
+
+  - verse: 17
+    topic: antardasha_effects
+    planets: [Moon, Venus]
+    houses: []
+    text_sanskrit: "Chandra Mahadasha Shukra Antardasha"
+    text_english: "Moon-Venus Antardasha: Romance, luxury, artistic pursuits, and emotional fulfilment. Gains through beauty, fashion, hospitality, and entertainment industries. Marriage happiness peaks, new vehicles and comforts are acquired. The native experiences refined pleasures and emotional abundance. Risk of over-indulgence, emotional dependency, and excessive spending on comforts if both are afflicted."
+    text_hindi: "चन्द्र-शुक्र अन्तर्दशा: प्रेम, विलास, कलात्मक कार्य और भावनात्मक पूर्णता। सौन्दर्य, फैशन, आतिथ्य और मनोरंजन उद्योगों से लाभ। वैवाहिक सुख चरम पर, नए वाहन और सुख-सुविधाएँ प्राप्त। जातक परिष्कृत सुख और भावनात्मक प्रचुरता अनुभव करता है। दोनों पीड़ित हों तो अति भोग, भावनात्मक निर्भरता और सुविधाओं पर अत्यधिक व्यय का जोखिम।"
+    rule_type: dasha
+
+  # --- Mars Mahadasha Antardashas ---
+
+  - verse: 18
+    topic: antardasha_effects
+    planets: [Mars, Mercury]
+    houses: []
+    text_sanskrit: "Kuja Mahadasha Budha Antardasha"
+    text_english: "Mars-Mercury Antardasha: Analytical action and strategic thinking. Success in engineering calculations, technical writing, land surveying, and mechanical trades. The native combines energy with intellect. Real estate deals through clever negotiation. Risk of arguments, litigation, and nervous irritability. Mars and Mercury are enemies — the native must balance aggression with diplomacy."
+    text_hindi: "मंगल-बुध अन्तर्दशा: विश्लेषणात्मक कार्य और रणनीतिक सोच। अभियान्त्रिकी गणना, तकनीकी लेखन, भूमि सर्वेक्षण और यान्त्रिक व्यवसायों में सफलता। जातक ऊर्जा और बुद्धि का संयोग करता है। चतुर बातचीत से भूसम्पत्ति सौदे। तर्क-वितर्क, मुकदमेबाजी और तन्त्रिका चिड़चिड़ापन का जोखिम। मंगल और बुध शत्रु हैं — जातक को आक्रामकता और कूटनीति में सन्तुलन रखना आवश्यक।"
+    rule_type: dasha
+
+  - verse: 19
+    topic: antardasha_effects
+    planets: [Mars, Jupiter]
+    houses: []
+    text_sanskrit: "Kuja Mahadasha Guru Antardasha"
+    text_english: "Mars-Jupiter Antardasha: Righteous courage and expansive action. Excellent for property expansion, success in law enforcement, and gains through education and religion. The native acts boldly for dharmic causes. Children may be born during this period. Wealth through land, construction, and ethical competition. Jupiter's wisdom tempers Mars's aggression, producing constructive leadership."
+    text_hindi: "मंगल-गुरु अन्तर्दशा: धार्मिक साहस और विस्तारित कर्म। सम्पत्ति विस्तार, विधि प्रवर्तन में सफलता, और शिक्षा तथा धर्म से लाभ के लिए उत्कृष्ट। जातक धार्मिक कार्यों में साहसपूर्वक कार्य करता है। इस काल में सन्तान जन्म हो सकता है। भूमि, निर्माण और नैतिक प्रतिस्पर्धा से धन। गुरु का ज्ञान मंगल की आक्रामकता को संयमित करता है, रचनात्मक नेतृत्व उत्पन्न करता है।"
+    rule_type: dasha
+
+  - verse: 20
+    topic: antardasha_effects
+    planets: [Mars, Venus]
+    houses: []
+    text_sanskrit: "Kuja Mahadasha Shukra Antardasha"
+    text_english: "Mars-Venus Antardasha: Passionate romance, acquisition of property and vehicles, and success in arts combined with technical skill. Gains through real estate, automotive, beauty, and luxury industries. Marriage or intense romantic relationships. Risk of extramarital affairs, passionate conflicts, and reproductive health issues. The native experiences strong desires and pursues them vigorously."
+    text_hindi: "मंगल-शुक्र अन्तर्दशा: उत्कट प्रेम, सम्पत्ति और वाहन प्राप्ति, और तकनीकी कौशल सहित कला में सफलता। भूसम्पत्ति, वाहन, सौन्दर्य और विलास उद्योगों से लाभ। विवाह या तीव्र प्रेम सम्बन्ध। विवाहेतर सम्बन्ध, उत्कट विवाद और प्रजनन स्वास्थ्य समस्याओं का जोखिम। जातक प्रबल इच्छाओं का अनुभव करता है और उन्हें प्रचण्डता से पूरा करता है।"
+    rule_type: dasha
+
+  - verse: 21
+    topic: antardasha_effects
+    planets: [Mars, Saturn]
+    houses: []
+    text_sanskrit: "Kuja Mahadasha Shani Antardasha"
+    text_english: "Mars-Saturn Antardasha: Clash of fire and restraint. Frustration, blocked ambitions, accidents, surgery, bone fractures, and chronic inflammation. Legal disputes over property. However, if both are well-placed (especially for Capricorn or Aquarius Lagna), gives mastery over land, construction success, and authority in industrial or engineering fields. Extreme patience required during this sub-period."
+    text_hindi: "मंगल-शनि अन्तर्दशा: अग्नि और संयम का टकराव। कुण्ठा, अवरुद्ध महत्वाकांक्षाएँ, दुर्घटना, शल्य चिकित्सा, अस्थि भंग और दीर्घकालिक शोथ। सम्पत्ति पर कानूनी विवाद। किन्तु दोनों शुभ स्थिति में हों (विशेषतः मकर या कुम्भ लग्न), तो भूमि पर अधिकार, निर्माण सफलता और औद्योगिक या अभियान्त्रिकी क्षेत्रों में प्राधिकार देता है। इस उपकाल में अत्यधिक धैर्य आवश्यक।"
+    rule_type: dasha
+
+  # --- Rahu Mahadasha Antardashas ---
+
+  - verse: 22
+    topic: antardasha_effects
+    planets: [Rahu, Jupiter]
+    houses: []
+    text_sanskrit: "Rahu Mahadasha Guru Antardasha"
+    text_english: "Rahu-Jupiter Antardasha: Expansion through unconventional wisdom. Foreign education, interfaith or cross-cultural experiences, gains through international law or finance. Jupiter moderates Rahu's obsessive nature, bringing ethical grounding to worldly ambitions. Children's education abroad, success in global advisory roles. Risk of false gurus, spiritual confusion, or misplaced faith if both are afflicted."
+    text_hindi: "राहु-गुरु अन्तर्दशा: अपारम्परिक ज्ञान से विस्तार। विदेशी शिक्षा, अन्तरधार्मिक या अन्तरसांस्कृतिक अनुभव, अन्तर्राष्ट्रीय विधि या वित्त से लाभ। गुरु राहु की आसक्तिपूर्ण प्रवृत्ति को संयमित करता है, सांसारिक महत्वाकांक्षाओं में नैतिक आधार लाता है। सन्तान की विदेशी शिक्षा, वैश्विक परामर्श भूमिकाओं में सफलता। दोनों पीड़ित हों तो झूठे गुरु, आध्यात्मिक भ्रम या गलत विश्वास का जोखिम।"
+    rule_type: dasha
+
+  - verse: 23
+    topic: antardasha_effects
+    planets: [Rahu, Saturn]
+    houses: []
+    text_sanskrit: "Rahu Mahadasha Shani Antardasha"
+    text_english: "Rahu-Saturn Antardasha: One of the most challenging sub-periods. Delays, obstacles, chronic health issues, and karmic tests. Foreign relocation with hardship, labour-intensive work in foreign lands, and isolation. However, for natives with strong Rahu-Saturn placements, gives power in foreign countries, success in technology or oil industries abroad, and authority over large organizations. Extreme perseverance required."
+    text_hindi: "राहु-शनि अन्तर्दशा: सबसे चुनौतीपूर्ण उपकालों में से एक। विलम्ब, बाधाएँ, दीर्घकालिक स्वास्थ्य समस्याएँ और कर्म परीक्षा। कठिनाई सहित विदेश स्थानान्तरण, विदेश में श्रमसाध्य कार्य और एकाकीपन। किन्तु बलवान राहु-शनि स्थिति वाले जातकों को विदेश में सत्ता, प्रौद्योगिकी या तेल उद्योग में सफलता और बड़े संगठनों पर अधिकार मिलता है। अत्यधिक दृढ़ता आवश्यक।"
+    rule_type: dasha
+
+  - verse: 24
+    topic: antardasha_effects
+    planets: [Rahu, Mercury]
+    houses: []
+    text_sanskrit: "Rahu Mahadasha Budha Antardasha"
+    text_english: "Rahu-Mercury Antardasha: Sharp intellect applied to worldly pursuits. Success in technology, software, digital media, and international trade. Excellent for IT professionals, data analysts, and diplomats. The native thinks unconventionally and communicates persuasively. Gains through foreign languages and cross-border commerce. Risk of deception, fraud, or nervous anxiety if both are afflicted."
+    text_hindi: "राहु-बुध अन्तर्दशा: सांसारिक कार्यों में तीक्ष्ण बुद्धि का प्रयोग। प्रौद्योगिकी, सॉफ्टवेयर, डिजिटल मीडिया और अन्तर्राष्ट्रीय व्यापार में सफलता। आई.टी. पेशेवरों, डेटा विश्लेषकों और कूटनीतिज्ञों के लिए उत्कृष्ट। जातक अपारम्परिक सोच और प्रभावशाली संवाद करता है। विदेशी भाषाओं और सीमा-पार वाणिज्य से लाभ। दोनों पीड़ित हों तो छल, धोखा या तन्त्रिका व्याकुलता का जोखिम।"
+    rule_type: dasha
+
+  - verse: 25
+    topic: antardasha_effects
+    planets: [Rahu, Venus]
+    houses: []
+    text_sanskrit: "Rahu Mahadasha Shukra Antardasha"
+    text_english: "Rahu-Venus Antardasha: Intense material enjoyment and worldly pleasures. Foreign luxury, cross-cultural romance, success in entertainment, international fashion, and import of luxury goods. Marriage to a person from a different culture or background. Acquisition of expensive vehicles and properties. Risk of excessive indulgence, illicit relationships, and substance abuse if both are afflicted."
+    text_hindi: "राहु-शुक्र अन्तर्दशा: तीव्र भौतिक भोग और सांसारिक सुख। विदेशी विलास, अन्तरसांस्कृतिक प्रेम, मनोरंजन, अन्तर्राष्ट्रीय फैशन और विलास वस्तुओं के आयात में सफलता। भिन्न संस्कृति या पृष्ठभूमि के व्यक्ति से विवाह। महँगे वाहन और सम्पत्ति प्राप्ति। दोनों पीड़ित हों तो अत्यधिक भोग, अवैध सम्बन्ध और नशे का जोखिम।"
+    rule_type: dasha
+
+  # --- Jupiter Mahadasha Antardashas ---
+
+  - verse: 26
+    topic: antardasha_effects
+    planets: [Jupiter, Sun]
+    houses: []
+    text_sanskrit: "Guru Mahadasha Surya Antardasha"
+    text_english: "Jupiter-Sun Antardasha: Spiritual authority and governmental wisdom. Success in judicial, educational, and religious government positions. The native becomes a respected authority figure who guides with wisdom. Father's blessings amplify guru's guidance. Promotions in teaching, law, or financial administration. Honours and awards from institutions. Pilgrimage and spiritual advancement."
+    text_hindi: "गुरु-सूर्य अन्तर्दशा: आध्यात्मिक अधिकार और शासकीय ज्ञान। न्यायिक, शैक्षिक और धार्मिक सरकारी पदों में सफलता। जातक ज्ञान से मार्गदर्शन करने वाला सम्मानित अधिकारी बनता है। पिता का आशीर्वाद गुरु के मार्गदर्शन को प्रवर्धित करता है। शिक्षण, विधि या वित्तीय प्रशासन में पदोन्नति। संस्थाओं से सम्मान और पुरस्कार। तीर्थयात्रा और आध्यात्मिक उन्नति।"
+    rule_type: dasha
+
+  - verse: 27
+    topic: antardasha_effects
+    planets: [Jupiter, Saturn]
+    houses: []
+    text_sanskrit: "Guru Mahadasha Shani Antardasha"
+    text_english: "Jupiter-Saturn Antardasha: Wisdom meets discipline. Success in large organizations, institutional leadership, and long-term planning. Gains through charitable trusts, educational institutions, and religious foundations. The native builds lasting structures of knowledge and service. Slow but substantial wealth accumulation. Risk of conflicts between expansion and restriction, optimism and pessimism. Health concerns related to liver and joints simultaneously."
+    text_hindi: "गुरु-शनि अन्तर्दशा: ज्ञान और अनुशासन का मिलन। बड़े संगठनों, संस्थागत नेतृत्व और दीर्घकालिक नियोजन में सफलता। धर्मार्थ न्यासों, शैक्षिक संस्थानों और धार्मिक प्रतिष्ठानों से लाभ। जातक ज्ञान और सेवा के स्थायी ढाँचे बनाता है। धीमा किन्तु ठोस धन संचय। विस्तार और प्रतिबन्ध, आशावाद और निराशावाद के बीच टकराव का जोखिम। यकृत और जोड़ों सम्बन्धी स्वास्थ्य चिन्ता एक साथ।"
+    rule_type: dasha
+
+  - verse: 28
+    topic: antardasha_effects
+    planets: [Jupiter, Mercury]
+    houses: []
+    text_sanskrit: "Guru Mahadasha Budha Antardasha"
+    text_english: "Jupiter-Mercury Antardasha: Intellectual expansion and scholarly communication. Success in academic research, publishing, financial analysis, and astrological studies. The native writes or teaches prolifically. Gains through combining wisdom with analytical skill. Trade in educational or religious materials. Risk of conflicting advice, scattered focus, or intellectual arrogance. Excellent for students, writers, and financial advisors."
+    text_hindi: "गुरु-बुध अन्तर्दशा: बौद्धिक विस्तार और विद्वत्तापूर्ण संवाद। शैक्षिक शोध, प्रकाशन, वित्तीय विश्लेषण और ज्योतिषीय अध्ययन में सफलता। जातक विपुल लेखन या शिक्षण करता है। ज्ञान और विश्लेषणात्मक कौशल के संयोग से लाभ। शैक्षिक या धार्मिक सामग्री का व्यापार। परस्पर विरोधी सलाह, बिखरा ध्यान या बौद्धिक अहंकार का जोखिम। छात्रों, लेखकों और वित्तीय सलाहकारों के लिए उत्कृष्ट।"
+    rule_type: dasha
+
+  - verse: 29
+    topic: antardasha_effects
+    planets: [Jupiter, Venus]
+    houses: []
+    text_sanskrit: "Guru Mahadasha Shukra Antardasha"
+    text_english: "Jupiter-Venus Antardasha: Abundant wealth, marriage happiness, and refined living. Two great benefics combine their blessings. Gains through finance, arts, education, and luxury industries. Marriage if unmarried, marital renewal if married. The native enjoys wealth with wisdom, comfort with culture. Risk of excess in indulgence or conflicting values (spiritual vs. material). Overall a highly prosperous and enjoyable period."
+    text_hindi: "गुरु-शुक्र अन्तर्दशा: प्रचुर धन, वैवाहिक सुख और परिष्कृत जीवन। दो महान शुभ ग्रह अपने आशीर्वाद संयुक्त करते हैं। वित्त, कला, शिक्षा और विलास उद्योगों से लाभ। अविवाहित हो तो विवाह, विवाहित हो तो वैवाहिक नवीनता। जातक ज्ञान सहित धन, संस्कृति सहित सुख भोगता है। अतिभोग या परस्पर विरोधी मूल्यों (आध्यात्मिक बनाम भौतिक) का जोखिम। कुल मिलाकर अत्यन्त समृद्ध और आनन्ददायक काल।"
+    rule_type: dasha
+
+  # --- Saturn Mahadasha Antardashas ---
+
+  - verse: 30
+    topic: antardasha_effects
+    planets: [Saturn, Mercury]
+    houses: []
+    text_sanskrit: "Shani Mahadasha Budha Antardasha"
+    text_english: "Saturn-Mercury Antardasha: Disciplined intellect and methodical thinking. Success in accounting, auditing, data management, and systematic research. The native works with precision and detail. Gains through long-term intellectual projects, clerical or administrative work. Good for learning traditional skills or crafts. Risk of mental fatigue, communication delays, and pessimistic thinking. Steady income through methodical work."
+    text_hindi: "शनि-बुध अन्तर्दशा: अनुशासित बुद्धि और व्यवस्थित सोच। लेखांकन, लेखा परीक्षा, डेटा प्रबन्धन और व्यवस्थित शोध में सफलता। जातक यथार्थता और विस्तार से कार्य करता है। दीर्घकालिक बौद्धिक परियोजनाओं, लिपिकीय या प्रशासनिक कार्य से लाभ। पारम्परिक कौशल या शिल्प सीखने के लिए अच्छा। मानसिक थकान, संचार विलम्ब और निराशावादी सोच का जोखिम। व्यवस्थित कार्य से स्थिर आय।"
+    rule_type: dasha
+
+  - verse: 31
+    topic: antardasha_effects
+    planets: [Saturn, Jupiter]
+    houses: []
+    text_sanskrit: "Shani Mahadasha Guru Antardasha"
+    text_english: "Saturn-Jupiter Antardasha: Structured wisdom and disciplined expansion. Success in institutional roles, banking, government administration, and religious organizations. The native builds enduring systems and institutions. Jupiter's optimism lifts Saturn's heaviness. Gains through long-term investments, educational trusts, and charitable endowments. Children's progress stabilizes. Health improvement through regulated diet and exercise."
+    text_hindi: "शनि-गुरु अन्तर्दशा: संरचित ज्ञान और अनुशासित विस्तार। संस्थागत भूमिकाओं, बैंकिंग, सरकारी प्रशासन और धार्मिक संगठनों में सफलता। जातक स्थायी तन्त्र और संस्थाएँ बनाता है। गुरु का आशावाद शनि के भार को हल्का करता है। दीर्घकालिक निवेश, शैक्षिक न्यास और धर्मार्थ बन्दोबस्त से लाभ। सन्तान की प्रगति स्थिर होती है। नियमित आहार और व्यायाम से स्वास्थ्य सुधार।"
+    rule_type: dasha
+
+  - verse: 32
+    topic: antardasha_effects
+    planets: [Saturn, Venus]
+    houses: []
+    text_sanskrit: "Shani Mahadasha Shukra Antardasha"
+    text_english: "Saturn-Venus Antardasha: Luxury earned through hard work. Acquisition of property, vehicles, and comforts after sustained effort. Venus is exalted in Saturn's sign Libra — this combination often brings delayed but substantial material rewards. Success in real estate, hospitality, and entertainment management. Marriage may occur late but be stable. The native develops refined taste through discipline."
+    text_hindi: "शनि-शुक्र अन्तर्दशा: कठिन परिश्रम से अर्जित विलास। निरन्तर प्रयास के बाद सम्पत्ति, वाहन और सुख-सुविधाएँ प्राप्ति। शुक्र शनि की राशि तुला में उच्च है — यह संयोग प्रायः विलम्बित किन्तु ठोस भौतिक प्रतिफल लाता है। भूसम्पत्ति, आतिथ्य और मनोरंजन प्रबन्धन में सफलता। विवाह देर से किन्तु स्थिर हो सकता है। जातक अनुशासन से परिष्कृत रुचि विकसित करता है।"
+    rule_type: dasha
+
+  - verse: 33
+    topic: antardasha_effects
+    planets: [Saturn, Rahu]
+    houses: []
+    text_sanskrit: "Shani Mahadasha Rahu Antardasha"
+    text_english: "Saturn-Rahu Antardasha: Intense karmic pressure and foreign influence. The native may relocate abroad under difficult circumstances, face immigration challenges, or experience workplace politics. Chronic illness, depression, and isolation are possible. However, for strong placements, gives power in multinational organizations, success in foreign technology sectors, and authority over large workforces abroad. One of the most testing sub-periods requiring extreme resilience."
+    text_hindi: "शनि-राहु अन्तर्दशा: तीव्र कर्म दबाव और विदेशी प्रभाव। जातक कठिन परिस्थितियों में विदेश स्थानान्तरित हो सकता है, आप्रवासन चुनौतियों का सामना, या कार्यस्थल राजनीति का अनुभव कर सकता है। दीर्घकालिक रोग, अवसाद और एकाकीपन सम्भव। किन्तु बलवान स्थितियों में बहुराष्ट्रीय संगठनों में सत्ता, विदेशी प्रौद्योगिकी क्षेत्रों में सफलता और विदेश में बड़े कार्यबल पर अधिकार देता है। अत्यधिक सहनशक्ति की परीक्षा वाला उपकाल।"
+    rule_type: dasha
+
+  # --- Mercury Mahadasha Antardashas ---
+
+  - verse: 34
+    topic: antardasha_effects
+    planets: [Mercury, Venus]
+    houses: []
+    text_sanskrit: "Budha Mahadasha Shukra Antardasha"
+    text_english: "Mercury-Venus Antardasha: Creative intelligence and artistic communication. Both are friends and benefics — results are harmonious. Success in media, advertising, design, fashion writing, and entertainment business. The native communicates beautifully and earns through aesthetic skills. Romantic relationships through intellectual connections. Gains from trade in luxury, beauty, and artistic goods. One of the most pleasant and productive sub-periods."
+    text_hindi: "बुध-शुक्र अन्तर्दशा: सृजनात्मक बुद्धि और कलात्मक संवाद। दोनों मित्र और शुभ ग्रह हैं — फल सामंजस्यपूर्ण। मीडिया, विज्ञापन, डिज़ाइन, फैशन लेखन और मनोरंजन व्यवसाय में सफलता। जातक सुन्दर संवाद करता है और सौन्दर्यात्मक कौशल से कमाता है। बौद्धिक जुड़ाव से प्रेम सम्बन्ध। विलास, सौन्दर्य और कलात्मक वस्तुओं के व्यापार से लाभ। सर्वाधिक सुखद और उत्पादक उपकालों में से एक।"
+    rule_type: dasha
+
+  - verse: 35
+    topic: antardasha_effects
+    planets: [Mercury, Jupiter]
+    houses: []
+    text_sanskrit: "Budha Mahadasha Guru Antardasha"
+    text_english: "Mercury-Jupiter Antardasha: Wisdom combined with communication. Success in publishing, higher education, financial consulting, and scriptural studies. The native becomes a bridge between knowledge and application. Gains through writing educational or religious texts, astrology practice, and advisory services. Children excel in education. Business expansion through wise planning. Despite natural enmity between Mercury and Jupiter, both being benefics, results are largely positive."
+    text_hindi: "बुध-गुरु अन्तर्दशा: ज्ञान और संवाद का संयोग। प्रकाशन, उच्च शिक्षा, वित्तीय परामर्श और शास्त्रीय अध्ययन में सफलता। जातक ज्ञान और व्यवहार के बीच सेतु बनता है। शैक्षिक या धार्मिक ग्रन्थ लेखन, ज्योतिष अभ्यास और परामर्श सेवाओं से लाभ। सन्तान शिक्षा में उत्कृष्ट। बुद्धिमत्तापूर्ण नियोजन से व्यापार विस्तार। बुध और गुरु में नैसर्गिक शत्रुता होते हुए भी दोनों शुभ होने से फल अधिकांशतः सकारात्मक।"
+    rule_type: dasha
+
+  - verse: 36
+    topic: antardasha_effects
+    planets: [Mercury, Saturn]
+    houses: []
+    text_sanskrit: "Budha Mahadasha Shani Antardasha"
+    text_english: "Mercury-Saturn Antardasha: Methodical work and structured communication. Mercury and Saturn are friends — this combination gives success through detailed, systematic effort. Gains through accounting, law, civil service examinations, and technical documentation. The native masters complex systems through patient study. Real estate through careful negotiation. Risk of delays in communication, pessimistic speech, and mental exhaustion from overwork."
+    text_hindi: "बुध-शनि अन्तर्दशा: व्यवस्थित कार्य और संरचित संवाद। बुध और शनि मित्र हैं — यह संयोग विस्तृत, व्यवस्थित प्रयास से सफलता देता है। लेखांकन, विधि, सिविल सेवा परीक्षा और तकनीकी प्रलेखन से लाभ। जातक धैर्यपूर्ण अध्ययन से जटिल तन्त्रों में दक्षता प्राप्त करता है। सावधानीपूर्ण बातचीत से भूसम्पत्ति। संचार में विलम्ब, निराशावादी वाणी और अति परिश्रम से मानसिक थकान का जोखिम।"
+    rule_type: dasha
+
+  # --- Venus Mahadasha Antardashas ---
+
+  - verse: 37
+    topic: antardasha_effects
+    planets: [Venus, Moon]
+    houses: []
+    text_sanskrit: "Shukra Mahadasha Chandra Antardasha"
+    text_english: "Venus-Moon Antardasha: Emotional beauty and nurturing luxury. Romantic fulfilment, domestic comfort, and artistic inspiration from emotions. Gains through hospitality, dairy, perfumery, and women-centric businesses. The native creates beautiful domestic environments. Travel over water for pleasure. Mother supports marital happiness. Risk of emotional extravagance, mood-dependent spending, and sentimental attachment to possessions."
+    text_hindi: "शुक्र-चन्द्र अन्तर्दशा: भावनात्मक सौन्दर्य और स्नेहिल विलास। प्रेम पूर्णता, गृह सुख और भावनाओं से कलात्मक प्रेरणा। आतिथ्य, डेयरी, सुगन्ध और महिलाकेन्द्रित व्यवसायों से लाभ। जातक सुन्दर घरेलू वातावरण रचता है। सुख हेतु जलयात्रा। माता वैवाहिक सुख में सहायक। भावनात्मक फिजूलखर्ची, मनोदशा आधारित व्यय और सम्पत्ति के प्रति भावुक लगाव का जोखिम।"
+    rule_type: dasha
+
+  - verse: 38
+    topic: antardasha_effects
+    planets: [Venus, Mars]
+    houses: []
+    text_sanskrit: "Shukra Mahadasha Kuja Antardasha"
+    text_english: "Venus-Mars Antardasha: Passion, property, and sensual enjoyment. Acquisition of land, vehicles, and luxurious property. Intense romantic experiences and physical attraction. Success in real estate, automotive, cosmetics, and hospitality industries. Marriage or deepening of romantic commitment. Risk of impulsive spending, passionate conflicts with spouse, and overindulgence. The native pursues desires with determined action."
+    text_hindi: "शुक्र-मंगल अन्तर्दशा: आवेश, सम्पत्ति और इन्द्रिय सुख। भूमि, वाहन और विलासपूर्ण सम्पत्ति प्राप्ति। तीव्र प्रणय अनुभव और शारीरिक आकर्षण। भूसम्पत्ति, वाहन, सौन्दर्य प्रसाधन और आतिथ्य उद्योगों में सफलता। विवाह या प्रेम प्रतिबद्धता का गहन होना। आवेगपूर्ण व्यय, जीवनसाथी से उत्कट विवाद और अतिभोग का जोखिम। जातक दृढ़ कर्म से इच्छाओं की पूर्ति करता है।"
+    rule_type: dasha
+
+  - verse: 39
+    topic: antardasha_effects
+    planets: [Venus, Jupiter]
+    houses: []
+    text_sanskrit: "Shukra Mahadasha Guru Antardasha"
+    text_english: "Venus-Jupiter Antardasha: Double benefic blessings — the most auspicious sub-period within Venus Mahadasha. Wealth, marriage happiness, children, education, and spiritual comfort all flourish. Gains through partnerships in finance, education, and arts. The native lives a life of cultured abundance. Pilgrimage combined with pleasure travel. Despite mutual enmity, both being great benefics ensures overwhelmingly positive results."
+    text_hindi: "शुक्र-गुरु अन्तर्दशा: दोहरा शुभ आशीर्वाद — शुक्र महादशा में सर्वाधिक शुभ उपकाल। धन, वैवाहिक सुख, सन्तान, शिक्षा और आध्यात्मिक सुख सभी पुष्पित होते हैं। वित्त, शिक्षा और कला में साझेदारी से लाभ। जातक संस्कारित प्रचुरता का जीवन जीता है। सुख-यात्रा सहित तीर्थयात्रा। परस्पर शत्रुता के बावजूद दोनों महाशुभ ग्रह होने से फल अत्यधिक सकारात्मक।"
+    rule_type: dasha
+
+  - verse: 40
+    topic: antardasha_effects
+    planets: [Venus, Saturn]
+    houses: []
+    text_sanskrit: "Shukra Mahadasha Shani Antardasha"
+    text_english: "Venus-Saturn Antardasha: Venus and Saturn share a friendly relationship. Luxury earned through persistent effort, success in real estate and construction of beautiful structures, artistic mastery through discipline, and wealth through long-term partnerships. Film production, architecture, and interior design are favoured. The native develops enduring aesthetic sensibility. Marriage stability through mature understanding. Delayed but lasting material rewards."
+    text_hindi: "शुक्र-शनि अन्तर्दशा: शुक्र और शनि मित्र सम्बन्ध रखते हैं। निरन्तर प्रयास से अर्जित विलास, भूसम्पत्ति और सुन्दर संरचनाओं के निर्माण में सफलता, अनुशासन से कलात्मक दक्षता और दीर्घकालिक साझेदारी से धन। चलचित्र निर्माण, वास्तुकला और आन्तरिक सज्जा अनुकूल। जातक स्थायी सौन्दर्यबोध विकसित करता है। परिपक्व समझ से वैवाहिक स्थिरता। विलम्बित किन्तु स्थायी भौतिक प्रतिफल।"
+    rule_type: dasha
+
+  # --- Ketu Mahadasha Antardashas ---
+
+  - verse: 41
+    topic: antardasha_effects
+    planets: [Ketu, Moon]
+    houses: []
+    text_sanskrit: "Ketu Mahadasha Chandra Antardasha"
+    text_english: "Ketu-Moon Antardasha: Emotional detachment and psychic sensitivity. The mind becomes introspective and drawn towards meditation. Risk of depression, anxiety, insomnia, and separation from mother. However, for spiritually inclined natives, gives deep intuitive abilities, psychic experiences, and emotional liberation. Past-life memories may surface. Gains through healing, counselling, and spiritual practices. The native must guard mental health carefully."
+    text_hindi: "केतु-चन्द्र अन्तर्दशा: भावनात्मक वैराग्य और अतीन्द्रिय संवेदनशीलता। मन अन्तर्मुखी होता है और ध्यान की ओर आकर्षित होता है। अवसाद, व्याकुलता, अनिद्रा और माता से वियोग का जोखिम। किन्तु आध्यात्मिक प्रवृत्ति के जातकों को गहन अन्तर्ज्ञान, अतीन्द्रिय अनुभव और भावनात्मक मुक्ति मिलती है। पूर्वजन्म स्मृतियाँ सतह पर आ सकती हैं। चिकित्सा, परामर्श और आध्यात्मिक साधना से लाभ। जातक को मानसिक स्वास्थ्य की सावधानीपूर्वक रक्षा करनी चाहिए।"
+    rule_type: dasha
+
+  - verse: 42
+    topic: antardasha_effects
+    planets: [Ketu, Mars]
+    houses: []
+    text_sanskrit: "Ketu Mahadasha Kuja Antardasha"
+    text_english: "Ketu-Mars Antardasha: Sudden, sharp events and surgical interventions. Risk of accidents, burns, cuts, and emergency situations. The combination of headless Ketu with aggressive Mars creates unpredictable volatile energy. However, for well-placed charts, gives mastery in martial arts, tantric practices, surgical excellence, and decisive spiritual breakthroughs. The native must avoid reckless actions and channel energy into disciplined practice."
+    text_hindi: "केतु-मंगल अन्तर्दशा: अचानक, तीव्र घटनाएँ और शल्य हस्तक्षेप। दुर्घटना, जलन, कटने और आपातकालीन स्थितियों का जोखिम। शिरहीन केतु और आक्रामक मंगल का संयोग अप्रत्याशित अस्थिर ऊर्जा उत्पन्न करता है। किन्तु शुभ कुण्डलियों में युद्ध कला, तान्त्रिक साधना, शल्य चिकित्सा उत्कृष्टता और निर्णायक आध्यात्मिक सफलता देता है। जातक को लापरवाह कार्यों से बचना और ऊर्जा को अनुशासित अभ्यास में लगाना चाहिए।"
+    rule_type: dasha
+
+  - verse: 43
+    topic: antardasha_effects
+    planets: [Ketu, Jupiter]
+    houses: []
+    text_sanskrit: "Ketu Mahadasha Guru Antardasha"
+    text_english: "Ketu-Jupiter Antardasha: Spiritual wisdom and moksha-oriented knowledge. The most favourable sub-period within Ketu Mahadasha. Jupiter's guidance illuminates Ketu's mystical path. Success in Vedantic studies, meditation retreats, and spiritual teaching. The native gains profound philosophical understanding. Pilgrimage to sacred sites, connection with enlightened teachers. Children may pursue spiritual or academic paths. Material detachment accompanies spiritual enrichment."
+    text_hindi: "केतु-गुरु अन्तर्दशा: आध्यात्मिक ज्ञान और मोक्षोन्मुख विद्या। केतु महादशा में सर्वाधिक अनुकूल उपकाल। गुरु का मार्गदर्शन केतु के रहस्यमय पथ को प्रकाशित करता है। वेदान्त अध्ययन, ध्यान शिविर और आध्यात्मिक शिक्षण में सफलता। जातक गहन दार्शनिक समझ प्राप्त करता है। पवित्र स्थानों की तीर्थयात्रा, प्रबुद्ध गुरुओं से सम्पर्क। सन्तान आध्यात्मिक या शैक्षिक मार्ग अपना सकती है। आध्यात्मिक समृद्धि के साथ भौतिक वैराग्य।"
+    rule_type: dasha
+
+  - verse: 44
+    topic: antardasha_effects
+    planets: [Ketu, Venus]
+    houses: []
+    text_sanskrit: "Ketu Mahadasha Shukra Antardasha"
+    text_english: "Ketu-Venus Antardasha: Tension between renunciation and desire. The native oscillates between spiritual detachment and material attraction. Unusual or unconventional romantic experiences. Gains through occult arts, tantric practices combined with artistic expression. Risk of marital discord, dissatisfaction with luxury, and confusion about life direction. If well-placed, gives artistic expression of spiritual themes — sacred music, devotional poetry, and temple architecture."
+    text_hindi: "केतु-शुक्र अन्तर्दशा: त्याग और इच्छा के बीच तनाव। जातक आध्यात्मिक वैराग्य और भौतिक आकर्षण के बीच डोलता है। असामान्य या अपारम्परिक प्रेम अनुभव। गुप्त कला, कलात्मक अभिव्यक्ति सहित तान्त्रिक साधना से लाभ। वैवाहिक कलह, विलास से असन्तोष और जीवन दिशा में भ्रम का जोखिम। शुभ स्थिति में आध्यात्मिक विषयों की कलात्मक अभिव्यक्ति — पवित्र संगीत, भक्ति काव्य और मन्दिर वास्तुकला देता है।"
+    rule_type: dasha
+
+  - verse: 45
+    topic: antardasha_effects
+    planets: [Ketu, Saturn]
+    houses: []
+    text_sanskrit: "Ketu Mahadasha Shani Antardasha"
+    text_english: "Ketu-Saturn Antardasha: Deep karmic reckoning and spiritual austerity. One of the most challenging sub-periods. The native faces isolation, chronic ailments, joint pain combined with mysterious illnesses, and extreme detachment. Past karmas ripen with full force. However, for evolved souls, this period grants final liberation through suffering — the native transcends worldly bondage through intense tapas (austerity). Monastic life, forest retreats, and complete surrender to the divine are indicated."
+    text_hindi: "केतु-शनि अन्तर्दशा: गहन कर्म लेखा-जोखा और आध्यात्मिक तपस्या। सबसे चुनौतीपूर्ण उपकालों में से एक। जातक एकाकीपन, दीर्घकालिक रोग, जोड़ों के दर्द सहित रहस्यमय रोग और अत्यधिक वैराग्य का सामना करता है। पूर्व कर्म पूर्ण शक्ति से पकते हैं। किन्तु विकसित आत्माओं को यह काल कष्ट के माध्यम से अन्तिम मुक्ति प्रदान करता है — जातक तीव्र तपस्या से सांसारिक बन्धन पार करता है। सन्न्यास जीवन, वन आश्रम और ईश्वर को पूर्ण समर्पण संकेतित है।"
+    rule_type: dasha

@@ -1,0 +1,165 @@
+book: BPHS
+chapter: 25
+title: "Effects of Planetary Dashas"
+rules:
+  - verse: 1
+    topic: dasha_effects
+    planets: [Sun]
+    houses: []
+    text_sanskrit: "Surya Dasha Phalam — Rajya Praptihi Satru Jayaha"
+    text_english: "Sun Mahadasha (6 years): When well-placed, gives government favour, authority, fame, leadership roles, connection with powerful people, and health improvement. The native gains confidence and recognition from authority figures."
+    text_hindi: "सूर्य महादशा (6 वर्ष): शुभ स्थिति में सरकारी कृपा, अधिकार, यश, नेतृत्व भूमिका, प्रभावशाली लोगों से सम्पर्क और स्वास्थ्य सुधार देता है। जातक को आत्मविश्वास और अधिकारियों से मान्यता मिलती है।"
+    rule_type: dasha
+
+  - verse: 2
+    topic: dasha_effects
+    planets: [Sun]
+    houses: []
+    text_sanskrit: "Surya Dasha Ashubha Phalam"
+    text_english: "Sun Mahadasha when afflicted: Conflicts with father or authority, government troubles, eye problems, headaches, bone weakness, ego clashes, and loss of position. The native may face humiliation from powerful people."
+    text_hindi: "पीड़ित सूर्य की महादशा: पिता या अधिकारियों से विवाद, सरकारी परेशानी, नेत्र समस्या, सिरदर्द, अस्थि दुर्बलता, अहंकार टकराव और पद हानि। जातक को प्रभावशाली लोगों से अपमान का सामना करना पड़ सकता है।"
+    rule_type: dasha
+
+  - verse: 3
+    topic: dasha_effects
+    planets: [Moon]
+    houses: []
+    text_sanskrit: "Chandra Dasha Phalam — Mano Shanti Janaseva"
+    text_english: "Moon Mahadasha (10 years): When well-placed, gives mental peace, popularity among masses, good relations with mother, travel over water, acquisition of property, and emotional fulfilment. Favourable for public-facing careers."
+    text_hindi: "चन्द्र महादशा (10 वर्ष): शुभ स्थिति में मानसिक शान्ति, जनप्रियता, माता से अच्छे सम्बन्ध, जलयात्रा, सम्पत्ति प्राप्ति और भावनात्मक सन्तुष्टि देता है। जन-सम्पर्क व्यवसायों के लिए अनुकूल।"
+    rule_type: dasha
+
+  - verse: 4
+    topic: dasha_effects
+    planets: [Moon]
+    houses: []
+    text_sanskrit: "Chandra Dasha Ashubha Phalam"
+    text_english: "Moon Mahadasha when afflicted: Mental disturbances, depression, anxiety, estrangement from mother, excessive worry, cold/cough related ailments, insomnia, and instability in residence. Water-related dangers may occur."
+    text_hindi: "पीड़ित चन्द्रमा की महादशा: मानसिक अशान्ति, अवसाद, चिन्ता, माता से दूरी, अत्यधिक चिन्ता, सर्दी/खाँसी सम्बन्धी रोग, अनिद्रा और निवास में अस्थिरता। जल सम्बन्धी खतरे हो सकते हैं।"
+    rule_type: dasha
+
+  - verse: 5
+    topic: dasha_effects
+    planets: [Mars]
+    houses: []
+    text_sanskrit: "Kuja Dasha Phalam — Bhoomi Labha Parakramaha"
+    text_english: "Mars Mahadasha (7 years): When well-placed, gives land and property gains, courage, success in competition, surgery recovery, leadership in technical or military fields, and victory over enemies."
+    text_hindi: "मंगल महादशा (7 वर्ष): शुभ स्थिति में भूमि और सम्पत्ति लाभ, साहस, प्रतियोगिता में सफलता, शल्य चिकित्सा से स्वस्थता, तकनीकी या सैन्य क्षेत्र में नेतृत्व और शत्रुओं पर विजय देता है।"
+    rule_type: dasha
+
+  - verse: 6
+    topic: dasha_effects
+    planets: [Mars]
+    houses: []
+    text_sanskrit: "Kuja Dasha Ashubha Phalam"
+    text_english: "Mars Mahadasha when afflicted: Accidents, blood-related diseases, surgery, conflicts with siblings, legal disputes, anger management issues, burns, cuts, and property disputes. Risk of violence and rash decisions."
+    text_hindi: "पीड़ित मंगल की महादशा: दुर्घटना, रक्त सम्बन्धी रोग, शल्य चिकित्सा, भाई-बहनों से विवाद, कानूनी विवाद, क्रोध नियन्त्रण समस्या, जलन, कटना और सम्पत्ति विवाद। हिंसा और आवेशपूर्ण निर्णय का जोखिम।"
+    rule_type: dasha
+
+  - verse: 7
+    topic: dasha_effects
+    planets: [Mercury]
+    houses: []
+    text_sanskrit: "Budha Dasha Phalam — Vidya Vyapara Vriddhihi"
+    text_english: "Mercury Mahadasha (17 years): When well-placed, gives success in education, trade, communication, writing, and intellectual pursuits. Good for business ventures, accounting, and travel. The native develops sharp analytical skills."
+    text_hindi: "बुध महादशा (17 वर्ष): शुभ स्थिति में शिक्षा, व्यापार, संचार, लेखन और बौद्धिक कार्यों में सफलता देता है। व्यापारिक उद्यम, लेखांकन और यात्रा के लिए अच्छा। जातक तीक्ष्ण विश्लेषणात्मक कौशल विकसित करता है।"
+    rule_type: dasha
+
+  - verse: 8
+    topic: dasha_effects
+    planets: [Mercury]
+    houses: []
+    text_sanskrit: "Budha Dasha Ashubha Phalam"
+    text_english: "Mercury Mahadasha when afflicted: Skin diseases, nervous disorders, speech problems, business losses, deception in trade, mental anxiety, and conflicts through communication. The native may face false accusations or fraudulent situations."
+    text_hindi: "पीड़ित बुध की महादशा: त्वचा रोग, तन्त्रिका विकार, वाणी समस्या, व्यापारिक हानि, व्यापार में छल, मानसिक चिन्ता और संचार से विवाद। जातक को झूठे आरोप या छलपूर्ण स्थितियों का सामना करना पड़ सकता है।"
+    rule_type: dasha
+
+  - verse: 9
+    topic: dasha_effects
+    planets: [Jupiter]
+    houses: []
+    text_sanskrit: "Guru Dasha Phalam — Dhana Putra Dharma Vriddhihi"
+    text_english: "Jupiter Mahadasha (16 years): When well-placed, gives wealth, children, spiritual growth, higher education, guru guidance, foreign travel for education, marriage (if unmarried), and overall expansion in life. The most auspicious Mahadasha when Jupiter is strong."
+    text_hindi: "गुरु महादशा (16 वर्ष): शुभ स्थिति में धन, सन्तान, आध्यात्मिक विकास, उच्च शिक्षा, गुरु मार्गदर्शन, शिक्षा हेतु विदेश यात्रा, विवाह (अविवाहित हो तो) और जीवन में समग्र विस्तार देता है। शक्तिशाली गुरु की महादशा सर्वाधिक शुभ।"
+    rule_type: dasha
+
+  - verse: 10
+    topic: dasha_effects
+    planets: [Jupiter]
+    houses: []
+    text_sanskrit: "Guru Dasha Ashubha Phalam"
+    text_english: "Jupiter Mahadasha when afflicted: Liver problems, obesity, diabetes, financial losses through bad judgement, problems with children, loss of faith, and conflicts with teachers/mentors. May indicate false guru or misguided spirituality."
+    text_hindi: "पीड़ित गुरु की महादशा: यकृत समस्या, मोटापा, मधुमेह, गलत निर्णय से आर्थिक हानि, सन्तान से समस्या, विश्वास की हानि और गुरु/मार्गदर्शकों से विवाद। झूठा गुरु या भ्रामक आध्यात्मिकता का संकेत हो सकता है।"
+    rule_type: dasha
+
+  - verse: 11
+    topic: dasha_effects
+    planets: [Venus]
+    houses: []
+    text_sanskrit: "Shukra Dasha Phalam — Kalatra Sukha Bhoga"
+    text_english: "Venus Mahadasha (20 years): When well-placed, gives marriage, marital happiness, luxury vehicles, beautiful home, artistic success, wealth from partnerships, and sensual pleasures. The longest Mahadasha, it defines a large portion of life."
+    text_hindi: "शुक्र महादशा (20 वर्ष): शुभ स्थिति में विवाह, वैवाहिक सुख, विलासी वाहन, सुन्दर गृह, कलात्मक सफलता, साझेदारी से धन और भोग सुख देता है। सबसे लम्बी महादशा, जीवन के बड़े भाग को निर्धारित करती है।"
+    rule_type: dasha
+
+  - verse: 12
+    topic: dasha_effects
+    planets: [Venus]
+    houses: []
+    text_sanskrit: "Shukra Dasha Ashubha Phalam"
+    text_english: "Venus Mahadasha when afflicted: Marital discord, affairs, STDs, kidney/reproductive problems, excessive indulgence, financial extravagance, vehicle accidents, and loss of reputation through scandals."
+    text_hindi: "पीड़ित शुक्र की महादशा: वैवाहिक कलह, प्रेम प्रसंग, यौन रोग, गुर्दे/प्रजनन समस्या, अत्यधिक भोग, आर्थिक फिजूलखर्ची, वाहन दुर्घटना और कलंक से प्रतिष्ठा हानि।"
+    rule_type: dasha
+
+  - verse: 13
+    topic: dasha_effects
+    planets: [Saturn]
+    houses: []
+    text_sanskrit: "Shani Dasha Phalam — Seva Adhikara Sthirata"
+    text_english: "Saturn Mahadasha (19 years): When well-placed, gives discipline, career stability, authority through hard work, gains from oil/iron/agriculture, land acquisition, and lasting achievements. Success comes through persistent effort and patience."
+    text_hindi: "शनि महादशा (19 वर्ष): शुभ स्थिति में अनुशासन, व्यावसायिक स्थिरता, कठिन परिश्रम से अधिकार, तेल/लोहा/कृषि से लाभ, भूमि प्राप्ति और स्थायी उपलब्धियाँ देता है। सफलता निरन्तर प्रयास और धैर्य से आती है।"
+    rule_type: dasha
+
+  - verse: 14
+    topic: dasha_effects
+    planets: [Saturn]
+    houses: []
+    text_sanskrit: "Shani Dasha Ashubha Phalam"
+    text_english: "Saturn Mahadasha when afflicted: Chronic diseases (especially joint and bone), depression, isolation, career setbacks, separation from loved ones, legal troubles, and poverty. The native faces prolonged periods of hardship and feels burdened by responsibilities."
+    text_hindi: "पीड़ित शनि की महादशा: दीर्घकालिक रोग (विशेषतः जोड़ों और हड्डियों का), अवसाद, एकाकीपन, व्यावसायिक विफलता, प्रियजनों से वियोग, कानूनी परेशानी और दरिद्रता। जातक दीर्घकालिक कष्ट और उत्तरदायित्वों के बोझ का अनुभव करता है।"
+    rule_type: dasha
+
+  - verse: 15
+    topic: dasha_effects
+    planets: [Rahu]
+    houses: []
+    text_sanskrit: "Rahu Dasha Phalam — Videshe Labha Bhramaha"
+    text_english: "Rahu Mahadasha (18 years): When well-placed, gives foreign travel/residence, sudden gains, success in technology/media, political ambitions fulfilled, and unconventional achievements. Results are dramatic and transformative."
+    text_hindi: "राहु महादशा (18 वर्ष): शुभ स्थिति में विदेश यात्रा/निवास, अचानक लाभ, प्रौद्योगिकी/मीडिया में सफलता, राजनीतिक महत्वाकांक्षा पूर्ति और अपारम्परिक उपलब्धियाँ देता है। परिणाम नाटकीय और परिवर्तनकारी होते हैं।"
+    rule_type: dasha
+
+  - verse: 16
+    topic: dasha_effects
+    planets: [Rahu]
+    houses: []
+    text_sanskrit: "Rahu Dasha Ashubha Phalam"
+    text_english: "Rahu Mahadasha when afflicted: Confusion, deception, phobias, poisoning risks, snake-related fears, skin diseases, mental instability, addictions, and scandals. The native may be cheated or drawn into illicit activities."
+    text_hindi: "पीड़ित राहु की महादशा: भ्रम, छल, भय, विषाक्तता का जोखिम, सर्प सम्बन्धी भय, त्वचा रोग, मानसिक अस्थिरता, व्यसन और कलंक। जातक को ठगा जा सकता है या अवैध कार्यों में खींचा जा सकता है।"
+    rule_type: dasha
+
+  - verse: 17
+    topic: dasha_effects
+    planets: [Ketu]
+    houses: []
+    text_sanskrit: "Ketu Dasha Phalam — Moksha Adhyatma Vairagya"
+    text_english: "Ketu Mahadasha (7 years): When well-placed, gives spiritual awakening, psychic abilities, mastery of occult sciences, detachment from material world, and moksha (liberation). Good for meditation, research, and spiritual pursuits."
+    text_hindi: "केतु महादशा (7 वर्ष): शुभ स्थिति में आध्यात्मिक जागृति, अतीन्द्रिय शक्तियाँ, गुप्त विद्या में दक्षता, भौतिक संसार से वैराग्य और मोक्ष देता है। ध्यान, शोध और आध्यात्मिक कार्यों के लिए अच्छा।"
+    rule_type: dasha
+
+  - verse: 18
+    topic: dasha_effects
+    planets: [Ketu]
+    houses: []
+    text_sanskrit: "Ketu Dasha Ashubha Phalam"
+    text_english: "Ketu Mahadasha when afflicted: Sudden losses, mysterious diseases, accidents, surgical emergencies, conflicts with maternal relatives, spiritual confusion, and isolation. The native feels directionless and experiences abrupt endings."
+    text_hindi: "पीड़ित केतु की महादशा: अचानक हानि, रहस्यमय रोग, दुर्घटना, शल्य चिकित्सा आपातकाल, ननिहाल पक्ष से विवाद, आध्यात्मिक भ्रम और एकाकीपन। जातक दिशाहीन अनुभव करता है और अचानक अन्त का सामना करता है।"
+    rule_type: dasha

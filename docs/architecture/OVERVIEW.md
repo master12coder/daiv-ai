@@ -1,98 +1,468 @@
-# Architecture Overview
+# Jyotish — Architecture
 
-## Philosophy
+## One Sentence
+Three packages: engine computes, products interpret, apps deliver.
 
-The Vedic AI Framework follows **Clean Architecture + Domain-Driven Design +
-Hexagonal (Ports & Adapters)** principles. The core insight: astronomical
-computation is deterministic truth, while interpretation is probabilistic
-opinion. The architecture enforces this distinction at the import level.
+## Team
+- **Manish**: Tech lead. Reviews, directs, decides.
+- **Claude Code**: Developer. Writes code, runs tests, commits.
+- **Claude Cowork**: Maintains architecture, reviews PRs, runs audits.
 
-## Layer Diagram
+## Stack (Modern Python, AI-Era)
+- **Python 3.12+** — match statements, type params, f-string debugging
+- **uv** — package manager + workspace linking
+- **Pydantic v2** — models with validation, JSON serialization, settings
+- **pyswisseph** — NASA JPL DE431 ephemeris, 0.001° precision
+- **Jinja2** — prompt templates
+- **Click** — CLI
+- **FastAPI** — web API + HTML
+- **python-telegram-bot** — daily companion delivery
+- **matplotlib + reportlab** — charts + PDF
+- **ruff** — lint + format
+- **mypy** — type check
+- **pytest** — test
 
-```
-┌─────────────────────────────────────────────────────┐
-│                    deliver/                          │  Layer 5: Output
-│       (PDF, Markdown, JSON, Telegram)               │  Adapters
-├─────────────────────────────────────────────────────┤
-│                   interpret/                         │  Layer 3: LLM
-│     (Prompt templates, LLM backends, validation)    │  Interpretation
-├────────────────────┬────────────────────────────────┤
-│    knowledge/      │         learn/                  │  Layer 2: Rules
-│  (YAML rules,      │  (Pandit Ji corrections,       │  Layer 4: Learning
-│   scripture DB)    │   6-layer validation)           │
-├────────────────────┴────────────────────────────────┤
-│                    compute/                          │  Layer 1: Computation
-│     (Swiss Ephemeris, Dasha, Yoga, Dosha)           │  DETERMINISTIC
-├─────────────────────────────────────────────────────┤
-│                    domain/                           │  Foundation
-│   (Models, Constants, Rules, Exceptions)            │  Shared kernel
-└─────────────────────────────────────────────────────┘
-```
+---
 
-## One-Way Dependency Rule
-
-Dependencies flow **inward and downward only**:
+## Three Packages
 
 ```
-deliver/ → interpret/ → compute/ → domain/
-                ↓            ↓
-           knowledge/    domain/
-                ↓
-             learn/
+jyotish/
+├── engine/                 # pip install jyotish-engine
+│   └── src/jyotish_engine/
+├── products/               # pip install jyotish-products
+│   └── src/jyotish_products/
+├── apps/                   # pip install jyotish
+│   └── src/jyotish_app/
+├── docs/
+├── scripts/
+├── tests/
+├── pyproject.toml          # uv workspace root
+├── CLAUDE.md               # 40 lines. Rules only.
+├── README.md
+├── Makefile
+└── LICENSE
 ```
 
-**Import Rules:**
+### Why 3, not 1, not 15
 
-| Module        | Can Import From                              | NEVER Imports         |
-|---------------|----------------------------------------------|-----------------------|
-| `domain/`     | Python stdlib only                           | Any jyotish module    |
-| `compute/`    | `domain/`                                    | `interpret/`, `learn/`, `deliver/` |
-| `knowledge/`  | `domain/` (YAML files, no Python imports)    | `compute/`, `interpret/` |
-| `interpret/`  | `compute/`, `domain/`, `knowledge/`, `learn/`, `scriptures/` | `deliver/` |
-| `learn/`      | `domain/`, `scriptures/`                     | `compute/`, `interpret/`, `deliver/` |
-| `deliver/`    | `compute/`, `interpret/`, `domain/`          | `learn/`, `knowledge/` direct |
-| `cli.py`      | All layers (orchestrator)                    | —                     |
+| Count | Problem |
+|---|---|
+| 1 package | 100+ files, messy imports, can't install just computation |
+| 15 packages | 15 pyproject.toml files, dependency hell, solo dev overhead |
+| **3 packages** | **Clean separation. Installable parts. Claude manages 3 configs easily.** |
 
-## Data Flow
+---
+
+## Package 1: engine/ (Pure Computation — Zero AI)
 
 ```
-User Input (name, DOB, TOB, place)
-  │
-  ▼
-compute_chart() ──────────────────► ChartData (immutable dataclass)
-  │                                    │
-  │                                    ├── planets: dict[str, PlanetData]
-  │                                    ├── lagna_sign, yogas, doshas
-  │                                    └── dasha periods, strengths
-  │
-  ▼
-_build_chart_context() ───────────► Context dict (enriched)
-  │  Loads:                            │
-  │  ├── lordship_rules.yaml           ├── lordship classification
-  │  ├── gemstone_logic.yaml           ├── prohibited/recommended stones
-  │  ├── scripture_db                  ├── BPHS citations
-  │  └── pandit_corrections            └── learned rules
-  │
-  ▼
-Jinja2 renders prompt templates ──► System prompt + section prompts
-  │
-  ▼
-LLM backend.generate() ──────────► Raw interpretation text
-  │
-  ▼
-validate_interpretation() ────────► Safety-checked text + warnings
-  │
-  ▼
-format_report_markdown() ────────► Final output (Markdown/PDF/JSON)
+engine/
+├── pyproject.toml
+├── src/jyotish_engine/
+│   ├── __init__.py              # from jyotish_engine import compute_chart
+│   │
+│   ├── models/                  # Pydantic v2 models — THE contract
+│   │   ├── chart.py             # ChartData, PlanetPosition, HouseData
+│   │   ├── dasha.py             # DashaPeriod, DashaTimeline
+│   │   ├── yoga.py              # YogaResult, YogaStatus
+│   │   ├── transit.py           # TransitPosition, TransitImpact
+│   │   ├── panchang.py          # PanchangData, TithiInfo, HoraSlot
+│   │   ├── matching.py          # AshtakootResult, CompatibilityReport
+│   │   ├── gemstone.py          # GemstoneRec, ProhibitedStone
+│   │   └── daily.py             # DailyGuidance, RemedyLevel
+│   │
+│   ├── compute/                 # Swiss Ephemeris wrappers
+│   │   ├── chart.py             # compute_chart() → ChartData
+│   │   ├── dasha.py             # Vimshottari, Yogini, Chara
+│   │   ├── divisional.py        # D1-D60
+│   │   ├── ashtakavarga.py      # Bhinna + Sarva (total=337)
+│   │   ├── shadbala.py          # Six-fold strength
+│   │   ├── kp.py                # KP sub-lord table
+│   │   ├── jaimini.py           # Chara karakas
+│   │   ├── transit.py           # Current positions
+│   │   ├── panchang.py          # Tithi, nakshatra, yoga, karana
+│   │   ├── hora.py              # Planetary hora sequence
+│   │   ├── matching.py          # Ashtakoot 36-guna
+│   │   └── yoga_detector.py     # 150+ yoga detection
+│   │
+│   ├── knowledge/               # YAML source of truth
+│   │   ├── lordship_rules.yaml  # 12 lagnas: benefic/malefic/maraka
+│   │   ├── gemstone_logic.yaml  # Contraindications
+│   │   ├── yoga_definitions.yaml # 150+ yogas
+│   │   ├── remedy_rules.yaml    # Mantra, daan, color, food per planet
+│   │   ├── lal_kitab.yaml       # Planet × house remedies
+│   │   ├── mantras.yaml         # Audio links per planet
+│   │   └── loader.py            # YAML loading with caching
+│   │
+│   ├── scriptures/              # Classical text DB
+│   │   ├── bphs/                # 20+ chapter YAML files
+│   │   └── query.py             # Scripture query interface
+│   │
+│   ├── constants.py             # ALL magic numbers. One file.
+│   └── exceptions.py            # JyotishError hierarchy. One file.
 ```
 
-## Key Design Decisions
+**Dependencies:** pyswisseph, pyyaml, pydantic. Nothing else.
+**Can be used standalone:** `pip install jyotish-engine` → anyone gets NASA-grade computation.
+**No AI, no LLM, no network required.** Pure math + rules.
 
-See [DECISIONS.md](DECISIONS.md) for full Architecture Decision Records.
+---
 
-1. **Swiss Ephemeris for computation** — astronomical accuracy is non-negotiable
-2. **LLM-agnostic backends** — factory + protocol pattern, swap providers freely
-3. **YAML knowledge files** — human-editable, version-controlled astrological rules
-4. **Scripture citations** — every interpretation backed by classical text references
-5. **6-layer Pandit validation** — corrections validated against computation, scripture, and life events
-6. **Post-generation safety** — LLM output checked for dangerous gemstone errors
+## Package 2: products/ (AI + Business Logic)
+
+```
+products/
+├── pyproject.toml
+├── src/jyotish_products/
+│   ├── __init__.py
+│   │
+│   ├── interpret/               # LLM layer
+│   │   ├── factory.py           # get_llm("groq") → LLMBackend
+│   │   ├── context.py           # Build prompt context from chart + rules
+│   │   ├── renderer.py          # Jinja2 prompt rendering
+│   │   ├── validator.py         # Post-generation safety check
+│   │   ├── backends/
+│   │   │   ├── groq.py
+│   │   │   ├── ollama.py
+│   │   │   ├── claude.py
+│   │   │   ├── openai.py
+│   │   │   └── offline.py       # No LLM — computation only
+│   │   └── prompts/             # Jinja2 templates
+│   │       ├── overview.md.j2
+│   │       ├── career.md.j2
+│   │       ├── gemstone.md.j2
+│   │       └── ...
+│   │
+│   ├── kundali/                 # Product: Full Chart Report
+│   │   ├── report.py            # Orchestrator
+│   │   ├── diamond.py           # North Indian chart renderer
+│   │   ├── visuals.py           # Dasha gantt, heatmap, yoga cards
+│   │   └── pdf.py               # PDF builder (18 sections)
+│   │
+│   ├── daily/                   # Product: Daily Companion
+│   │   ├── engine.py            # compute_daily() → DailyGuidance
+│   │   ├── rating.py            # Day rating 1-10
+│   │   ├── levels.py            # Simple / Medium / Detailed
+│   │   ├── mantra.py            # Selector + audio links
+│   │   └── format.py            # WhatsApp / Telegram / Terminal formatters
+│   │
+│   ├── matching/                # Product: Compatibility
+│   │   ├── report.py            # Full compatibility analysis
+│   │   └── muhurta_dates.py     # Best marriage dates
+│   │
+│   ├── remedies/                # Product: Remedy Planner
+│   │   ├── gemstone.py          # Full recommendation engine
+│   │   ├── weekly.py            # Day-wise routine
+│   │   ├── pooja.py             # Monthly calendar
+│   │   └── lal_kitab.py         # Lal Kitab remedies
+│   │
+│   ├── predictions/             # Product: Accuracy Tracker
+│   │   ├── tracker.py           # Log, track, verify
+│   │   ├── accuracy.py          # Stats
+│   │   └── patterns.py          # Cross-chart patterns
+│   │
+│   ├── pandit/                  # Product: Professional Tools
+│   │   ├── technical.py         # Pandit-formatted report
+│   │   ├── comparison.py        # AI vs Pandit [=][+][≠]
+│   │   ├── corrections.py       # 6-layer validation
+│   │   └── trust.py             # Per-pandit scoring
+│   │
+│   ├── muhurta/                 # Product: Timing Finder
+│   │   ├── finder.py
+│   │   └── rahu_kaal.py
+│   │
+│   └── store/                   # SQLite persistence
+│       ├── charts.py            # Saved charts
+│       ├── events.py            # Life events
+│       └── predictions.py       # Prediction log
+```
+
+**Dependencies:** jyotish-engine, jinja2, groq/ollama/anthropic (optional), matplotlib, reportlab
+**Imports engine, never the reverse.**
+
+---
+
+## Package 3: apps/ (Delivery — How Users Access Products)
+
+```
+apps/
+├── pyproject.toml
+├── src/jyotish_app/
+│   ├── __init__.py
+│   │
+│   ├── cli/                     # jyotish command
+│   │   ├── main.py              # Click group
+│   │   ├── chart.py             # jyotish chart ...
+│   │   ├── kundali.py           # jyotish kundali ...
+│   │   ├── daily.py             # jyotish daily ...
+│   │   ├── match.py             # jyotish match ...
+│   │   ├── remedies.py          # jyotish remedies ...
+│   │   ├── predict.py           # jyotish predict ...
+│   │   ├── pandit.py            # jyotish pandit ...
+│   │   └── muhurta.py           # jyotish muhurta ...
+│   │
+│   ├── web/                     # Browser UI
+│   │   ├── app.py               # FastAPI
+│   │   ├── routes.py            # API routes
+│   │   └── templates/           # HTML (Jinja2)
+│   │
+│   └── telegram/                # Daily companion bot
+│       ├── bot.py
+│       └── handlers.py          # /start, /daily, /level, /mantra
+```
+
+**Dependencies:** jyotish-products, click, fastapi, python-telegram-bot
+**This is what users install:** `pip install jyotish`
+
+---
+
+## Layer Rule (One Picture)
+
+```
+┌──────────────────────────────────────┐
+│  apps/        CLI, Web, Telegram     │  ← Users interact here
+│  (Layer 3)    Format + Deliver       │
+└──────────────┬───────────────────────┘
+               │ imports
+┌──────────────▼───────────────────────┐
+│  products/    Kundali, Daily, Match  │  ← AI interprets here
+│  (Layer 2)    Interpret + Validate   │
+└──────────────┬───────────────────────┘
+               │ imports
+┌──────────────▼───────────────────────┐
+│  engine/      Compute, Knowledge     │  ← Math happens here
+│  (Layer 1)    Swiss Ephemeris + YAML │
+└──────────────────────────────────────┘
+               
+     engine/ has ZERO dependencies on products/ or apps/
+     products/ has ZERO dependencies on apps/
+     apps/ depends on everything above
+```
+
+---
+
+## Install Options
+
+```bash
+# User: everything
+pip install jyotish
+
+# Developer: just the engine (for their own app)
+pip install jyotish-engine
+
+# Researcher: engine + products (no CLI/web)
+pip install jyotish-products
+
+# Development (all packages linked)
+git clone https://github.com/master12coder/vedic-ai-framework
+cd vedic-ai-framework
+uv sync
+
+# With LLM backend
+pip install "jyotish[groq]"      # Free cloud
+pip install "jyotish[ollama]"    # Free local
+pip install "jyotish[claude]"    # Best quality
+```
+
+---
+
+## pyproject.toml (Root)
+
+```toml
+[project]
+name = "vedic-ai-framework"
+version = "1.0.0"
+requires-python = ">=3.12"
+
+[tool.uv.workspace]
+members = ["engine", "products", "apps"]
+
+[tool.uv.sources]
+jyotish-engine = { workspace = true }
+jyotish-products = { workspace = true }
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["engine/src", "products/src", "apps/src"]
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "N", "UP", "B", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.12"
+disallow_untyped_defs = true
+warn_return_any = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short --strict-markers"
+markers = [
+    "safety: gemstone/interpretation safety tests",
+    "slow: slow tests",
+]
+```
+
+---
+
+## Modern Python Patterns Used
+
+```python
+# Pydantic v2 models (not raw dataclasses)
+from pydantic import BaseModel, Field
+
+class PlanetPosition(BaseModel):
+    name: str
+    longitude: float = Field(ge=0, lt=360)
+    sign: int = Field(ge=0, lt=12)
+    degree: float = Field(ge=0, lt=30)
+    nakshatra: int = Field(ge=0, lt=27)
+    pada: int = Field(ge=1, le=4)
+    house: int = Field(ge=1, le=12)
+    retrograde: bool = False
+    combust: bool = False
+    dignity: str  # exalted, debilitated, own, mooltrikona, neutral
+
+# Python 3.12 match statements
+match planet.dignity:
+    case "exalted":
+        strength *= 1.5
+    case "debilitated":
+        strength *= 0.5
+    case "own" | "mooltrikona":
+        strength *= 1.25
+    case _:
+        pass
+
+# Protocol for LLM abstraction
+from typing import Protocol
+
+class LLMBackend(Protocol):
+    async def generate(self, system: str, user: str) -> str: ...
+    def name(self) -> str: ...
+
+# Factory with match
+def get_llm(provider: str) -> LLMBackend:
+    match provider:
+        case "groq": return GroqBackend()
+        case "ollama": return OllamaBackend()
+        case "claude": return ClaudeBackend()
+        case "none": return OfflineBackend()
+        case _: raise ValueError(f"Unknown: {provider}")
+```
+
+---
+
+## What Claude Code/Cowork Does Daily
+
+### Morning (automated or on-demand)
+```bash
+# Claude Cowork runs these checks
+make audit          # Architecture + safety
+make test           # All tests pass?
+make lint           # Code clean?
+
+# If any fail, Claude Code fixes automatically
+```
+
+### When you give a task
+```
+You: "Add Lal Kitab remedies for Saturn in 7th house"
+
+Claude Code:
+1. Reads CLAUDE.md (auto)
+2. Checks docs/architecture/ for where this goes
+3. Adds to engine/src/jyotish_engine/knowledge/lal_kitab.yaml
+4. Updates products/src/jyotish_products/remedies/lal_kitab.py
+5. Adds test in tests/products/remedies/test_lal_kitab.py
+6. Runs make all
+7. Commits: "feat(remedies): add Lal Kitab Saturn in 7th house rules"
+```
+
+### Daily companion operation
+```
+# Cron job or manual
+jyotish daily --chart charts/manish.json --level medium
+
+# Telegram bot runs 24/7
+jyotish bot start
+
+# User gets WhatsApp/Telegram message at 5:30 AM:
+# "7/10 | Green | ओम् बुधाय नमः × 11 | Avoid 3-4:30 PM"
+```
+
+---
+
+## File Count Target
+
+| Package | Files | Why |
+|---|---|---|
+| engine/ | ~35 | Computation + models + YAML + scriptures |
+| products/ | ~40 | 7 products + interpret + store |
+| apps/ | ~15 | CLI + web + telegram |
+| tests/ | ~50 | Mirror source structure |
+| docs/ | ~15 | Architecture + products + dev guides |
+| scripts/ | ~4 | Audit tools |
+| **Total** | **~160 files** | Manageable. Not bloated. |
+
+Each file: under 300 lines. Total codebase: ~15,000-20,000 lines.
+
+---
+
+## CLAUDE.md (Keep This Short)
+
+```
+# Rules for Claude Code
+
+Read docs/architecture/ for full context.
+
+## Commands
+make test | make lint | make audit | make all
+
+## Hard Rules
+- 300-line file limit
+- Pydantic v2 for all models
+- Type hints everywhere
+- Constants in engine/constants.py
+- Gemstones from lordship_rules.yaml ONLY
+- Every LLM prompt gets lordship rules + prohibited stones
+- Post-validate every LLM output
+- Layer: engine ← products ← apps (never reverse)
+
+## Test Fixture
+Manish: 13/03/1989, 12:17 PM, Varanasi
+Lagna: Mithuna | Moon: Rohini Pada 2
+Panna=SAFE | Pukhraj=PROHIBITED | Jupiter=MARAKA
+```
+
+30 lines. Done.
+
+---
+
+## Docs Structure
+
+```
+docs/
+├── architecture/
+│   ├── overview.md         # This document
+│   ├── layers.md           # Layer rules + examples
+│   └── decisions/          # ADRs (numbered)
+├── products/
+│   ├── kundali.md          # 18-section visual kundali spec
+│   ├── daily.md            # 3-level daily companion spec
+│   ├── matching.md         # Compatibility spec
+│   ├── remedies.md         # Gemstone + routine spec
+│   ├── predictions.md      # Accuracy tracker spec
+│   ├── pandit.md           # Professional tools spec
+│   └── muhurta.md          # Timing finder spec
+├── development/
+│   ├── setup.md            # Install + first run
+│   └── testing.md          # Strategy + fixtures
+├── vedic/
+│   ├── gemstone-safety.md  # Safety protocol
+│   └── lordship-guide.md   # Per-lagna rules
+└── roadmap.md              # Build order + timeline
+```
+
+No random .md at root. Ever.

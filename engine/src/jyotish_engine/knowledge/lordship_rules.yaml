@@ -1,0 +1,1814 @@
+# =============================================================================
+# Parashari Jyotish Lordship Rules - Complete Encyclopedic Reference
+# =============================================================================
+# Based on Brihat Parashara Hora Shastra (BPHS) lordship principles:
+#
+#   - Kendra lords (houses 1, 4, 7, 10): Lose natural beneficence if naturally
+#     benefic; gain beneficence if naturally malefic. This is the "Kendradhipati
+#     dosha" for benefics and "Kendradhipati yoga" for malefics.
+#   - Trikona lords (houses 1, 5, 9): Always functionally benefic regardless
+#     of natural status.
+#   - Dusthana lords (houses 3, 6, 8, 12): Functionally malefic.
+#   - Yogakaraka: A single planet owning both a kendra and a trikona becomes
+#     the most auspicious planet (yogakaraka) for that lagna.
+#   - Maraka planets: Lords of the 2nd and 7th houses are maraka (death-
+#     inflicting) planets.
+#   - The lagna lord (1st house lord) is always benefic as it owns both a
+#     kendra and a trikona simultaneously.
+#
+# House-Sign Mapping Reference (fixed for Nirayana/sidereal zodiac):
+#   Aries=1, Taurus=2, Gemini=3, Cancer=4, Leo=5, Virgo=6,
+#   Libra=7, Scorpio=8, Sagittarius=9, Capricorn=10, Aquarius=11, Pisces=12
+#
+# Dual-lordship planets (owning two signs):
+#   Mars    -> Aries, Scorpio
+#   Venus   -> Taurus, Libra
+#   Mercury -> Gemini, Virgo
+#   Jupiter -> Sagittarius, Pisces
+#   Saturn  -> Capricorn, Aquarius
+#
+# Single-lordship luminaries:
+#   Sun  -> Leo
+#   Moon -> Cancer
+#
+# Rahu and Ketu do not own signs in classical Parashari system but act as
+# agents of their sign dispositors and conjunct planets.
+# =============================================================================
+
+lagnas:
+
+  # ===========================================================================
+  # 1. MESHA (ARIES) LAGNA
+  # ===========================================================================
+  mesha:
+    lagna_number: 1
+    sign: Aries
+    sign_sanskrit: Mesha
+    sign_lord: Mars
+    element: Fire
+    modality: Chara (Cardinal)
+
+    house_lords:
+      1: Mars        # Aries - Kendra + Trikona
+      2: Venus       # Taurus - Maraka
+      3: Mercury     # Gemini - Dusthana (upachaya)
+      4: Moon        # Cancer - Kendra
+      5: Sun         # Leo - Trikona
+      6: Mercury     # Virgo - Dusthana
+      7: Venus       # Libra - Kendra + Maraka
+      8: Mars        # Scorpio - Dusthana
+      9: Jupiter     # Sagittarius - Trikona
+      10: Saturn     # Capricorn - Kendra
+      11: Saturn     # Aquarius - Labha (upachaya)
+      12: Jupiter    # Pisces - Dusthana
+
+    yogakaraka:
+      planet: Sun
+      reasoning: >
+        Sun owns the 5th house (Leo), a trikona. While Sun does not simultaneously
+        own a kendra, Parashara specifically singles out Sun as the most benefic
+        planet for Mesha lagna due to its pure trikona lordship without any
+        dusthana involvement. In strict dual-lordship yogakaraka terms, no single
+        planet owns both a kendra and trikona (other than Mars who also owns the
+        8th). Sun as 5th lord is the strongest functional benefic. Some texts
+        consider Mars a conditional yogakaraka since it owns lagna (kendra+trikona)
+        and the 8th, where its lagna lordship dominates.
+
+    functional_benefics:
+      - planet: Mars
+        houses_owned: [1, 8]
+        reasoning: >
+          Lagna lord is always benefic. Ownership of 8th house (Scorpio) is
+          mitigated because the 1st house lordship (kendra + trikona) dominates.
+          Parashara states the lagna lord is always auspicious.
+      - planet: Sun
+        houses_owned: [5]
+        reasoning: >
+          5th lord (Leo) is a pure trikona lord. Sun has no other lordship.
+          Pure trikona lordship makes Sun the most benefic planet for this lagna.
+      - planet: Jupiter
+        houses_owned: [9, 12]
+        reasoning: >
+          9th lord (Sagittarius) is a trikona lord. The 12th lordship (Pisces)
+          introduces some blemish, but the 9th house trikona lordship is
+          considered dominant. Jupiter remains benefic overall.
+      - planet: Moon
+        houses_owned: [4]
+        reasoning: >
+          4th lord (Cancer) is a kendra lord. As a natural benefic owning a
+          kendra, Moon gets Kendradhipati dosha (reduced beneficence). However,
+          Moon is still broadly favorable, especially when strong and well-placed.
+          Classified as a mild benefic or neutral.
+
+    functional_malefics:
+      - planet: Mercury
+        houses_owned: [3, 6]
+        reasoning: >
+          Mercury owns the 3rd (Gemini) and 6th (Virgo) houses, both dusthana/
+          upachaya. Double dusthana lordship makes Mercury a clear functional
+          malefic for Mesha lagna.
+      - planet: Venus
+        houses_owned: [2, 7]
+        reasoning: >
+          Venus owns the 2nd (Taurus) and 7th (Libra) houses. Both are maraka
+          sthanas. Venus is a double maraka and also suffers Kendradhipati dosha
+          as a natural benefic owning the 7th kendra. Venus is the chief
+          functional malefic for Aries lagna.
+      - planet: Saturn
+        houses_owned: [10, 11]
+        reasoning: >
+          Saturn owns the 10th (Capricorn, a kendra) and 11th (Aquarius).
+          Despite 10th house being a kendra (which normally helps a natural
+          malefic), the 11th house lordship is considered inauspicious in
+          Parashari rules. The combination makes Saturn a functional malefic.
+
+    maraka:
+      - planet: Venus
+        houses: [2, 7]
+        reasoning: >
+          Venus is the lord of both maraka houses (2nd = Taurus, 7th = Libra).
+          This makes Venus the primary and most potent maraka planet for Aries
+          lagna. In its dasha/antardasha, Venus can bring health crises or
+          death-like experiences, especially if afflicted.
+
+    gemstone_recommendations:
+      Mars:
+        gemstone: Red Coral (Moonga)
+        recommendation: wear
+        reasoning: >
+          Mars is the lagna lord. Strengthening Mars supports vitality, courage,
+          identity, and overall life force. Always recommended for Mesha natives.
+      Sun:
+        gemstone: Ruby (Manikya)
+        recommendation: wear
+        reasoning: >
+          Sun is the 5th lord (pure trikona). Strengthening Sun enhances
+          intelligence, progeny matters, spiritual merit, and creativity.
+          Highly recommended.
+      Jupiter:
+        gemstone: Yellow Sapphire (Pukhraj)
+        recommendation: wear
+        reasoning: >
+          Jupiter is the 9th lord (trikona of dharma/fortune). Strengthening
+          Jupiter enhances luck, higher learning, father, and spiritual growth.
+          The 12th house co-lordship is secondary. Recommended.
+      Moon:
+        gemstone: Pearl (Moti)
+        recommendation: test
+        reasoning: >
+          Moon is the 4th lord (kendra). As a natural benefic, Moon gets
+          Kendradhipati dosha. Pearl can be worn if Moon is weak, waning, or
+          afflicted in the chart; otherwise it may give mixed results.
+      Mercury:
+        gemstone: Emerald (Panna)
+        recommendation: avoid
+        reasoning: >
+          Mercury rules the 3rd and 6th houses (both dusthana). Strengthening
+          Mercury would amplify enemies, debts, diseases (6th) and unnecessary
+          struggles (3rd). Avoid wearing emerald.
+      Venus:
+        gemstone: Diamond (Heera)
+        recommendation: avoid
+        reasoning: >
+          Venus rules the 2nd and 7th (double maraka). Strengthening Venus can
+          activate maraka effects and bring health dangers. Also a functional
+          malefic. Strictly avoid.
+      Saturn:
+        gemstone: Blue Sapphire (Neelam)
+        recommendation: avoid
+        reasoning: >
+          Saturn rules the 10th and 11th houses. The 11th lordship makes Saturn
+          a functional malefic. Strengthening Saturn may amplify obstacles.
+          Avoid unless Saturn is in its own sign/exalted and specifically needed
+          for career in a well-analyzed chart.
+
+  # ===========================================================================
+  # 2. VRISHABHA (TAURUS) LAGNA
+  # ===========================================================================
+  vrishabha:
+    lagna_number: 2
+    sign: Taurus
+    sign_sanskrit: Vrishabha
+    sign_lord: Venus
+    element: Earth
+    modality: Sthira (Fixed)
+
+    house_lords:
+      1: Venus       # Taurus - Kendra + Trikona
+      2: Mercury     # Gemini - Maraka
+      3: Moon        # Cancer - Dusthana (upachaya)
+      4: Sun         # Leo - Kendra
+      5: Mercury     # Virgo - Trikona
+      6: Venus       # Libra - Dusthana
+      7: Mars        # Scorpio - Kendra + Maraka
+      8: Jupiter     # Sagittarius - Dusthana
+      9: Saturn      # Capricorn - Trikona
+      10: Saturn     # Aquarius - Kendra
+      11: Jupiter    # Pisces - Labha
+      12: Mars       # Aries - Dusthana
+
+    yogakaraka:
+      planet: Saturn
+      reasoning: >
+        Saturn owns the 9th house (Capricorn, a trikona) and the 10th house
+        (Aquarius, a kendra). Simultaneous ownership of a kendra and a trikona
+        by a single planet is the textbook definition of yogakaraka. Saturn is
+        the undisputed yogakaraka for Vrishabha lagna. This is one of the
+        clearest yogakaraka assignments in Jyotish.
+
+    functional_benefics:
+      - planet: Venus
+        houses_owned: [1, 6]
+        reasoning: >
+          Venus is the lagna lord (Taurus). Lagna lordship always confers
+          beneficence. The 6th house co-lordship (Libra) is secondary and
+          mitigated by the primacy of the 1st house. Venus remains benefic.
+      - planet: Saturn
+        houses_owned: [9, 10]
+        reasoning: >
+          Saturn is the yogakaraka, owning the 9th (trikona) and 10th (kendra).
+          The most auspicious planet for this lagna. Saturn's dashas bring
+          prosperity, career success, and spiritual advancement.
+      - planet: Mercury
+        houses_owned: [2, 5]
+        reasoning: >
+          Mercury owns the 5th house (Virgo, a trikona) and the 2nd house
+          (Gemini). The 5th lordship confers strong beneficence. The 2nd
+          lordship adds wealth significations. Mercury is benefic overall,
+          though the 2nd house also carries maraka potential.
+      - planet: Sun
+        houses_owned: [4]
+        reasoning: >
+          Sun owns the 4th house (Leo, a kendra). As a natural malefic owning
+          a kendra, Sun gains beneficence (Kendradhipati yoga for malefics).
+          Sun is a mild benefic for Taurus lagna.
+
+    functional_malefics:
+      - planet: Jupiter
+        houses_owned: [8, 11]
+        reasoning: >
+          Jupiter owns the 8th (Sagittarius, dusthana) and 11th (Pisces).
+          Both lordships are inauspicious in Parashari rules. Despite being
+          a natural benefic, Jupiter is the chief functional malefic for
+          Vrishabha lagna. This is a frequently misunderstood assignment.
+      - planet: Mars
+        houses_owned: [7, 12]
+        reasoning: >
+          Mars owns the 7th (Scorpio, kendra + maraka) and 12th (Aries,
+          dusthana). The 12th lordship is inauspicious, and the 7th makes
+          Mars a maraka. Mars is a functional malefic.
+      - planet: Moon
+        houses_owned: [3]
+        reasoning: >
+          Moon owns the 3rd house (Cancer). The 3rd is a mild dusthana/
+          upachaya. Moon is a mild functional malefic or neutral, less
+          harmful than Jupiter or Mars but not supportive either.
+
+    maraka:
+      - planet: Mercury
+        houses: [2]
+        reasoning: >
+          Mercury owns the 2nd house (Gemini), a maraka sthana. However,
+          Mercury also owns the 5th (trikona), which significantly dilutes
+          its maraka potential. Mercury is a mild maraka at best.
+      - planet: Mars
+        houses: [7]
+        reasoning: >
+          Mars owns the 7th house (Scorpio), the other maraka sthana. Combined
+          with 12th lordship (Aries), Mars is a more potent maraka than Mercury
+          for this lagna.
+
+    gemstone_recommendations:
+      Venus:
+        gemstone: Diamond (Heera)
+        recommendation: wear
+        reasoning: >
+          Venus is the lagna lord. Strengthening Venus supports health, personality,
+          charisma, and overall well-being. Always recommended for Vrishabha natives.
+      Saturn:
+        gemstone: Blue Sapphire (Neelam)
+        recommendation: wear
+        reasoning: >
+          Saturn is the yogakaraka (9th + 10th lord). Strengthening Saturn enhances
+          fortune, career, dharma, and overall prosperity. Highly recommended.
+      Mercury:
+        gemstone: Emerald (Panna)
+        recommendation: wear
+        reasoning: >
+          Mercury owns the 5th (trikona) and 2nd houses. Strengthening Mercury
+          enhances intelligence, progeny, wealth, and speech. Recommended.
+      Sun:
+        gemstone: Ruby (Manikya)
+        recommendation: test
+        reasoning: >
+          Sun is the 4th lord (kendra). As a malefic gaining kendra beneficence,
+          it is mildly positive. Ruby can be worn if Sun is weak and the native
+          needs support in property, education, or domestic happiness.
+      Jupiter:
+        gemstone: Yellow Sapphire (Pukhraj)
+        recommendation: avoid
+        reasoning: >
+          Jupiter owns the 8th and 11th houses, both inauspicious. Strengthening
+          Jupiter amplifies sudden disruptions, obstacles, and unfulfilled desires.
+          Avoid wearing yellow sapphire.
+      Mars:
+        gemstone: Red Coral (Moonga)
+        recommendation: avoid
+        reasoning: >
+          Mars owns the 7th (maraka) and 12th (loss). Strengthening Mars can
+          activate maraka effects and increase expenditure/loss. Avoid.
+      Moon:
+        gemstone: Pearl (Moti)
+        recommendation: neutral
+        reasoning: >
+          Moon owns only the 3rd house (mild dusthana). Pearl is generally not
+          recommended but not strongly contraindicated. Wear only if Moon is
+          severely afflicted and the native needs emotional stability.
+
+  # ===========================================================================
+  # 3. MITHUNA (GEMINI) LAGNA
+  # ===========================================================================
+  mithuna:
+    lagna_number: 3
+    sign: Gemini
+    sign_sanskrit: Mithuna
+    sign_lord: Mercury
+    element: Air
+    modality: Dwiswabhava (Mutable)
+
+    house_lords:
+      1: Mercury     # Gemini - Kendra + Trikona
+      2: Moon        # Cancer - Maraka
+      3: Sun         # Leo - Dusthana (upachaya)
+      4: Mercury     # Virgo - Kendra
+      5: Venus       # Libra - Trikona
+      6: Mars        # Scorpio - Dusthana
+      7: Jupiter     # Sagittarius - Kendra + Maraka
+      8: Saturn      # Capricorn - Dusthana
+      9: Saturn      # Aquarius - Trikona
+      10: Jupiter    # Pisces - Kendra
+      11: Mars       # Aries - Labha
+      12: Venus      # Taurus - Dusthana
+
+    yogakaraka:
+      planet: Venus
+      reasoning: >
+        Venus owns the 5th house (Libra, a trikona). Venus does not simultaneously
+        own a kendra, so it is not a strict yogakaraka by the dual-lordship
+        definition. However, Venus is the strongest functional benefic for Mithuna
+        lagna as the pure 5th lord. Saturn owns the 9th (trikona) and 8th
+        (dusthana), giving mixed results. In practice, Venus is treated as the
+        most auspicious planet. Some authorities consider no planet a strict
+        yogakaraka for Gemini lagna since no single planet owns both a kendra
+        and trikona (Mercury owns 1st and 4th, both kendras, not kendra+trikona
+        in the yogakaraka sense since 1st is both).
+
+    functional_benefics:
+      - planet: Mercury
+        houses_owned: [1, 4]
+        reasoning: >
+          Mercury is the lagna lord (Gemini) and 4th lord (Virgo). Owning the
+          1st house (kendra + trikona) ensures beneficence. The 4th is also
+          a kendra. Mercury is the anchor planet for this lagna.
+      - planet: Venus
+        houses_owned: [5, 12]
+        reasoning: >
+          Venus owns the 5th house (Libra, trikona) and 12th house (Taurus).
+          The 5th lordship confers strong beneficence. The 12th lordship is a
+          blemish but is overridden by the trikona ownership. Venus is the
+          strongest benefic after the lagna lord.
+      - planet: Saturn
+        houses_owned: [8, 9]
+        reasoning: >
+          Saturn owns the 9th house (Aquarius, trikona) and the 8th house
+          (Capricorn, dusthana). The 9th lordship is highly benefic, but the
+          8th lordship introduces complications. Parashara states that when a
+          planet owns both a trikona and dusthana, the trikona lordship
+          prevails. Saturn is benefic overall but with caveats.
+
+    functional_malefics:
+      - planet: Mars
+        houses_owned: [6, 11]
+        reasoning: >
+          Mars owns the 6th (Scorpio, dusthana) and 11th (Aries). Both
+          lordships are inauspicious. Mars is the chief functional malefic
+          for Mithuna lagna.
+      - planet: Jupiter
+        houses_owned: [7, 10]
+        reasoning: >
+          Jupiter owns the 7th (Sagittarius, kendra + maraka) and 10th
+          (Pisces, kendra). As a natural benefic owning two kendras, Jupiter
+          gets double Kendradhipati dosha. Jupiter is a functional malefic
+          and maraka for Gemini lagna. This is one of the most counterintuitive
+          but well-established rules in Parashari Jyotish.
+      - planet: Sun
+        houses_owned: [3]
+        reasoning: >
+          Sun owns the 3rd house (Leo), a mild dusthana/upachaya. Sun is a
+          mild functional malefic. Its single lordship of the 3rd makes it
+          less harmful than Mars or Jupiter but still not supportive.
+
+    maraka:
+      - planet: Moon
+        houses: [2]
+        reasoning: >
+          Moon owns the 2nd house (Cancer), a maraka sthana. With single
+          lordship of only the 2nd house, Moon is a straightforward maraka
+          for Gemini lagna.
+      - planet: Jupiter
+        houses: [7]
+        reasoning: >
+          Jupiter owns the 7th house (Sagittarius), the other maraka sthana.
+          Combined with being a functional malefic due to Kendradhipati dosha,
+          Jupiter is a potent maraka.
+
+    gemstone_recommendations:
+      Mercury:
+        gemstone: Emerald (Panna)
+        recommendation: wear
+        reasoning: >
+          Mercury is the lagna lord and 4th lord. Strengthening Mercury
+          supports intellect, communication, health, education, and property.
+          Always recommended for Mithuna natives.
+      Venus:
+        gemstone: Diamond (Heera)
+        recommendation: wear
+        reasoning: >
+          Venus is the 5th lord (trikona). Strengthening Venus enhances
+          intelligence, creativity, romance, and spiritual merit. Recommended.
+      Saturn:
+        gemstone: Blue Sapphire (Neelam)
+        recommendation: test
+        reasoning: >
+          Saturn owns the 9th (trikona) and 8th (dusthana). Results are mixed.
+          Blue Sapphire can be worn if Saturn is well-placed and the native
+          needs fortune/dharma support, but test carefully due to the 8th
+          house co-lordship.
+      Moon:
+        gemstone: Pearl (Moti)
+        recommendation: avoid
+        reasoning: >
+          Moon is the 2nd lord (maraka). Strengthening Moon can activate
+          maraka effects. Avoid wearing pearl unless Moon is extremely well-
+          placed and the native needs specific 2nd house support (wealth,
+          family).
+      Mars:
+        gemstone: Red Coral (Moonga)
+        recommendation: avoid
+        reasoning: >
+          Mars owns the 6th and 11th, both inauspicious houses. Strengthening
+          Mars amplifies enemies, conflicts, and unfulfilled ambitions. Avoid.
+      Jupiter:
+        gemstone: Yellow Sapphire (Pukhraj)
+        recommendation: avoid
+        reasoning: >
+          Jupiter is a functional malefic (7th + 10th lord with Kendradhipati
+          dosha) and a maraka. Strengthening Jupiter can bring health dangers
+          and obstacles disguised as opportunities. Avoid.
+      Sun:
+        gemstone: Ruby (Manikya)
+        recommendation: neutral
+        reasoning: >
+          Sun owns only the 3rd house (mild dusthana). Ruby is generally not
+          recommended but not strongly harmful. May be worn during Sun dasha
+          if Sun is very weak and the native needs courage and initiative.
+
+  # ===========================================================================
+  # 4. KARKA (CANCER) LAGNA
+  # ===========================================================================
+  karka:
+    lagna_number: 4
+    sign: Cancer
+    sign_sanskrit: Karka
+    sign_lord: Moon
+    element: Water
+    modality: Chara (Cardinal)
+
+    house_lords:
+      1: Moon        # Cancer - Kendra + Trikona
+      2: Sun         # Leo - Maraka
+      3: Mercury     # Virgo - Dusthana (upachaya)
+      4: Venus       # Libra - Kendra
+      5: Mars        # Scorpio - Trikona
+      6: Jupiter     # Sagittarius - Dusthana
+      7: Saturn      # Capricorn - Kendra + Maraka
+      8: Saturn      # Aquarius - Dusthana
+      9: Jupiter     # Pisces - Trikona
+      10: Mars       # Aries - Kendra
+      11: Venus      # Taurus - Labha
+      12: Mercury    # Gemini - Dusthana
+
+    yogakaraka:
+      planet: Mars
+      reasoning: >
+        Mars owns the 5th house (Scorpio, a trikona) and the 10th house (Aries,
+        a kendra). This simultaneous kendra-trikona ownership makes Mars the
+        textbook yogakaraka for Karka lagna. Mars dashas can bring tremendous
+        success in career, progeny, and creative endeavors. This is one of the
+        most celebrated yogakaraka positions in Jyotish.
+
+    functional_benefics:
+      - planet: Moon
+        houses_owned: [1]
+        reasoning: >
+          Moon is the lagna lord (Cancer). The lagna lord is always benefic.
+          Strengthening Moon is essential for Cancer natives.
+      - planet: Mars
+        houses_owned: [5, 10]
+        reasoning: >
+          Mars is the yogakaraka, owning the 5th (trikona) and 10th (kendra).
+          Mars is the most powerful benefic for this lagna, bringing raja yoga
+          potential.
+      - planet: Jupiter
+        houses_owned: [6, 9]
+        reasoning: >
+          Jupiter owns the 9th (Pisces, trikona) and 6th (Sagittarius, dusthana).
+          The 9th lordship dominates, making Jupiter benefic overall. The 6th
+          co-lordship introduces some blemish but does not negate the trikona
+          beneficence.
+
+    functional_malefics:
+      - planet: Saturn
+        houses_owned: [7, 8]
+        reasoning: >
+          Saturn owns the 7th (Capricorn, kendra + maraka) and 8th (Aquarius,
+          dusthana). The 8th lordship is deeply inauspicious, and the 7th makes
+          Saturn a maraka. Saturn is the primary functional malefic for Cancer
+          lagna.
+      - planet: Venus
+        houses_owned: [4, 11]
+        reasoning: >
+          Venus owns the 4th (Libra, kendra) and 11th (Taurus). The 11th
+          lordship is inauspicious, and as a natural benefic owning the 4th
+          kendra, Venus gets Kendradhipati dosha. Venus is a functional malefic.
+      - planet: Mercury
+        houses_owned: [3, 12]
+        reasoning: >
+          Mercury owns the 3rd (Virgo) and 12th (Gemini), both dusthana.
+          Double dusthana lordship makes Mercury a functional malefic.
+      - planet: Sun
+        houses_owned: [2]
+        reasoning: >
+          Sun owns the 2nd house (Leo), a maraka sthana. Sun is a mild
+          functional malefic/neutral due to maraka lordship. However, Sun is
+          a friend of the lagna lord Moon, which mitigates some harm.
+
+    maraka:
+      - planet: Sun
+        houses: [2]
+        reasoning: >
+          Sun owns the 2nd house (Leo), a maraka sthana. Sun is a maraka
+          for Cancer lagna, though its natural friendship with Moon (lagna
+          lord) reduces the severity somewhat.
+      - planet: Saturn
+        houses: [7]
+        reasoning: >
+          Saturn owns the 7th house (Capricorn), the other maraka sthana.
+          Combined with 8th lordship, Saturn is the most dangerous maraka
+          for Cancer lagna. Saturn dashas require careful attention.
+
+    gemstone_recommendations:
+      Moon:
+        gemstone: Pearl (Moti)
+        recommendation: wear
+        reasoning: >
+          Moon is the lagna lord. Pearl strengthens health, mind, emotions,
+          and overall vitality. Essential for Cancer natives.
+      Mars:
+        gemstone: Red Coral (Moonga)
+        recommendation: wear
+        reasoning: >
+          Mars is the yogakaraka (5th + 10th lord). Red Coral enhances career,
+          intelligence, courage, and success. Highly recommended.
+      Jupiter:
+        gemstone: Yellow Sapphire (Pukhraj)
+        recommendation: wear
+        reasoning: >
+          Jupiter is the 9th lord (trikona of dharma). Yellow Sapphire enhances
+          fortune, spirituality, and wisdom. The 6th co-lordship is secondary.
+          Recommended.
+      Sun:
+        gemstone: Ruby (Manikya)
+        recommendation: test
+        reasoning: >
+          Sun is the 2nd lord (maraka). However, Sun is friendly to the lagna
+          lord Moon and governs wealth and family. Test with caution; may be
+          worn if Sun is weak and wealth/family matters need support.
+      Saturn:
+        gemstone: Blue Sapphire (Neelam)
+        recommendation: avoid
+        reasoning: >
+          Saturn owns the 7th (maraka) and 8th (dusthana). Strengthening Saturn
+          amplifies longevity threats and sudden calamities. Avoid.
+      Venus:
+        gemstone: Diamond (Heera)
+        recommendation: avoid
+        reasoning: >
+          Venus owns the 4th and 11th. The 11th lordship makes Venus a functional
+          malefic, and Kendradhipati dosha applies. Avoid wearing diamond.
+      Mercury:
+        gemstone: Emerald (Panna)
+        recommendation: avoid
+        reasoning: >
+          Mercury owns the 3rd and 12th (double dusthana). Strengthening Mercury
+          amplifies losses, expenses, and unnecessary struggles. Avoid.
+
+  # ===========================================================================
+  # 5. SIMHA (LEO) LAGNA
+  # ===========================================================================
+  simha:
+    lagna_number: 5
+    sign: Leo
+    sign_sanskrit: Simha
+    sign_lord: Sun
+    element: Fire
+    modality: Sthira (Fixed)
+
+    house_lords:
+      1: Sun         # Leo - Kendra + Trikona
+      2: Mercury     # Virgo - Maraka
+      3: Venus       # Libra - Dusthana (upachaya)
+      4: Mars        # Scorpio - Kendra
+      5: Jupiter     # Sagittarius - Trikona
+      6: Saturn      # Capricorn - Dusthana
+      7: Saturn      # Aquarius - Kendra + Maraka
+      8: Jupiter     # Pisces - Dusthana
+      9: Mars        # Aries - Trikona
+      10: Venus      # Taurus - Kendra
+      11: Mercury    # Gemini - Labha
+      12: Moon       # Cancer - Dusthana
+
+    yogakaraka:
+      planet: Mars
+      reasoning: >
+        Mars owns the 4th house (Scorpio, a kendra) and the 9th house (Aries,
+        a trikona). This simultaneous kendra-trikona ownership makes Mars the
+        yogakaraka for Simha lagna. Mars dashas bring success in property,
+        education, fortune, father's blessings, and dharmic pursuits.
+
+    functional_benefics:
+      - planet: Sun
+        houses_owned: [1]
+        reasoning: >
+          Sun is the lagna lord (Leo). The lagna lord is always benefic.
+          Sun supports vitality, authority, confidence, and leadership
+          for Leo natives.
+      - planet: Mars
+        houses_owned: [4, 9]
+        reasoning: >
+          Mars is the yogakaraka, owning the 4th (kendra) and 9th (trikona).
+          The most auspicious planet for Leo lagna. Mars brings raja yoga
+          results when strong and well-placed.
+      - planet: Jupiter
+        houses_owned: [5, 8]
+        reasoning: >
+          Jupiter owns the 5th house (Sagittarius, trikona) and the 8th
+          (Pisces, dusthana). The 5th lordship confers beneficence. The 8th
+          co-lordship is a blemish but the trikona lordship dominates. Jupiter
+          is benefic overall, especially for intelligence and spiritual matters.
+
+    functional_malefics:
+      - planet: Saturn
+        houses_owned: [6, 7]
+        reasoning: >
+          Saturn owns the 6th (Capricorn, dusthana) and 7th (Aquarius, kendra
+          + maraka). The 6th lordship is clearly inauspicious. As a natural
+          malefic, the 7th kendra lordship would normally help, but the 6th
+          co-lordship corrupts it. Saturn is the chief functional malefic and
+          maraka for Leo lagna.
+      - planet: Venus
+        houses_owned: [3, 10]
+        reasoning: >
+          Venus owns the 3rd (Libra, mild dusthana) and 10th (Taurus, kendra).
+          As a natural benefic owning a kendra, Venus gets Kendradhipati dosha.
+          The 3rd lordship adds to the blemish. Venus gives mixed-to-negative
+          results.
+      - planet: Mercury
+        houses_owned: [2, 11]
+        reasoning: >
+          Mercury owns the 2nd (Virgo, maraka) and 11th (Gemini). The 11th
+          lordship is inauspicious, and the 2nd makes Mercury a maraka.
+          Mercury is a functional malefic.
+      - planet: Moon
+        houses_owned: [12]
+        reasoning: >
+          Moon owns the 12th house (Cancer, dusthana of loss/expense). Moon
+          is a mild functional malefic. However, Moon's natural friendship
+          with Sun (lagna lord) somewhat reduces the negativity.
+
+    maraka:
+      - planet: Mercury
+        houses: [2]
+        reasoning: >
+          Mercury owns the 2nd house (Virgo), a maraka sthana. Combined
+          with 11th lordship, Mercury is a significant maraka for Leo lagna.
+      - planet: Saturn
+        houses: [7]
+        reasoning: >
+          Saturn owns the 7th house (Aquarius), the other maraka sthana.
+          Combined with 6th lordship, Saturn is the most potent maraka
+          for Leo lagna.
+
+    gemstone_recommendations:
+      Sun:
+        gemstone: Ruby (Manikya)
+        recommendation: wear
+        reasoning: >
+          Sun is the lagna lord. Ruby strengthens health, authority, vitality,
+          and leadership. Essential for Leo natives.
+      Mars:
+        gemstone: Red Coral (Moonga)
+        recommendation: wear
+        reasoning: >
+          Mars is the yogakaraka (4th + 9th lord). Red Coral enhances fortune,
+          property, education, and dharmic pursuits. Highly recommended.
+      Jupiter:
+        gemstone: Yellow Sapphire (Pukhraj)
+        recommendation: wear
+        reasoning: >
+          Jupiter is the 5th lord (trikona). Yellow Sapphire enhances
+          intelligence, progeny, spiritual merit, and creativity. The 8th
+          co-lordship is mitigated. Recommended.
+      Moon:
+        gemstone: Pearl (Moti)
+        recommendation: neutral
+        reasoning: >
+          Moon owns only the 12th house (dusthana). Pearl is generally not
+          recommended. However, Moon is friendly to Sun, and pearl may be
+          worn if Moon is severely afflicted and the native faces sleep or
+          mental health issues.
+      Saturn:
+        gemstone: Blue Sapphire (Neelam)
+        recommendation: avoid
+        reasoning: >
+          Saturn owns the 6th (dusthana) and 7th (maraka). Strengthening
+          Saturn amplifies enemies, diseases, and maraka effects. Avoid.
+      Venus:
+        gemstone: Diamond (Heera)
+        recommendation: avoid
+        reasoning: >
+          Venus owns the 3rd and 10th with Kendradhipati dosha. Strengthening
+          Venus gives mixed results tilted toward negative. Avoid.
+      Mercury:
+        gemstone: Emerald (Panna)
+        recommendation: avoid
+        reasoning: >
+          Mercury owns the 2nd (maraka) and 11th (inauspicious). Strengthening
+          Mercury may activate maraka effects. Avoid.
+
+  # ===========================================================================
+  # 6. KANYA (VIRGO) LAGNA
+  # ===========================================================================
+  kanya:
+    lagna_number: 6
+    sign: Virgo
+    sign_sanskrit: Kanya
+    sign_lord: Mercury
+    element: Earth
+    modality: Dwiswabhava (Mutable)
+
+    house_lords:
+      1: Mercury     # Virgo - Kendra + Trikona
+      2: Venus       # Libra - Maraka
+      3: Mars        # Scorpio - Dusthana (upachaya)
+      4: Jupiter     # Sagittarius - Kendra
+      5: Saturn      # Capricorn - Trikona
+      6: Saturn      # Aquarius - Dusthana
+      7: Jupiter     # Pisces - Kendra + Maraka
+      8: Mars        # Aries - Dusthana
+      9: Venus       # Taurus - Trikona
+      10: Mercury    # Gemini - Kendra
+      11: Moon       # Cancer - Labha
+      12: Sun        # Leo - Dusthana
+
+    yogakaraka:
+      planet: Venus
+      reasoning: >
+        Venus owns the 9th house (Taurus, a trikona). Venus does not simultaneously
+        own a kendra, so strictly speaking there is no single-planet yogakaraka
+        for Kanya lagna. However, Venus as the pure 9th lord is the strongest
+        functional benefic. Some texts note that Saturn owns the 5th (trikona)
+        and 6th (dusthana), which gives mixed results. Mercury owns both the
+        1st and 10th (both kendras). Venus stands as the most auspicious planet
+        for Virgo lagna.
+
+    functional_benefics:
+      - planet: Mercury
+        houses_owned: [1, 10]
+        reasoning: >
+          Mercury is the lagna lord (Virgo) and 10th lord (Gemini). Owning the
+          1st house ensures beneficence. The 10th is also a kendra, reinforcing
+          career and status. Mercury is the anchor planet.
+      - planet: Venus
+        houses_owned: [2, 9]
+        reasoning: >
+          Venus owns the 9th house (Taurus, trikona) and 2nd house (Libra).
+          The 9th lordship is powerfully benefic. The 2nd lordship adds wealth
+          potential (though also maraka). Venus is the strongest benefic after
+          the lagna lord.
+      - planet: Saturn
+        houses_owned: [5, 6]
+        reasoning: >
+          Saturn owns the 5th house (Capricorn, trikona) and 6th house
+          (Aquarius, dusthana). The 5th lordship confers beneficence. The 6th
+          co-lordship is a blemish but the trikona lordship dominates per
+          Parashara. Saturn is benefic overall with some reservation.
+
+    functional_malefics:
+      - planet: Mars
+        houses_owned: [3, 8]
+        reasoning: >
+          Mars owns the 3rd (Scorpio) and 8th (Aries), both dusthana.
+          Double dusthana lordship makes Mars the chief functional malefic
+          for Kanya lagna.
+      - planet: Jupiter
+        houses_owned: [4, 7]
+        reasoning: >
+          Jupiter owns the 4th (Sagittarius, kendra) and 7th (Pisces, kendra
+          + maraka). As a natural benefic owning two kendras, Jupiter gets
+          double Kendradhipati dosha. Jupiter is a functional malefic and
+          maraka, similar to Jupiter's role for Gemini lagna.
+      - planet: Moon
+        houses_owned: [11]
+        reasoning: >
+          Moon owns the 11th house (Cancer). The 11th lordship is inauspicious
+          in Parashari rules. Moon is a mild functional malefic.
+      - planet: Sun
+        houses_owned: [12]
+        reasoning: >
+          Sun owns the 12th house (Leo, dusthana of loss). Sun is a functional
+          malefic, bringing expenditure and loss themes.
+
+    maraka:
+      - planet: Venus
+        houses: [2]
+        reasoning: >
+          Venus owns the 2nd house (Libra), a maraka sthana. However, Venus
+          also owns the 9th (trikona), which greatly dilutes the maraka
+          potential. Venus is a very mild maraka.
+      - planet: Jupiter
+        houses: [7]
+        reasoning: >
+          Jupiter owns the 7th house (Pisces), the other maraka sthana.
+          Combined with Kendradhipati dosha and 4th lordship, Jupiter is
+          the primary maraka for Virgo lagna.
+
+    gemstone_recommendations:
+      Mercury:
+        gemstone: Emerald (Panna)
+        recommendation: wear
+        reasoning: >
+          Mercury is the lagna lord and 10th lord. Emerald strengthens health,
+          intellect, career, and communication. Essential for Kanya natives.
+      Venus:
+        gemstone: Diamond (Heera)
+        recommendation: wear
+        reasoning: >
+          Venus is the 9th lord (trikona of dharma/fortune) and 2nd lord
+          (wealth). Diamond enhances fortune, wealth, and spiritual merit.
+          Highly recommended.
+      Saturn:
+        gemstone: Blue Sapphire (Neelam)
+        recommendation: test
+        reasoning: >
+          Saturn owns the 5th (trikona) and 6th (dusthana). Results are mixed.
+          Blue Sapphire may be worn if Saturn is well-placed and the native
+          needs support in intelligence, children, or creative pursuits. Test
+          carefully due to the 6th house co-lordship.
+      Mars:
+        gemstone: Red Coral (Moonga)
+        recommendation: avoid
+        reasoning: >
+          Mars owns the 3rd and 8th (double dusthana). Strengthening Mars
+          amplifies accidents, sudden upheavals, and struggles. Avoid.
+      Jupiter:
+        gemstone: Yellow Sapphire (Pukhraj)
+        recommendation: avoid
+        reasoning: >
+          Jupiter is a functional malefic (double Kendradhipati dosha) and
+          maraka (7th lord). Strengthening Jupiter can bring health dangers
+          and domestic disruptions. Avoid.
+      Moon:
+        gemstone: Pearl (Moti)
+        recommendation: avoid
+        reasoning: >
+          Moon owns the 11th house (inauspicious). Strengthening Moon
+          amplifies unfulfilled desires and may bring negative associations.
+          Avoid.
+      Sun:
+        gemstone: Ruby (Manikya)
+        recommendation: avoid
+        reasoning: >
+          Sun owns the 12th house (loss, expenditure). Strengthening Sun
+          amplifies expenses and isolation. Avoid.
+
+  # ===========================================================================
+  # 7. TULA (LIBRA) LAGNA
+  # ===========================================================================
+  tula:
+    lagna_number: 7
+    sign: Libra
+    sign_sanskrit: Tula
+    sign_lord: Venus
+    element: Air
+    modality: Chara (Cardinal)
+
+    house_lords:
+      1: Venus       # Libra - Kendra + Trikona
+      2: Mars        # Scorpio - Maraka
+      3: Jupiter     # Sagittarius - Dusthana (upachaya)
+      4: Saturn      # Capricorn - Kendra
+      5: Saturn      # Aquarius - Trikona
+      6: Jupiter     # Pisces - Dusthana
+      7: Mars        # Aries - Kendra + Maraka
+      8: Venus       # Taurus - Dusthana
+      9: Mercury     # Gemini - Trikona
+      10: Moon       # Cancer - Kendra
+      11: Sun        # Leo - Labha
+      12: Mercury    # Virgo - Dusthana
+
+    yogakaraka:
+      planet: Saturn
+      reasoning: >
+        Saturn owns the 4th house (Capricorn, a kendra) and the 5th house
+        (Aquarius, a trikona). This simultaneous kendra-trikona ownership
+        makes Saturn the textbook yogakaraka for Tula lagna. This mirrors
+        Saturn's yogakaraka status for Taurus lagna. Saturn's dashas bring
+        success in education, property, creativity, progeny, and domestic
+        happiness.
+
+    functional_benefics:
+      - planet: Venus
+        houses_owned: [1, 8]
+        reasoning: >
+          Venus is the lagna lord (Libra). Lagna lordship always confers
+          beneficence. The 8th house co-lordship (Taurus) introduces longevity/
+          transformation themes but does not override the 1st house primacy.
+          Venus remains benefic.
+      - planet: Saturn
+        houses_owned: [4, 5]
+        reasoning: >
+          Saturn is the yogakaraka, owning the 4th (kendra) and 5th (trikona).
+          The most auspicious planet for Libra lagna. Saturn brings raja yoga
+          and prosperity.
+      - planet: Mercury
+        houses_owned: [9, 12]
+        reasoning: >
+          Mercury owns the 9th house (Gemini, trikona) and 12th house (Virgo).
+          The 9th lordship confers strong beneficence. The 12th co-lordship
+          is a blemish but the trikona lordship dominates. Mercury is benefic
+          overall.
+      - planet: Moon
+        houses_owned: [10]
+        reasoning: >
+          Moon owns the 10th house (Cancer, kendra). As a natural benefic
+          owning a kendra, Moon gets Kendradhipati dosha. However, Moon is
+          still mildly positive for career matters when well-placed. Classified
+          as a mild benefic or neutral.
+
+    functional_malefics:
+      - planet: Jupiter
+        houses_owned: [3, 6]
+        reasoning: >
+          Jupiter owns the 3rd (Sagittarius) and 6th (Pisces), both dusthana.
+          Double dusthana lordship makes Jupiter the chief functional malefic
+          for Tula lagna, despite being a natural benefic.
+      - planet: Mars
+        houses_owned: [2, 7]
+        reasoning: >
+          Mars owns the 2nd (Scorpio, maraka) and 7th (Aries, kendra + maraka).
+          Mars is a double maraka. While the 7th kendra lordship helps a
+          natural malefic, the maraka nature dominates. Mars is a functional
+          malefic.
+      - planet: Sun
+        houses_owned: [11]
+        reasoning: >
+          Sun owns the 11th house (Leo). The 11th lordship is inauspicious.
+          Sun is a functional malefic for Libra lagna.
+
+    maraka:
+      - planet: Mars
+        houses: [2, 7]
+        reasoning: >
+          Mars owns both maraka houses (2nd = Scorpio, 7th = Aries). This
+          makes Mars the primary and most dangerous maraka for Libra lagna,
+          similar to Venus for Aries lagna (which also owns both maraka houses).
+
+    gemstone_recommendations:
+      Venus:
+        gemstone: Diamond (Heera)
+        recommendation: wear
+        reasoning: >
+          Venus is the lagna lord. Diamond strengthens health, personality,
+          charisma, and overall well-being. Essential for Tula natives.
+      Saturn:
+        gemstone: Blue Sapphire (Neelam)
+        recommendation: wear
+        reasoning: >
+          Saturn is the yogakaraka (4th + 5th lord). Blue Sapphire enhances
+          education, property, creativity, intelligence, and domestic
+          happiness. Highly recommended.
+      Mercury:
+        gemstone: Emerald (Panna)
+        recommendation: wear
+        reasoning: >
+          Mercury is the 9th lord (trikona of fortune). Emerald enhances
+          luck, higher education, dharma, and spiritual growth. The 12th
+          co-lordship is secondary. Recommended.
+      Moon:
+        gemstone: Pearl (Moti)
+        recommendation: test
+        reasoning: >
+          Moon is the 10th lord (kendra) with Kendradhipati dosha as a
+          natural benefic. Pearl may be worn if Moon is weak and the native
+          needs career support, but test carefully.
+      Jupiter:
+        gemstone: Yellow Sapphire (Pukhraj)
+        recommendation: avoid
+        reasoning: >
+          Jupiter owns the 3rd and 6th (double dusthana). Strengthening
+          Jupiter amplifies enemies, diseases, and unnecessary efforts. Avoid.
+      Mars:
+        gemstone: Red Coral (Moonga)
+        recommendation: avoid
+        reasoning: >
+          Mars is a double maraka (2nd + 7th lord). Strengthening Mars can
+          activate maraka effects and bring health dangers. Avoid.
+      Sun:
+        gemstone: Ruby (Manikya)
+        recommendation: avoid
+        reasoning: >
+          Sun owns the 11th house (inauspicious). Strengthening Sun amplifies
+          unfulfilled ambitions and may bring negative associations. Avoid.
+
+  # ===========================================================================
+  # 8. VRISCHIKA (SCORPIO) LAGNA
+  # ===========================================================================
+  vrischika:
+    lagna_number: 8
+    sign: Scorpio
+    sign_sanskrit: Vrischika
+    sign_lord: Mars
+    element: Water
+    modality: Sthira (Fixed)
+
+    house_lords:
+      1: Mars        # Scorpio - Kendra + Trikona
+      2: Jupiter     # Sagittarius - Maraka
+      3: Saturn      # Capricorn - Dusthana (upachaya)
+      4: Saturn      # Aquarius - Kendra
+      5: Jupiter     # Pisces - Trikona
+      6: Mars        # Aries - Dusthana
+      7: Venus       # Taurus - Kendra + Maraka
+      8: Mercury     # Gemini - Dusthana
+      9: Moon        # Cancer - Trikona
+      10: Sun        # Leo - Kendra
+      11: Mercury    # Virgo - Labha
+      12: Venus      # Libra - Dusthana
+
+    yogakaraka:
+      planet: Jupiter
+      reasoning: >
+        Jupiter owns the 2nd house (Sagittarius) and the 5th house (Pisces,
+        a trikona). While Jupiter does not own a kendra (the 2nd is not a
+        kendra), Jupiter is the strongest functional benefic due to pure
+        5th lordship. In strict yogakaraka terms, no single planet owns both
+        a kendra and trikona for Scorpio lagna. However, some authorities
+        consider Moon (9th lord, Cancer) as the strongest benefic. The
+        Sun (10th lord, Leo) is also favorable as a natural malefic gaining
+        kendra beneficence. Jupiter and Moon together create potent raja yoga.
+
+    functional_benefics:
+      - planet: Mars
+        houses_owned: [1, 6]
+        reasoning: >
+          Mars is the lagna lord (Scorpio). Lagna lordship always confers
+          beneficence. The 6th house co-lordship (Aries) is mitigated by
+          lagna lordship primacy. Mars remains benefic.
+      - planet: Jupiter
+        houses_owned: [2, 5]
+        reasoning: >
+          Jupiter owns the 5th house (Pisces, trikona) and 2nd house
+          (Sagittarius). The 5th lordship confers strong beneficence.
+          The 2nd adds wealth significations. Jupiter is the strongest
+          benefic for Scorpio lagna.
+      - planet: Moon
+        houses_owned: [9]
+        reasoning: >
+          Moon owns the 9th house (Cancer, trikona). Pure trikona lordship
+          with no other lordship makes Moon extremely auspicious. Moon is
+          a powerful benefic for Scorpio lagna.
+      - planet: Sun
+        houses_owned: [10]
+        reasoning: >
+          Sun owns the 10th house (Leo, kendra). As a natural malefic owning
+          a kendra, Sun gains Kendradhipati yoga beneficence. Sun is a
+          benefic for career and status matters.
+
+    functional_malefics:
+      - planet: Venus
+        houses_owned: [7, 12]
+        reasoning: >
+          Venus owns the 7th (Taurus, kendra + maraka) and 12th (Libra,
+          dusthana). The 12th lordship is inauspicious, and Kendradhipati
+          dosha applies to Venus as a natural benefic. Venus is the chief
+          functional malefic for Scorpio lagna.
+      - planet: Mercury
+        houses_owned: [8, 11]
+        reasoning: >
+          Mercury owns the 8th (Gemini, dusthana) and 11th (Virgo). Both
+          lordships are inauspicious. Mercury is a functional malefic.
+      - planet: Saturn
+        houses_owned: [3, 4]
+        reasoning: >
+          Saturn owns the 3rd (Capricorn, mild dusthana) and 4th (Aquarius,
+          kendra). The 3rd lordship introduces a blemish. As a natural malefic,
+          the 4th kendra lordship helps (Kendradhipati yoga), creating a
+          mixed result. Saturn is mildly malefic or neutral overall. Some
+          texts consider Saturn neutral for Scorpio lagna.
+
+    maraka:
+      - planet: Jupiter
+        houses: [2]
+        reasoning: >
+          Jupiter owns the 2nd house (Sagittarius), a maraka sthana. However,
+          Jupiter also owns the 5th (trikona), which greatly dilutes the
+          maraka potential. Jupiter is a very mild maraka.
+      - planet: Venus
+        houses: [7]
+        reasoning: >
+          Venus owns the 7th house (Taurus), the other maraka sthana.
+          Combined with 12th lordship, Venus is the primary maraka for
+          Scorpio lagna.
+
+    gemstone_recommendations:
+      Mars:
+        gemstone: Red Coral (Moonga)
+        recommendation: wear
+        reasoning: >
+          Mars is the lagna lord. Red Coral strengthens vitality, willpower,
+          courage, and health. Essential for Vrischika natives.
+      Jupiter:
+        gemstone: Yellow Sapphire (Pukhraj)
+        recommendation: wear
+        reasoning: >
+          Jupiter owns the 5th (trikona) and 2nd houses. Yellow Sapphire
+          enhances intelligence, wealth, progeny, and spiritual merit.
+          Highly recommended.
+      Moon:
+        gemstone: Pearl (Moti)
+        recommendation: wear
+        reasoning: >
+          Moon is the 9th lord (pure trikona). Pearl enhances fortune,
+          dharma, spiritual growth, and father's blessings. Recommended.
+      Sun:
+        gemstone: Ruby (Manikya)
+        recommendation: wear
+        reasoning: >
+          Sun is the 10th lord (kendra) gaining Kendradhipati yoga as a
+          malefic. Ruby enhances career, status, and public reputation.
+          Recommended.
+      Venus:
+        gemstone: Diamond (Heera)
+        recommendation: avoid
+        reasoning: >
+          Venus owns the 7th (maraka) and 12th (loss). Strengthening Venus
+          activates maraka effects and increases expenditure. Avoid.
+      Mercury:
+        gemstone: Emerald (Panna)
+        recommendation: avoid
+        reasoning: >
+          Mercury owns the 8th and 11th (both inauspicious). Strengthening
+          Mercury amplifies sudden disruptions and unfulfilled ambitions.
+          Avoid.
+      Saturn:
+        gemstone: Blue Sapphire (Neelam)
+        recommendation: test
+        reasoning: >
+          Saturn owns the 3rd (mild dusthana) and 4th (kendra). Results are
+          mixed. Blue Sapphire may help if Saturn is well-placed and the
+          native needs domestic stability and property support. Test carefully.
+
+  # ===========================================================================
+  # 9. DHANU (SAGITTARIUS) LAGNA
+  # ===========================================================================
+  dhanu:
+    lagna_number: 9
+    sign: Sagittarius
+    sign_sanskrit: Dhanu
+    sign_lord: Jupiter
+    element: Fire
+    modality: Dwiswabhava (Mutable)
+
+    house_lords:
+      1: Jupiter     # Sagittarius - Kendra + Trikona
+      2: Saturn      # Capricorn - Maraka
+      3: Saturn      # Aquarius - Dusthana (upachaya)
+      4: Jupiter     # Pisces - Kendra
+      5: Mars        # Aries - Trikona
+      6: Venus       # Taurus - Dusthana
+      7: Mercury     # Gemini - Kendra + Maraka
+      8: Moon        # Cancer - Dusthana
+      9: Sun         # Leo - Trikona
+      10: Mercury    # Virgo - Kendra
+      11: Venus      # Libra - Labha
+      12: Mars       # Scorpio - Dusthana
+
+    yogakaraka:
+      planet: Sun
+      reasoning: >
+        Sun owns the 9th house (Leo, a trikona). Sun does not simultaneously
+        own a kendra, so it is not a strict yogakaraka by dual-lordship
+        definition. However, Sun as the pure 9th lord is the strongest
+        functional benefic for Dhanu lagna. Mars owns the 5th (trikona) and
+        12th (dusthana), giving mixed results. No single planet owns both a
+        kendra and trikona for Sagittarius lagna. Sun is treated as the most
+        auspicious planet.
+
+    functional_benefics:
+      - planet: Jupiter
+        houses_owned: [1, 4]
+        reasoning: >
+          Jupiter is the lagna lord (Sagittarius) and 4th lord (Pisces).
+          Lagna lordship always confers beneficence. The 4th kendra lordship
+          reinforces domestic happiness and education. Jupiter is the anchor.
+      - planet: Sun
+        houses_owned: [9]
+        reasoning: >
+          Sun owns the 9th house (Leo, pure trikona). With no other lordship,
+          Sun is the most auspicious planet for this lagna. Sun brings fortune,
+          dharma, and father's blessings.
+      - planet: Mars
+        houses_owned: [5, 12]
+        reasoning: >
+          Mars owns the 5th house (Aries, trikona) and 12th house (Scorpio,
+          dusthana). The 5th lordship confers beneficence. The 12th co-lordship
+          is a blemish but the trikona lordship dominates. Mars is benefic
+          overall.
+
+    functional_malefics:
+      - planet: Venus
+        houses_owned: [6, 11]
+        reasoning: >
+          Venus owns the 6th (Taurus, dusthana) and 11th (Libra). Both
+          lordships are inauspicious. Venus is the chief functional malefic
+          for Dhanu lagna.
+      - planet: Mercury
+        houses_owned: [7, 10]
+        reasoning: >
+          Mercury owns the 7th (Gemini, kendra + maraka) and 10th (Virgo,
+          kendra). As a natural benefic owning two kendras, Mercury gets
+          double Kendradhipati dosha. Mercury is a functional malefic and
+          maraka.
+      - planet: Saturn
+        houses_owned: [2, 3]
+        reasoning: >
+          Saturn owns the 2nd (Capricorn, maraka) and 3rd (Aquarius, mild
+          dusthana). The 2nd lordship makes Saturn a maraka, and the 3rd
+          is mildly inauspicious. Saturn is a functional malefic for
+          Sagittarius lagna.
+      - planet: Moon
+        houses_owned: [8]
+        reasoning: >
+          Moon owns the 8th house (Cancer, dusthana). Moon is a functional
+          malefic, bringing themes of sudden upheaval and longevity concerns.
+
+    maraka:
+      - planet: Saturn
+        houses: [2]
+        reasoning: >
+          Saturn owns the 2nd house (Capricorn), a maraka sthana. Combined
+          with the 3rd lordship (Aquarius), Saturn is a significant maraka
+          for Sagittarius lagna.
+      - planet: Mercury
+        houses: [7]
+        reasoning: >
+          Mercury owns the 7th house (Gemini), the other maraka sthana.
+          Combined with Kendradhipati dosha and 10th lordship, Mercury is
+          a potent maraka.
+
+    gemstone_recommendations:
+      Jupiter:
+        gemstone: Yellow Sapphire (Pukhraj)
+        recommendation: wear
+        reasoning: >
+          Jupiter is the lagna lord and 4th lord. Yellow Sapphire strengthens
+          health, wisdom, education, property, and domestic happiness.
+          Essential for Dhanu natives.
+      Sun:
+        gemstone: Ruby (Manikya)
+        recommendation: wear
+        reasoning: >
+          Sun is the 9th lord (pure trikona). Ruby enhances fortune, dharma,
+          spiritual merit, and authority. Highly recommended.
+      Mars:
+        gemstone: Red Coral (Moonga)
+        recommendation: wear
+        reasoning: >
+          Mars is the 5th lord (trikona). Red Coral enhances intelligence,
+          progeny, creativity, and spiritual practices. The 12th co-lordship
+          is secondary. Recommended.
+      Moon:
+        gemstone: Pearl (Moti)
+        recommendation: avoid
+        reasoning: >
+          Moon owns the 8th house (dusthana). Strengthening Moon amplifies
+          sudden upheavals, chronic health issues, and longevity threats.
+          Avoid.
+      Venus:
+        gemstone: Diamond (Heera)
+        recommendation: avoid
+        reasoning: >
+          Venus owns the 6th and 11th (both inauspicious). Strengthening
+          Venus amplifies enemies, diseases, and unfulfilled desires. Avoid.
+      Mercury:
+        gemstone: Emerald (Panna)
+        recommendation: avoid
+        reasoning: >
+          Mercury is a functional malefic (double Kendradhipati dosha) and
+          maraka (7th lord). Strengthening Mercury can bring health dangers.
+          Avoid.
+      Saturn:
+        gemstone: Blue Sapphire (Neelam)
+        recommendation: avoid
+        reasoning: >
+          Saturn owns the 2nd (maraka) and 3rd (dusthana). Strengthening
+          Saturn can activate maraka effects. Avoid.
+
+  # ===========================================================================
+  # 10. MAKARA (CAPRICORN) LAGNA
+  # ===========================================================================
+  makara:
+    lagna_number: 10
+    sign: Capricorn
+    sign_sanskrit: Makara
+    sign_lord: Saturn
+    element: Earth
+    modality: Chara (Cardinal)
+
+    house_lords:
+      1: Saturn      # Capricorn - Kendra + Trikona
+      2: Saturn      # Aquarius - Maraka
+      3: Jupiter     # Pisces - Dusthana (upachaya)
+      4: Mars        # Aries - Kendra
+      5: Venus       # Taurus - Trikona
+      6: Mercury     # Gemini - Dusthana
+      7: Moon        # Cancer - Kendra + Maraka
+      8: Sun         # Leo - Dusthana
+      9: Mercury     # Virgo - Trikona
+      10: Venus      # Libra - Kendra
+      11: Mars       # Scorpio - Labha
+      12: Jupiter    # Sagittarius - Dusthana
+
+    yogakaraka:
+      planet: Venus
+      reasoning: >
+        Venus owns the 5th house (Taurus, a trikona) and the 10th house
+        (Libra, a kendra). This simultaneous kendra-trikona ownership makes
+        Venus the textbook yogakaraka for Makara lagna. Venus dashas bring
+        success in career, creativity, progeny, romance, and artistic pursuits.
+
+    functional_benefics:
+      - planet: Saturn
+        houses_owned: [1, 2]
+        reasoning: >
+          Saturn is the lagna lord (Capricorn). Lagna lordship always confers
+          beneficence. The 2nd house co-lordship (Aquarius) adds wealth and
+          family themes, plus maraka potential that is mitigated by lagna
+          lordship. Saturn remains benefic.
+      - planet: Venus
+        houses_owned: [5, 10]
+        reasoning: >
+          Venus is the yogakaraka, owning the 5th (trikona) and 10th (kendra).
+          The most auspicious planet for Capricorn lagna. Venus brings raja
+          yoga and material-spiritual balance.
+      - planet: Mercury
+        houses_owned: [6, 9]
+        reasoning: >
+          Mercury owns the 9th house (Virgo, trikona) and 6th house (Gemini,
+          dusthana). The 9th lordship confers beneficence. The 6th co-lordship
+          is a blemish but the trikona lordship dominates. Mercury is benefic
+          overall.
+      - planet: Mars
+        houses_owned: [4, 11]
+        reasoning: >
+          Mars owns the 4th house (Aries, kendra) and 11th house (Scorpio).
+          As a natural malefic owning a kendra, Mars gains Kendradhipati yoga.
+          However, the 11th lordship is inauspicious, creating mixed results.
+          Mars is mildly benefic or neutral. Some texts classify Mars as
+          slightly malefic due to the 11th lordship.
+
+    functional_malefics:
+      - planet: Jupiter
+        houses_owned: [3, 12]
+        reasoning: >
+          Jupiter owns the 3rd (Pisces) and 12th (Sagittarius), both dusthana.
+          Double dusthana lordship makes Jupiter the chief functional malefic
+          for Makara lagna, despite being the greatest natural benefic.
+      - planet: Sun
+        houses_owned: [8]
+        reasoning: >
+          Sun owns the 8th house (Leo, dusthana). Pure 8th lordship makes
+          Sun a functional malefic bringing sudden upheaval and longevity
+          themes.
+      - planet: Moon
+        houses_owned: [7]
+        reasoning: >
+          Moon owns the 7th house (Cancer, kendra + maraka). As a natural
+          benefic owning a kendra, Moon gets Kendradhipati dosha. The 7th
+          also makes Moon a maraka. Moon is a functional malefic for
+          Capricorn lagna.
+
+    maraka:
+      - planet: Saturn
+        houses: [2]
+        reasoning: >
+          Saturn owns the 2nd house (Aquarius), a maraka sthana. However,
+          Saturn also owns the lagna, which completely overrides the maraka
+          potential. The lagna lord cannot act as a killer of the native.
+          Saturn's maraka potential is effectively nil.
+      - planet: Moon
+        houses: [7]
+        reasoning: >
+          Moon owns the 7th house (Cancer), the other maraka sthana.
+          Combined with Kendradhipati dosha, Moon is the primary maraka
+          for Capricorn lagna.
+
+    gemstone_recommendations:
+      Saturn:
+        gemstone: Blue Sapphire (Neelam)
+        recommendation: wear
+        reasoning: >
+          Saturn is the lagna lord and 2nd lord. Blue Sapphire strengthens
+          health, vitality, wealth, and overall life structure. Essential
+          for Makara natives.
+      Venus:
+        gemstone: Diamond (Heera)
+        recommendation: wear
+        reasoning: >
+          Venus is the yogakaraka (5th + 10th lord). Diamond enhances career,
+          creativity, intelligence, romance, and material success. Highly
+          recommended.
+      Mercury:
+        gemstone: Emerald (Panna)
+        recommendation: wear
+        reasoning: >
+          Mercury is the 9th lord (trikona). Emerald enhances fortune, dharma,
+          higher learning, and spiritual merit. The 6th co-lordship is
+          secondary. Recommended.
+      Mars:
+        gemstone: Red Coral (Moonga)
+        recommendation: test
+        reasoning: >
+          Mars owns the 4th (kendra) and 11th houses. The 11th lordship
+          introduces blemish, creating mixed results. Red Coral can be worn
+          if Mars is weak and the native needs property/domestic support,
+          but test carefully.
+      Jupiter:
+        gemstone: Yellow Sapphire (Pukhraj)
+        recommendation: avoid
+        reasoning: >
+          Jupiter owns the 3rd and 12th (double dusthana). Strengthening
+          Jupiter amplifies losses, expenses, and fruitless efforts. Avoid.
+      Sun:
+        gemstone: Ruby (Manikya)
+        recommendation: avoid
+        reasoning: >
+          Sun owns the 8th house (dusthana). Strengthening Sun amplifies
+          sudden upheavals, accidents, and longevity threats. Avoid.
+      Moon:
+        gemstone: Pearl (Moti)
+        recommendation: avoid
+        reasoning: >
+          Moon owns the 7th (maraka) with Kendradhipati dosha. Strengthening
+          Moon can activate maraka effects. Avoid.
+
+  # ===========================================================================
+  # 11. KUMBHA (AQUARIUS) LAGNA
+  # ===========================================================================
+  kumbha:
+    lagna_number: 11
+    sign: Aquarius
+    sign_sanskrit: Kumbha
+    sign_lord: Saturn
+    element: Air
+    modality: Sthira (Fixed)
+
+    house_lords:
+      1: Saturn      # Aquarius - Kendra + Trikona
+      2: Jupiter     # Pisces - Maraka
+      3: Mars        # Aries - Dusthana (upachaya)
+      4: Venus       # Taurus - Kendra
+      5: Mercury     # Gemini - Trikona
+      6: Moon        # Cancer - Dusthana
+      7: Sun         # Leo - Kendra + Maraka
+      8: Mercury     # Virgo - Dusthana
+      9: Venus       # Libra - Trikona
+      10: Mars       # Scorpio - Kendra
+      11: Jupiter    # Sagittarius - Labha
+      12: Saturn     # Capricorn - Dusthana
+
+    yogakaraka:
+      planet: Venus
+      reasoning: >
+        Venus owns the 4th house (Taurus, a kendra) and the 9th house (Libra,
+        a trikona). This simultaneous kendra-trikona ownership makes Venus the
+        textbook yogakaraka for Kumbha lagna. Venus dashas bring success in
+        property, education, fortune, dharma, and relationships.
+
+    functional_benefics:
+      - planet: Saturn
+        houses_owned: [1, 12]
+        reasoning: >
+          Saturn is the lagna lord (Aquarius). Lagna lordship always confers
+          beneficence. The 12th house co-lordship (Capricorn) introduces
+          themes of expenditure and spirituality but does not negate lagna
+          lordship. Saturn remains benefic.
+      - planet: Venus
+        houses_owned: [4, 9]
+        reasoning: >
+          Venus is the yogakaraka, owning the 4th (kendra) and 9th (trikona).
+          The most auspicious planet for Aquarius lagna. Venus brings raja
+          yoga, fortune, and domestic bliss.
+      - planet: Mercury
+        houses_owned: [5, 8]
+        reasoning: >
+          Mercury owns the 5th house (Gemini, trikona) and 8th house (Virgo,
+          dusthana). The 5th lordship confers beneficence. The 8th co-lordship
+          is a blemish but the trikona lordship dominates per Parashara.
+          Mercury is benefic overall with some reservation.
+      - planet: Mars
+        houses_owned: [3, 10]
+        reasoning: >
+          Mars owns the 10th house (Scorpio, kendra) and 3rd house (Aries,
+          mild dusthana). As a natural malefic owning a kendra, Mars gains
+          Kendradhipati yoga. The 3rd lordship introduces some blemish.
+          Mars is mildly benefic or neutral for career matters.
+
+    functional_malefics:
+      - planet: Jupiter
+        houses_owned: [2, 11]
+        reasoning: >
+          Jupiter owns the 2nd (Pisces, maraka) and 11th (Sagittarius).
+          The 11th lordship is inauspicious, and the 2nd makes Jupiter a
+          maraka. Jupiter is a functional malefic for Aquarius lagna.
+      - planet: Moon
+        houses_owned: [6]
+        reasoning: >
+          Moon owns the 6th house (Cancer, dusthana). Pure 6th lordship
+          makes Moon a functional malefic bringing enemies, diseases, and
+          debt themes.
+      - planet: Sun
+        houses_owned: [7]
+        reasoning: >
+          Sun owns the 7th house (Leo, kendra + maraka). As a natural malefic
+          owning a kendra, Sun would normally gain beneficence. However, the
+          7th lordship also makes Sun a maraka. Sun gives mixed results.
+          Some texts classify Sun as a mild malefic due to the maraka role.
+
+    maraka:
+      - planet: Jupiter
+        houses: [2]
+        reasoning: >
+          Jupiter owns the 2nd house (Pisces), a maraka sthana. Combined
+          with 11th lordship (inauspicious), Jupiter is a significant maraka
+          for Aquarius lagna.
+      - planet: Sun
+        houses: [7]
+        reasoning: >
+          Sun owns the 7th house (Leo), the other maraka sthana. Despite
+          gaining some kendra beneficence as a malefic, Sun remains a maraka
+          for Aquarius lagna.
+
+    gemstone_recommendations:
+      Saturn:
+        gemstone: Blue Sapphire (Neelam)
+        recommendation: wear
+        reasoning: >
+          Saturn is the lagna lord. Blue Sapphire strengthens health, vitality,
+          discipline, and overall well-being. Essential for Kumbha natives.
+      Venus:
+        gemstone: Diamond (Heera)
+        recommendation: wear
+        reasoning: >
+          Venus is the yogakaraka (4th + 9th lord). Diamond enhances fortune,
+          property, education, dharma, and relationships. Highly recommended.
+      Mercury:
+        gemstone: Emerald (Panna)
+        recommendation: test
+        reasoning: >
+          Mercury owns the 5th (trikona) and 8th (dusthana). Results are
+          mixed. Emerald may be worn if Mercury is well-placed and the native
+          needs intelligence and progeny support. Test carefully due to the
+          8th co-lordship.
+      Mars:
+        gemstone: Red Coral (Moonga)
+        recommendation: test
+        reasoning: >
+          Mars owns the 10th (kendra) and 3rd (mild dusthana). Results are
+          mixed. Red Coral may support career matters if Mars is weak, but
+          the 3rd lordship introduces some risk. Test carefully.
+      Jupiter:
+        gemstone: Yellow Sapphire (Pukhraj)
+        recommendation: avoid
+        reasoning: >
+          Jupiter owns the 2nd (maraka) and 11th (inauspicious). Strengthening
+          Jupiter can activate maraka effects and amplify unfulfilled desires.
+          Avoid.
+      Moon:
+        gemstone: Pearl (Moti)
+        recommendation: avoid
+        reasoning: >
+          Moon owns the 6th house (dusthana). Strengthening Moon amplifies
+          enemies, diseases, and debts. Avoid.
+      Sun:
+        gemstone: Ruby (Manikya)
+        recommendation: avoid
+        reasoning: >
+          Sun owns the 7th house (maraka). Strengthening Sun can activate
+          maraka effects. Avoid, despite the kendra beneficence for malefics.
+
+  # ===========================================================================
+  # 12. MEENA (PISCES) LAGNA
+  # ===========================================================================
+  meena:
+    lagna_number: 12
+    sign: Pisces
+    sign_sanskrit: Meena
+    sign_lord: Jupiter
+    element: Water
+    modality: Dwiswabhava (Mutable)
+
+    house_lords:
+      1: Jupiter     # Pisces - Kendra + Trikona
+      2: Mars        # Aries - Maraka
+      3: Venus       # Taurus - Dusthana (upachaya)
+      4: Mercury     # Gemini - Kendra
+      5: Moon        # Cancer - Trikona
+      6: Sun         # Leo - Dusthana
+      7: Mercury     # Virgo - Kendra + Maraka
+      8: Venus       # Libra - Dusthana
+      9: Mars        # Scorpio - Trikona
+      10: Jupiter    # Sagittarius - Kendra
+      11: Saturn     # Capricorn - Labha
+      12: Saturn     # Aquarius - Dusthana
+
+    yogakaraka:
+      planet: Mars
+      reasoning: >
+        Mars owns the 2nd house (Aries) and the 9th house (Scorpio, a trikona).
+        Mars does not simultaneously own a kendra in the strict sense (2nd is
+        not a kendra). However, Mars as the 9th lord is the strongest functional
+        benefic. Moon owns the 5th (trikona) with pure lordship. In practice,
+        no single planet owns both a kendra and trikona for Pisces lagna.
+        Mars and Moon together create powerful raja yoga when connected.
+        Some authorities treat Moon as the most auspicious planet due to its
+        pure 5th lordship without any blemish.
+
+    functional_benefics:
+      - planet: Jupiter
+        houses_owned: [1, 10]
+        reasoning: >
+          Jupiter is the lagna lord (Pisces) and 10th lord (Sagittarius).
+          Lagna lordship always confers beneficence. The 10th is also a
+          kendra, reinforcing career and dharmic action. Jupiter is the
+          anchor planet.
+      - planet: Mars
+        houses_owned: [2, 9]
+        reasoning: >
+          Mars owns the 9th house (Scorpio, trikona) and 2nd house (Aries).
+          The 9th lordship confers strong beneficence. The 2nd adds wealth
+          potential (with mild maraka implications diluted by the trikona).
+          Mars is one of the strongest benefics for Pisces lagna.
+      - planet: Moon
+        houses_owned: [5]
+        reasoning: >
+          Moon owns the 5th house (Cancer, pure trikona). With no other
+          lordship, Moon is extremely auspicious. Moon enhances intelligence,
+          progeny, creativity, and spiritual merit.
+
+    functional_malefics:
+      - planet: Saturn
+        houses_owned: [11, 12]
+        reasoning: >
+          Saturn owns the 11th (Capricorn) and 12th (Aquarius). The 11th
+          lordship is inauspicious, and the 12th is a dusthana. Both
+          lordships are unfavorable. Saturn is the chief functional malefic
+          for Meena lagna.
+      - planet: Mercury
+        houses_owned: [4, 7]
+        reasoning: >
+          Mercury owns the 4th (Gemini, kendra) and 7th (Virgo, kendra +
+          maraka). As a natural benefic owning two kendras, Mercury gets
+          double Kendradhipati dosha. Mercury is a functional malefic and
+          maraka for Pisces lagna.
+      - planet: Venus
+        houses_owned: [3, 8]
+        reasoning: >
+          Venus owns the 3rd (Taurus) and 8th (Libra), both dusthana.
+          Double dusthana lordship makes Venus a functional malefic.
+      - planet: Sun
+        houses_owned: [6]
+        reasoning: >
+          Sun owns the 6th house (Leo, dusthana). Pure 6th lordship makes
+          Sun a functional malefic for Pisces lagna.
+
+    maraka:
+      - planet: Mars
+        houses: [2]
+        reasoning: >
+          Mars owns the 2nd house (Aries), a maraka sthana. However, Mars
+          also owns the 9th (trikona), which greatly dilutes the maraka
+          potential. Mars is a very mild maraka.
+      - planet: Mercury
+        houses: [7]
+        reasoning: >
+          Mercury owns the 7th house (Virgo), the other maraka sthana.
+          Combined with Kendradhipati dosha and 4th lordship, Mercury is
+          the primary maraka for Pisces lagna.
+
+    gemstone_recommendations:
+      Jupiter:
+        gemstone: Yellow Sapphire (Pukhraj)
+        recommendation: wear
+        reasoning: >
+          Jupiter is the lagna lord and 10th lord. Yellow Sapphire strengthens
+          health, wisdom, career, status, and dharmic action. Essential for
+          Meena natives.
+      Mars:
+        gemstone: Red Coral (Moonga)
+        recommendation: wear
+        reasoning: >
+          Mars is the 9th lord (trikona of fortune) and 2nd lord (wealth).
+          Red Coral enhances fortune, dharma, wealth, and courage. Highly
+          recommended.
+      Moon:
+        gemstone: Pearl (Moti)
+        recommendation: wear
+        reasoning: >
+          Moon is the 5th lord (pure trikona). Pearl enhances intelligence,
+          progeny, creativity, emotional well-being, and spiritual merit.
+          Recommended.
+      Saturn:
+        gemstone: Blue Sapphire (Neelam)
+        recommendation: avoid
+        reasoning: >
+          Saturn owns the 11th and 12th (both inauspicious). Strengthening
+          Saturn amplifies losses, expenses, and unfulfilled desires. Avoid.
+      Mercury:
+        gemstone: Emerald (Panna)
+        recommendation: avoid
+        reasoning: >
+          Mercury is a functional malefic (double Kendradhipati dosha) and
+          maraka (7th lord). Strengthening Mercury brings health dangers
+          and domestic disruptions. Avoid.
+      Venus:
+        gemstone: Diamond (Heera)
+        recommendation: avoid
+        reasoning: >
+          Venus owns the 3rd and 8th (double dusthana). Strengthening Venus
+          amplifies accidents, sudden upheavals, and struggles. Avoid.
+      Sun:
+        gemstone: Ruby (Manikya)
+        recommendation: avoid
+        reasoning: >
+          Sun owns the 6th house (dusthana). Strengthening Sun amplifies
+          enemies, diseases, and legal conflicts. Avoid.
+
+# =============================================================================
+# GENERAL NOTES ON APPLICATION
+# =============================================================================
+#
+# 1. These rules are based on Parashari (BPHS) lordship principles and
+#    represent the DEFAULT functional nature of planets for each lagna.
+#
+# 2. Actual results depend heavily on:
+#    - The planet's placement (house, sign, nakshatra)
+#    - Conjunctions and aspects received
+#    - Strength (shadbala, dig bala, etc.)
+#    - Dasha/antardasha periods active
+#    - Divisional chart (varga) positions
+#
+# 3. Kendradhipati Dosha: Natural benefics (Jupiter, Venus, Mercury, Moon)
+#    owning kendras lose their beneficence. Natural malefics (Saturn, Mars,
+#    Sun) owning kendras gain beneficence. This is BPHS Ch. 34.
+#
+# 4. The lagna lord is ALWAYS treated as benefic regardless of its other
+#    lordship (even if it owns a dusthana as well).
+#
+# 5. Rahu and Ketu are not included as they do not own signs in classical
+#    Parashari system. Their results depend on:
+#    - Sign dispositor (the planet owning the sign they occupy)
+#    - Conjunct planets
+#    - Nakshatra lord
+#    They amplify the results of their dispositors.
+#
+# 6. Gemstone recommendations are general guidelines. Individual chart
+#    analysis by a qualified Jyotishi should always precede wearing any
+#    gemstone, especially Blue Sapphire (Neelam) which requires testing.
+#
+# 7. "Test" recommendation means: wear the gemstone for a trial period of
+#    3-7 days (ideally during the planet's hora or day) and observe effects
+#    before committing to long-term wear.
+#
+# =============================================================================
