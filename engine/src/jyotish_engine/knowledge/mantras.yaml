@@ -1,0 +1,81 @@
+# Mantra data per planet — text, count, deity, and audio reference
+Sun:
+  mantra: "ओम् ह्रां ह्रीं ह्रौम् सः सूर्याय नमः"
+  mantra_en: "Om Hraam Hreem Hraum Sah Suryaya Namaha"
+  count: 7
+  deity: "Surya Dev"
+  day: "Sunday"
+  color: "Red/Saffron"
+  audio_keywords: "Surya mantra 108 times"
+
+Moon:
+  mantra: "ओम् श्रां श्रीं श्रौम् सः चन्द्राय नमः"
+  mantra_en: "Om Shraam Shreem Shraum Sah Chandraya Namaha"
+  count: 11
+  deity: "Chandra Dev / Shiva"
+  day: "Monday"
+  color: "White/Silver"
+  audio_keywords: "Chandra mantra 108 times"
+
+Mars:
+  mantra: "ओम् क्रां क्रीं क्रौम् सः भौमाय नमः"
+  mantra_en: "Om Kraam Kreem Kraum Sah Bhaumaya Namaha"
+  count: 11
+  deity: "Hanuman"
+  day: "Tuesday"
+  color: "Red/Orange"
+  audio_keywords: "Mangal mantra 108 times"
+
+Mercury:
+  mantra: "ओम् ब्रां ब्रीं ब्रौम् सः बुधाय नमः"
+  mantra_en: "Om Braam Breem Braum Sah Budhaya Namaha"
+  count: 11
+  deity: "Vishnu"
+  day: "Wednesday"
+  color: "Green"
+  audio_keywords: "Budh mantra 108 times"
+
+Jupiter:
+  mantra: "ओम् ग्रां ग्रीं ग्रौम् सः गुरवे नमः"
+  mantra_en: "Om Graam Greem Graum Sah Gurave Namaha"
+  count: 19
+  deity: "Brihaspati / Dakshinamurthy"
+  day: "Thursday"
+  color: "Yellow"
+  audio_keywords: "Guru Brihaspati mantra 108 times"
+
+Venus:
+  mantra: "ओम् द्रां द्रीं द्रौम् सः शुक्राय नमः"
+  mantra_en: "Om Draam Dreem Draum Sah Shukraya Namaha"
+  count: 21
+  deity: "Lakshmi"
+  day: "Friday"
+  color: "White/Pink"
+  audio_keywords: "Shukra mantra 108 times"
+
+Saturn:
+  mantra: "ओम् प्रां प्रीं प्रौम् सः शनैश्चराय नमः"
+  mantra_en: "Om Praam Preem Praum Sah Shanaischaraya Namaha"
+  count: 23
+  deity: "Shani Dev"
+  day: "Saturday"
+  color: "Blue/Black"
+  audio_keywords: "Shani mantra 108 times"
+
+Rahu:
+  mantra: "ओम् भ्रां भ्रीं भ्रौम् सः राहवे नमः"
+  mantra_en: "Om Bhraam Bhreem Bhraum Sah Rahave Namaha"
+  count: 18
+  deity: "Durga"
+  day: "Saturday"
+  color: "Grey/Smoky"
+  audio_keywords: "Rahu mantra 108 times"
+
+Ketu:
+  mantra: "ओम् स्रां स्रीं स्रौम् सः केतवे नमः"
+  mantra_en: "Om Sraam Sreem Sraum Sah Ketave Namaha"
+  count: 7
+  deity: "Ganesha"
+  day: "Tuesday"
+  color: "Brown/Grey"
+  audio_keywords: "Ketu mantra 108 times"

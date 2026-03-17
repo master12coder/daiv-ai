@@ -216,3 +216,88 @@ def dashboard() -> None:
             console.print("\nNo decided predictions yet.")
     except ImportError:
         console.print("[yellow]Dashboard requires jyotish-products.[/yellow]")
+
+
+# ── Family commands ────────────────────────────────────────────────────
+
+@main.group()
+def family() -> None:
+    """Family chart management."""
+
+
+@family.command("add")
+@click.option("--name", required=True)
+@click.option("--dob", required=True)
+@click.option("--tob", required=True)
+@click.option("--place", default=None)
+@click.option("--gender", default="Male")
+@click.option("--relation", default="self")
+def family_add(name: str, dob: str, tob: str, place: str | None,
+               gender: str, relation: str) -> None:
+    """Add a family member."""
+    from jyotish_products.store.family import add_member
+    chart = add_member(name=name, dob=dob, tob=tob, place=place,
+                       gender=gender, relation=relation)
+    console.print(f"Added: {name} ({relation}) — Lagna: {chart.lagna_sign}")
+
+
+@family.command("list")
+def family_list() -> None:
+    """List all family members."""
+    from jyotish_products.store.family import list_members
+    members = list_members()
+    if not members:
+        console.print("No family members. Add with: jyotish family add --name ...")
+        return
+    for m in members:
+        console.print(f"  {m['name']:20s} {m['relation']:10s} {m['dob']}  Lagna: {m['lagna']}")
+
+
+@family.command("daily")
+@click.option("--level", default="simple", help="simple/medium/detailed")
+def family_daily(level: str) -> None:
+    """Run daily for all family members."""
+    from jyotish_products.store.family import run_daily_for_all
+    results = run_daily_for_all(level=level)
+    for name, msg in results.items():
+        console.print(f"\n[bold cyan]{name}[/bold cyan]")
+        console.print(msg)
+
+
+# ── PDF export ─────────────────────────────────────────────────────────
+
+@main.command()
+@click.option("--name", default=None)
+@click.option("--dob", default=None)
+@click.option("--tob", default=None)
+@click.option("--place", default=None)
+@click.option("--gender", default="Male")
+@click.option("--chart", default=None, help="Saved chart JSON path")
+@click.option("-o", "--output", required=True, help="Output PDF path")
+def pdf(name: str | None, dob: str | None, tob: str | None,
+        place: str | None, gender: str, chart: str | None, output: str) -> None:
+    """Generate kundali PDF report."""
+    chart_data = _load_chart_from_args(name, dob, tob, place, gender, chart)
+
+    from jyotish_products.plugins.kundali.visual import render_chart_image
+    from jyotish_products.plugins.kundali.pdf import generate_pdf
+
+    img_bytes = render_chart_image(chart_data)
+    generate_pdf(chart_data, output_path=output, chart_image_bytes=img_bytes)
+    console.print(f"PDF saved to {output}")
+
+
+# ── Web server ─────────────────────────────────────────────────────────
+
+@main.command()
+@click.option("--port", default=8000, help="Port number")
+def web(port: int) -> None:
+    """Start the web dashboard."""
+    try:
+        import uvicorn
+        from jyotish_app.web.app import create_app
+        app = create_app()
+        console.print(f"Starting web dashboard on http://localhost:{port}")
+        uvicorn.run(app, host="0.0.0.0", port=port)
+    except ImportError:
+        console.print("[yellow]Web requires: pip install 'jyotish[web]'[/yellow]")

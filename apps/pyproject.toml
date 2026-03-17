@@ -17,7 +17,7 @@ telegram = ["python-telegram-bot>=21.0"]
 all = ["jyotish[web,telegram]"]
 
 [project.scripts]
-jyotish = "jyotish_app.cli.main:main"
+jyotish = "jyotish_app.cli.main:cli"
 
 [build-system]
 requires = ["hatchling"]

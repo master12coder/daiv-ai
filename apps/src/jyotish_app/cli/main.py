@@ -159,9 +159,11 @@ def report(
             console.print(f"[red]LLM error: {e}[/red]")
 
 
-# Import commands.py to register additional commands on the main group
-import jyotish_app.cli.commands  # noqa: F401, E402
+def cli() -> None:
+    """Entry point that registers all commands then runs main."""
+    import jyotish_app.cli.commands  # noqa: F401 — registers commands on main group
+    main()
 
 
 if __name__ == "__main__":
-    main()
+    cli()
