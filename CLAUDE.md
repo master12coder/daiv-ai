@@ -1,388 +1,224 @@
-# Vedic AI Framework — Engineering Bible
+# CLAUDE.md — Jyotish Framework
 
-## Quick Start
+> Read this FIRST every session. Follow EVERY rule. No exceptions.
 
-```bash
-pip install -e ".[dev,ollama]"   # install for development
-pytest                           # run all tests (224+)
-make check-all                   # lint + typecheck + test + audit
-jyotish --help                   # CLI help
-```
-
----
-
-## 1. Architecture
-
-**Clean Architecture + Domain-Driven Design + Hexagonal (Ports & Adapters)**
-
-Core principle: astronomical computation is deterministic truth; interpretation
-is probabilistic opinion. The architecture enforces this at the import level.
-
-### Layer Diagram
+## Architecture (FROZEN)
 
 ```
-┌──────────────────────────────────────────────────────┐
-│                     deliver/                         │  Layer 5: Output adapters
-│        (Markdown, JSON, PDF, Telegram)               │
-├──────────────────────────────────────────────────────┤
-│                    interpret/                         │  Layer 3: LLM interpretation
-│    (Jinja2 prompts, LLM backends, validation)        │
-├───────────────────┬──────────────────────────────────┤
-│    knowledge/     │          learn/                   │  L2: YAML rules
-│   (YAML rules,    │   (Pandit corrections,           │  L4: Learning
-│    scriptures)    │    6-layer validation)            │
-├───────────────────┴──────────────────────────────────┤
-│                    compute/                           │  Layer 1: DETERMINISTIC
-│      (Swiss Ephemeris, Dasha, Yoga, Dosha)           │  (LOCKED — no LLM)
-├──────────────────────────────────────────────────────┤
-│                     domain/                          │  Foundation: shared kernel
-│     (Models, Constants, Rules, Exceptions)            │
-└──────────────────────────────────────────────────────┘
+engine/       Pure math. Swiss Ephemeris + YAML rules. Zero AI.
+products/     AI interpretation + 7 product plugins + storage.
+apps/         CLI + Web + Telegram. Thin adapters.
+
+engine/ imports NOTHING from products/ or apps/.
+products/ imports ONLY from engine/.
+apps/ imports from products/ and engine/.
+Plugins NEVER import each other.
 ```
 
-### Import Rules (one-way dependencies)
-
-| Module       | Can Import From                                             | NEVER Imports              |
-|--------------|-------------------------------------------------------------|----------------------------|
-| `domain/`    | Python stdlib only                                          | Any `jyotish.*`            |
-| `compute/`   | `domain/`                                                   | `interpret/`, `learn/`, `deliver/` |
-| `knowledge/` | YAML only — no Python modules                               | Everything                 |
-| `scriptures/`| `domain/`                                                   | `compute/`, `interpret/`   |
-| `learn/`     | `domain/`, `scriptures/`                                    | `compute/`, `interpret/`, `deliver/` |
-| `interpret/` | `compute/`, `domain/`, `knowledge/`, `scriptures/`, `learn/`| `deliver/`                 |
-| `deliver/`   | `compute/`, `interpret/`, `domain/`                         | `learn/`, `knowledge/`     |
-| `cli.py`     | All (composition root)                                      | —                          |
-
-### Design Patterns
-
-| Pattern           | Where Used                                    | Purpose                                |
-|-------------------|-----------------------------------------------|----------------------------------------|
-| **Factory**       | `get_backend("ollama")` in `llm_backend.py`   | LLM provider selection at runtime      |
-| **Strategy**      | `LLMBackend` implementations                  | Interchangeable LLM providers          |
-| **Protocol**      | `LLMBackend` protocol in `llm_backend.py`     | Structural typing for backends         |
-| **Repository**    | `PanditCorrectionStore` in `corrections.py`   | File-based persistence abstraction     |
-| **Builder**       | `_build_chart_context()` in `interpreter.py`  | Incremental context assembly           |
-| **Pipeline**      | 6-layer validation in `validator.py`          | Sequential validation with early exit  |
-| **Template Method**| Jinja2 `.md` prompts rendered with context   | Prompt structure with variable injection|
-
----
-
-## 2. Commands
-
-```bash
-# Development
-make test              # full test suite
-make test-safety       # gemstone safety tests only
-make lint              # ruff linter
-make typecheck         # mypy type checker
-make format            # auto-format with ruff
-make audit             # architecture audit (file sizes, imports, magic numbers)
-make safety-check      # gemstone safety audit
-make check-all         # everything (CI equivalent)
-
-# CLI
-jyotish chart    --name "..." --dob "DD/MM/YYYY" --tob "HH:MM" --place "..." --gender Male
-jyotish report   --name "..." --dob "..." --tob "..." --place "..." --gender Male --llm groq
-jyotish transit  --name "..." --dob "..." --tob "..." --place "..." --gender Male
-jyotish daily    --name "..." --dob "..." --tob "..." --place "..." --gender Male --llm ollama
-jyotish match    --name1 "..." --dob1 "..." --name2 "..." --dob2 "..."
-jyotish correct  --chart "..." --category "gemstone" --what "..." --reasoning "..."
-```
-
----
-
-## 3. Python Standards
-
-| Standard | What                       | Enforced By      |
-|----------|----------------------------|------------------|
-| PEP 8    | Code style                 | `ruff check`     |
-| PEP 257  | Docstring conventions      | `ruff check`     |
-| PEP 484  | Type hints                 | `mypy`           |
-| PEP 621  | pyproject.toml metadata    | Manual review    |
-
-- **Formatter:** ruff format (Black-compatible), 100-char line length
-- **Import sorting:** ruff (isort-compatible)
-- **Docstrings:** Google-style, required on all public functions/classes
-- **Type hints:** mandatory on all function signatures, use `X | None` not `Optional[X]`
-
----
-
-## 4. Coding Rules
-
-### Hard Rules (enforced by CI / audit)
-
-1. **500-line max** per file — extract if growing beyond
-2. **Type hints** on every function signature — no untyped public functions
-3. **Dataclasses only** — no raw `dict` for domain data
-4. **No magic numbers** — constants in `domain/constants/` or `knowledge/*.yaml`
-5. **Custom exceptions** — from `domain/exceptions.py`, not bare `Exception`
-6. **Structured logging** — via `utils/logging_config.get_logger(__name__)`
-7. **Dependency injection** — backends and stores passed as arguments, not hard-imported
-8. **Config via YAML** — `config.yaml` for all tunables, env vars for secrets
-
-### Conventions
-
-- Python 3.11+ features: `X | None`, `dict[str, Any]`, `list[str]`
-- Hindi text in Devanagari script, English in plain ASCII
-- Key terms in both: `"Mithuna (Gemini / मिथुन)"`
-- All YAML knowledge files are the single source of truth for astrological rules
-- Every prompt template is a standalone `.md` file in `interpret/prompts/`
-- Swiss Ephemeris positions are NEVER approximated — always `pyswisseph`
-- Pandit Ji corrections are JSON files in `data/pandit_corrections/`
-
----
-
-## 5. Vedic Safety Rules
-
-These are **non-negotiable safety constraints** for the interpretation system.
-
-### Gemstone Contraindications
-
-- **NEVER** recommend a maraka planet's gemstone (lords of 2nd/7th houses)
-- **NEVER** recommend a functional malefic's gemstone (6th/8th/12th lords without trikona)
-- **ALWAYS** recommend lagnesh stone (ascendant lord is always beneficial)
-- **ALWAYS** recommend yogakaraka stone (kendra + trikona lord)
-- Prohibited stones per lagna are in `knowledge/lordship_rules.yaml`
-- Contraindications (enemy stones): `knowledge/gemstone_logic.yaml`
-- See [docs/vedic/GEMSTONE_SAFETY.md](docs/vedic/GEMSTONE_SAFETY.md)
-
-### Maraka Dual-Nature Rule
-
-Maraka planets often own positive houses too. The interpretation MUST
-acknowledge BOTH sides:
-
-> "Jupiter owns 10th (career) BUT ALSO 7th (maraka). Career growth and
-> health/financial risks happen SIMULTANEOUSLY."
-
-Never call a maraka planet purely benefic or purely malefic.
-
-### Computation Locked
-
-Swiss Ephemeris computation (`compute/`) is deterministic and LOCKED:
-- No LLM output can override computed positions
-- No Pandit Ji correction can change planetary longitudes
-- 6-layer validation auto-rejects computation contradictions
-
-### 6-Layer Pandit Validation
-
-1. **Astronomical fact check** — auto-reject if contradicts computation
-2. **Scripture cross-reference** — flag if contradicts BPHS
-3. **Life event validation** — real-world evidence is strongest
-4. **Multi-source consensus** — single pandit is not truth
-5. **Source trust scoring** — per-pandit accuracy tracking
-6. **Fact vs interpretation** — corrections override interpretations only
-
-### Post-Generation Validation
-
-Every LLM response passes through `validate_interpretation()` which catches:
-- Prohibited stone names in recommendation context
-- Maraka planets called "benefic" / "auspicious"
-- Worship/strengthening recommended for maraka planets
-
----
-
-## 6. Interpretation Rules
-
-### Before Every LLM Call
-
-`interpreter.py` MUST load and inject into context:
-1. `lordship_rules.yaml` — benefics, malefics, maraka, gemstones for THIS lagna
-2. `gemstone_logic.yaml` — contraindications, friend/enemy groups
-3. `scripture_db` — BPHS citations for each planet-house combination
-4. `PanditCorrectionStore` — learned rules for this lagna
-
-### Every Prompt Template MUST Include
-
-Via the system prompt (`system_prompt.md`):
-- `MANDATORY RULES` section with lagna-specific classification
-- Recommended stones list (functional benefics)
-- PROHIBITED stones list (maraka + malefic planets)
-- Interpretation rules (chart-specific references, maraka dual-nature)
-- Scripture citations for relevant planets
-
-### After Every LLM Response
-
-Run `validate_interpretation()` — append safety warnings if violations found.
-
----
-
-## 7. Testing
-
-### Test Pyramid
-
-| Level       | Count  | Speed     | What                              |
-|-------------|--------|-----------|-----------------------------------|
-| Unit        | ~200   | < 1s each | Computation, models, individual modules |
-| Integration | ~20    | < 2s each | Pipeline, corrections, scripture  |
-| E2E         | ~5     | 5-30s     | Full report with LLM backend      |
-
-### Naming Convention
-
-```python
-def test_<what>_<condition>_<expected>():
-    """<What> should <expected> when <condition>."""
-```
-
-### Safety Test Markers
-
-```python
-@pytest.mark.safety      # Gemstone/interpretation safety
-@pytest.mark.slow        # Tests >5 seconds
-@pytest.mark.integration # Cross-layer tests
-```
-
-### Primary Fixture
-
-```python
-@pytest.fixture
-def manish_chart() -> ChartData:
-    """Reference chart: Manish Chaurasia — verified data."""
-    return compute_chart(
-        name="Manish Chaurasia", dob="13/03/1989", tob="12:17",
-        lat=25.3176, lon=83.0067, tz_name="Asia/Kolkata", gender="Male",
-    )
-```
-
-**Known values:** Lagna = Mithuna, Moon = Rohini, Jupiter = maraka,
-Mercury = lagnesh, current MD = Jupiter (maraka), current AD = Mercury (lagnesh).
-
----
-
-## 8. Git Conventions
-
-### Conventional Commits
+## Decision Tree (EVERY task — follow top to bottom)
 
 ```
-<type>(<scope>): <short description>
+STEP 1: What type of change?
+
+  Bug fix / typo / config change
+    → Find the file. Fix it. Test. Commit.
+
+  New constant, model, or computation
+    → engine/
+
+  New YAML rule (lordship, gemstone, mantra, remedy, yoga)
+    → engine/knowledge/*.yaml
+
+  New scripture rule (BPHS verse)
+    → engine/scriptures/bphs/*.yaml
+
+  New interpretation prompt or LLM logic
+    → products/interpret/
+
+  New safety validation
+    → products/interpret/validator.py
+
+  Pandit correction or learning logic
+    → products/plugins/pandit/
+
+STEP 2: Is it a user-facing feature?
+
+  YES → Does a plugin already handle this domain?
+    → YES: Add to that plugin. Do NOT create a new plugin.
+    → NO:  Create products/plugins/{name}/
+           MUST have __init__.py with: PLUGIN_NAME, COMMANDS, DESCRIPTION
+           MUST have at least one test
+           MUST NOT import other plugins
+
+  NO → It belongs in engine/ or products/interpret/
+
+STEP 3: Does user need a new command or screen?
+
+  New CLI command → apps/cli/{name}.py
+    Auto-register from plugin COMMANDS
+
+  New Telegram handler → apps/telegram/handlers.py
+
+  New web route → apps/web/routes.py
 ```
 
-**Types:** `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `safety`, `perf`
-**Scopes:** `compute`, `interpret`, `knowledge`, `learn`, `deliver`, `cli`, `scripts`, `docs`
-
-### Pre-Commit Checklist (13 Points)
-
-Before every commit, verify:
-
-1. [ ] `make lint` — no linter errors
-2. [ ] `make typecheck` — no type errors
-3. [ ] `make test` — all tests pass
-4. [ ] No file exceeds 500 lines
-5. [ ] All new functions have type hints + docstrings
-6. [ ] No magic numbers — use constants
-7. [ ] No raw dicts — use dataclasses
-8. [ ] Import rules respected (no reverse dependencies)
-9. [ ] Config in YAML / env vars, not hardcoded
-10. [ ] No API keys or secrets in code
-11. [ ] Hindi text in Devanagari, English in ASCII
-12. [ ] Safety: gemstone recs checked against lordship rules
-13. [ ] Tested with reference chart if touching interpretation
-
-### Principal-Engineer Self-Review Checklist
-
-For any non-trivial PR, review against these dimensions:
-
-**Architecture:**
-- [ ] Dependencies flow inward only
-- [ ] No LLM calls in compute layer
-- [ ] New modules placed in correct layer
-- [ ] No circular imports introduced
-
-**Code Quality:**
-- [ ] Functions < 50 lines, files < 500 lines
-- [ ] Single Responsibility: each function does one thing
-- [ ] DRY: no duplicated logic across files
-- [ ] Error paths handled with custom exceptions
-
-**Safety:**
-- [ ] Gemstone recommendations checked against lordship YAML
-- [ ] Maraka acknowledged with dual-nature description
-- [ ] Post-validation catches prohibited stones
-- [ ] LLM prompts inject mandatory rules section
-
-**Performance:**
-- [ ] YAML / scripture data cached (not reloaded per call)
-- [ ] LLM calls minimised (one per section, not per paragraph)
-- [ ] No N+1 queries in scripture lookups
-
----
-
-## 9. AI-Era Patterns
-
-### Structured Knowledge → LLM
+## File Rules
 
 ```
-YAML rules (lordship, gemstones, scripture)
-    ↓
-Jinja2 templates (system_prompt.md, section prompts)
-    ↓
-LLM backend.generate(system_prompt, user_prompt)
-    ↓
-Post-validation (safety checks)
-    ↓
-Formatted output (Markdown/PDF/JSON)
+Max 300 lines per file. Split if approaching.
+One file = one responsibility.
+Every public function has type hints + docstring.
+Pydantic v2 for all models (not dataclasses).
+Python 3.12+ features: match statements, type params.
+Constants in engine/constants.py. ONE file. Not scattered.
+Exceptions in engine/exceptions.py. ONE file. Not scattered.
+Config in engine/knowledge/*.yaml. Not hardcoded.
 ```
 
-### Factory + Protocol for LLM
+## Import Rules (CI enforced — scripts/check_imports.py)
 
-```python
-class LLMBackend(Protocol):
-    def generate(self, system_prompt: str, user_prompt: str, temperature: float = 0.3) -> str: ...
-    def name(self) -> str: ...
-    def is_available(self) -> bool: ...
+```
+ALLOWED:
+  engine/compute/    → engine/models/, engine/constants, engine/exceptions
+  engine/knowledge/  → engine/models/, engine/constants
+  engine/scriptures/ → engine/models/, engine/constants
+  products/interpret/→ engine/*
+  products/plugins/* → engine/*, products/interpret/, products/store/
+  products/store/    → engine/models/
+  apps/*             → products/*, engine/*
 
-# Swap providers with one line:
-backend = get_backend("groq")   # or "ollama", "claude", "openai", "none"
+FORBIDDEN:
+  engine/ → products/ or apps/           (NEVER)
+  products/ → apps/                      (NEVER)
+  plugins/daily/ → plugins/kundali/      (NEVER — plugins isolated)
+  plugins/ANY/ → plugins/OTHER/          (NEVER)
+  ANY file → LLM backend directly        (use products/interpret/factory.py)
+  ANY file → hardcoded planet positions  (use engine/compute/)
+  ANY file → hardcoded gemstone rules    (use engine/knowledge/)
 ```
 
-### Observability
+## Safety Rules (NON-NEGOTIABLE)
 
-- Structured logging via `get_logger(__name__)` in every module
-- Validation errors logged with lagna + section context
-- LLM call timing can be added to backend.generate()
-- `config/logging.yaml` for production log configuration
+```
+1. Gemstone recommendations come ONLY from engine/knowledge/lordship_rules.yaml
+2. Every LLM prompt template MUST include:
+   - Lagna-specific lordship classification
+   - Prohibited stones list for that lagna
+   - MARAKA planets named explicitly
+3. Every LLM response MUST be scanned by products/interpret/validator.py:
+   - Prohibited stone mentioned as recommended → BLOCK + regenerate
+   - MARAKA planet called "benefic" without caveat → BLOCK + regenerate
+   - Generic prediction without chart factor → FLAG
+4. If validator finds violation → fix it before returning to user
+5. NEVER recommend Pukhraj/Moonga/Moti/Manikya for Mithuna lagna
 
-### Plugin Architecture for Extensibility
+Test fixture for safety:
+  Manish Chaurasia: 13/03/1989, 12:17 PM, Varanasi
+  Lagna: Mithuna | Moon: Rohini Pada 2 | Current: Jupiter > Mercury
+  Panna (Emerald) = RECOMMENDED (Lagnesh stone)
+  Pukhraj (Yellow Sapphire) = PROHIBITED (Jupiter = 7th MARAKA)
+  Moonga (Red Coral) = PROHIBITED (Mars = 6th lord)
+  Moti (Pearl) = PROHIBITED (Moon = 2nd MARAKA)
+```
 
-- **New LLM backend:** Implement `LLMBackend` protocol, register in factory
-- **New scripture book:** Add YAML files to `scriptures/bphs/` (or new book dir)
-- **New interpretation section:** Add `.md` template to `prompts/`, register in `interpret_chart()`
-- **New output format:** Add module to `deliver/`
-- **New dosha/yoga:** Add definition to `knowledge/*.yaml`, detection in `compute/`
+## Plugin Contract
 
----
+```
+Every plugin in products/plugins/{name}/ MUST have:
 
-## 10. Quick Reference — What Goes Where
+__init__.py containing:
+  PLUGIN_NAME: str = "daily"
+  DESCRIPTION: str = "Personalized daily guidance based on chart + transits"
+  COMMANDS: dict = {
+      "daily": {"help": "Get today's guidance", "handler": "run_daily"},
+  }
 
-| You Want To...                        | Put It In                              |
-|---------------------------------------|----------------------------------------|
-| Add a planetary calculation           | `compute/` (+ test in `tests/compute/`) |
-| Add a yoga or dosha definition        | `knowledge/yoga_definitions.yaml` or `dosha_definitions.yaml` |
-| Add a scripture rule                  | `scriptures/bphs/chapter_*.yaml`       |
-| Add an LLM interpretation section     | `interpret/prompts/new_section.md`     |
-| Add a new LLM provider               | `interpret/llm_backend.py` (implement protocol) |
-| Add gemstone contraindication         | `knowledge/gemstone_logic.yaml`        |
-| Fix lordship rule for a lagna         | `knowledge/lordship_rules.yaml`        |
-| Add a Pandit Ji correction            | `jyotish correct` CLI command          |
-| Add an output format                  | `deliver/` (new module)                |
-| Add a constant                        | `domain/constants/` (appropriate file) |
-| Add a data model                      | `domain/models/` (dataclass)           |
-| Add a custom exception                | `domain/exceptions.py`                 |
-| Add a CLI command                     | `cli.py` (Click command)               |
+At least one module with actual logic (not empty).
+At least one test in tests/products/plugins/{name}/.
+Zero imports from other plugins.
+```
 
----
+## Testing Rules
 
-## 11. Key Files
+```
+Run: make test (pytest must pass 100% before any commit)
 
-| File                                | Purpose                               |
-|-------------------------------------|---------------------------------------|
-| `jyotish/interpret/interpreter.py`  | Orchestration: context → LLM → validation |
-| `jyotish/interpret/llm_backend.py`  | Factory + Protocol for LLM providers  |
-| `jyotish/interpret/prompts/system_prompt.md` | System prompt with mandatory rules |
-| `jyotish/knowledge/lordship_rules.yaml` | All 12 lagnas: benefics, malefics, maraka, gemstones |
-| `jyotish/knowledge/gemstone_logic.yaml` | Gemstone data, contraindications, friendships |
-| `jyotish/compute/chart.py`         | Swiss Ephemeris chart computation      |
-| `jyotish/domain/models/chart.py`   | ChartData / PlanetData dataclasses     |
-| `jyotish/learn/validator.py`       | 6-layer Pandit validation pipeline     |
-| `jyotish/scriptures/scripture_db.py`| Scripture query and citation engine    |
-| `config.yaml`                       | All runtime configuration              |
-| `tests/conftest.py`                 | Shared fixtures (manish_chart, sample_chart) |
+Test naming: test_{what}_{expected}_{condition}
+  Example: test_pukhraj_prohibited_for_mithuna_lagna
+
+Markers:
+  @pytest.mark.safety    → gemstone/interpretation safety
+  @pytest.mark.slow      → heavy computation
+
+Coverage: 80% minimum on engine/ and products/interpret/
+
+Primary fixture (conftest.py):
+  manish_chart → pre-computed ChartData for Manish Chaurasia
+  Use this for ALL product tests.
+```
+
+## Git Rules
+
+```
+Conventional commits:
+  feat(daily): add medium level formatting
+  fix(safety): block Pukhraj recommendation for Mithuna
+  refactor(engine): split yoga_detector into focused modules
+  test(remedies): add Lal Kitab Saturn in 7th test
+  docs: update daily product spec
+
+Run make all before EVERY commit. If it fails, fix first.
+
+make all = make lint + make typecheck + make test + make audit
+```
+
+## Commands
+
+```
+make test       → pytest
+make lint       → ruff check + ruff format --check
+make typecheck  → mypy engine/src/ products/src/
+make audit      → python scripts/check_imports.py + check_plugins.py + safety_audit.py
+make all        → all of the above
+make run        → jyotish --help
+```
+
+## When Uncertain
+
+```
+Q: Where does this code go?
+A: Follow the decision tree above. If still unclear → engine/.
+
+Q: Should I create a new plugin or enhance existing?
+A: If >70% of the logic overlaps with existing plugin → enhance.
+   If it's a genuinely different user need → new plugin.
+
+Q: Should I modify engine/ for a product need?
+A: engine/ changes ONLY if the computation/model/rule is universal.
+   Product-specific logic NEVER goes in engine/.
+
+Q: A YAML rule seems wrong. Should I change it?
+A: NEVER change lordship_rules.yaml without explicit instruction.
+   Other YAML files: change if you can cite a scripture source.
+
+Q: The LLM output has errors. What do I do?
+A: Fix the prompt template, not the validator.
+   Validator is the last defense, not the primary fix.
+
+Q: File is approaching 300 lines. What do I do?
+A: Split into two files by responsibility.
+   Update imports. Run make all.
+```
+
+## Documentation
+
+```
+All docs in docs/. NEVER create .md files at project root.
+Only root .md files: README.md, CLAUDE.md, CHANGELOG.md.
+
+docs/architecture/    → System design, layer rules, ADRs
+docs/products/        → One spec per product plugin
+docs/development/     → Setup, testing, style guide
+docs/vedic/           → Gemstone safety, lordship guide
+docs/roadmap.md       → Future plans
+```
