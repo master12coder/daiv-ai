@@ -13,8 +13,6 @@ class ShadbalaResult(BaseModel):
     whether the planet is considered strong.
     """
 
-    model_config = ConfigDict(frozen=True)
-
     planet: str
     sthana_bala: float      # Positional (dignity, varga, house type)
     dig_bala: float         # Directional (house position)
@@ -23,10 +21,10 @@ class ShadbalaResult(BaseModel):
     naisargika_bala: float  # Natural (fixed per planet)
     drik_bala: float        # Aspectual (aspects received)
     total: float            # Sum of all 6
-    required: float = Field(ge=0)  # Minimum required for strength
+    required: float         # Minimum required for strength
     ratio: float            # total / required (>1 = strong)
     is_strong: bool         # ratio >= 1.0
-    rank: int = Field(ge=1)  # Rank among planets (1 = strongest)
+    rank: int               # Rank among planets (1 = strongest)
 
 
 class PlanetStrength(BaseModel):
@@ -36,12 +34,10 @@ class PlanetStrength(BaseModel):
     while delegating to the full Shadbala computation under the hood.
     """
 
-    model_config = ConfigDict(frozen=True)
-
     planet: str
     sthana_bala: float     # Positional strength (0-1)
     dig_bala: float        # Directional strength (0-1)
     kala_bala: float       # Temporal strength (0-1, simplified)
     total_relative: float  # Combined relative strength (0-1)
-    rank: int = Field(ge=1)  # Rank among all planets (1=strongest)
+    rank: int               # Rank among all planets (1=strongest)
     is_strong: bool
