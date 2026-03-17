@@ -182,17 +182,18 @@ def _section_mahadasha(chart: ChartData) -> str:
 
 def _section_current_dasha(chart: ChartData) -> str:
     """Current dasha period details."""
-    dashas = compute_mahadashas(chart)
-    current = find_current_dasha(dashas)
-    if not current:
-        return "═══ Current Dasha ═══\n  Unable to determine current dasha."
-
-    lines = [
-        "═══ Current Dasha Period ═══",
-        f"  Mahadasha Lord: {current.lord}",
-        f"  Period: {current.start.strftime('%Y-%m-%d')} to {current.end.strftime('%Y-%m-%d')}",
-    ]
-    return "\n".join(lines)
+    try:
+        md, ad, pd = find_current_dasha(chart)
+        lines = [
+            "═══ Current Dasha Period ═══",
+            f"  Mahadasha: {md.lord}",
+            f"    {md.start.strftime('%Y-%m-%d')} to {md.end.strftime('%Y-%m-%d')}",
+            f"  Antardasha: {ad.lord}",
+            f"    {ad.start.strftime('%Y-%m-%d')} to {ad.end.strftime('%Y-%m-%d')}",
+        ]
+        return "\n".join(lines)
+    except Exception as e:
+        return f"═══ Current Dasha ═══\n  [Error: {e}]"
 
 
 def _section_ashtakavarga(chart: ChartData) -> str:

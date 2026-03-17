@@ -140,12 +140,23 @@ def report(
 
     if llm != "none":
         try:
+            from jyotish_products.interpret.factory import get_backend
             from jyotish_products.interpret.renderer import interpret_chart
-            result = interpret_chart(chart_data, backend_name=llm)
-            console.print("\n[bold cyan]AI Interpretation[/bold cyan]")
-            console.print(result)
+
+            backend = get_backend(llm)
+            if not backend.is_available():
+                console.print(f"[red]LLM backend '{llm}' not available. Check API key.[/red]")
+                return
+
+            console.print(f"\n[bold cyan]AI Interpretation ({backend.name()})[/bold cyan]")
+            sections = interpret_chart(chart_data, backend=backend)
+            for section_name, text in sections.items():
+                console.print(f"\n[bold]{section_name.replace('_', ' ').title()}[/bold]")
+                console.print(text)
         except ImportError:
-            console.print("[yellow]LLM not available.[/yellow]")
+            console.print("[yellow]LLM not available. Install jyotish-products.[/yellow]")
+        except Exception as e:
+            console.print(f"[red]LLM error: {e}[/red]")
 
 
 # Import commands.py to register additional commands on the main group
