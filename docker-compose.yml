@@ -1,35 +1,39 @@
 services:
-  jyotish:
-    build: .
-    environment:
-      - GROQ_API_KEY=${GROQ_API_KEY:-}
-      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-}
-      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID:-}
-    volumes:
-      - ./data:/app/data
-      - ./charts:/app/charts
-
-  # Daily scheduler — sends Telegram at 5:30 AM IST
-  scheduler:
-    build: .
-    entrypoint: ["python", "-m", "jyotish_app.scheduler"]
-    command: []
-    environment:
-      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-}
-      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID:-}
-    volumes:
-      - ./data:/app/data
-      - ./charts:/app/charts
-    restart: unless-stopped
-
-  # Telegram bot — interactive commands
+  # ── Telegram Bot (interactive: /daily, /kundali, /level) ─────────
   bot:
     build: .
+    container_name: jyotish-bot
     entrypoint: ["python", "-c", "from jyotish_app.telegram.bot import start_bot; start_bot()"]
     command: []
     environment:
-      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - GROQ_API_KEY=${GROQ_API_KEY:-}
     volumes:
       - ./data:/app/data
       - ./charts:/app/charts
     restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # ── Scheduler (5:30 AM IST daily message) ────────────────────────
+  scheduler:
+    build: .
+    container_name: jyotish-scheduler
+    entrypoint: ["python", "-m", "jyotish_app.scheduler"]
+    command: []
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+      - GROQ_API_KEY=${GROQ_API_KEY:-}
+    volumes:
+      - ./data:/app/data
+      - ./charts:/app/charts
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
