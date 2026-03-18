@@ -4,7 +4,8 @@ from __future__ import annotations
 import click
 from rich.console import Console
 
-from jyotish_app.cli.main import main, _load_chart_from_args
+from jyotish_app.cli.main import _load_chart_from_args, main
+
 
 console = Console()
 
@@ -25,9 +26,10 @@ def daily(
     """Get today's personalized daily suggestion."""
     chart_data = _load_chart_from_args(name, dob, tob, place, gender, chart)
 
-    from jyotish_engine.compute.daily import compute_daily_suggestion
-    from rich.table import Table
     from rich.panel import Panel
+    from rich.table import Table
+
+    from jyotish_engine.compute.daily import compute_daily_suggestion
 
     suggestion = compute_daily_suggestion(chart_data)
 
@@ -75,9 +77,10 @@ def transit(
     """Show current transits for a chart."""
     chart_data = _load_chart_from_args(name, dob, tob, place, gender, chart)
 
-    from jyotish_engine.compute.transit import compute_transits
-    from rich.table import Table
     from rich.panel import Panel
+    from rich.table import Table
+
+    from jyotish_engine.compute.transit import compute_transits
 
     transits = compute_transits(chart_data)
 
@@ -106,10 +109,11 @@ def muhurta(purpose: str, chart: str, from_date: str, to_date: str) -> None:
     """Find auspicious dates (muhurta)."""
     chart_data = _load_chart_from_args(chart=chart)
 
-    from jyotish_engine.compute.muhurta import find_muhurta
-    from jyotish_engine.compute.datetime_utils import parse_birth_datetime
-    from rich.table import Table
     from rich.panel import Panel
+    from rich.table import Table
+
+    from jyotish_engine.compute.datetime_utils import parse_birth_datetime
+    from jyotish_engine.compute.muhurta import find_muhurta
 
     tz = chart_data.timezone_name
     start = parse_birth_datetime(from_date, "00:00", tz)
@@ -283,15 +287,39 @@ def gemstone(
     """Compute personalized gemstone weight using 10 chart factors."""
     chart_data = _load_chart_from_args(name, dob, tob, place, gender, chart)
 
-    from jyotish_products.plugins.remedies.gemstone import compute_gemstone_weights
     from jyotish_products.plugins.remedies.formatter import format_gemstone_report
+    from jyotish_products.plugins.remedies.gemstone import compute_gemstone_weights
 
     results = compute_gemstone_weights(chart_data, body_weight, purpose)
     report = format_gemstone_report(results, body_weight, chart_data.lagna_sign, chart_data.name)
     console.print(report)
 
 
-# ── PDF export ─────────────────────────────────────────────────────────
+# ── Kundali PDF ───────────────────────────────────────────────────────
+
+@main.command()
+@click.option("--name", default=None)
+@click.option("--dob", default=None)
+@click.option("--tob", default=None)
+@click.option("--place", default=None)
+@click.option("--gender", default="Male")
+@click.option("--chart", default=None, help="Saved chart JSON path")
+@click.option("--weight", "body_weight", default=0, type=float, help="Body weight kg")
+@click.option("--format", "fmt", default="detailed", help="summary/detailed/pandit")
+@click.option("-o", "--output", required=True, help="Output PDF path")
+def kundali(
+    name: str | None, dob: str | None, tob: str | None,
+    place: str | None, gender: str, chart: str | None,
+    body_weight: float, fmt: str, output: str,
+) -> None:
+    """Generate visual kundali PDF with charts, dashas, and gemstones."""
+    chart_data = _load_chart_from_args(name, dob, tob, place, gender, chart)
+
+    from jyotish_products.plugins.kundali.pdf import generate_pdf
+
+    generate_pdf(chart_data, output_path=output, fmt=fmt, body_weight_kg=body_weight)
+    console.print(f"Kundali PDF ({fmt}) saved to {output}")
+
 
 @main.command()
 @click.option("--name", default=None)
@@ -303,14 +331,12 @@ def gemstone(
 @click.option("-o", "--output", required=True, help="Output PDF path")
 def pdf(name: str | None, dob: str | None, tob: str | None,
         place: str | None, gender: str, chart: str | None, output: str) -> None:
-    """Generate kundali PDF report."""
+    """Generate kundali PDF (legacy, use 'kundali' command instead)."""
     chart_data = _load_chart_from_args(name, dob, tob, place, gender, chart)
 
-    from jyotish_products.plugins.kundali.visual import render_chart_image
     from jyotish_products.plugins.kundali.pdf import generate_pdf
 
-    img_bytes = render_chart_image(chart_data)
-    generate_pdf(chart_data, output_path=output, chart_image_bytes=img_bytes)
+    generate_pdf(chart_data, output_path=output, fmt="detailed")
     console.print(f"PDF saved to {output}")
 
 
@@ -322,6 +348,7 @@ def web(port: int) -> None:
     """Start the web dashboard."""
     try:
         import uvicorn
+
         from jyotish_app.web.app import create_app
         app = create_app()
         console.print(f"Starting web dashboard on http://localhost:{port}")
