@@ -1,241 +1,167 @@
 # Vedic AI Framework
 
-**AI-powered Vedic astrology computation and interpretation engine**
+**AI-powered Vedic astrology — Swiss Ephemeris precision + LLM interpretation**
 
-A comprehensive Python framework for Vedic (Jyotish) astrology that combines Swiss Ephemeris precision with LLM-powered interpretation. Compute birth charts, detect yogas/doshas, calculate dashas, match compatibility, and generate personalized reports — all offline, all free.
+Compute birth charts, detect yogas/doshas, calculate dashas, match compatibility, generate personalized PDF reports with visual charts — all offline, all free.
 
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│                    VEDIC AI FRAMEWORK                               │
-│                                                                     │
-│  ┌───────────┐   ┌───────────┐   ┌───────────┐   ┌───────────┐    │
-│  │  COMPUTE   │──▶│ KNOWLEDGE │──▶│ INTERPRET  │──▶│  DELIVER   │   │
-│  │           │   │           │   │           │   │           │    │
-│  │Swiss Ephem│   │YAML Rules │   │LLM Engine │   │MD/JSON/PDF│    │
-│  │Chart/Dasha│   │Lordships  │   │Ollama/Groq│   │Telegram   │    │
-│  │Yoga/Dosha │   │Nakshatras │   │Claude/GPT │   │Reports    │    │
-│  │Panchang   │   │Gemstones  │   │Prompts    │   │           │    │
-│  └───────────┘   └───────────┘   └───────────┘   └───────────┘    │
-│                         │                                           │
-│                    ┌────┴────┐                                      │
-│                    │  LEARN   │                                      │
-│                    │Pandit Ji │                                      │
-│                    │Corrections│                                     │
-│                    │Audio→Text │                                     │
-│                    └──────────┘                                      │
-└─────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────┐
+│  apps/        CLI, Web, Telegram     │  Users interact here
+│  (Layer 3)    Format + Deliver       │
+└──────────────┬───────────────────────┘
+               │ imports
+┌──────────────▼───────────────────────┐
+│  products/    7 Plugins + LLM Layer  │  AI interprets here
+│  (Layer 2)    Interpret + Validate   │
+└──────────────┬───────────────────────┘
+               │ imports
+┌──────────────▼───────────────────────┐
+│  engine/      Compute + Knowledge    │  Math happens here
+│  (Layer 1)    Swiss Ephemeris + YAML │
+└──────────────────────────────────────┘
+
+   engine/ → ZERO dependencies on products/ or apps/
+   products/ → ZERO dependencies on apps/
 ```
 
 ## Features
 
-- **Precise Chart Computation** — Swiss Ephemeris (NASA JPL DE431) with Lahiri ayanamsha
-- **30+ Yoga Detection** — Panch Mahapurush, Raj, Dhan, Gajakesari, and more
-- **Vimshottari Dasha** — MD/AD/PD calculation with date ranges
-- **Dosha Analysis** — Mangal, Kaal Sarp, Sadesati, Pitra dosha with cancellation checks
-- **Ashtakoot Matching** — Full 36-guna compatibility scoring
-- **Divisional Charts** — D9 Navamsha, D10 Dasamsha, D7, D12
-- **Panchang** — Tithi, Nakshatra, Yoga, Karana, Vara, Rahu Kaal
-- **Muhurta** — Auspicious date finder for marriage, business, travel, property
+- **Precise Chart Computation** — Swiss Ephemeris (NASA JPL DE431), Lahiri ayanamsha, 0.001° precision
+- **157 Yoga Detection** — Panch Mahapurush, Raj, Dhan, Gajakesari, Vipreet, and more
+- **4 Dasha Systems** — Vimshottari (MD/AD/PD), Yogini, Ashtottari, Chara
+- **Full Shadbala** — Six-fold planetary strength with ratios
+- **Ashtakavarga** — Bhinnashtakavarga + Sarvashtakavarga (337 bindus)
+- **16 Divisional Charts** — D1 through D60 (all Shodashvarga)
+- **Dosha Analysis** — Mangal, Kaal Sarp, Sadesati, Pitra with cancellation checks
+- **Ashtakoot Matching** — 36-guna compatibility scoring
+- **Jaimini + KP Systems** — Chara Karakas, Arudha Padas, KP sub-lords
+- **10-Factor Gemstone Engine** — Personalized weight using chart-based factors
+- **Visual PDF Reports** — 14-section kundali with diamond charts, dasha Gantt, heatmaps
 - **LLM Interpretation** — Ollama (free/local), Groq (free), Claude, OpenAI
-- **Pandit Ji Learning** — Record corrections, validate, extract rules over time
-- **Hindi + English** — Bilingual output with Devanagari script
-- **Offline-First** — Core computation needs zero internet
+- **Pandit Ji Learning** — Record corrections, validate, inject rules into prompts
+- **Hindi + English** — Bilingual output with Devanagari, NotoSansDevanagari font bundled
 
 ## Quick Start
 
-### Installation
-
 ```bash
-# Clone the repository
-git clone https://github.com/YOUR_USERNAME/vedic-ai-framework.git
+# Clone and install
+git clone https://github.com/master12coder/vedic-ai-framework.git
 cd vedic-ai-framework
+uv sync                   # or: pip install -e engine/ -e products/ -e apps/
 
-# Install (basic — computation only, no LLM)
-pip install -e ".[dev]"
+# Compute a birth chart
+jyotish chart --name "Manish" --dob "13/03/1989" --tob "12:17" --place "Varanasi" --gender Male
 
-# Install with Ollama support (free local LLM)
-pip install -e ".[dev,ollama]"
-```
+# Generate visual PDF kundali (14 pages)
+jyotish kundali --name "Manish" --dob "13/03/1989" --tob "12:17" --place "Varanasi" \
+  --gender Male --weight 78 --format detailed -o kundali.pdf
 
-### Compute a Birth Chart
+# Daily guidance
+jyotish daily --name "Manish" --dob "13/03/1989" --tob "12:17" --place "Varanasi"
 
-```bash
-# CLI
-jyotish chart --name "Rajesh Kumar" --dob "15/08/1990" --tob "06:30" --place "Jaipur" --gender Male
-
-# JSON output
-jyotish chart --name "Rajesh Kumar" --dob "15/08/1990" --tob "06:30" --place "Jaipur" --format json
-```
-
-### Full Report with LLM Interpretation
-
-```bash
-# With Ollama (free, local)
-jyotish report --name "Rajesh" --dob "15/08/1990" --tob "06:30" --place "Jaipur" --llm ollama
-
-# Without LLM (computation only)
-jyotish report --name "Rajesh" --dob "15/08/1990" --tob "06:30" --place "Jaipur" --llm none
-
-# Save to file
-jyotish report --name "Rajesh" --dob "15/08/1990" --tob "06:30" --place "Jaipur" --output report.md
+# Gemstone weight analysis
+jyotish gemstone --name "Manish" --dob "13/03/1989" --tob "12:17" --place "Varanasi" --weight 78
 ```
 
 ### Python Library
 
 ```python
-from jyotish.compute.chart import compute_chart
-from jyotish.compute.dasha import find_current_dasha
-from jyotish.compute.yoga import detect_all_yogas
+from jyotish_engine.compute.chart import compute_chart
+from jyotish_engine.compute.dasha import find_current_dasha
+from jyotish_engine.compute.yoga import detect_all_yogas
 
-# Compute chart
 chart = compute_chart(
-    name="Rajesh Kumar",
-    dob="15/08/1990",
-    tob="06:30",
-    place="Jaipur",
-    gender="Male",
+    name="Manish", dob="13/03/1989", tob="12:17",
+    lat=25.3176, lon=83.0067, tz_name="Asia/Kolkata", gender="Male",
 )
 
 print(f"Lagna: {chart.lagna_sign} ({chart.lagna_sign_en})")
 print(f"Moon: {chart.planets['Moon'].nakshatra}, Pada {chart.planets['Moon'].pada}")
 
-# Current dasha
 md, ad, pd = find_current_dasha(chart)
-print(f"Current: {md.lord}-{ad.lord}-{pd.lord}")
+print(f"Current Dasha: {md.lord} > {ad.lord} > {pd.lord}")
 
-# Yogas
-yogas = detect_all_yogas(chart)
-for y in yogas:
+for y in detect_all_yogas(chart):
     if y.is_present:
-        print(f"  {y.name}: {y.description}")
+        print(f"  {y.name} ({y.name_hindi}): {y.description}")
 ```
 
 ## CLI Commands
 
 | Command | Description |
 |---------|-------------|
-| `jyotish chart` | Compute and display birth chart |
-| `jyotish report` | Full report with LLM interpretation |
-| `jyotish transit` | Current transits for a saved chart |
-| `jyotish daily` | Daily suggestion based on transits |
-| `jyotish match` | Ashtakoot (36 guna) compatibility matching |
-| `jyotish muhurta` | Find auspicious dates |
-| `jyotish panchang` | Panchang for any date and place |
-| `jyotish correct` | Add a Pandit Ji correction |
-| `jyotish learn-audio` | Process Pandit Ji audio recording |
-| `jyotish rules` | Show learned rules |
-| `jyotish export` | Export chart as JSON or Markdown |
+| `jyotish chart` | Compute and display birth chart with yogas, doshas |
+| `jyotish save` | Save chart as JSON for reuse |
+| `jyotish report` | Full text report (18 sections), optional LLM interpretation |
+| `jyotish kundali` | Visual PDF report (summary/detailed/pandit formats) |
+| `jyotish daily` | Today's personalized guidance (rating, color, mantra) |
+| `jyotish transit` | Current transits overlaid on natal chart |
+| `jyotish muhurta` | Find auspicious dates for life events |
+| `jyotish pooja` | Weekly personalized pooja plan |
+| `jyotish gemstone` | 10-factor gemstone weight analysis |
+| `jyotish events add` | Log a life event for prediction tracking |
+| `jyotish dashboard` | Prediction accuracy stats |
+| `jyotish family add` | Add a family member's chart |
+| `jyotish family list` | List all family members |
+| `jyotish family daily` | Daily guidance for entire family |
+| `jyotish web` | Start the web dashboard |
 
 ## Architecture
 
 ```
 vedic-ai-framework/
-├── jyotish/
-│   ├── compute/          # Layer 1: Deterministic computation
-│   │   ├── chart.py      # Swiss Ephemeris chart engine
-│   │   ├── dasha.py      # Vimshottari Dasha (MD/AD/PD)
-│   │   ├── divisional.py # D1, D9, D10, D7, D12
-│   │   ├── yoga.py       # 30+ yoga detection
-│   │   ├── dosha.py      # Mangal, Kaal Sarp, Sadesati, Pitra
-│   │   ├── panchang.py   # Tithi, Nakshatra, Yoga, Karana
-│   │   ├── matching.py   # Ashtakoot 36-guna matching
-│   │   ├── transit.py    # Transit overlay on natal chart
-│   │   ├── muhurta.py    # Auspicious timing finder
-│   │   └── strength.py   # Shadbala (basic)
-│   ├── knowledge/        # Layer 2: YAML knowledge files
-│   │   ├── lordship_rules.yaml    # 12 lagnas, complete data
-│   │   ├── yoga_definitions.yaml  # 30+ yogas
-│   │   ├── nakshatra_data.yaml    # 27 nakshatras
-│   │   ├── gemstone_logic.yaml    # 9 gemstones + contraindications
-│   │   └── ...
-│   ├── interpret/        # Layer 3: LLM interpretation
-│   │   ├── llm_backend.py         # Ollama/Groq/Claude/OpenAI
-│   │   ├── interpreter.py         # Orchestrator
-│   │   └── prompts/               # Jinja2 prompt templates
-│   ├── learn/            # Layer 4: Pandit Ji learning
-│   │   ├── corrections.py         # Correction store
-│   │   ├── validator.py           # Multi-source validation
-│   │   └── audio_processor.py     # Whisper transcription
-│   └── deliver/          # Layer 5: Output delivery
-│       ├── markdown_report.py
-│       ├── json_export.py
-│       └── pdf_report.py
-├── tests/                # pytest test suite
-├── examples/             # Sample inputs and outputs
-└── config.yaml           # All configuration
+├── engine/src/jyotish_engine/     # Package 1: Pure computation (zero AI)
+│   ├── compute/                   # 21 modules: chart, dasha, yoga, dosha, strength...
+│   ├── models/                    # 20 Pydantic v2 models
+│   ├── knowledge/                 # 11 YAML rule files (lordship, gemstones, yogas...)
+│   ├── scriptures/                # 18 BPHS chapters + Lal Kitab (YAML)
+│   ├── constants.py               # All magic numbers, one file
+│   └── exceptions.py              # Error hierarchy, one file
+│
+├── products/src/jyotish_products/ # Package 2: AI + business logic
+│   ├── interpret/                 # LLM layer: 5 backends, prompts, validator
+│   ├── plugins/                   # 7 product plugins (isolated, no cross-imports)
+│   │   ├── kundali/               # 14-section PDF with visual chart renderers
+│   │   ├── daily/                 # 3-level daily guidance + Hindi mode
+│   │   ├── remedies/              # Gemstone weight engine + recommendations
+│   │   ├── matching/              # Ashtakoot 36-guna compatibility
+│   │   ├── muhurta/               # Auspicious date finder
+│   │   ├── predictions/           # Life event tracking + accuracy dashboard
+│   │   └── pandit/                # Professional corrections + learning
+│   └── store/                     # JSON + SQLite persistence
+│
+├── apps/src/jyotish_app/          # Package 3: Delivery (thin adapters)
+│   ├── cli/                       # Click CLI (15+ commands)
+│   ├── web/                       # FastAPI dashboard
+│   └── telegram/                  # Bot + 5:30 AM scheduler
+│
+├── assets/fonts/                  # NotoSansDevanagari.ttf (bundled)
+├── tests/                         # 530+ tests (pytest)
+├── scripts/                       # Import boundary + safety audits
+├── docs/                          # Architecture, product specs, design system
+├── CLAUDE.md                      # Engineering rules (read first every session)
+└── Makefile                       # make test | make lint | make audit | make all
 ```
 
 ## LLM Backends
 
 | Backend | Cost | Speed | Quality | Setup |
 |---------|------|-------|---------|-------|
-| **Ollama** (default) | Free | Medium | Good | `ollama pull qwen3:8b` |
+| **Ollama** | Free | Medium | Good | `ollama pull qwen3:8b` |
 | **Groq** | Free tier | Fast | Good | Set `GROQ_API_KEY` |
 | **Claude** | Paid | Medium | Best | Set `ANTHROPIC_API_KEY` |
 | **OpenAI** | Paid | Fast | Good | Set `OPENAI_API_KEY` |
-| **None** | Free | Instant | N/A | No LLM, raw data only |
+| **None** | Free | Instant | N/A | Computation only, no interpretation |
 
-## Knowledge Files
-
-All astrological rules are stored as human-readable YAML:
-
-- **lordship_rules.yaml** — Complete data for all 12 lagnas (yogakaraka, benefics, malefics, marakas, gemstones)
-- **yoga_definitions.yaml** — 30+ yogas with formation conditions, cancellation, and effects
-- **nakshatra_data.yaml** — 27 nakshatras with deity, gana, animal, psychological profile
-- **gemstone_logic.yaml** — 9 gemstones with contraindications and wearing vidhan
-- **remedy_rules.yaml** — Mantras, daan, behavioral remedies per planet
-- **weekly_routine.yaml** — Day-planet-color-food-temple mapping
-
-## Pandit Ji Learning System
-
-The unique learning system captures a Pandit Ji's wisdom over time:
-
-1. **Record** — After each consultation, log corrections via CLI or audio
-2. **Validate** — Cross-check with second opinions, life events, or computation
-3. **Learn** — Validated corrections become rules injected into future prompts
-4. **Improve** — Each session makes the system smarter for that specific lagna + planet combination
+## Development
 
 ```bash
-# Add a correction
-jyotish correct --chart-name "Rajesh" --category gemstone \
-  --ai-said "Wear pukhraj" --pandit-said "Avoid pukhraj, it's maraka for Mithuna"
-
-# Process audio recording
-jyotish learn-audio --file panditji_session.mp3 --chart-name "Rajesh"
-
-# View learned rules
-jyotish rules --lagna Mithuna
+make test       # pytest (530+ tests)
+make lint       # ruff check + format
+make typecheck  # mypy engine/src/ products/src/
+make audit      # import boundaries + plugin contracts + safety audit
+make all        # all of the above (run before every commit)
 ```
-
-## Running Tests
-
-```bash
-pytest                    # Run all tests
-pytest -v                 # Verbose output
-pytest tests/test_chart.py  # Single file
-pytest --cov=jyotish      # With coverage
-```
-
-## Configuration
-
-All settings in `config.yaml`:
-
-```yaml
-ayanamsha: lahiri          # Lahiri/Raman/KP
-house_system: whole_sign   # Whole sign houses
-llm:
-  default_backend: ollama  # Default LLM
-  ollama:
-    model: qwen3:8b        # Model for interpretation
-```
-
-## Contributing
-
-1. Fork the repository
-2. Add YAML knowledge (new yogas, regional remedies, Lal Kitab rules)
-3. Submit a PR
-
-The YAML knowledge files are designed to grow through community contributions.
 
 ## License
 

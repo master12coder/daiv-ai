@@ -135,10 +135,20 @@ products/
 │   │       └── ...
 │   │
 │   ├── kundali/                 # Product: Full Chart Report
-│   │   ├── report.py            # Orchestrator
-│   │   ├── diamond.py           # North Indian chart renderer
-│   │   ├── visuals.py           # Dasha gantt, heatmap, yoga cards
-│   │   └── pdf.py               # PDF builder (18 sections)
+│   │   ├── report.py            # Text report orchestrator (18 sections)
+│   │   ├── pdf.py               # PDF assembler (3 formats: summary/detailed/pandit)
+│   │   ├── diamond.py           # D1 North Indian chart renderer (matplotlib)
+│   │   ├── divisional.py        # Reusable D9/D10/any varga renderer
+│   │   ├── dasha_gantt.py       # Dasha timeline Gantt chart
+│   │   ├── ashtakavarga_heatmap.py  # Color-coded bindu grid
+│   │   ├── shadbala_chart.py    # Planet strength bars
+│   │   ├── yoga_cards.py        # Active yoga cards
+│   │   ├── gemstone_card.py     # Multi-factor gemstone card
+│   │   ├── graha_table.py       # Planet position table
+│   │   ├── golden_period.py     # Best upcoming dasha highlight
+│   │   ├── prohibited_stones.py # Prohibited stones danger list
+│   │   ├── accuracy_cert.py     # Computation certificate
+│   │   └── theme.py             # Sanatan Dharma colors/fonts/styles
 │   │
 │   ├── daily/                   # Product: Daily Companion
 │   │   ├── engine.py            # compute_daily() → DailyGuidance
