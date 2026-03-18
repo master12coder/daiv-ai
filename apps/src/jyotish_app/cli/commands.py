@@ -264,6 +264,33 @@ def family_daily(level: str) -> None:
         console.print(msg)
 
 
+# ── Gemstone weight ───────────────────────────────────────────────────
+
+@main.command()
+@click.option("--name", default=None)
+@click.option("--dob", default=None)
+@click.option("--tob", default=None)
+@click.option("--place", default=None)
+@click.option("--gender", default="Male")
+@click.option("--chart", default=None, help="Saved chart JSON path")
+@click.option("--weight", "body_weight", required=True, type=float, help="Body weight in kg")
+@click.option("--purpose", default="growth", help="protection/growth/maximum")
+def gemstone(
+    name: str | None, dob: str | None, tob: str | None,
+    place: str | None, gender: str, chart: str | None,
+    body_weight: float, purpose: str,
+) -> None:
+    """Compute personalized gemstone weight using 10 chart factors."""
+    chart_data = _load_chart_from_args(name, dob, tob, place, gender, chart)
+
+    from jyotish_products.plugins.remedies.gemstone import compute_gemstone_weights
+    from jyotish_products.plugins.remedies.formatter import format_gemstone_report
+
+    results = compute_gemstone_weights(chart_data, body_weight, purpose)
+    report = format_gemstone_report(results, body_weight, chart_data.lagna_sign, chart_data.name)
+    console.print(report)
+
+
 # ── PDF export ─────────────────────────────────────────────────────────
 
 @main.command()
