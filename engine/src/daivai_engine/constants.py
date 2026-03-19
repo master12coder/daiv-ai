@@ -416,8 +416,8 @@ EXALTATION: dict[str, int] = {
     "Jupiter": 3,  # Cancer
     "Venus": 11,  # Pisces
     "Saturn": 6,  # Libra
-    "Rahu": 1,  # Taurus (traditional)
-    "Ketu": 7,  # Scorpio (traditional)
+    "Rahu": 1,  # Taurus per BPHS. Alternative: Gemini per some Nadi texts.
+    "Ketu": 7,  # Scorpio per BPHS. Alternative: Sagittarius per some Nadi texts.
 }
 
 # Exact exaltation degree within the sign

@@ -131,7 +131,7 @@ def compute_chart(
     # Compute Lagna (Ascendant)
     _cusps, ascmc = swe.houses_ex(jd, geo.latitude, geo.longitude, b"W")
     lagna_tropical = ascmc[0]
-    lagna_sidereal = (lagna_tropical - ayanamsha) % 360.0
+    lagna_sidereal = (lagna_tropical - ayanamsha) % FULL_CIRCLE_DEG
     lagna_sign_index = int(lagna_sidereal / DEGREES_PER_SIGN)
     lagna_degree = lagna_sidereal - lagna_sign_index * DEGREES_PER_SIGN
 
