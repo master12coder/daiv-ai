@@ -1,5 +1,6 @@
 /* Jyotish AI — Component Styles
-   All classes prefixed with j-. Uses CSS variables from tokens.css. */
+   All classes prefixed with j-. Uses CSS variables from tokens.css.
+   Sacred document aesthetic — warm, breathable, traditional. */
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -13,13 +14,14 @@ body {
 
 /* ── Sacred Header ── */
 .j-sacred-bar {
-  background: var(--j-saffron-600);
+  background: linear-gradient(135deg, var(--j-saffron-600), var(--j-saffron-700));
   color: white;
   text-align: center;
-  padding: var(--j-space-sm) var(--j-space-md);
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  padding: 10px var(--j-space-md);
+  font-family: var(--j-font-sacred);
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 
 /* ── Page Container ── */
@@ -28,7 +30,25 @@ body {
   margin: 0 auto;
   background: var(--j-cream-100);
   min-height: 100vh;
-  box-shadow: var(--j-shadow-lg);
+  box-shadow: var(--j-shadow-page);
+  position: relative;
+}
+@media (min-width: 768px) { .j-page { max-width: 540px; } }
+
+/* ── Ornamental Divider ── */
+.j-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--j-gold), transparent);
+  margin: var(--j-space-lg) var(--j-space-xl);
+  position: relative;
+}
+.j-divider::after {
+  content: '·';
+  position: absolute;
+  left: 50%; top: -8px;
+  transform: translateX(-50%);
+  color: var(--j-saffron-600);
+  font-size: 1.2rem;
 }
 
 /* ── Cards ── */
@@ -41,8 +61,9 @@ body {
   border: 1px solid var(--j-cream-300);
 }
 .j-card-header {
+  font-family: var(--j-font-sacred);
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--j-maroon);
   margin-bottom: var(--j-space-sm);
   padding-bottom: var(--j-space-xs);
@@ -64,11 +85,11 @@ body {
 .j-tag-marak { background: var(--j-marak-bg); color: var(--j-marak); }
 .j-tag-yoga { background: var(--j-yoga-bg); color: var(--j-yoga); }
 .j-tag-caution { background: var(--j-caution-bg); color: var(--j-caution); }
-.j-tag-gold { background: #FFF8E1; color: var(--j-gold); }
-.j-tag-retro { background: #E3F2FD; color: #1565C0; }
-.j-tag-combust { background: #FFF3E0; color: #E65100; }
+.j-tag-gold { background: var(--j-cream-200); color: var(--j-gold); }
+.j-tag-retro { background: var(--j-retro-bg); color: var(--j-retro); }
+.j-tag-combust { background: var(--j-combust-bg); color: var(--j-combust); }
 
-/* ── Planet Colors (functional role for THIS lagna) ── */
+/* ── Planet Colors ── */
 .j-planet-shubh { color: var(--j-shubh); }
 .j-planet-ashubh { color: var(--j-ashubh); }
 .j-planet-marak { color: var(--j-marak); }
@@ -87,20 +108,21 @@ body {
   cursor: pointer;
   text-decoration: none;
   text-align: center;
-  transition: transform 0.1s, box-shadow 0.1s;
+  transition: transform 0.1s, box-shadow 0.2s;
 }
-.j-btn:active { transform: scale(0.98); }
+.j-btn:active { transform: scale(0.97); }
 .j-btn-saffron {
-  background: var(--j-saffron-600);
+  background: linear-gradient(135deg, var(--j-saffron-600), var(--j-saffron-700));
   color: white;
   box-shadow: var(--j-shadow-sm);
 }
-.j-btn-saffron:hover { background: var(--j-saffron-700); }
+.j-btn-saffron:hover { box-shadow: var(--j-shadow-md); }
 .j-btn-outline {
   background: transparent;
   color: var(--j-saffron-600);
-  border: 2px solid var(--j-saffron-600);
+  border: 1.5px solid var(--j-saffron-400);
 }
+.j-btn-outline:hover { background: var(--j-saffron-50); }
 .j-btn-sm { padding: 6px 14px; font-size: 0.8rem; }
 .j-btn-block { display: block; width: 100%; }
 
@@ -112,52 +134,43 @@ body {
   border-radius: var(--j-radius-sm);
   font-family: var(--j-font-body);
   font-size: 0.95rem;
-  background: white;
+  background: var(--j-cream-50);
   color: var(--j-ink-800);
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
-.j-input:focus { border-color: var(--j-saffron-600); outline: none; }
+.j-input:focus { border-color: var(--j-saffron-500); outline: none; box-shadow: 0 0 0 3px var(--j-saffron-50); }
 .j-label {
   display: block;
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--j-ink-500);
   margin-bottom: var(--j-space-xs);
 }
 .j-form-group { margin-bottom: var(--j-space-md); }
-.j-radio-row {
-  display: flex;
-  gap: var(--j-space-md);
-  padding: var(--j-space-sm) 0;
-}
-.j-radio-row label {
-  display: flex;
-  align-items: center;
-  gap: var(--j-space-xs);
-  cursor: pointer;
-}
+.j-radio-row { display: flex; gap: var(--j-space-md); padding: var(--j-space-sm) 0; }
+.j-radio-row label { display: flex; align-items: center; gap: var(--j-space-xs); cursor: pointer; }
 
 /* ── Tables ── */
-.j-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.j-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
 .j-table th {
-  background: var(--j-saffron-600);
+  background: linear-gradient(135deg, var(--j-saffron-600), var(--j-saffron-700));
   color: white;
-  padding: 8px;
+  padding: 8px 6px;
   text-align: left;
   font-weight: 500;
+  font-size: 0.78rem;
 }
-.j-table td { padding: 8px; border-bottom: 1px solid var(--j-cream-300); }
+.j-table td { padding: 7px 6px; border-bottom: 1px solid var(--j-cream-300); }
 .j-table tr:nth-child(even) { background: var(--j-cream-200); }
+.j-table .j-data { font-family: var(--j-font-data); font-size: 0.8rem; }
 
 /* ── Timeline ── */
 .j-timeline { padding: 0 var(--j-space-md); }
 .j-timeline-item {
-  display: flex;
-  gap: var(--j-space-md);
+  display: flex; gap: var(--j-space-md);
   padding: var(--j-space-sm) 0;
   border-left: 3px solid var(--j-cream-300);
-  padding-left: var(--j-space-md);
-  margin-left: 8px;
+  padding-left: var(--j-space-md); margin-left: 8px;
 }
 .j-timeline-item.j-current {
   border-left-color: var(--j-saffron-600);
@@ -166,78 +179,51 @@ body {
   padding: var(--j-space-sm) var(--j-space-md);
 }
 .j-timeline-dot {
-  width: 12px; height: 12px;
-  border-radius: 50%;
-  background: var(--j-cream-300);
-  flex-shrink: 0;
-  margin-top: 5px;
-  margin-left: -22px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--j-cream-300); flex-shrink: 0;
+  margin-top: 5px; margin-left: -22px;
 }
-.j-current .j-timeline-dot { background: var(--j-saffron-600); }
+.j-current .j-timeline-dot { background: var(--j-saffron-600); box-shadow: 0 0 6px var(--j-saffron-400); }
 .j-timeline-shubh .j-timeline-dot { background: var(--j-shubh); }
 .j-timeline-ashubh .j-timeline-dot { background: var(--j-ashubh); }
+.j-timeline-past { opacity: 0.5; }
 
 /* ── Gemstone Cards ── */
 .j-gem-card {
   border-left: 4px solid var(--j-shubh);
-  padding: var(--j-space-md);
-  margin: var(--j-space-sm) 0;
+  padding: var(--j-space-md); margin: var(--j-space-sm) 0;
   background: white;
   border-radius: 0 var(--j-radius-sm) var(--j-radius-sm) 0;
 }
 .j-gem-card.j-prohibited { border-left-color: var(--j-ashubh); background: var(--j-ashubh-bg); }
 .j-gem-card.j-caution { border-left-color: var(--j-caution); }
 
-/* ── Footer ── */
-.j-footer {
-  text-align: center;
-  padding: var(--j-space-lg) var(--j-space-md);
-  color: var(--j-ink-300);
-  font-size: 0.8rem;
-}
-
 /* ── Tab Navigation ── */
 .j-tabs {
-  display: flex;
-  overflow-x: auto;
-  gap: 2px;
-  background: var(--j-cream-300);
-  padding: 2px;
-  margin: 0 var(--j-space-md);
+  display: flex; overflow-x: auto; gap: 2px;
+  background: var(--j-cream-300); padding: 3px;
+  margin: var(--j-space-sm) var(--j-space-md);
   border-radius: var(--j-radius-sm);
+  -webkit-overflow-scrolling: touch;
 }
 .j-tab {
-  flex: 1;
-  text-align: center;
-  padding: 8px 12px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--j-ink-500);
-  text-decoration: none;
-  border-radius: var(--j-radius-sm);
-  white-space: nowrap;
+  flex: 0 0 auto; text-align: center;
+  padding: 7px 14px; font-size: 0.78rem; font-weight: 500;
+  color: var(--j-ink-500); text-decoration: none;
+  border-radius: var(--j-radius-sm); white-space: nowrap;
   transition: background 0.2s, color 0.2s;
 }
 .j-tab:hover { background: var(--j-cream-200); }
-.j-tab-active {
-  background: var(--j-saffron-600);
-  color: white;
-}
+.j-tab-active { background: var(--j-saffron-600); color: white; }
 
 /* ── Score Circle ── */
 .j-score-circle {
-  width: 100px; height: 100px;
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1.5rem;
-  margin: 0 auto;
+  width: 100px; height: 100px; border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 1.5rem; margin: 0 auto;
 }
 .j-score-good { background: var(--j-shubh-bg); color: var(--j-shubh); border: 3px solid var(--j-shubh); }
-.j-score-ok { background: #FFF8E1; color: var(--j-gold); border: 3px solid var(--j-gold); }
+.j-score-ok { background: var(--j-cream-200); color: var(--j-gold); border: 3px solid var(--j-gold); }
 .j-score-bad { background: var(--j-ashubh-bg); color: var(--j-ashubh); border: 3px solid var(--j-ashubh); }
 
 /* ── Progress Bar ── */
@@ -249,11 +235,50 @@ body {
 /* ── Stars ── */
 .j-stars { color: var(--j-gold); letter-spacing: 2px; }
 
+/* ── Mantra Box ── */
+.j-mantra {
+  border: 1.5px dashed var(--j-gold);
+  padding: var(--j-space-md);
+  border-radius: var(--j-radius-sm);
+  text-align: center;
+  font-family: var(--j-font-sacred);
+  font-size: 1.1rem;
+  color: var(--j-maroon);
+  background: var(--j-cream-50);
+}
+
+/* ── Footer ── */
+.j-footer {
+  text-align: center;
+  padding: var(--j-space-lg) var(--j-space-md);
+  color: var(--j-ink-300);
+  font-size: 0.8rem;
+  font-family: var(--j-font-sacred);
+}
+
+/* ── Scroll Animation ── */
+.j-fade-in {
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.j-fade-in.j-visible { opacity: 1; transform: translateY(0); }
+
+/* ── Print ── */
+@media print {
+  body { background: white; }
+  .j-page { max-width: 100%; box-shadow: none; }
+  .j-tabs, .j-btn { display: none; }
+  .j-sacred-bar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  @page { size: A4; margin: 15mm; }
+}
+
 /* ── Utility ── */
 .j-text-center { text-align: center; }
 .j-text-muted { color: var(--j-ink-300); }
 .j-text-sm { font-size: 0.85rem; }
 .j-text-xs { font-size: 0.75rem; }
+.j-text-sacred { font-family: var(--j-font-sacred); }
+.j-text-data { font-family: var(--j-font-data); }
 .j-mt-sm { margin-top: var(--j-space-sm); }
 .j-mt-md { margin-top: var(--j-space-md); }
 .j-mb-md { margin-bottom: var(--j-space-md); }
@@ -261,4 +286,5 @@ body {
 .j-flex { display: flex; }
 .j-flex-wrap { flex-wrap: wrap; }
 .j-gap-sm { gap: var(--j-space-sm); }
+.j-gap-md { gap: var(--j-space-md); }
 .j-hidden { display: none; }

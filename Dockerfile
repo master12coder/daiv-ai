@@ -16,23 +16,29 @@ COPY apps/pyproject.toml apps/pyproject.toml
 COPY engine/ engine/
 COPY products/ products/
 COPY apps/ apps/
+COPY assets/ assets/
 
-# Install all packages + groq + telegram
+# Install all packages (web + telegram + groq)
 RUN pip install --no-cache-dir \
     -e engine/ \
     -e "products/[groq]" \
-    -e "apps/[telegram]"
+    -e "apps/[web,telegram]" \
+    gunicorn
 
 # Create runtime directories
 RUN mkdir -p data charts
 
-# Copy chart if exists (for pre-built images)
-COPY charts/ charts/
+# Copy charts if they exist
+COPY charts/ charts/ 2>/dev/null || true
 
-# Healthcheck
-HEALTHCHECK --interval=60s --timeout=10s --retries=3 \
-    CMD python -c "from jyotish_engine.compute.chart import compute_chart; print('ok')" || exit 1
+# Healthcheck via HTTP
+HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')" || exit 1
 
-# Default entrypoint
-ENTRYPOINT ["python", "-m", "jyotish_app.cli.main"]
-CMD ["--help"]
+# Expose web port
+EXPOSE 8000
+
+# Default: run web server
+CMD ["gunicorn", "jyotish_app.web.app:create_app()", \
+     "-w", "2", "-k", "uvicorn.workers.UvicornWorker", \
+     "-b", "0.0.0.0:8000", "--timeout", "120"]
