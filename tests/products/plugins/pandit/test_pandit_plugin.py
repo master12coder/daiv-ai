@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from jyotish_products.plugins.pandit.engine import add_correction, list_corrections
+from daivai_products.plugins.pandit.engine import add_correction, list_corrections
 
 
 class TestPanditPlugin:

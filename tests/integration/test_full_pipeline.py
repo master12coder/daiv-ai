@@ -1,23 +1,23 @@
 """Integration test — full pipeline from birth details to report."""
 
-from jyotish_engine.compute.ashtakavarga import compute_ashtakavarga
-from jyotish_engine.compute.bhava_chalit import compute_bhava_chalit
-from jyotish_engine.compute.chart import compute_chart
-from jyotish_engine.compute.dasha import compute_mahadashas
-from jyotish_engine.compute.dasha_extra import (
+from daivai_engine.compute.ashtakavarga import compute_ashtakavarga
+from daivai_engine.compute.bhava_chalit import compute_bhava_chalit
+from daivai_engine.compute.chart import compute_chart
+from daivai_engine.compute.dasha import compute_mahadashas
+from daivai_engine.compute.dasha_extra import (
     compute_ashtottari_dasha,
     compute_chara_dasha,
     compute_yogini_dasha,
 )
-from jyotish_engine.compute.divisional import compute_navamsha, compute_varga
-from jyotish_engine.compute.dosha import detect_all_doshas
-from jyotish_engine.compute.kp import compute_kp_positions
-from jyotish_engine.compute.matching import compute_ashtakoot
-from jyotish_engine.compute.panchang import compute_panchang
-from jyotish_engine.compute.strength import compute_planet_strengths
-from jyotish_engine.compute.transit import compute_transits
-from jyotish_engine.compute.upagraha import compute_all_upagrahas
-from jyotish_engine.compute.yoga import detect_all_yogas
+from daivai_engine.compute.divisional import compute_navamsha, compute_varga
+from daivai_engine.compute.dosha import detect_all_doshas
+from daivai_engine.compute.kp import compute_kp_positions
+from daivai_engine.compute.matching import compute_ashtakoot
+from daivai_engine.compute.panchang import compute_panchang
+from daivai_engine.compute.strength import compute_planet_strengths
+from daivai_engine.compute.transit import compute_transits
+from daivai_engine.compute.upagraha import compute_all_upagrahas
+from daivai_engine.compute.yoga import detect_all_yogas
 
 
 class TestFullPipeline:

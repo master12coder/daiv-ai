@@ -1,6 +1,6 @@
 """Test additional dasha systems — Yogini, Ashtottari, Chara."""
 
-from jyotish_engine.compute.dasha_extra import (
+from daivai_engine.compute.dasha_extra import (
     compute_ashtottari_dasha,
     compute_chara_dasha,
     compute_yogini_dasha,

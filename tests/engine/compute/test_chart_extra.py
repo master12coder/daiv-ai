@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from jyotish_engine.compute.chart import (
+from daivai_engine.compute.chart import (
     are_conjunct,
     get_house_lord,
     get_nakshatra,
@@ -12,7 +12,7 @@ from jyotish_engine.compute.chart import (
     get_planets_in_house,
     has_aspect,
 )
-from jyotish_engine.constants import (
+from daivai_engine.constants import (
     NUM_NAKSHATRAS,
     PADAS_PER_NAKSHATRA,
     SIGN_LORDS,

@@ -4,10 +4,10 @@ from __future__ import annotations
 
 import pytest
 
-from jyotish_engine.compute.chart import compute_chart
-from jyotish_engine.models.chart import ChartData
-from jyotish_products.plugins.kundali.gemstone_card import render_gemstone_card
-from jyotish_products.plugins.remedies.gemstone import (
+from daivai_engine.compute.chart import compute_chart
+from daivai_engine.models.chart import ChartData
+from daivai_products.plugins.kundali.gemstone_card import render_gemstone_card
+from daivai_products.plugins.remedies.gemstone import (
     GemstoneWeightResult,
     compute_gemstone_weights,
 )

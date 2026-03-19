@@ -4,14 +4,14 @@ from __future__ import annotations
 
 import pytest
 
-from jyotish_engine.compute.chart import compute_chart
-from jyotish_engine.compute.dasha import compute_mahadashas
-from jyotish_engine.models.chart import ChartData
-from jyotish_products.interpret.context import build_lordship_context
-from jyotish_products.plugins.kundali.accuracy_cert import render_accuracy_cert
-from jyotish_products.plugins.kundali.golden_period import render_golden_period
-from jyotish_products.plugins.kundali.prohibited_stones import render_prohibited_stones
-from jyotish_products.plugins.remedies.gemstone import compute_gemstone_weights
+from daivai_engine.compute.chart import compute_chart
+from daivai_engine.compute.dasha import compute_mahadashas
+from daivai_engine.models.chart import ChartData
+from daivai_products.interpret.context import build_lordship_context
+from daivai_products.plugins.kundali.accuracy_cert import render_accuracy_cert
+from daivai_products.plugins.kundali.golden_period import render_golden_period
+from daivai_products.plugins.kundali.prohibited_stones import render_prohibited_stones
+from daivai_products.plugins.remedies.gemstone import compute_gemstone_weights
 
 
 @pytest.fixture

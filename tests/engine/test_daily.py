@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from datetime import date
 
-from jyotish_engine.compute.daily import DailySuggestion, compute_daily_suggestion
+from daivai_engine.compute.daily import DailySuggestion, compute_daily_suggestion
 
 
 class TestDailySuggestion:

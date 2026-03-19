@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from jyotish_products.interpret.context import (
+from daivai_products.interpret.context import (
     build_lordship_context,
     build_scripture_context,
     get_gemstone_data,

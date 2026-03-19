@@ -1,6 +1,6 @@
 """Test Upagraha (shadow planet) computation."""
 
-from jyotish_engine.compute.upagraha import compute_all_upagrahas, compute_sun_upagrahas
+from daivai_engine.compute.upagraha import compute_all_upagrahas, compute_sun_upagrahas
 
 
 class TestUpagraha:

@@ -1,12 +1,12 @@
 [project]
-name = "jyotish-products"
+name = "daivai-products"
 version = "1.0.0"
-description = "AI interpretation, 7 product plugins, and storage for Vedic astrology."
+description = "DaivAI Products — 7 plugins, LLM interpretation, safety validation."
 requires-python = ">=3.12"
 license = "AGPL-3.0-or-later"
 authors = [{name = "Manish Chaurasia"}]
 dependencies = [
-    "jyotish-engine",
+    "daivai-engine",
     "jinja2>=3.0",
 ]
 
@@ -23,4 +23,4 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/jyotish_products"]
+packages = ["src/daivai_products"]

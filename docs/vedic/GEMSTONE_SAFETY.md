@@ -7,7 +7,7 @@ the **wrong** gemstone — particularly one for a maraka (death-inflicting) or
 functional malefic planet — can cause real harm: health problems, financial
 loss, relationship damage.
 
-This is the most safety-critical aspect of the Vedic AI Framework.
+This is the most safety-critical aspect of the DaivAI.
 
 ## Core Principle
 

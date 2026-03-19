@@ -8,8 +8,8 @@ from __future__ import annotations
 
 import pytest
 
-from jyotish_products.interpret.context import build_lordship_context
-from jyotish_products.interpret.validator import validate_interpretation
+from daivai_products.interpret.context import build_lordship_context
+from daivai_products.interpret.validator import validate_interpretation
 
 
 # All 12 lagnas with their known maraka and prohibited data

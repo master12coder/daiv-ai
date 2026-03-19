@@ -1,4 +1,4 @@
-# Jyotish AI — Complete Project Context for UI Development
+# DaivAI — Complete Project Context for UI Development
 
 > Paste this entire file into Claude.ai, v0.dev, or any AI tool before asking
 > it to build UI. It gives full context: what the project is, how data flows,
@@ -8,7 +8,7 @@
 
 ## What This Project Is
 
-**Jyotish AI** is a Vedic astrology framework that computes birth charts using
+**DaivAI** is a Vedic astrology framework that computes birth charts using
 NASA-grade Swiss Ephemeris and interprets them using AI (LLM) + classical rules.
 
 **Users:** Indian families, astrology enthusiasts, professional Pandit Ji (astrologers)

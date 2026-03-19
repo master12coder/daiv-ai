@@ -1,6 +1,6 @@
 """Test chart computation against known verified values."""
 
-from jyotish_engine.compute.chart import compute_chart, get_house_lord
+from daivai_engine.compute.chart import compute_chart, get_house_lord
 
 
 class TestManishChart:
@@ -28,7 +28,7 @@ class TestManishChart:
         assert list(manish_chart.planets.keys()) == expected
 
     def test_planet_signs_valid(self, manish_chart):
-        from jyotish_engine.constants import SIGNS
+        from daivai_engine.constants import SIGNS
 
         for p in manish_chart.planets.values():
             assert p.sign in SIGNS
@@ -43,7 +43,7 @@ class TestManishChart:
             assert 0 <= p.degree_in_sign < 30.0
 
     def test_planet_nakshatras_valid(self, manish_chart):
-        from jyotish_engine.constants import NAKSHATRAS
+        from daivai_engine.constants import NAKSHATRAS
 
         for p in manish_chart.planets.values():
             assert p.nakshatra in NAKSHATRAS

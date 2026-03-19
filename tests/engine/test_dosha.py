@@ -1,6 +1,6 @@
 """Test dosha detection."""
 
-from jyotish_engine.compute.dosha import (
+from daivai_engine.compute.dosha import (
     detect_all_doshas,
     detect_kaal_sarp_dosha,
     detect_mangal_dosha,

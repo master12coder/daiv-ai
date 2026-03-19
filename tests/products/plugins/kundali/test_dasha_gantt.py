@@ -4,15 +4,15 @@ from __future__ import annotations
 
 import pytest
 
-from jyotish_engine.compute.chart import compute_chart
-from jyotish_engine.compute.dasha import (
+from daivai_engine.compute.chart import compute_chart
+from daivai_engine.compute.dasha import (
     compute_antardashas,
     compute_mahadashas,
     find_current_dasha,
 )
-from jyotish_engine.models.chart import ChartData
-from jyotish_products.interpret.context import build_lordship_context
-from jyotish_products.plugins.kundali.dasha_gantt import render_dasha_gantt
+from daivai_engine.models.chart import ChartData
+from daivai_products.interpret.context import build_lordship_context
+from daivai_products.plugins.kundali.dasha_gantt import render_dasha_gantt
 
 
 @pytest.fixture

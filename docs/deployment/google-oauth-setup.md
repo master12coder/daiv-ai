@@ -4,14 +4,14 @@
 
 1. Go to [console.cloud.google.com](https://console.cloud.google.com)
 2. Click "Select a project" → "New Project"
-3. Name: "Jyotish AI"
+3. Name: "DaivAI"
 4. Click "Create"
 
 ## Step 2: OAuth Consent Screen
 
 1. Go to APIs & Services → OAuth consent screen
 2. User type: "External"
-3. App name: "Jyotish AI"
+3. App name: "DaivAI"
 4. User support email: your email
 5. Authorized domains: your domain (e.g., `jyotish.yourdomain.com`)
 6. Developer contact: your email

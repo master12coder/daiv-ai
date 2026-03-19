@@ -7,7 +7,7 @@
 
 ## Brand Identity
 
-**Name:** Jyotish AI — Vedic Astrology Intelligence
+**Name:** DaivAI — Vedic Astrology Intelligence
 **Feel:** Sacred document meets modern mobile app. Like a Pandit Ji's notebook, not a software dashboard.
 **Invocation:** "श्री गणेशाय नमः" (not "ॐ" — use the proper invocation before any kundali)
 **Closing:** "शुभम् भवतु" (May auspiciousness prevail)
@@ -134,7 +134,7 @@
 
 ### 10. Sacred Footer
 - "शुभम् भवतु" centered
-- "vedic-ai-framework" small caption
+- "daivai" small caption
 - Page number (for PDF)
 
 ---
@@ -382,7 +382,7 @@ Each card:
 Copy-paste this into v0.dev or Claude.ai:
 
 ```
-Design a complete mobile-first Vedic astrology app called "Jyotish AI".
+Design a complete mobile-first Vedic astrology app called "DaivAI".
 
 Color scheme: saffron (#FF6F00), cream (#FFFDE7), deep green (#2E7D32),
 deep red (#C62828), gold (#FF8F00), indigo (#1A237E).
@@ -390,7 +390,7 @@ deep red (#C62828), gold (#FF8F00), indigo (#1A237E).
 Font: Noto Sans Devanagari for all text. Hindi-English bilingual.
 
 Header: Every page starts with a saffron bar containing "श्री गणेशाय नमः" in white.
-Footer: "शुभम् भवतु | vedic-ai-framework"
+Footer: "शुभम् भवतु | daivai"
 
 Design these pages (390px mobile width):
 

@@ -18,11 +18,11 @@ sudo apt install -y python3.12 python3.12-venv python3.12-dev \
 
 # ── Clone repository ──
 echo "Cloning repository..."
-if [ ! -d /opt/jyotish ]; then
-    sudo git clone https://github.com/master12coder/vedic-ai-framework.git /opt/jyotish
-    sudo chown -R ubuntu:ubuntu /opt/jyotish
+if [ ! -d /opt/daivai ]; then
+    sudo git clone https://github.com/master12coder/daivai.git /opt/daivai
+    sudo chown -R ubuntu:ubuntu /opt/daivai
 fi
-cd /opt/jyotish
+cd /opt/daivai
 
 # ── Python environment ──
 echo "Setting up Python environment..."
@@ -35,22 +35,22 @@ pip install -e "apps/[web]"
 pip install gunicorn
 
 # ── Environment file ──
-if [ ! -f /opt/jyotish/.env ]; then
+if [ ! -f /opt/daivai/.env ]; then
     echo "Creating .env file..."
     SECRET=$(python3 -c "import secrets; print(secrets.token_hex(32))")
-    cat > /opt/jyotish/.env << EOF
+    cat > /opt/daivai/.env << EOF
 GOOGLE_CLIENT_ID=REPLACE_ME
 GOOGLE_CLIENT_SECRET=REPLACE_ME
 SECRET_KEY=${SECRET}
-DATABASE_URL=sqlite:////opt/jyotish/data/jyotish.db
+DATABASE_URL=sqlite:////opt/daivai/data/daivai.db
 ALLOWED_EMAILS=
 GROQ_API_KEY=
 EOF
-    echo "⚠️  Edit /opt/jyotish/.env with your Google OAuth credentials"
+    echo "⚠️  Edit /opt/daivai/.env with your Google OAuth credentials"
 fi
 
 # ── Data directory ──
-mkdir -p /opt/jyotish/data
+mkdir -p /opt/daivai/data
 
 # ── Caddy (reverse proxy + auto SSL) ──
 echo "Installing Caddy..."
@@ -63,17 +63,17 @@ sudo apt update && sudo apt install -y caddy
 
 # ── Systemd service ──
 echo "Creating systemd service..."
-sudo tee /etc/systemd/system/jyotish.service > /dev/null << EOF
+sudo tee /etc/systemd/system/daivai.service > /dev/null << EOF
 [Unit]
 Description=Jyotish AI Web App
 After=network.target
 
 [Service]
 User=ubuntu
-WorkingDirectory=/opt/jyotish
-EnvironmentFile=/opt/jyotish/.env
-ExecStart=/opt/jyotish/.venv/bin/gunicorn \
-    "jyotish_app.web.app:create_app()" \
+WorkingDirectory=/opt/daivai
+EnvironmentFile=/opt/daivai/.env
+ExecStart=/opt/daivai/.venv/bin/gunicorn \
+    "daivai_app.web.app:create_app()" \
     -w 2 -k uvicorn.workers.UvicornWorker \
     -b 0.0.0.0:8000 \
     --timeout 120
@@ -85,7 +85,7 @@ WantedBy=multi-user.target
 EOF
 
 sudo systemctl daemon-reload
-sudo systemctl enable jyotish
+sudo systemctl enable daivai
 
 # ── Firewall ──
 echo "Opening firewall ports..."
@@ -98,9 +98,9 @@ echo "════════════════════════�
 echo "  Setup complete!"
 echo ""
 echo "  Next steps:"
-echo "  1. Edit /opt/jyotish/.env with Google OAuth credentials"
+echo "  1. Edit /opt/daivai/.env with Google OAuth credentials"
 echo "  2. Edit /etc/caddy/Caddyfile with your domain"
-echo "  3. sudo systemctl start jyotish"
+echo "  3. sudo systemctl start daivai"
 echo "  4. sudo systemctl start caddy"
 echo ""
 echo "  शुभम् भवतु"

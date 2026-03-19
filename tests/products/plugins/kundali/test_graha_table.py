@@ -4,11 +4,11 @@ from __future__ import annotations
 
 import pytest
 
-from jyotish_engine.compute.chart import compute_chart
-from jyotish_engine.compute.strength import compute_shadbala
-from jyotish_engine.models.chart import ChartData
-from jyotish_products.interpret.context import build_lordship_context
-from jyotish_products.plugins.kundali.graha_table import render_graha_table
+from daivai_engine.compute.chart import compute_chart
+from daivai_engine.compute.strength import compute_shadbala
+from daivai_engine.models.chart import ChartData
+from daivai_products.interpret.context import build_lordship_context
+from daivai_products.plugins.kundali.graha_table import render_graha_table
 
 
 @pytest.fixture

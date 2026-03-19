@@ -39,6 +39,6 @@ HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
 EXPOSE 8000
 
 # Default: run web server
-CMD ["gunicorn", "jyotish_app.web.app:create_app()", \
+CMD ["gunicorn", "daivai_app.web.app:create_app()", \
      "-w", "2", "-k", "uvicorn.workers.UvicornWorker", \
      "-b", "0.0.0.0:8000", "--timeout", "120"]

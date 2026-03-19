@@ -45,7 +45,7 @@ Option B — Free DuckDNS:
 ssh ubuntu@YOUR_VM_IP
 
 # Run the setup script
-curl -sSL https://raw.githubusercontent.com/master12coder/vedic-ai-framework/main/scripts/deploy/setup_oracle.sh | bash
+curl -sSL https://raw.githubusercontent.com/master12coder/daivai/main/scripts/deploy/setup_oracle.sh | bash
 
 # Edit environment
 nano /opt/jyotish/.env

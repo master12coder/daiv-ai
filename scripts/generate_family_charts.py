@@ -8,10 +8,10 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from jyotish_engine.compute.chart import compute_chart
-from jyotish_engine.compute.dasha import find_current_dasha
-from jyotish_engine.compute.yoga import detect_all_yogas
-from jyotish_products.interpret.context import build_lordship_context
+from daivai_engine.compute.chart import compute_chart
+from daivai_engine.compute.dasha import find_current_dasha
+from daivai_engine.compute.yoga import detect_all_yogas
+from daivai_products.interpret.context import build_lordship_context
 
 
 FAMILY = [

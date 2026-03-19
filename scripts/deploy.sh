@@ -5,7 +5,7 @@
 
 set -euo pipefail
 
-REPO="https://github.com/master12coder/vedic-ai-framework.git"
+REPO="https://github.com/master12coder/daivai.git"
 APP_DIR="$HOME/jyotish"
 
 echo "═══ Jyotish AI — VPS Deployment ═══"

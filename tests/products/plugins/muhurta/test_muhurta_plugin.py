@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from jyotish_engine.models.muhurta import MuhurtaCandidate
-from jyotish_products.plugins.muhurta.engine import find_dates, format_candidates
+from daivai_engine.models.muhurta import MuhurtaCandidate
+from daivai_products.plugins.muhurta.engine import find_dates, format_candidates
 
 
 class TestMuhurtaPlugin:

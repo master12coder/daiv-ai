@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from jyotish_engine.compute.bhava_chalit import (
+from daivai_engine.compute.bhava_chalit import (
     compute_bhava_chalit,
     get_bhava_shifted_planets,
     get_planets_in_bhava,
 )
-from jyotish_engine.constants import PLANETS
-from jyotish_engine.models.bhava_chalit import BhavaChalitResult, BhavaPlanet
+from daivai_engine.constants import PLANETS
+from daivai_engine.models.bhava_chalit import BhavaChalitResult, BhavaPlanet
 
 
 class TestBhavaChalitComputation:

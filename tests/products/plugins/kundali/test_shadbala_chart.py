@@ -7,11 +7,11 @@ from pathlib import Path
 
 import pytest
 
-from jyotish_engine.compute.chart import compute_chart
-from jyotish_engine.compute.strength import compute_shadbala
-from jyotish_engine.models.chart import ChartData
-from jyotish_engine.models.strength import ShadbalaResult
-from jyotish_products.plugins.kundali.shadbala_chart import (
+from daivai_engine.compute.chart import compute_chart
+from daivai_engine.compute.strength import compute_shadbala
+from daivai_engine.models.chart import ChartData
+from daivai_engine.models.strength import ShadbalaResult
+from daivai_products.plugins.kundali.shadbala_chart import (
     _find_extremes,
     render_shadbala_chart,
 )

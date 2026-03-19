@@ -1,4 +1,4 @@
-# CLAUDE.md — Jyotish Framework
+# CLAUDE.md — DaivAI Framework
 
 > Read this FIRST every session. Follow EVERY rule. No exceptions.
 
@@ -180,7 +180,7 @@ make lint       → ruff check + ruff format --check
 make typecheck  → mypy engine/src/ products/src/
 make audit      → python scripts/check_imports.py + check_plugins.py + safety_audit.py
 make all        → all of the above
-make run        → jyotish --help
+make run        → daivai --help
 ```
 
 ## When Uncertain

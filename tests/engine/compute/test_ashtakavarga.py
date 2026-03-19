@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import pytest
 
-from jyotish_engine.compute.ashtakavarga import compute_ashtakavarga, get_transit_strength
-from jyotish_engine.models.chart import ChartData, PlanetData
+from daivai_engine.compute.ashtakavarga import compute_ashtakavarga, get_transit_strength
+from daivai_engine.models.chart import ChartData, PlanetData
 
 
 # ---------------------------------------------------------------------------

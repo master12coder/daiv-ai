@@ -1,12 +1,12 @@
 [project]
-name = "jyotish"
+name = "daivai"
 version = "1.0.0"
 description = "AI-powered Vedic astrology — CLI, Web, and Telegram."
 requires-python = ">=3.12"
 license = "AGPL-3.0-or-later"
 authors = [{name = "Manish Chaurasia"}]
 dependencies = [
-    "jyotish-products",
+    "daivai-products",
     "click>=8.0",
     "rich>=13.0",
 ]
@@ -23,14 +23,14 @@ web = [
     "sqlmodel>=0.0.22",
 ]
 telegram = ["python-telegram-bot>=21.0"]
-all = ["jyotish[web,telegram]"]
+all = ["daivai[web,telegram]"]
 
 [project.scripts]
-jyotish = "jyotish_app.cli.main:cli"
+daivai = "daivai_app.cli.main:cli"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/jyotish_app"]
+packages = ["src/daivai_app"]

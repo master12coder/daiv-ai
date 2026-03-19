@@ -1,4 +1,4 @@
-# Contributing to Vedic AI Framework
+# Contributing to DaivAI
 
 Thank you for your interest in contributing! This project bridges ancient Vedic
 wisdom with modern AI — contributions from both Jyotish scholars and software
@@ -7,8 +7,8 @@ engineers are welcome.
 ## Getting Started
 
 ```bash
-git clone https://github.com/<org>/vedic-ai-framework.git
-cd vedic-ai-framework
+git clone https://github.com/<org>/daivai.git
+cd daivai
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev,ollama]"
 pytest                # all 224+ tests must pass
@@ -78,7 +78,7 @@ If you are a Jyotish scholar or practitioner:
 
 - Add scripture rules to `jyotish/scriptures/bphs/`
 - Review and correct `jyotish/knowledge/lordship_rules.yaml`
-- Submit Pandit Ji corrections via `jyotish correct` CLI
+- Submit Pandit Ji corrections via `daivai correct` CLI
 - Add life event validation data for accuracy testing
 
 ## Testing
@@ -99,5 +99,5 @@ respectful of diverse astrological traditions and cultural perspectives.
 
 ## Questions?
 
-Open a [Discussion](https://github.com/<org>/vedic-ai-framework/discussions)
+Open a [Discussion](https://github.com/<org>/daivai/discussions)
 or reach out to the maintainers.

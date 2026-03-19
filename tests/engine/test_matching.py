@@ -1,6 +1,6 @@
 """Test Ashtakoot (36 guna) matching."""
 
-from jyotish_engine.compute.matching import compute_ashtakoot
+from daivai_engine.compute.matching import compute_ashtakoot
 
 
 class TestAshtakootMatching:

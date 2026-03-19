@@ -4,7 +4,7 @@ import tempfile
 
 import pytest
 
-from jyotish_products.store.corrections import PanditCorrection, PanditCorrectionStore
+from daivai_products.store.corrections import PanditCorrection, PanditCorrectionStore
 
 
 @pytest.fixture

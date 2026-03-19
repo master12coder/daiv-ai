@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from jyotish_app.web.database import (
+from daivai_app.web.database import (
     create_client,
     get_client,
     get_clients_for_user,

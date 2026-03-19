@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import pytest
 
-from jyotish_engine.compute.chart import compute_chart, get_house_lord
-from jyotish_engine.knowledge.loader import load_lordship_rules
-from jyotish_engine.models.chart import ChartData
+from daivai_engine.compute.chart import compute_chart, get_house_lord
+from daivai_engine.knowledge.loader import load_lordship_rules
+from daivai_engine.models.chart import ChartData
 
 
 @pytest.fixture

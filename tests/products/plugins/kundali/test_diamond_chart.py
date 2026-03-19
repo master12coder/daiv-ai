@@ -7,10 +7,10 @@ from pathlib import Path
 
 import pytest
 
-from jyotish_engine.compute.chart import compute_chart
-from jyotish_engine.models.chart import ChartData
-from jyotish_products.interpret.context import build_lordship_context
-from jyotish_products.plugins.kundali.diamond import render_d1_chart
+from daivai_engine.compute.chart import compute_chart
+from daivai_engine.models.chart import ChartData
+from daivai_products.interpret.context import build_lordship_context
+from daivai_products.plugins.kundali.diamond import render_d1_chart
 
 
 @pytest.fixture

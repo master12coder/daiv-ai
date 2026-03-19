@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from jyotish_engine.scriptures.query import (
+from daivai_engine.scriptures.query import (
     get_all_references,
     get_citation,
     query_by_planet,

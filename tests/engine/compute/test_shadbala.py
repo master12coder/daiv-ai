@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from jyotish_engine.compute.strength import (
+from daivai_engine.compute.strength import (
     NAISARGIKA,
     REQUIRED_SHADBALA,
     SHADBALA_PLANETS,

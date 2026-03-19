@@ -1,5 +1,5 @@
 [project]
-name = "vedic-ai-framework"
+name = "daivai"
 version = "1.0.0"
 description = "AI-powered Vedic astrology — engine, products, and apps"
 requires-python = ">=3.12"
@@ -10,8 +10,8 @@ authors = [{name = "Manish Chaurasia"}]
 members = ["engine", "products", "apps"]
 
 [tool.uv.sources]
-jyotish-engine = { workspace = true }
-jyotish-products = { workspace = true }
+daivai-engine = { workspace = true }
+daivai-products = { workspace = true }
 
 [dependency-groups]
 dev = [
@@ -39,7 +39,7 @@ ignore = [
 ]
 
 [tool.ruff.lint.isort]
-known-first-party = ["jyotish_engine", "jyotish_products", "jyotish_app"]
+known-first-party = ["daivai_engine", "daivai_products", "daivai_app"]
 force-single-line = false
 lines-after-imports = 2
 

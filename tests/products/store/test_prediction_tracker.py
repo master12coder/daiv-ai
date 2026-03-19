@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from jyotish_products.store.predictions import Prediction, PredictionTracker
+from daivai_products.store.predictions import Prediction, PredictionTracker
 
 
 @pytest.fixture

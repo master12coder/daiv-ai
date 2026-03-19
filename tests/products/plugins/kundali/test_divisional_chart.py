@@ -4,14 +4,14 @@ from __future__ import annotations
 
 import pytest
 
-from jyotish_engine.compute.chart import compute_chart
-from jyotish_engine.compute.divisional import (
+from daivai_engine.compute.chart import compute_chart
+from daivai_engine.compute.divisional import (
     compute_dasamsha,
     compute_navamsha,
     get_vargottam_planets,
 )
-from jyotish_engine.models.chart import ChartData
-from jyotish_products.plugins.kundali.divisional import render_divisional_chart
+from daivai_engine.models.chart import ChartData
+from daivai_products.plugins.kundali.divisional import render_divisional_chart
 
 
 @pytest.fixture

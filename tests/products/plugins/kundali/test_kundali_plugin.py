@@ -4,10 +4,10 @@ from __future__ import annotations
 
 import pytest
 
-from jyotish_engine.compute.chart import compute_chart
-from jyotish_engine.models.chart import ChartData
-from jyotish_products.plugins.kundali.diamond_text import render_chart_summary, render_diamond_text
-from jyotish_products.plugins.kundali.report import REPORT_SECTIONS, generate_report
+from daivai_engine.compute.chart import compute_chart
+from daivai_engine.models.chart import ChartData
+from daivai_products.plugins.kundali.diamond_text import render_chart_summary, render_diamond_text
+from daivai_products.plugins.kundali.report import REPORT_SECTIONS, generate_report
 
 
 @pytest.fixture

@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import pytest
 
-from jyotish_engine.compute.chart import compute_chart
-from jyotish_engine.models.chart import ChartData
-from jyotish_products.plugins.matching.engine import compute_match, format_result, run_match
+from daivai_engine.compute.chart import compute_chart
+from daivai_engine.models.chart import ChartData
+from daivai_products.plugins.matching.engine import compute_match, format_result, run_match
 
 
 @pytest.fixture

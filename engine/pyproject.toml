@@ -1,5 +1,5 @@
 [project]
-name = "jyotish-engine"
+name = "daivai-engine"
 version = "1.0.0"
 description = "Pure Vedic astrology computation — Swiss Ephemeris + YAML rules. Zero AI."
 requires-python = ">=3.12"
@@ -19,4 +19,4 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/jyotish_engine"]
+packages = ["src/daivai_engine"]

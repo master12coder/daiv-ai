@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-PLUGINS_DIR = ROOT / "products" / "src" / "jyotish_products" / "plugins"
+PLUGINS_DIR = ROOT / "products" / "src" / "daivai_products" / "plugins"
 
 REQUIRED_ATTRS = {"PLUGIN_NAME", "DESCRIPTION", "COMMANDS"}
 
@@ -17,7 +17,7 @@ def check_plugin(plugin_name: str) -> list[str]:
     errors: list[str] = []
 
     try:
-        module = importlib.import_module(f"jyotish_products.plugins.{plugin_name}")
+        module = importlib.import_module(f"daivai_products.plugins.{plugin_name}")
     except ImportError as e:
         return [f"  {plugin_name}: cannot import — {e}"]
 

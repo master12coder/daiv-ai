@@ -9,8 +9,8 @@
 ## Install
 
 ```bash
-git clone https://github.com/master12coder/vedic-ai-framework.git
-cd vedic-ai-framework
+git clone https://github.com/master12coder/daivai.git
+cd daivai
 
 # Development (all 3 packages linked via uv workspace)
 uv sync
@@ -27,7 +27,7 @@ pip install -e "products/[ollama]"   # Free local
 
 ```bash
 jyotish --help                       # CLI works
-jyotish chart --name "Test" --dob "01/01/2000" --tob "06:00" --place "Delhi" --gender Male
+daivai chart --name "Test" --dob "01/01/2000" --tob "06:00" --place "Delhi" --gender Male
 make test                            # 530+ tests pass
 make all                             # lint + typecheck + test + audit
 ```
@@ -36,7 +36,7 @@ make all                             # lint + typecheck + test + audit
 
 | Problem | Fix |
 |---------|-----|
-| `ModuleNotFoundError: jyotish_engine` | `uv sync` or `pip install -e engine/` |
+| `ModuleNotFoundError: daivai_engine` | `uv sync` or `pip install -e engine/` |
 | `ImportError: swisseph` | `pip install pyswisseph` (needs C compiler) |
 | Font warnings in tests | Normal — NotoSansDevanagari in `assets/fonts/` |
 | `make lint` fails | `pip install ruff` |
@@ -45,6 +45,6 @@ make all                             # lint + typecheck + test + audit
 
 | Package | Install | What |
 |---------|---------|------|
-| `jyotish-engine` | `pip install -e engine/` | Pure math, zero AI, standalone |
-| `jyotish-products` | `pip install -e products/` | AI + plugins, needs engine |
+| `daivai-engine` | `pip install -e engine/` | Pure math, zero AI, standalone |
+| `daivai-products` | `pip install -e products/` | AI + plugins, needs engine |
 | `jyotish` (apps) | `pip install -e apps/` | CLI + web + telegram, needs all |

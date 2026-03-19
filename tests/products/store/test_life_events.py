@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from jyotish_products.store.events import ChartRecord, LifeEvent, LifeEventsDB
+from daivai_products.store.events import ChartRecord, LifeEvent, LifeEventsDB
 
 
 @pytest.fixture

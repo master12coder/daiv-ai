@@ -1,7 +1,7 @@
 """Test KP sub-lord calculations."""
 
-from jyotish_engine.compute.kp import compute_kp_positions, get_kp_position, get_significators
-from jyotish_engine.constants import DASHA_SEQUENCE
+from daivai_engine.compute.kp import compute_kp_positions, get_kp_position, get_significators
+from daivai_engine.constants import DASHA_SEQUENCE
 
 
 class TestKPSubLord:

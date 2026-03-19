@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from reportlab.platypus import Paragraph, Spacer, Table
 
-from jyotish_engine.compute.yoga import detect_all_yogas
-from jyotish_engine.models.chart import ChartData
-from jyotish_engine.models.yoga import YogaResult
-from jyotish_products.plugins.kundali.yoga_cards import render_yoga_cards
+from daivai_engine.compute.yoga import detect_all_yogas
+from daivai_engine.models.chart import ChartData
+from daivai_engine.models.yoga import YogaResult
+from daivai_products.plugins.kundali.yoga_cards import render_yoga_cards
 
 
 class TestYogaCardsWithChart:

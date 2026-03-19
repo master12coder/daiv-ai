@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from jyotish_engine.models.scripture import ScriptureReference
-from jyotish_engine.scriptures.query import (
+from daivai_engine.models.scripture import ScriptureReference
+from daivai_engine.scriptures.query import (
     get_all_references,
     query_by_planet,
     query_by_topic,

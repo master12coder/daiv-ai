@@ -11,7 +11,7 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 
 # Find lordship rules in engine
-LORDSHIP_PATH = ROOT / "engine" / "src" / "jyotish_engine" / "knowledge" / "lordship_rules.yaml"
+LORDSHIP_PATH = ROOT / "engine" / "src" / "daivai_engine" / "knowledge" / "lordship_rules.yaml"
 # Fallback to old location
 if not LORDSHIP_PATH.exists():
     LORDSHIP_PATH = ROOT / "jyotish" / "knowledge" / "lordship_rules.yaml"
@@ -47,7 +47,7 @@ def scan_prompts_for_safety(prohibited: dict[str, list[str]]) -> list[str]:
 
     # Scan all prompt templates
     for prompts_dir in [
-        ROOT / "products" / "src" / "jyotish_products" / "interpret" / "prompts",
+        ROOT / "products" / "src" / "daivai_products" / "interpret" / "prompts",
         ROOT / "jyotish" / "interpret" / "prompts",
     ]:
         if not prompts_dir.exists():

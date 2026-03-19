@@ -1,4 +1,4 @@
-# OVERNIGHT BUILD PLAN — Jyotish AI Web App
+# OVERNIGHT BUILD PLAN — DaivAI Web App
 ## 10-12 Hour Claude Code Execution Plan
 ## Date: March 19, 2026
 
@@ -12,7 +12,7 @@ Read these files FIRST (in order):
 3. `CLAUDE.md` — Hard rules
 4. This file — What to build tonight
 
-The web app lives in `apps/src/jyotish_app/web/`.
+The web app lives in `apps/src/daivai_app/web/`.
 It uses FastAPI (already in the stack) + Jinja2 templates + our design tokens.
 It is ONE MORE DELIVERY CHANNEL — like CLI and Telegram.
 It calls products/ which calls engine/. It NEVER computes directly.
@@ -55,7 +55,7 @@ It calls products/ which calls engine/. It NEVER computes directly.
 
 ### Task 1.1: FastAPI App with Auth
 
-File: `apps/src/jyotish_app/web/app.py`
+File: `apps/src/daivai_app/web/app.py`
 
 ```python
 # What to build:
@@ -91,7 +91,7 @@ GET  /client/{id}/pdf     → Download PDF
 
 ### Task 1.2: Database Schema
 
-File: `apps/src/jyotish_app/web/database.py`
+File: `apps/src/daivai_app/web/database.py`
 
 ```python
 # SQLModel tables:
@@ -133,12 +133,12 @@ class DailyCache(SQLModel, table=True):
 
 ### Task 1.3: Design Tokens CSS
 
-File: `apps/src/jyotish_app/web/static/tokens.css`
+File: `apps/src/daivai_app/web/static/tokens.css`
 
 Generate from `jyotish-ui/tokens/design-tokens.json`.
 This is the ONLY CSS file that defines colors, fonts, spacing.
 
-File: `apps/src/jyotish_app/web/static/components.css`
+File: `apps/src/daivai_app/web/static/components.css`
 
 All component styles using CSS variables from tokens.css.
 Every class prefixed with `j-`.
@@ -163,7 +163,7 @@ def test_client_belongs_to_user()
 
 ### Task 2.1: Hindi Input Form Template
 
-File: `apps/src/jyotish_app/web/templates/input_form.html`
+File: `apps/src/daivai_app/web/templates/input_form.html`
 
 - Full Hindi form matching `input_template_hindi.md`
 - Uses design system components (j-input, j-radio-row, j-button)
@@ -174,7 +174,7 @@ File: `apps/src/jyotish_app/web/templates/input_form.html`
 
 ### Task 2.2: Chart Generation Route
 
-File: `apps/src/jyotish_app/web/routes.py`
+File: `apps/src/daivai_app/web/routes.py`
 
 ```python
 @router.post("/generate")
@@ -189,7 +189,7 @@ async def generate_chart(request: Request, db: Session):
 
 ### Task 2.3: Indian Cities Dataset
 
-File: `apps/src/jyotish_app/web/static/cities.json`
+File: `apps/src/daivai_app/web/static/cities.json`
 
 Top 500 Indian cities with lat/lon/state. Used for place autocomplete.
 Source: simplified from GeoNames India dataset.
@@ -208,7 +208,7 @@ def test_required_fields_validated()
 
 ### Task 3.1: Overview Template
 
-File: `apps/src/jyotish_app/web/templates/overview.html`
+File: `apps/src/daivai_app/web/templates/overview.html`
 
 This is the MAIN report page. Renders from Client.chart_json.
 
@@ -229,7 +229,7 @@ ZERO computation in template. Just rendering.
 
 ### Task 3.2: SVG Diamond Chart Component
 
-File: `apps/src/jyotish_app/web/templates/components/diamond_chart.html`
+File: `apps/src/daivai_app/web/templates/components/diamond_chart.html`
 
 Jinja2 macro that generates the North Indian SVG diamond.
 Input: planets list, lagna sign number.
@@ -237,7 +237,7 @@ Uses graha colors from design tokens (semantic.shubh/ashubh/marak/yoga).
 
 ### Task 3.3: Reusable Jinja2 Macros
 
-File: `apps/src/jyotish_app/web/templates/components/macros.html`
+File: `apps/src/daivai_app/web/templates/components/macros.html`
 
 ```jinja2
 {% macro j_header(subject) %} ... {% endmacro %}
@@ -273,7 +273,7 @@ def test_current_dasha_highlighted()
 
 ### Task 4.1: Dashboard Template
 
-File: `apps/src/jyotish_app/web/templates/dashboard.html`
+File: `apps/src/daivai_app/web/templates/dashboard.html`
 
 ```
 ┌──────────────────────────────┐
@@ -304,7 +304,7 @@ Shows only clients belonging to the logged-in user.
 
 ### Task 4.2: Login Page Template
 
-File: `apps/src/jyotish_app/web/templates/login.html`
+File: `apps/src/daivai_app/web/templates/login.html`
 
 Sacred-themed login page. Single "Sign in with Google" button.
 No email/password fields. Clean, warm, minimal.
@@ -322,7 +322,7 @@ def test_client_card_shows_lagna_and_dasha()
 
 ### Task 5.1: Dasha Deep-dive Page
 
-File: `apps/src/jyotish_app/web/templates/dasha.html`
+File: `apps/src/daivai_app/web/templates/dasha.html`
 
 Full vertical timeline with ALL mahadashas.
 Current mahadasha expanded to show all antardashas.
@@ -332,7 +332,7 @@ Past events listed if available.
 
 ### Task 5.2: Ratna Vidhan Page
 
-File: `apps/src/jyotish_app/web/templates/ratna.html`
+File: `apps/src/daivai_app/web/templates/ratna.html`
 
 Three sections:
 1. Recommended stones (green) with full details
@@ -368,7 +368,7 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y python3.12 python3.12-venv git build-essential
 
 # App
-git clone https://github.com/master12coder/vedic-ai-framework.git /opt/jyotish
+git clone https://github.com/master12coder/daivai.git /opt/jyotish
 cd /opt/jyotish
 python3.12 -m venv .venv
 source .venv/bin/activate
@@ -402,14 +402,14 @@ sudo systemctl start caddy
 # Gunicorn systemd service
 sudo cat > /etc/systemd/system/jyotish.service << EOF
 [Unit]
-Description=Jyotish AI Web App
+Description=DaivAI Web App
 After=network.target
 
 [Service]
 User=ubuntu
 WorkingDirectory=/opt/jyotish
 EnvironmentFile=/opt/jyotish/.env
-ExecStart=/opt/jyotish/.venv/bin/gunicorn jyotish_app.web.app:app -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000
+ExecStart=/opt/jyotish/.venv/bin/gunicorn daivai_app.web.app:app -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000
 Restart=always
 RestartSec=5
 
@@ -434,7 +434,7 @@ chmod +x /opt/jyotish/scripts/backup.sh
 # Cron: backup at 3 AM daily
 (crontab -l 2>/dev/null; echo "0 3 * * * /opt/jyotish/scripts/backup.sh") | crontab -
 
-echo "✅ Jyotish AI deployed. Visit https://jyotish.yourdomain.com"
+echo "✅ DaivAI deployed. Visit https://jyotish.yourdomain.com"
 ```
 
 ### Task 6.2: Google OAuth Setup Instructions
@@ -443,7 +443,7 @@ File: `docs/deployment/google-oauth-setup.md`
 
 Step-by-step with screenshots:
 1. Go to console.cloud.google.com
-2. Create project "Jyotish AI"
+2. Create project "DaivAI"
 3. Enable OAuth consent screen
 4. Add authorized redirect URI
 5. Copy Client ID and Secret to .env
@@ -464,7 +464,7 @@ sudo netfilter-persistent save
 
 ### Task 7.1: Telegram Bot Integration
 
-File: `apps/src/jyotish_app/telegram/bot.py` (already planned)
+File: `apps/src/daivai_app/telegram/bot.py` (already planned)
 
 The Telegram bot sends daily guidance at 5:30 AM to registered users.
 Uses existing `products/daily/` engine.
@@ -489,7 +489,7 @@ FREE. No WhatsApp Business API cost. Telegram is unlimited.
 ## FILE STRUCTURE (what gets created tonight)
 
 ```
-apps/src/jyotish_app/web/
+apps/src/daivai_app/web/
 ├── app.py                      # FastAPI + auth + middleware
 ├── routes.py                   # All route handlers
 ├── database.py                 # SQLModel tables + session
@@ -570,14 +570,14 @@ Hour 12: Final make all. Fix any failures. Commit.
 
 ### Before overnight run:
 1. ✅ Share this plan with Claude Code
-2. ✅ Make sure vedic-ai-framework repo is on GitHub
+2. ✅ Make sure daivai repo is on GitHub
 
 ### After overnight run:
 1. Create Oracle Cloud account (cloud.oracle.com) — 10 min
 2. Create Google Cloud OAuth credentials — 10 min
 3. Buy domain or set up free DuckDNS subdomain — 5 min
 4. SSH into Oracle VM, run setup_oracle.sh — 5 min
-5. Open browser → see Jyotish AI running
+5. Open browser → see DaivAI running
 
 ### After deployment:
 1. Share link with Pandit Ji

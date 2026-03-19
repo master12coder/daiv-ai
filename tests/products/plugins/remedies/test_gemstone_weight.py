@@ -5,10 +5,10 @@ from __future__ import annotations
 import pytest
 from pydantic import ValidationError
 
-from jyotish_engine.compute.chart import compute_chart
-from jyotish_engine.models.chart import ChartData
-from jyotish_products.plugins.remedies.formatter import format_gemstone_report
-from jyotish_products.plugins.remedies.gemstone import (
+from daivai_engine.compute.chart import compute_chart
+from daivai_engine.models.chart import ChartData
+from daivai_products.plugins.remedies.formatter import format_gemstone_report
+from daivai_products.plugins.remedies.gemstone import (
     AVASTHA_MULT,
     DIGNITY_MULT,
     PLANET_STONE,

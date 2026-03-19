@@ -1,4 +1,4 @@
-# Vedic AI Framework
+# DaivAI (दैव AI)
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](LICENSE)
 
@@ -47,22 +47,22 @@ Compute birth charts, detect yogas/doshas, calculate dashas, match compatibility
 
 ```bash
 # Clone and install
-git clone https://github.com/master12coder/vedic-ai-framework.git
-cd vedic-ai-framework
+git clone https://github.com/master12coder/daivai.git
+cd daivai
 uv sync                   # or: pip install -e engine/ -e products/ -e apps/
 
 # Compute a birth chart
-jyotish chart --name "Manish" --dob "13/03/1989" --tob "12:17" --place "Varanasi" --gender Male
+daivai chart --name "Manish" --dob "13/03/1989" --tob "12:17" --place "Varanasi" --gender Male
 
 # Generate visual PDF kundali (14 pages)
-jyotish kundali --name "Manish" --dob "13/03/1989" --tob "12:17" --place "Varanasi" \
+daivai kundali --name "Manish" --dob "13/03/1989" --tob "12:17" --place "Varanasi" \
   --gender Male --weight 78 --format detailed -o kundali.pdf
 
 # Daily guidance
-jyotish daily --name "Manish" --dob "13/03/1989" --tob "12:17" --place "Varanasi"
+daivai daily --name "Manish" --dob "13/03/1989" --tob "12:17" --place "Varanasi"
 
 # Gemstone weight analysis
-jyotish gemstone --name "Manish" --dob "13/03/1989" --tob "12:17" --place "Varanasi" --weight 78
+daivai gemstone --name "Manish" --dob "13/03/1989" --tob "12:17" --place "Varanasi" --weight 78
 ```
 
 ### Python Library
@@ -92,27 +92,27 @@ for y in detect_all_yogas(chart):
 
 | Command | Description |
 |---------|-------------|
-| `jyotish chart` | Compute and display birth chart with yogas, doshas |
-| `jyotish save` | Save chart as JSON for reuse |
-| `jyotish report` | Full text report (18 sections), optional LLM interpretation |
-| `jyotish kundali` | Visual PDF report (summary/detailed/pandit formats) |
-| `jyotish daily` | Today's personalized guidance (rating, color, mantra) |
-| `jyotish transit` | Current transits overlaid on natal chart |
-| `jyotish muhurta` | Find auspicious dates for life events |
-| `jyotish pooja` | Weekly personalized pooja plan |
-| `jyotish gemstone` | 10-factor gemstone weight analysis |
-| `jyotish events add` | Log a life event for prediction tracking |
-| `jyotish dashboard` | Prediction accuracy stats |
-| `jyotish family add` | Add a family member's chart |
-| `jyotish family list` | List all family members |
-| `jyotish family daily` | Daily guidance for entire family |
-| `jyotish web` | Start the web dashboard |
+| `daivai chart` | Compute and display birth chart with yogas, doshas |
+| `daivai save` | Save chart as JSON for reuse |
+| `daivai report` | Full text report (18 sections), optional LLM interpretation |
+| `daivai kundali` | Visual PDF report (summary/detailed/pandit formats) |
+| `daivai daily` | Today's personalized guidance (rating, color, mantra) |
+| `daivai transit` | Current transits overlaid on natal chart |
+| `daivai muhurta` | Find auspicious dates for life events |
+| `daivai pooja` | Weekly personalized pooja plan |
+| `daivai gemstone` | 10-factor gemstone weight analysis |
+| `daivai events add` | Log a life event for prediction tracking |
+| `daivai dashboard` | Prediction accuracy stats |
+| `daivai family add` | Add a family member's chart |
+| `daivai family list` | List all family members |
+| `daivai family daily` | Daily guidance for entire family |
+| `daivai web` | Start the web dashboard |
 
 ## Architecture
 
 ```
-vedic-ai-framework/
-├── engine/src/jyotish_engine/     # Package 1: Pure computation (zero AI)
+daivai/
+├── engine/src/daivai_engine/     # Package 1: Pure computation (zero AI)
 │   ├── compute/                   # 21 modules: chart, dasha, yoga, dosha, strength...
 │   ├── models/                    # 20 Pydantic v2 models
 │   ├── knowledge/                 # 11 YAML rule files (lordship, gemstones, yogas...)
@@ -120,7 +120,7 @@ vedic-ai-framework/
 │   ├── constants.py               # All magic numbers, one file
 │   └── exceptions.py              # Error hierarchy, one file
 │
-├── products/src/jyotish_products/ # Package 2: AI + business logic
+├── products/src/daivai_products/ # Package 2: AI + business logic
 │   ├── interpret/                 # LLM layer: 5 backends, prompts, validator
 │   ├── plugins/                   # 7 product plugins (isolated, no cross-imports)
 │   │   ├── kundali/               # 14-section PDF with visual chart renderers
@@ -132,7 +132,7 @@ vedic-ai-framework/
 │   │   └── pandit/                # Professional corrections + learning
 │   └── store/                     # JSON + SQLite persistence
 │
-├── apps/src/jyotish_app/          # Package 3: Delivery (thin adapters)
+├── apps/src/daivai_app/          # Package 3: Delivery (thin adapters)
 │   ├── cli/                       # Click CLI (15+ commands)
 │   ├── web/                       # FastAPI dashboard
 │   └── telegram/                  # Bot + 5:30 AM scheduler

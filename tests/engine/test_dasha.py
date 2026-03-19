@@ -4,7 +4,7 @@ from datetime import datetime
 
 import pytz
 
-from jyotish_engine.compute.dasha import (
+from daivai_engine.compute.dasha import (
     compute_antardashas,
     compute_mahadashas,
     find_current_dasha,

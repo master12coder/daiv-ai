@@ -2,7 +2,7 @@
 
 import pytest
 
-from jyotish_engine.compute.divisional import (
+from daivai_engine.compute.divisional import (
     VARGA_FUNCTIONS,
     compute_dasamsha_sign,
     compute_drekkana_sign,

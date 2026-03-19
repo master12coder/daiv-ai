@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import pytest
 
-from jyotish_engine.compute.chart import compute_chart
-from jyotish_engine.models.chart import ChartData
-from jyotish_products.plugins.remedies.engine import get_gemstone_recommendations
+from daivai_engine.compute.chart import compute_chart
+from daivai_engine.models.chart import ChartData
+from daivai_products.plugins.remedies.engine import get_gemstone_recommendations
 
 
 @pytest.fixture

@@ -7,10 +7,10 @@ from pathlib import Path
 
 import pytest
 
-from jyotish_engine.compute.ashtakavarga import compute_ashtakavarga
-from jyotish_engine.models.ashtakavarga import AshtakavargaResult
-from jyotish_engine.models.chart import ChartData
-from jyotish_products.plugins.kundali.ashtakavarga_heatmap import (
+from daivai_engine.compute.ashtakavarga import compute_ashtakavarga
+from daivai_engine.models.ashtakavarga import AshtakavargaResult
+from daivai_engine.models.chart import ChartData
+from daivai_products.plugins.kundali.ashtakavarga_heatmap import (
     render_ashtakavarga_heatmap,
 )
 

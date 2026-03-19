@@ -11,23 +11,23 @@ ROOT = Path(__file__).resolve().parent.parent
 
 RULES: dict[str, dict[str, set[str]]] = {
     "engine": {
-        "allowed": set(),  # engine imports nothing from jyotish_products or jyotish_app
-        "forbidden_prefixes": {"jyotish_products", "jyotish_app"},
+        "allowed": set(),  # engine imports nothing from daivai_products or daivai_app
+        "forbidden_prefixes": {"daivai_products", "daivai_app"},
     },
     "products": {
-        "allowed": {"jyotish_engine"},
-        "forbidden_prefixes": {"jyotish_app"},
+        "allowed": {"daivai_engine"},
+        "forbidden_prefixes": {"daivai_app"},
     },
     "apps": {
-        "allowed": {"jyotish_engine", "jyotish_products", "jyotish_app"},
+        "allowed": {"daivai_engine", "daivai_products", "daivai_app"},
         "forbidden_prefixes": set(),
     },
 }
 
 PACKAGE_MAP = {
-    "engine": "jyotish_engine",
-    "products": "jyotish_products",
-    "apps": "jyotish_app",
+    "engine": "daivai_engine",
+    "products": "daivai_products",
+    "apps": "daivai_app",
 }
 
 
@@ -76,7 +76,7 @@ def check_file(filepath: Path) -> list[str]:
 def _get_plugin_name(filepath: Path) -> str | None:
     """If file is inside a plugin, return the plugin name."""
     rel = str(filepath.relative_to(ROOT))
-    # products/src/jyotish_products/plugins/{name}/...
+    # products/src/daivai_products/plugins/{name}/...
     if "plugins/" in rel:
         parts = rel.split("plugins/")
         if len(parts) > 1:
@@ -105,10 +105,10 @@ def check_cross_plugin(filepath: Path) -> list[str]:
             modules = [node.module]
 
         for mod in modules:
-            if "jyotish_products.plugins." not in mod:
+            if "daivai_products.plugins." not in mod:
                 continue
             # Extract target plugin name from import path
-            after = mod.split("jyotish_products.plugins.")[1]
+            after = mod.split("daivai_products.plugins.")[1]
             target_plugin = after.split(".")[0]
             if target_plugin != plugin:
                 rel = filepath.relative_to(ROOT)

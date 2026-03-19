@@ -4,14 +4,14 @@ from __future__ import annotations
 
 from datetime import date
 
-from jyotish_engine.compute.daily import (
+from daivai_engine.compute.daily import (
     VARA_PLANETS,
     DailySuggestion,
     TransitImpact,
     _compute_day_rating,
     compute_daily_suggestion,
 )
-from jyotish_engine.constants import MAX_DAY_RATING
+from daivai_engine.constants import MAX_DAY_RATING
 
 
 class TestDailySuggestionDataclass:

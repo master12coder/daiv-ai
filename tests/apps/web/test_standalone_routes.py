@@ -9,7 +9,7 @@ from __future__ import annotations
 import pytest
 from fastapi.testclient import TestClient
 
-from jyotish_app.web.database import get_engine, reset_engine
+from daivai_app.web.database import get_engine, reset_engine
 
 
 @pytest.fixture(autouse=True)
@@ -27,7 +27,7 @@ def _setup(tmp_path, monkeypatch):
 @pytest.fixture
 def client():
     """TestClient with auth bypass."""
-    from jyotish_app.web.app import create_app
+    from daivai_app.web.app import create_app
 
     return TestClient(create_app())
 
@@ -66,7 +66,7 @@ class TestMatchFormPage:
         """GET /match must redirect if not authenticated."""
         monkeypatch.setenv("BYPASS_AUTH", "false")
         # Need a fresh app since BYPASS_AUTH was already read
-        from jyotish_app.web.app import create_app
+        from daivai_app.web.app import create_app
 
         reset_engine()
         get_engine()
@@ -162,7 +162,7 @@ class TestMuhurtaFormPage:
     def test_muhurta_form_requires_auth(self, client: TestClient, monkeypatch) -> None:
         """GET /muhurta must redirect if not authenticated."""
         monkeypatch.setenv("BYPASS_AUTH", "false")
-        from jyotish_app.web.app import create_app
+        from daivai_app.web.app import create_app
 
         reset_engine()
         get_engine()

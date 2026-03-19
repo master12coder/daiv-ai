@@ -5,7 +5,7 @@ Covers Chara Karakas, Jaimini sign aspects, Arudha Padas, and Karakamsha.
 
 import pytest
 
-from jyotish_engine.compute.jaimini import (
+from daivai_engine.compute.jaimini import (
     CHARA_KARAKA_PLANETS,
     DUAL_SIGNS,
     FIXED_SIGNS,
@@ -18,7 +18,7 @@ from jyotish_engine.compute.jaimini import (
     compute_karakamsha,
     get_jaimini_aspects,
 )
-from jyotish_engine.models.jaimini import JaiminiResult
+from daivai_engine.models.jaimini import JaiminiResult
 
 
 class TestCharaKarakas:
@@ -178,7 +178,7 @@ class TestArudhaPadas:
 
     def test_pada_sign_names_match_indices(self, manish_chart):
         """Pada sign name should correspond to its sign index."""
-        from jyotish_engine.constants import SIGNS
+        from daivai_engine.constants import SIGNS
 
         padas = compute_arudha_padas(manish_chart)
         for pada in padas:
@@ -213,7 +213,7 @@ class TestKarakamsha:
 
     def test_karakamsha_is_navamsha_of_atmakaraka(self, manish_chart):
         """Karakamsha should equal the Navamsha sign of the Atmakaraka."""
-        from jyotish_engine.compute.divisional import compute_navamsha_sign
+        from daivai_engine.compute.divisional import compute_navamsha_sign
 
         karakas = compute_chara_karakas(manish_chart)
         ak_planet = karakas[0].planet

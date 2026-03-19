@@ -4,22 +4,22 @@
 
 set -euo pipefail
 
-DB_PATH="/opt/jyotish/data/jyotish.db"
-BACKUP_DIR="/opt/jyotish/data/backups"
+DB_PATH="/opt/daivai/data/daivai.db"
+BACKUP_DIR="/opt/daivai/data/backups"
 DATE=$(date +%Y%m%d)
 
 mkdir -p "$BACKUP_DIR"
 
 # Create backup
 if [ -f "$DB_PATH" ]; then
-    cp "$DB_PATH" "$BACKUP_DIR/jyotish-${DATE}.db"
-    echo "Backup created: jyotish-${DATE}.db"
+    cp "$DB_PATH" "$BACKUP_DIR/daivai-${DATE}.db"
+    echo "Backup created: daivai-${DATE}.db"
 fi
 
 # Clean old backups (keep 7 days)
-find "$BACKUP_DIR" -name "jyotish-*.db" -mtime +7 -delete
+find "$BACKUP_DIR" -name "daivai-*.db" -mtime +7 -delete
 
 # Optional: sync to Google Drive via rclone
 if command -v rclone &> /dev/null; then
-    rclone copy "$BACKUP_DIR" gdrive:jyotish-backups/ 2>/dev/null || true
+    rclone copy "$BACKUP_DIR" gdrive:daivai-backups/ 2>/dev/null || true
 fi

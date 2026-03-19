@@ -2,7 +2,7 @@ services:
   # ── Web App (FastAPI + Gunicorn) ──────────────────────────────────
   web:
     build: .
-    container_name: jyotish-web
+    container_name: daivai-web
     ports:
       - "8000:8000"
     env_file: .env
@@ -24,8 +24,8 @@ services:
   # ── Telegram Bot (interactive: /daily, /kundali, /level) ─────────
   bot:
     build: .
-    container_name: jyotish-bot
-    entrypoint: ["python", "-c", "from jyotish_app.telegram.bot import start_bot; start_bot()"]
+    container_name: daivai-bot
+    entrypoint: ["python", "-c", "from daivai_app.telegram.bot import start_bot; start_bot()"]
     command: []
     env_file: .env
     volumes:
@@ -41,8 +41,8 @@ services:
   # ── Scheduler (5:30 AM IST daily message) ────────────────────────
   scheduler:
     build: .
-    container_name: jyotish-scheduler
-    entrypoint: ["python", "-m", "jyotish_app.scheduler"]
+    container_name: daivai-scheduler
+    entrypoint: ["python", "-m", "daivai_app.scheduler"]
     command: []
     env_file: .env
     volumes:

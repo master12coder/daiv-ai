@@ -1,6 +1,6 @@
 """Test panchang computation."""
 
-from jyotish_engine.compute.panchang import compute_panchang
+from daivai_engine.compute.panchang import compute_panchang
 
 
 class TestPanchang:
@@ -30,13 +30,13 @@ class TestPanchang:
         assert result.paksha in ("Shukla", "Krishna")
 
     def test_nakshatra_valid(self):
-        from jyotish_engine.constants import NAKSHATRAS
+        from daivai_engine.constants import NAKSHATRAS
 
         result = compute_panchang("13/03/1989", 25.3176, 83.0067)
         assert result.nakshatra_name in NAKSHATRAS
 
     def test_yoga_valid(self):
-        from jyotish_engine.constants import PANCHANG_YOGA_NAMES
+        from daivai_engine.constants import PANCHANG_YOGA_NAMES
 
         result = compute_panchang("13/03/1989", 25.3176, 83.0067)
         assert result.yoga_name in PANCHANG_YOGA_NAMES

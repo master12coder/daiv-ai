@@ -2,7 +2,7 @@
 
 import pytest
 
-from jyotish_products.interpret.factory import (
+from daivai_products.interpret.factory import (
     ClaudeBackend,
     GroqBackend,
     NoLLMBackend,

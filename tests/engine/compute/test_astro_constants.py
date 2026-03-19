@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from jyotish_engine.constants import (
+from daivai_engine.constants import (
     ASHTOTTARI_TOTAL_YEARS,
     DEFAULT_CONJUNCTION_ORB,
     DEGREES_PER_SIGN,

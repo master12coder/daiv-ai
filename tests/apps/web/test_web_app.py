@@ -7,7 +7,7 @@ import os
 import pytest
 from fastapi.testclient import TestClient
 
-from jyotish_app.web.database import (
+from daivai_app.web.database import (
     get_engine,
     reset_engine,
 )
@@ -30,7 +30,7 @@ def _tmp_db(tmp_path):
 @pytest.fixture
 def app():
     """Create the FastAPI app."""
-    from jyotish_app.web.app import create_app
+    from daivai_app.web.app import create_app
 
     return create_app()
 

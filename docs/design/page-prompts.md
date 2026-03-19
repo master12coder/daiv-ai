@@ -192,7 +192,7 @@ Layout:
 │  • बड़ा निवेश                  │
 │  • यात्रा शुरू करना             │
 │                              │
-│  शुभम् भवतु | Jyotish AI     │
+│  शुभम् भवतु | DaivAI     │
 └──────────────────────────────┘
 
 Make it look like a premium daily horoscope card.

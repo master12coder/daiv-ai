@@ -5,8 +5,8 @@ from pathlib import Path
 import pytest
 import yaml
 
-from jyotish_engine.models.scripture import ScriptureReference
-from jyotish_engine.scriptures.query import (
+from daivai_engine.models.scripture import ScriptureReference
+from daivai_engine.scriptures.query import (
     get_all_references,
     get_citation,
     query_by_chapter,
@@ -20,7 +20,7 @@ _BPHS_DIR = (
     Path(__file__).resolve().parents[3]
     / "engine"
     / "src"
-    / "jyotish_engine"
+    / "daivai_engine"
     / "scriptures"
     / "bphs"
 )

@@ -1,7 +1,7 @@
 """Test yoga detection."""
 
-from jyotish_engine.compute.chart import compute_chart
-from jyotish_engine.compute.yoga import detect_all_yogas
+from daivai_engine.compute.chart import compute_chart
+from daivai_engine.compute.yoga import detect_all_yogas
 
 
 class TestYogaDetection:

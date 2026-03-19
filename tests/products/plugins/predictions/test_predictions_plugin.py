@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from jyotish_products.plugins.predictions.engine import format_dashboard, get_dashboard_stats
-from jyotish_products.store.predictions import Prediction, PredictionTracker
+from daivai_products.plugins.predictions.engine import format_dashboard, get_dashboard_stats
+from daivai_products.store.predictions import Prediction, PredictionTracker
 
 
 class TestPredictionsPlugin:

@@ -28,12 +28,12 @@ Three packages: engine computes, products interpret, apps deliver.
 
 ```
 jyotish/
-├── engine/                 # pip install jyotish-engine
-│   └── src/jyotish_engine/
-├── products/               # pip install jyotish-products
-│   └── src/jyotish_products/
-├── apps/                   # pip install jyotish
-│   └── src/jyotish_app/
+├── engine/                 # pip install daivai-engine
+│   └── src/daivai_engine/
+├── products/               # pip install daivai-products
+│   └── src/daivai_products/
+├── apps/                   # pip install daivai
+│   └── src/daivai_app/
 ├── docs/
 ├── scripts/
 ├── tests/
@@ -59,8 +59,8 @@ jyotish/
 ```
 engine/
 ├── pyproject.toml
-├── src/jyotish_engine/
-│   ├── __init__.py              # from jyotish_engine import compute_chart
+├── src/daivai_engine/
+│   ├── __init__.py              # from daivai_engine import compute_chart
 │   │
 │   ├── models/                  # Pydantic v2 models — THE contract
 │   │   ├── chart.py             # ChartData, PlanetPosition, HouseData
@@ -104,7 +104,7 @@ engine/
 ```
 
 **Dependencies:** pyswisseph, pyyaml, pydantic. Nothing else.
-**Can be used standalone:** `pip install jyotish-engine` → anyone gets NASA-grade computation.
+**Can be used standalone:** `pip install daivai-engine` → anyone gets NASA-grade computation.
 **No AI, no LLM, no network required.** Pure math + rules.
 
 ---
@@ -114,7 +114,7 @@ engine/
 ```
 products/
 ├── pyproject.toml
-├── src/jyotish_products/
+├── src/daivai_products/
 │   ├── __init__.py
 │   │
 │   ├── interpret/               # LLM layer
@@ -188,7 +188,7 @@ products/
 │       └── predictions.py       # Prediction log
 ```
 
-**Dependencies:** jyotish-engine, jinja2, groq/ollama/anthropic (optional), matplotlib, reportlab
+**Dependencies:** daivai-engine, jinja2, groq/ollama/anthropic (optional), matplotlib, reportlab
 **Imports engine, never the reverse.**
 
 ---
@@ -198,19 +198,19 @@ products/
 ```
 apps/
 ├── pyproject.toml
-├── src/jyotish_app/
+├── src/daivai_app/
 │   ├── __init__.py
 │   │
 │   ├── cli/                     # jyotish command
 │   │   ├── main.py              # Click group
-│   │   ├── chart.py             # jyotish chart ...
-│   │   ├── kundali.py           # jyotish kundali ...
-│   │   ├── daily.py             # jyotish daily ...
+│   │   ├── chart.py             # daivai chart ...
+│   │   ├── kundali.py           # daivai kundali ...
+│   │   ├── daily.py             # daivai daily ...
 │   │   ├── match.py             # jyotish match ...
 │   │   ├── remedies.py          # jyotish remedies ...
 │   │   ├── predict.py           # jyotish predict ...
 │   │   ├── pandit.py            # jyotish pandit ...
-│   │   └── muhurta.py           # jyotish muhurta ...
+│   │   └── muhurta.py           # daivai muhurta ...
 │   │
 │   ├── web/                     # Browser UI
 │   │   ├── app.py               # FastAPI
@@ -222,8 +222,8 @@ apps/
 │       └── handlers.py          # /start, /daily, /level, /mantra
 ```
 
-**Dependencies:** jyotish-products, click, fastapi, python-telegram-bot
-**This is what users install:** `pip install jyotish`
+**Dependencies:** daivai-products, click, fastapi, python-telegram-bot
+**This is what users install:** `pip install daivai`
 
 ---
 
@@ -256,17 +256,17 @@ apps/
 
 ```bash
 # User: everything
-pip install jyotish
+pip install daivai
 
 # Developer: just the engine (for their own app)
-pip install jyotish-engine
+pip install daivai-engine
 
 # Researcher: engine + products (no CLI/web)
-pip install jyotish-products
+pip install daivai-products
 
 # Development (all packages linked)
-git clone https://github.com/master12coder/vedic-ai-framework
-cd vedic-ai-framework
+git clone https://github.com/master12coder/daivai
+cd daivai
 uv sync
 
 # With LLM backend
@@ -281,7 +281,7 @@ pip install "jyotish[claude]"    # Best quality
 
 ```toml
 [project]
-name = "vedic-ai-framework"
+name = "daivai"
 version = "1.0.0"
 requires-python = ">=3.12"
 
@@ -289,8 +289,8 @@ requires-python = ">=3.12"
 members = ["engine", "products", "apps"]
 
 [tool.uv.sources]
-jyotish-engine = { workspace = true }
-jyotish-products = { workspace = true }
+daivai-engine = { workspace = true }
+daivai-products = { workspace = true }
 
 [tool.ruff]
 target-version = "py312"
@@ -383,8 +383,8 @@ You: "Add Lal Kitab remedies for Saturn in 7th house"
 Claude Code:
 1. Reads CLAUDE.md (auto)
 2. Checks docs/architecture/ for where this goes
-3. Adds to engine/src/jyotish_engine/knowledge/lal_kitab.yaml
-4. Updates products/src/jyotish_products/remedies/lal_kitab.py
+3. Adds to engine/src/daivai_engine/knowledge/lal_kitab.yaml
+4. Updates products/src/daivai_products/remedies/lal_kitab.py
 5. Adds test in tests/products/remedies/test_lal_kitab.py
 6. Runs make all
 7. Commits: "feat(remedies): add Lal Kitab Saturn in 7th house rules"
@@ -393,7 +393,7 @@ Claude Code:
 ### Daily companion operation
 ```
 # Cron job or manual
-jyotish daily --chart charts/manish.json --level medium
+daivai daily --chart charts/manish.json --level medium
 
 # Telegram bot runs 24/7
 jyotish bot start
