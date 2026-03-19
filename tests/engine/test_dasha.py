@@ -31,7 +31,7 @@ class TestDashaComputation:
     def test_current_dasha_march_2026(self, manish_chart):
         """On 15/03/2026, should be in Jupiter Mahadasha."""
         target = pytz.timezone("Asia/Kolkata").localize(datetime(2026, 3, 15))
-        md, ad, pd = find_current_dasha(manish_chart, target)
+        md, _ad, _pd = find_current_dasha(manish_chart, target)
         assert md.lord == "Jupiter"
 
     def test_dasha_periods_contiguous(self, manish_chart):

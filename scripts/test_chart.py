@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Quick chart test script — verify computation works."""
 
-from jyotish.compute.chart import compute_chart
-from jyotish.interpret.formatter import format_chart_terminal
+from daivai_engine.compute.chart import compute_chart
+from daivai_products.interpret.formatter import format_chart_terminal
+
 
 print("Computing chart for Manish Chaurasia...")
 chart = compute_chart(

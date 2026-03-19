@@ -33,7 +33,7 @@ class TestKPSubLord:
     def test_kp_full_zodiac_coverage(self):
         """KP should return valid results for all 360 degrees."""
         for deg in range(0, 360):
-            nak_lord, sub_lord, ss_lord = get_kp_position(float(deg))
+            nak_lord, sub_lord, _ss_lord = get_kp_position(float(deg))
             assert nak_lord in DASHA_SEQUENCE
             assert sub_lord in DASHA_SEQUENCE
 

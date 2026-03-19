@@ -31,7 +31,9 @@ def create_app():
         raise ImportError("Install with: pip install 'jyotish[web]'") from e
 
     app = FastAPI(
-        title="DaivAI — दैव AI", version="2.0.0", description="DaivAI — Divine Intelligence, Computational Precision"
+        title="DaivAI — दैव AI",
+        version="2.0.0",
+        description="DaivAI — Divine Intelligence, Computational Precision",
     )
 
     # ── Middleware ──

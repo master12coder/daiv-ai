@@ -6,6 +6,8 @@ Uses BYPASS_AUTH=true to skip Google OAuth for testing.
 
 from __future__ import annotations
 
+import typing
+
 import pytest
 from fastapi.testclient import TestClient
 
@@ -78,7 +80,7 @@ class TestMatchFormPage:
 class TestMatchResult:
     """POST /match/result — compatibility computation."""
 
-    _FORM_DATA = {
+    _FORM_DATA: typing.ClassVar[dict[str, str]] = {
         "name1": "Manish Chaurasia",
         "dob1": "13/03/1989",
         "tob1": "12:17",
@@ -174,7 +176,7 @@ class TestMuhurtaFormPage:
 class TestMuhurtaResult:
     """POST /muhurta/result — muhurta computation."""
 
-    _FORM_DATA = {
+    _FORM_DATA: typing.ClassVar[dict[str, str]] = {
         "purpose": "marriage",
         "from_date": "01/04/2026",
         "to_date": "15/04/2026",

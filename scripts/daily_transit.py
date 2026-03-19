@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Standalone daily transit script — shows today's transits for a chart."""
 
-import sys
-from jyotish.compute.chart import compute_chart
-from jyotish.compute.transit import compute_transits
-from jyotish.compute.panchang import compute_panchang
-from jyotish.utils.datetime_utils import now_ist
+from daivai_engine.compute.chart import compute_chart
+from daivai_engine.compute.panchang import compute_panchang
+from daivai_engine.compute.transit import compute_transits
+from daivai_engine.utils.datetime_utils import now_ist
+
 
 # Default: Manish's chart
 chart = compute_chart(

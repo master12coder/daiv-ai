@@ -121,7 +121,7 @@ class TestAshtakavarga:
 
     def test_bhinna_values_are_twelve(self):
         """Each Bhinna table must have exactly 12 values."""
-        for planet, bindus in self.result.bhinna.items():
+        for _planet, bindus in self.result.bhinna.items():
             assert len(bindus) == 12
 
 

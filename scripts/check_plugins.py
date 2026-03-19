@@ -6,6 +6,7 @@ import importlib
 import sys
 from pathlib import Path
 
+
 ROOT = Path(__file__).resolve().parent.parent
 PLUGINS_DIR = ROOT / "products" / "src" / "daivai_products" / "plugins"
 
@@ -25,8 +26,9 @@ def check_plugin(plugin_name: str) -> list[str]:
         if not hasattr(module, attr):
             errors.append(f"  {plugin_name}: missing {attr}")
 
-    if hasattr(module, "PLUGIN_NAME"):
-        if not isinstance(module.PLUGIN_NAME, str) or not module.PLUGIN_NAME:
+    if hasattr(module, "PLUGIN_NAME") and (
+        not isinstance(module.PLUGIN_NAME, str) or not module.PLUGIN_NAME
+    ):
             errors.append(f"  {plugin_name}: PLUGIN_NAME must be non-empty string")
 
     if hasattr(module, "COMMANDS"):

@@ -138,7 +138,9 @@ class ClaudeBackend:
         try:
             import anthropic
         except ImportError:
-            raise RuntimeError("Anthropic package not installed. Run: pip install anthropic") from None
+            raise RuntimeError(
+                "Anthropic package not installed. Run: pip install anthropic"
+            ) from None
         if not self._api_key:
             raise RuntimeError("ANTHROPIC_API_KEY not set.")
         client = anthropic.Anthropic(api_key=self._api_key)
