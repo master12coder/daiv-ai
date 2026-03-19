@@ -3,7 +3,7 @@ name = "jyotish-engine"
 version = "1.0.0"
 description = "Pure Vedic astrology computation — Swiss Ephemeris + YAML rules. Zero AI."
 requires-python = ">=3.12"
-license = "MIT"
+license = "AGPL-3.0-or-later"
 authors = [{name = "Manish Chaurasia"}]
 dependencies = [
     "pyswisseph>=2.10.0",

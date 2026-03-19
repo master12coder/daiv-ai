@@ -3,7 +3,7 @@ name = "jyotish"
 version = "1.0.0"
 description = "AI-powered Vedic astrology — CLI, Web, and Telegram."
 requires-python = ">=3.12"
-license = "MIT"
+license = "AGPL-3.0-or-later"
 authors = [{name = "Manish Chaurasia"}]
 dependencies = [
     "jyotish-products",

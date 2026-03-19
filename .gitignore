@@ -1,48 +1,53 @@
-# Python
+# ── Environment & Secrets ──
+.env
+.env.*
+*.env
+*.pem
+*.key
+credentials/
+
+# ── Database ──
+data/
+*.db
+*.sqlite
+*.sqlite3
+
+# ── Generated outputs ──
+output/
+*.pdf
+
+# ── Personal data ──
+charts/
+family/
+
+# ── Python ──
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 *.egg-info/
+*.egg
 dist/
 build/
-*.egg
-
-# Virtual environments
 .venv/
 venv/
 env/
 
-# IDE
-.idea/
+# ── IDE ──
 .vscode/
+.idea/
 *.swp
 *.swo
 
-# Environment
-.env
-.env.local
-
-# Data directories (keep .gitkeep files)
-data/pandit_corrections/*.json
-data/charts/*.json
-!data/pandit_corrections/.gitkeep
-!data/charts/.gitkeep
-
-# OS
+# ── OS ──
 .DS_Store
 Thumbs.db
 
-# Testing
+# ── Testing ──
 .pytest_cache/
 .coverage
 htmlcov/
 
-# Distribution
+# ── Distribution ──
 *.tar.gz
 *.whl
-data/life_events.db
-docs/vedic/gemstone-research/*.pdf
-kundali_manish.pdf
-data/jyotish.db
-output/

@@ -1,5 +1,7 @@
 # Vedic AI Framework
 
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](LICENSE)
+
 **AI-powered Vedic astrology — Swiss Ephemeris precision + LLM interpretation**
 
 Compute birth charts, detect yogas/doshas, calculate dashas, match compatibility, generate personalized PDF reports with visual charts — all offline, all free.
@@ -165,7 +167,7 @@ make all        # all of the above (run before every commit)
 
 ## License
 
-MIT License — see [LICENSE](LICENSE)
+AGPL-3.0 License — see [LICENSE](LICENSE)
 
 ## Author
 
