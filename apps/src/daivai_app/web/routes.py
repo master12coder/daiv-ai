@@ -13,6 +13,7 @@ from typing import Any
 from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse, RedirectResponse, StreamingResponse
 from fastapi.templating import Jinja2Templates
+from starlette.responses import Response
 
 from daivai_app.web.auth import get_current_user, require_auth
 from daivai_app.web.database import (
@@ -29,7 +30,7 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
     """Register all page routes on the FastAPI app."""
 
     @app.get("/", response_class=HTMLResponse)
-    async def home(request: Request):
+    async def home(request: Request) -> Response:
         """Login page or redirect to dashboard if authenticated."""
         user = get_current_user(request)
         if user:
@@ -44,7 +45,7 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
         )
 
     @app.get("/dashboard", response_class=HTMLResponse)
-    async def dashboard(request: Request):
+    async def dashboard(request: Request) -> Response:
         """Client list for logged-in user."""
         user = require_auth(request)
         clients = get_clients_for_user(user["id"])
@@ -71,7 +72,7 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
         )
 
     @app.get("/new", response_class=HTMLResponse)
-    async def new_client_form(request: Request):
+    async def new_client_form(request: Request) -> Response:
         """Show the birth data input form."""
         user = require_auth(request)
         return templates.TemplateResponse(
@@ -92,7 +93,7 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
         lat: float = Form(0),
         lon: float = Form(0),
         gender: str = Form("Male"),
-    ):
+    ) -> RedirectResponse:
         """Compute chart and save to database."""
         user = require_auth(request)
 
@@ -128,7 +129,7 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
         return RedirectResponse(url=f"/client/{client.id}", status_code=302)
 
     @app.get("/client/{client_id}", response_class=HTMLResponse)
-    async def client_overview(request: Request, client_id: int):
+    async def client_overview(request: Request, client_id: int) -> Response:
         """Full kundali overview page for a client."""
         user = require_auth(request)
         client = get_client(client_id)
@@ -150,7 +151,7 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
         )
 
     @app.get("/client/{client_id}/dasha", response_class=HTMLResponse)
-    async def dasha_page(request: Request, client_id: int):
+    async def dasha_page(request: Request, client_id: int) -> Response:
         """Dasha deep-dive page."""
         user = require_auth(request)
         client = get_client(client_id)
@@ -172,7 +173,7 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
         )
 
     @app.get("/client/{client_id}/ratna", response_class=HTMLResponse)
-    async def ratna_page(request: Request, client_id: int):
+    async def ratna_page(request: Request, client_id: int) -> Response:
         """Gemstone recommendations page."""
         user = require_auth(request)
         client = get_client(client_id)
@@ -194,7 +195,7 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
         )
 
     @app.get("/client/{client_id}/pdf")
-    async def download_pdf(request: Request, client_id: int):
+    async def download_pdf(request: Request, client_id: int) -> Response:
         """Download kundali PDF."""
         user = require_auth(request)
         client = get_client(client_id)
@@ -206,6 +207,7 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
 
         chart = ChartData.model_validate_json(client.chart_json)
         pdf_bytes = generate_pdf(chart, fmt="detailed")
+        assert pdf_bytes is not None
 
         import io
 
@@ -216,7 +218,7 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
         )
 
     @app.get("/client/{client_id}/daily", response_class=HTMLResponse)
-    async def daily_page(request: Request, client_id: int):
+    async def daily_page(request: Request, client_id: int) -> Response:
         """Daily guidance page with transit-based suggestions."""
         user = require_auth(request)
         client = get_client(client_id)
@@ -243,7 +245,7 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
         )
 
     @app.get("/client/{client_id}/navamsha", response_class=HTMLResponse)
-    async def navamsha_page(request: Request, client_id: int):
+    async def navamsha_page(request: Request, client_id: int) -> Response:
         """D9 Navamsha divisional chart page."""
         user = require_auth(request)
         client = get_client(client_id)
@@ -277,16 +279,17 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
         )
 
     @app.get("/api/chart/{client_id}")
-    async def api_chart(request: Request, client_id: int):
+    async def api_chart(request: Request, client_id: int) -> dict[str, Any]:
         """JSON API for chart data."""
         user = require_auth(request)
         client = get_client(client_id)
         if not client or client.user_id != user["id"]:
             return {"error": "not found"}
-        return json.loads(client.chart_json)
+        result: dict[str, Any] = json.loads(client.chart_json)
+        return result
 
 
-def _build_chart_context(chart_data: dict) -> dict[str, Any]:
+def _build_chart_context(chart_data: dict[str, Any]) -> dict[str, Any]:
     """Build template context from chart JSON — call products/ for computations."""
     from daivai_engine.compute.ashtakavarga import compute_ashtakavarga
     from daivai_engine.compute.dasha import compute_mahadashas, find_current_dasha

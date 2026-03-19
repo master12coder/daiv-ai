@@ -35,7 +35,7 @@ def setup_oauth() -> None:
 async def login_redirect(request: Request) -> RedirectResponse:
     """Start Google OAuth flow — redirect to Google consent screen."""
     redirect_uri = request.url_for("auth_callback")
-    return await oauth.google.authorize_redirect(request, str(redirect_uri))
+    return await oauth.google.authorize_redirect(request, str(redirect_uri))  # type: ignore[no-any-return]
 
 
 async def auth_callback(request: Request) -> RedirectResponse:

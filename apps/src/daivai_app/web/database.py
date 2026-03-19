@@ -9,6 +9,7 @@ from __future__ import annotations
 import os
 from datetime import datetime
 from pathlib import Path
+from typing import Any
 
 from sqlmodel import Field, Session, SQLModel, create_engine, select
 
@@ -56,7 +57,7 @@ class DailyCache(SQLModel, table=True):
 _engine = None
 
 
-def get_engine():
+def get_engine() -> Any:
     """Get or create the database engine."""
     global _engine
     if _engine is None:
@@ -163,7 +164,7 @@ def get_client(client_id: int) -> Client | None:
 def get_clients_for_user(user_id: int) -> list[Client]:
     """Get all clients belonging to a user."""
     with get_session() as session:
-        stmt = select(Client).where(Client.user_id == user_id).order_by(Client.updated_at.desc())
+        stmt = select(Client).where(Client.user_id == user_id).order_by(Client.updated_at.desc())  # type: ignore[attr-defined]
         return list(session.exec(stmt).all())
 
 

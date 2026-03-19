@@ -16,7 +16,7 @@ def to_jd(dt: datetime) -> float:
     utc_dt = dt.astimezone(UTC)
     hour_frac = utc_dt.hour + utc_dt.minute / 60.0 + utc_dt.second / 3600.0
     jd = swe.julday(utc_dt.year, utc_dt.month, utc_dt.day, hour_frac)
-    return jd
+    return float(jd)
 
 
 def from_jd(jd: float) -> datetime:
@@ -59,7 +59,7 @@ def compute_sunrise(jd: float, lat: float, lon: float) -> float:
         1013.25,  # atmospheric pressure
         15.0,  # atmospheric temperature
     )
-    return result[1][0]
+    return float(result[1][0])
 
 
 def compute_sunset(jd: float, lat: float, lon: float) -> float:
@@ -73,4 +73,4 @@ def compute_sunset(jd: float, lat: float, lon: float) -> float:
         1013.25,
         15.0,
     )
-    return result[1][0]
+    return float(result[1][0])

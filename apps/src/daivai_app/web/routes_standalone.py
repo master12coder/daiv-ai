@@ -11,6 +11,7 @@ import logging
 from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from starlette.responses import Response
 
 from daivai_app.web.auth import require_auth
 
@@ -32,7 +33,7 @@ def register_standalone_routes(app: FastAPI, templates: Jinja2Templates) -> None
     # ── Compatibility Matching ─────────────────────────────────────────
 
     @app.get("/match", response_class=HTMLResponse)
-    async def match_form(request: Request):
+    async def match_form(request: Request) -> Response:
         """Show the two-person compatibility form."""
         user = require_auth(request)
         return templates.TemplateResponse(
@@ -58,7 +59,7 @@ def register_standalone_routes(app: FastAPI, templates: Jinja2Templates) -> None
         lat2: float = Form(25.3176),
         lon2: float = Form(83.0067),
         gender2: str = Form("Female"),
-    ):
+    ) -> Response:
         """Compute both charts and run ashtakoot matching."""
         user = require_auth(request)
 
@@ -106,7 +107,7 @@ def register_standalone_routes(app: FastAPI, templates: Jinja2Templates) -> None
     # ── Muhurta ────────────────────────────────────────────────────────
 
     @app.get("/muhurta", response_class=HTMLResponse)
-    async def muhurta_form(request: Request):
+    async def muhurta_form(request: Request) -> Response:
         """Show the muhurta search form."""
         user = require_auth(request)
         return templates.TemplateResponse(
@@ -125,7 +126,7 @@ def register_standalone_routes(app: FastAPI, templates: Jinja2Templates) -> None
         to_date: str = Form(...),
         lat: float = Form(25.3176),
         lon: float = Form(83.0067),
-    ):
+    ) -> Response:
         """Find auspicious dates for the given purpose and date range."""
         user = require_auth(request)
 

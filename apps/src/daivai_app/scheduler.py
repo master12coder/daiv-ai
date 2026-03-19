@@ -60,7 +60,7 @@ def _send_telegram_message(token: str, chat_id: str, message: str) -> bool:
     try:
         req = urllib.request.Request(url, data=data)
         with urllib.request.urlopen(req, timeout=30) as resp:
-            return resp.status == 200
+            return bool(resp.status == 200)
     except Exception as e:
         logger.error("Failed to send Telegram message: %s", e)
         return False

@@ -12,10 +12,10 @@ import yaml
 logger = logging.getLogger(__name__)
 
 _KNOWLEDGE_DIR = Path(__file__).parent
-_cache: dict[str, Any] = {}
+_cache: dict[str, dict[str, Any]] = {}
 
 
-def _load_yaml(filename: str) -> Any:
+def _load_yaml(filename: str) -> dict[str, Any]:
     """Load a YAML file from the knowledge directory with caching."""
     if filename in _cache:
         return _cache[filename]

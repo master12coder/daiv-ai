@@ -64,7 +64,7 @@ class OllamaBackend:
                 ],
                 options={"temperature": temperature},
             )
-            return response["message"]["content"]
+            return str(response["message"]["content"])
         except Exception as e:
             raise RuntimeError(
                 f"Ollama error: {e}\n"
@@ -151,7 +151,7 @@ class ClaudeBackend:
             messages=[{"role": "user", "content": user_prompt}],
             temperature=temperature,
         )
-        return response.content[0].text
+        return str(response.content[0].text)
 
     def name(self) -> str:
         """Return backend identifier."""
@@ -255,7 +255,7 @@ def get_backend(
     if api_key:
         kwargs["api_key"] = api_key
 
-    return backend_class(**kwargs)  # type: ignore[call-arg]
+    return backend_class(**kwargs)  # type: ignore[call-arg, no-any-return]
 
 
 def list_backends() -> list[str]:

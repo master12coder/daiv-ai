@@ -72,7 +72,7 @@ def compute_gulika_longitude(chart: ChartData) -> float:
     ayanamsha = swe.get_ayanamsa(gulika_jd)
     _, ascmc = swe.houses_ex(gulika_jd, chart.latitude, chart.longitude, b"W")
     lagna_tropical = ascmc[0]
-    return (lagna_tropical - ayanamsha) % 360.0
+    return float((lagna_tropical - ayanamsha) % 360.0)
 
 
 def compute_sun_upagrahas(chart: ChartData) -> list[UpagrahaPosition]:

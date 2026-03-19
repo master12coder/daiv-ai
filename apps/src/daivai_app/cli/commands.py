@@ -98,7 +98,7 @@ def transit(
 
     console.print(
         Panel(
-            f"Transits — {chart_data.name} — {transits.date}",
+            f"Transits — {chart_data.name} — {transits.target_date}",
             style="bold cyan",
         )
     )
@@ -107,8 +107,8 @@ def transit(
     table = Table()
     for col in ["Planet", "Sign", "Natal House", "Retrograde"]:
         table.add_column(col)
-    for t in transits.planets:
-        table.add_row(t.planet, t.sign, str(t.natal_house), "R" if t.is_retrograde else "")
+    for t in transits.transits:
+        table.add_row(t.name, t.sign, str(t.natal_house_activated), "R" if t.is_retrograde else "")
     console.print(table)
 
 
@@ -214,8 +214,9 @@ def events_add(chart: str, event_type: str, event_date: str, desc: str) -> None:
         from daivai_products.store.events import LifeEventsDB
 
         db = LifeEventsDB()
-        event_id = db.add_event(
-            chart_id=chart_data.name,
+        chart_db_id = db.get_or_create_chart_from_data(chart_data)
+        event_id = db.add_event_simple(
+            chart_id=chart_db_id,
             event_type=event_type,
             event_date=event_date,
             description=desc,
@@ -240,14 +241,14 @@ def dashboard() -> None:
         from daivai_products.store.predictions import PredictionTracker
 
         tracker = PredictionTracker()
-        stats = tracker.get_stats()
+        stats = tracker.get_accuracy_dashboard()
         console.print(Panel("Prediction Accuracy Dashboard", style="bold cyan"))
         console.print(
-            f"Total predictions: {stats.get('total', 0)} "
+            f"Total predictions: {stats.get('total_predictions', 0)} "
             f"Pending: {stats.get('pending', 0)} "
-            f"Overall accuracy: {stats.get('accuracy', 0):.1f}%"
+            f"Overall accuracy: {stats.get('overall_accuracy', 0):.1f}%"
         )
-        if stats.get("total", 0) == 0:
+        if stats.get("total_predictions", 0) == 0:
             console.print("\nNo decided predictions yet.")
     except ImportError:
         console.print("[yellow]Dashboard requires jyotish-products.[/yellow]")

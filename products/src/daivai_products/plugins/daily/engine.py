@@ -7,7 +7,7 @@ from enum import StrEnum
 
 from daivai_engine.compute.chart import ChartData
 from daivai_engine.compute.daily import DailySuggestion, compute_daily_suggestion
-from daivai_engine.compute.dasha import compute_mahadashas, find_current_dasha
+from daivai_engine.compute.dasha import find_current_dasha
 
 
 logger = logging.getLogger(__name__)
@@ -117,11 +117,10 @@ def format_detailed(suggestion: DailySuggestion, chart: ChartData) -> str:
 
     # Dasha context
     try:
-        dashas = compute_mahadashas(chart)
-        current = find_current_dasha(dashas)
-        if current:
+        md, _ad, _pd = find_current_dasha(chart)
+        if md:
             lines.append("")
-            lines.append(f"📿 Current Dasha: {current.lord} Mahadasha")
+            lines.append(f"📿 Current Dasha: {md.lord} Mahadasha")
     except Exception:
         pass
 

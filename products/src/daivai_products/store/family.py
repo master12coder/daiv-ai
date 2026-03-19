@@ -88,7 +88,8 @@ def list_members(family_dir: Path | None = None) -> list[dict[str, str]]:
     index_path = _get_family_path(family_dir)
     if not index_path.exists():
         return []
-    return json.loads(index_path.read_text())
+    result: list[dict[str, str]] = json.loads(index_path.read_text())
+    return result
 
 
 def load_member(name: str, family_dir: Path | None = None) -> ChartData | None:

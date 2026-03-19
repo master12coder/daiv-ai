@@ -63,6 +63,7 @@ def _load_chart(chart_path: str | None = None) -> ChartData | None:
 
 async def handle_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Handle /start command — welcome message."""
+    assert update.message is not None
     welcome = (
         "🙏 नमस्ते! Welcome to **DaivAI** — your Vedic astrology companion.\n\n"
         "Commands:\n"
@@ -77,6 +78,8 @@ async def handle_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
 
 async def handle_daily(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Handle /daily command — send today's guidance at user's preferred level."""
+    assert update.effective_user is not None
+    assert update.message is not None
     user_id = update.effective_user.id
     level_str = _get_user_level(user_id)
 
@@ -103,6 +106,8 @@ async def handle_daily(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
 
 async def handle_level(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Handle /level command — set daily guidance detail level."""
+    assert update.effective_user is not None
+    assert update.message is not None
     user_id = update.effective_user.id
     args = context.args
 
@@ -128,6 +133,7 @@ async def handle_level(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
 
 async def handle_kundali(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Handle /kundali command — send full chart report."""
+    assert update.message is not None
     chart = _load_chart()
     if not chart:
         await update.message.reply_text("❌ No chart found. Save one with the CLI first.")

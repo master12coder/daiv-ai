@@ -10,6 +10,7 @@ import logging
 import os
 from datetime import datetime
 from pathlib import Path
+from typing import Any
 
 
 logger = logging.getLogger(__name__)
@@ -19,7 +20,7 @@ _TEMPLATE_DIR = _APP_DIR / "templates"
 _STATIC_DIR = _APP_DIR / "static"
 
 
-def create_app():
+def create_app() -> Any:
     """Create and configure the FastAPI application."""
     try:
         from fastapi import FastAPI, Request
@@ -27,8 +28,9 @@ def create_app():
         from fastapi.staticfiles import StaticFiles
         from fastapi.templating import Jinja2Templates
         from starlette.middleware.sessions import SessionMiddleware
+        from starlette.responses import Response
     except ImportError as e:
-        raise ImportError("Install with: pip install 'jyotish[web]'") from e
+        raise ImportError("Install with: pip install 'daivai[web]'") from e
 
     app = FastAPI(
         title="DaivAI — दैव AI",
@@ -44,8 +46,8 @@ def create_app():
 
     # ── Security headers ──
     @app.middleware("http")
-    async def security_headers(request: Request, call_next):
-        response = await call_next(request)
+    async def security_headers(request: Request, call_next: Any) -> Response:
+        response: Response = await call_next(request)
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["X-Frame-Options"] = "DENY"
         response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
@@ -71,30 +73,30 @@ def create_app():
 
     # ── Auth routes ──
     @app.get("/auth/google")
-    async def google_login(request: Request):
+    async def google_login(request: Request) -> RedirectResponse:
         return await login_redirect(request)
 
     @app.get("/auth/callback")
-    async def google_callback(request: Request):
+    async def google_callback(request: Request) -> RedirectResponse:
         return await auth_callback(request)
 
     @app.get("/auth/logout")
-    async def google_logout(request: Request):
+    async def google_logout(request: Request) -> RedirectResponse:
         return logout(request)
 
     # ── Error handlers ──
     @app.exception_handler(_AuthRequiredError)
-    async def auth_required_handler(request: Request, exc: _AuthRequiredError):
+    async def auth_required_handler(request: Request, exc: _AuthRequiredError) -> RedirectResponse:
         return RedirectResponse(url="/", status_code=302)
 
     @app.exception_handler(404)
-    async def not_found(request: Request, exc):
+    async def not_found(request: Request, exc: Exception) -> Response:
         return templates.TemplateResponse(
             "error.html", {"request": request, "code": 404}, status_code=404
         )
 
     @app.exception_handler(500)
-    async def server_error(request: Request, exc):
+    async def server_error(request: Request, exc: Exception) -> Response:
         logger.exception("Internal server error: %s", exc)
         return templates.TemplateResponse(
             "error.html", {"request": request, "code": 500}, status_code=500
@@ -111,7 +113,7 @@ def create_app():
 
     # ── Health check ──
     @app.get("/health")
-    async def health():
+    async def health() -> dict[str, str]:
         status = {"status": "ok", "version": "2.0.0", "timestamp": datetime.now().isoformat()}
         try:
             import swisseph  # noqa: F401

@@ -133,7 +133,7 @@ def _format_stone_detail(r: GemstoneWeightResult) -> list[str]:
     if r.free_alternatives:
         alt = r.free_alternatives
         lines.append("    Free Alternatives:")
-        for key, val in alt.items():
-            lines.append(f"      {key.title()}: {val}")
+        for key, alt_val in alt.items():
+            lines.append(f"      {key.title()}: {alt_val}")
 
     return lines

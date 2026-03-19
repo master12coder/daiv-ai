@@ -81,7 +81,7 @@ class ChartStore:
             data = json.load(f)
 
         logger.debug("Chart loaded: %s", chart_id)
-        return data
+        return dict(data)
 
     def delete(self, chart_id: str) -> bool:
         """Delete a saved chart.

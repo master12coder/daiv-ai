@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 from daivai_engine.models.chart import ChartData
 from daivai_products.interpret.context import build_lordship_context
 
@@ -27,7 +29,7 @@ def get_gemstone_recommendations(chart: ChartData) -> str:
 
 
 def _format_recommendations(
-    ctx: dict[str, object],
+    ctx: dict[str, Any],
     name: str,
     lagna_sign: str,
 ) -> str:
@@ -52,26 +54,26 @@ def _format_recommendations(
 
     if recommended:
         lines.append("RECOMMENDED:")
-        for s in recommended:  # type: ignore[union-attr]
+        for s in recommended:
             lines.append(f"  + {s['stone']} ({s['planet']}) — {s['reasoning'][:80]}")
         lines.append("")
 
     if test_stones:
         lines.append("TEST WITH CAUTION:")
-        for s in test_stones:  # type: ignore[union-attr]
+        for s in test_stones:
             lines.append(f"  ? {s['stone']} ({s['planet']}) — {s['reasoning'][:80]}")
         lines.append("")
 
     if prohibited:
         lines.append("PROHIBITED:")
-        for s in prohibited:  # type: ignore[union-attr]
+        for s in prohibited:
             lines.append(f"  X {s['stone']} ({s['planet']}) — {s['reasoning'][:80]}")
         lines.append("")
 
     maraka = ctx.get("maraka", [])
     if maraka:
         lines.append("MARAKA WARNINGS:")
-        for m in maraka:  # type: ignore[union-attr]
+        for m in maraka:
             lines.append(
                 f"  ! {m['planet']} — {m['house_str']} — "
                 f"dual-nature: acknowledge both positive and negative effects"

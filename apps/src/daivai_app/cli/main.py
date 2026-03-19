@@ -40,6 +40,7 @@ def _load_chart_from_args(
         console.print("[red]Provide --name, --dob, --tob (and --place or --chart)[/red]")
         sys.exit(1)
 
+    assert name is not None and dob is not None and tob is not None
     return compute_chart(name=name, dob=dob, tob=tob, place=place, gender=gender)
 
 
