@@ -76,9 +76,23 @@ def logout(request: Request) -> RedirectResponse:
 # ── Session helpers ──────────────────────────────────────────────────────
 
 def get_current_user(request: Request) -> dict[str, Any] | None:
-    """Get current user from session. Returns None if not authenticated."""
+    """Get current user from session. Returns None if not authenticated.
+
+    When BYPASS_AUTH=true env var is set (local dev only), auto-creates
+    a dev user and returns it without requiring Google OAuth.
+    """
     user_id = request.session.get("user_id")
     if user_id is None:
+        if os.environ.get("BYPASS_AUTH", "").lower() == "true":
+            dev_user = get_or_create_user(
+                google_id="dev_bypass", email="dev@localhost",
+                name="Dev User",
+            )
+            request.session["user_id"] = dev_user.id
+            request.session["user_name"] = dev_user.name
+            request.session["user_role"] = dev_user.role
+            return {"id": dev_user.id, "name": dev_user.name,
+                    "picture": None, "role": dev_user.role}
         return None
     return {
         "id": user_id,
