@@ -16,8 +16,14 @@ cp "$PROJECT_DIR/.env" "$BACKUP_DIR/.env" 2>/dev/null && echo "  .env"
 
 # Database
 mkdir -p "$BACKUP_DIR/data"
-cp "$PROJECT_DIR"/data/*.db "$BACKUP_DIR/data/" 2>/dev/null && echo "  database"
-cp "$PROJECT_DIR"/data/*.sqlite3 "$BACKUP_DIR/data/" 2>/dev/null
+cp "$PROJECT_DIR"/data/*.db "$BACKUP_DIR/data/" 2>/dev/null && echo "  database" || true
+cp "$PROJECT_DIR"/data/*.sqlite3 "$BACKUP_DIR/data/" 2>/dev/null || true
+
+# Pandit corrections (learning data)
+if [ -d "$PROJECT_DIR/data/pandit_corrections" ]; then
+    cp -r "$PROJECT_DIR/data/pandit_corrections/" "$BACKUP_DIR/data/pandit_corrections/"
+    echo "  pandit corrections"
+fi
 
 # Charts (family birth data)
 if [ -d "$PROJECT_DIR/charts" ]; then

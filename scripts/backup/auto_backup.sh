@@ -4,6 +4,9 @@
 
 set -euo pipefail
 
+# Ensure Homebrew binaries (rclone) are on PATH for cron
+export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+
 PROJECT_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
 BACKUP_DIR="$HOME/DaivAI-Backups"
 
