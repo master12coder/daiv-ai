@@ -1,4 +1,5 @@
 """Tests for the pandit plugin engine."""
+
 from __future__ import annotations
 
 from pathlib import Path

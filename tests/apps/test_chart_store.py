@@ -1,4 +1,5 @@
 """Tests for chart save/load via Pydantic serialization."""
+
 from __future__ import annotations
 
 import json
@@ -13,8 +14,13 @@ from jyotish_engine.models.chart import ChartData
 @pytest.fixture
 def manish_chart() -> ChartData:
     return compute_chart(
-        name="Manish Chaurasia", dob="13/03/1989", tob="12:17",
-        lat=25.3176, lon=83.0067, tz_name="Asia/Kolkata", gender="Male",
+        name="Manish Chaurasia",
+        dob="13/03/1989",
+        tob="12:17",
+        lat=25.3176,
+        lon=83.0067,
+        tz_name="Asia/Kolkata",
+        gender="Male",
     )
 
 
@@ -49,14 +55,23 @@ class TestChartStore:
 
     def test_load_from_dict(self) -> None:
         data = {
-            "name": "Test", "dob": "13/03/1989", "tob": "12:17",
-            "place": "Varanasi", "gender": "Male",
-            "latitude": 25.3176, "longitude": 83.0067,
-            "timezone_name": "Asia/Kolkata", "julian_day": 2447600.0,
-            "ayanamsha": 23.7, "lagna_longitude": 43.0,
-            "lagna_sign_index": 2, "lagna_sign": "Mithuna",
-            "lagna_sign_en": "Gemini", "lagna_sign_hi": "मिथुन",
-            "lagna_degree": 13.0, "planets": {},
+            "name": "Test",
+            "dob": "13/03/1989",
+            "tob": "12:17",
+            "place": "Varanasi",
+            "gender": "Male",
+            "latitude": 25.3176,
+            "longitude": 83.0067,
+            "timezone_name": "Asia/Kolkata",
+            "julian_day": 2447600.0,
+            "ayanamsha": 23.7,
+            "lagna_longitude": 43.0,
+            "lagna_sign_index": 2,
+            "lagna_sign": "Mithuna",
+            "lagna_sign_en": "Gemini",
+            "lagna_sign_hi": "मिथुन",
+            "lagna_degree": 13.0,
+            "planets": {},
         }
         chart = ChartData.model_validate(data)
         assert chart.lagna_sign == "Mithuna"

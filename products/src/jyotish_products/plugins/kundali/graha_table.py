@@ -4,6 +4,7 @@ Generates a ReportLab Table with columns:
 Planet | Sign | Degree | Nakshatra | Pada | House | Motion | Avastha | Bala | Lordship Role
 All text uses Hindi-English mix per the Sanatan Dharma theme.
 """
+
 from __future__ import annotations
 
 from typing import Any
@@ -38,8 +39,11 @@ _HEADERS = [
 ]
 
 _AVASTHA_HI = {
-    "Bala": "बाल", "Kumara": "कुमार", "Yuva": "युवा",
-    "Vriddha": "वृद्ध", "Mruta": "मृत",
+    "Bala": "बाल",
+    "Kumara": "कुमार",
+    "Yuva": "युवा",
+    "Vriddha": "वृद्ध",
+    "Mruta": "मृत",
 }
 
 
@@ -75,22 +79,33 @@ def render_graha_table(
     # Build table data
     data = [_HEADERS]
     for p in chart.planets.values():
-        row = _planet_row(p, bala_map, benefics, malefics, yogakaraka, maraka_planets,
-                          lordship_ctx)
+        row = _planet_row(p, bala_map, benefics, malefics, yogakaraka, maraka_planets, lordship_ctx)
         data.append(row)
 
     # Column widths (total ~18cm for A4)
-    col_w = [1.6 * cm, 1.8 * cm, 1.4 * cm, 2.2 * cm, 0.8 * cm,
-             0.9 * cm, 1.3 * cm, 1.4 * cm, 1.0 * cm, 3.2 * cm]
+    col_w = [
+        1.6 * cm,
+        1.8 * cm,
+        1.4 * cm,
+        2.2 * cm,
+        0.8 * cm,
+        0.9 * cm,
+        1.3 * cm,
+        1.4 * cm,
+        1.0 * cm,
+        3.2 * cm,
+    ]
 
     table = Table(data, colWidths=col_w, repeatRows=1)
     table.setStyle(_table_style(len(data), font))
 
     from reportlab.lib.styles import ParagraphStyle
+
     heading = Paragraph(
         "ग्रह स्थिति — Planetary Positions",
-        ParagraphStyle("GrahaH", fontName=font, fontSize=14, textColor=INDIGO,
-                       spaceAfter=8, spaceBefore=12),
+        ParagraphStyle(
+            "GrahaH", fontName=font, fontSize=14, textColor=INDIGO, spaceAfter=8, spaceBefore=12
+        ),
     )
     return [heading, table, Spacer(1, 0.3 * cm)]
 
@@ -132,8 +147,18 @@ def _planet_row(
     # Functional role
     role_cell = _role_label(p.name, benefics, malefics, yogakaraka, maraka, ctx)
 
-    return [planet_cell, sign_cell, deg_cell, nak_cell, pada_cell,
-            house_cell, motion_cell, avastha_cell, bala_cell, role_cell]
+    return [
+        planet_cell,
+        sign_cell,
+        deg_cell,
+        nak_cell,
+        pada_cell,
+        house_cell,
+        motion_cell,
+        avastha_cell,
+        bala_cell,
+        role_cell,
+    ]
 
 
 def _role_label(
@@ -174,25 +199,28 @@ def _get_houses(planet: str, ctx: dict[str, Any]) -> list[int]:
 
 def _table_style(num_rows: int, font: str) -> TableStyle:
     """Build ReportLab TableStyle for the graha table."""
-    return TableStyle([
-        ("BACKGROUND", (0, 0), (-1, 0), SAFFRON),
-        ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
-        ("FONTNAME", (0, 0), (-1, -1), font),
-        ("FONTSIZE", (0, 0), (-1, 0), 7),
-        ("FONTSIZE", (0, 1), (-1, -1), 8),
-        ("ALIGN", (0, 0), (-1, -1), "CENTER"),
-        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
-        ("GRID", (0, 0), (-1, -1), 0.5, colors.lightgrey),
-        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, LIGHT_SAFFRON]),
-        ("TOPPADDING", (0, 0), (-1, -1), 3),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
-    ])
+    return TableStyle(
+        [
+            ("BACKGROUND", (0, 0), (-1, 0), SAFFRON),
+            ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+            ("FONTNAME", (0, 0), (-1, -1), font),
+            ("FONTSIZE", (0, 0), (-1, 0), 7),
+            ("FONTSIZE", (0, 1), (-1, -1), 8),
+            ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+            ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+            ("GRID", (0, 0), (-1, -1), 0.5, colors.lightgrey),
+            ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, LIGHT_SAFFRON]),
+            ("TOPPADDING", (0, 0), (-1, -1), 3),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
+        ]
+    )
 
 
 def _font_available() -> bool:
     """Check if NotoDevanagari is registered."""
     try:
         from reportlab.pdfbase.pdfmetrics import getFont
+
         getFont("NotoDevanagari")
         return True
     except KeyError:

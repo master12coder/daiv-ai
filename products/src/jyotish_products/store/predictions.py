@@ -13,20 +13,22 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
+
 logger = logging.getLogger(__name__)
 
 
 @dataclass
 class Prediction:
     """A prediction record."""
+
     id: int | None = None
     chart_id: int | None = None
     prediction_date: str = ""
-    category: str = ""          # career, health, marriage, finance, education
+    category: str = ""  # career, health, marriage, finance, education
     prediction: str = ""
     confidence: float = 0.5
     dasha_lord: str = ""
-    outcome: str = "pending"    # pending, confirmed, not_occurred, opposite
+    outcome: str = "pending"  # pending, confirmed, not_occurred, opposite
     outcome_date: str = ""
     notes: str = ""
     created_at: str = ""
@@ -68,18 +70,34 @@ class PredictionTracker:
             "INSERT INTO predictions (chart_id, prediction_date, category, prediction, "
             "confidence, dasha_lord, outcome, outcome_date, notes) "
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-            (prediction.chart_id, prediction.prediction_date, prediction.category,
-             prediction.prediction, prediction.confidence, prediction.dasha_lord,
-             prediction.outcome, prediction.outcome_date, prediction.notes),
+            (
+                prediction.chart_id,
+                prediction.prediction_date,
+                prediction.category,
+                prediction.prediction,
+                prediction.confidence,
+                prediction.dasha_lord,
+                prediction.outcome,
+                prediction.outcome_date,
+                prediction.notes,
+            ),
         )
         self._conn.commit()
-        logger.info("Prediction logged", extra={
-            "id": cursor.lastrowid, "category": prediction.category,
-        })
+        logger.info(
+            "Prediction logged",
+            extra={
+                "id": cursor.lastrowid,
+                "category": prediction.category,
+            },
+        )
         return cursor.lastrowid  # type: ignore[return-value]
 
     def update_outcome(
-        self, prediction_id: int, outcome: str, outcome_date: str = "", notes: str = "",
+        self,
+        prediction_id: int,
+        outcome: str,
+        outcome_date: str = "",
+        notes: str = "",
     ) -> None:
         """Update a prediction's outcome.
 
@@ -100,7 +118,9 @@ class PredictionTracker:
         self._conn.commit()
 
     def get_predictions(
-        self, chart_id: int | None = None, category: str | None = None,
+        self,
+        chart_id: int | None = None,
+        category: str | None = None,
         outcome: str | None = None,
     ) -> list[Prediction]:
         """Get predictions with optional filters."""

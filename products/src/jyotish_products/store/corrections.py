@@ -5,9 +5,10 @@ from __future__ import annotations
 import json
 import logging
 import uuid
-from dataclasses import dataclass, field, asdict
+from dataclasses import asdict, dataclass, field
 from datetime import datetime
 from pathlib import Path
+
 
 logger = logging.getLogger(__name__)
 
@@ -24,15 +25,15 @@ class PanditCorrection:
     pandit_name: str = ""
     date: str = ""
     chart_name: str = ""
-    category: str = ""            # gemstone, house_reading, dasha, remedy, yoga, dosha
+    category: str = ""  # gemstone, house_reading, dasha, remedy, yoga, dosha
     ai_said: str = ""
     pandit_said: str = ""
     pandit_reasoning: str = ""
-    correction_type: str = ""     # override, refinement, addition
+    correction_type: str = ""  # override, refinement, addition
     planets_involved: list[str] = field(default_factory=list)
     houses_involved: list[int] = field(default_factory=list)
     lagna: str = ""
-    status: str = "pending"       # pending, validated, disputed, learned, rejected
+    status: str = "pending"  # pending, validated, disputed, learned, rejected
     confidence: float = 0.0
     audio_file: str = ""
     transcript: str = ""
@@ -135,7 +136,8 @@ class PanditCorrectionStore:
             corrections = [c for c in corrections if c.category == category]
         if planets:
             corrections = [
-                c for c in corrections
+                c
+                for c in corrections
                 if any(p in c.planets_involved for p in planets) or not c.planets_involved
             ]
 

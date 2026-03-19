@@ -1,4 +1,5 @@
 """Gemstone weight report formatter — text output for CLI and PDF."""
+
 from __future__ import annotations
 
 from jyotish_products.plugins.remedies.gemstone import GemstoneWeightResult
@@ -55,7 +56,9 @@ def format_gemstone_report(
             lines.append(f"    Reason: {r.prohibition_reason}")
             if r.free_alternatives:
                 alt = r.free_alternatives
-                lines.append(f"    Free alt: mantra={alt.get('mantra', '-')}, daan={alt.get('daan', '-')}")
+                lines.append(
+                    f"    Free alt: mantra={alt.get('mantra', '-')}, daan={alt.get('daan', '-')}"
+                )
         lines.append("")
 
     # Quality vs weight note
@@ -100,7 +103,9 @@ def _format_stone_detail(r: GemstoneWeightResult) -> list[str]:
     lines.append(f"    {'Factor':<20s} {'Value':<20s} {'Mult':>6s}  Note")
     lines.append(f"    {'─' * 20} {'─' * 20} {'─' * 6}  {'─' * 30}")
     for f in r.factors:
-        lines.append(f"    {f.name:<20s} {f.raw_value:<20s} {f.multiplier:>5.2f}x  {f.explanation[:40]}")
+        lines.append(
+            f"    {f.name:<20s} {f.raw_value:<20s} {f.multiplier:>5.2f}x  {f.explanation[:40]}"
+        )
     lines.append("")
 
     # Website comparison
@@ -110,7 +115,9 @@ def _format_stone_detail(r: GemstoneWeightResult) -> list[str]:
             diff = val - r.recommended_ratti
             arrow = "↑" if diff > 0.5 else "↓" if diff < -0.5 else "≈"
             lines.append(f"      {site:<15s} {val:>5.1f} ratti  {arrow}")
-        lines.append(f"      {'This engine':<15s} {r.recommended_ratti:>5.2f} ratti  (10-factor adjusted)")
+        lines.append(
+            f"      {'This engine':<15s} {r.recommended_ratti:>5.2f} ratti  (10-factor adjusted)"
+        )
         lines.append("")
 
     # Pros/cons for light/medium/heavy

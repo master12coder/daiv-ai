@@ -1,4 +1,5 @@
 """Matching plugin engine — thin wrapper around Ashtakoot matching."""
+
 from __future__ import annotations
 
 from jyotish_engine.compute.matching import compute_ashtakoot

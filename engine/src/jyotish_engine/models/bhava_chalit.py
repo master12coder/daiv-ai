@@ -30,5 +30,5 @@ class BhavaChalitResult(BaseModel):
 
     model_config = ConfigDict(frozen=True)
 
-    cusps: list[float]                  # 12 house cusp longitudes (sidereal)
-    planets: dict[str, BhavaPlanet]     # keyed by planet name
+    cusps: list[float]  # 12 house cusp longitudes (sidereal)
+    planets: dict[str, BhavaPlanet]  # keyed by planet name

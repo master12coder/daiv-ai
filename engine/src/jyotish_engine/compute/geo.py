@@ -4,11 +4,10 @@ from __future__ import annotations
 
 import functools
 
+import pytz
 from geopy.geocoders import Nominatim
 from pydantic import BaseModel, ConfigDict
 from timezonefinder import TimezoneFinder
-
-import pytz
 
 
 class GeoLocation(BaseModel):
@@ -41,6 +40,7 @@ def resolve_place(place_name: str) -> GeoLocation:
 
     tz = pytz.timezone(tz_name)
     from datetime import datetime
+
     utc_offset = tz.utcoffset(datetime(2024, 1, 1)).total_seconds() / 3600  # type: ignore[union-attr]
 
     return GeoLocation(
@@ -63,9 +63,12 @@ def resolve_or_manual(
     if lat is not None and lon is not None:
         tz = pytz.timezone(tz_name)
         from datetime import datetime
+
         utc_offset = tz.utcoffset(datetime(2024, 1, 1)).total_seconds() / 3600  # type: ignore[union-attr]
         return GeoLocation(
-            latitude=lat, longitude=lon,
-            timezone_name=tz_name, utc_offset_hours=utc_offset,
+            latitude=lat,
+            longitude=lon,
+            timezone_name=tz_name,
+            utc_offset_hours=utc_offset,
         )
     raise ValueError("Provide either place name or lat/lon coordinates")

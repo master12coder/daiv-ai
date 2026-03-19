@@ -1,10 +1,13 @@
 """Test Vimshottari Dasha computation."""
 
-import pytest
 from datetime import datetime
+
 import pytz
+
 from jyotish_engine.compute.dasha import (
-    compute_mahadashas, compute_antardashas, find_current_dasha,
+    compute_antardashas,
+    compute_mahadashas,
+    find_current_dasha,
 )
 
 
@@ -36,7 +39,7 @@ class TestDashaComputation:
         mds = compute_mahadashas(manish_chart)
         for i in range(1, len(mds)):
             diff = abs((mds[i].start - mds[i - 1].end).total_seconds())
-            assert diff < 60, f"Gap between {mds[i-1].lord} and {mds[i].lord}: {diff}s"
+            assert diff < 60, f"Gap between {mds[i - 1].lord} and {mds[i].lord}: {diff}s"
 
     def test_antardasha_count(self, manish_chart):
         """Each Mahadasha should have 9 Antardashas."""

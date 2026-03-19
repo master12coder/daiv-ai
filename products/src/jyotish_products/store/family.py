@@ -1,13 +1,14 @@
 """Family chart management — save and load multiple charts."""
+
 from __future__ import annotations
 
 import json
 import logging
 from pathlib import Path
-from typing import Any
 
-from jyotish_engine.models.chart import ChartData
 from jyotish_engine.compute.chart import compute_chart
+from jyotish_engine.models.chart import ChartData
+
 
 logger = logging.getLogger(__name__)
 
@@ -40,8 +41,14 @@ def add_member(
         Computed ChartData for the new member.
     """
     chart = compute_chart(
-        name=name, dob=dob, tob=tob, place=place,
-        gender=gender, lat=lat, lon=lon, tz_name=tz_name,
+        name=name,
+        dob=dob,
+        tob=tob,
+        place=place,
+        gender=gender,
+        lat=lat,
+        lon=lon,
+        tz_name=tz_name,
     )
 
     base = family_dir or DEFAULT_FAMILY_DIR
@@ -60,14 +67,16 @@ def add_member(
 
     # Remove existing entry for same name
     index = [m for m in index if m.get("name") != name]
-    index.append({
-        "name": name,
-        "relation": relation,
-        "dob": dob,
-        "gender": gender,
-        "chart_file": str(chart_path),
-        "lagna": chart.lagna_sign,
-    })
+    index.append(
+        {
+            "name": name,
+            "relation": relation,
+            "dob": dob,
+            "gender": gender,
+            "chart_file": str(chart_path),
+            "lagna": chart.lagna_sign,
+        }
+    )
     index_path.write_text(json.dumps(index, indent=2, ensure_ascii=False))
 
     logger.info("Added family member: %s (%s) — %s", name, relation, chart.lagna_sign)
@@ -102,7 +111,7 @@ def run_daily_for_all(
     Returns:
         Dict of name -> daily message.
     """
-    from jyotish_products.plugins.daily.engine import run_daily, DailyLevel
+    from jyotish_products.plugins.daily.engine import DailyLevel, run_daily
 
     try:
         dl = DailyLevel(level)

@@ -5,11 +5,13 @@ Stores charts, life events, and enables pattern matching across charts.
 
 from __future__ import annotations
 
+import contextlib
 import logging
 import sqlite3
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+
 
 logger = logging.getLogger(__name__)
 
@@ -17,22 +19,24 @@ logger = logging.getLogger(__name__)
 @dataclass
 class LifeEvent:
     """A life event record."""
+
     id: int | None = None
     chart_id: int | None = None
     event_date: str = ""
-    event_type: str = ""      # marriage, career, health, child, education, property
+    event_type: str = ""  # marriage, career, health, child, education, property
     description: str = ""
-    dasha_lord: str = ""      # MD running at event time
+    dasha_lord: str = ""  # MD running at event time
     antardasha_lord: str = ""  # AD running at event time
-    houses_involved: str = "" # Comma-separated house numbers
-    planets_involved: str = "" # Comma-separated planet names
-    outcome: str = ""         # positive, negative, neutral
+    houses_involved: str = ""  # Comma-separated house numbers
+    planets_involved: str = ""  # Comma-separated planet names
+    outcome: str = ""  # positive, negative, neutral
     created_at: str = ""
 
 
 @dataclass
 class ChartRecord:
     """A chart record in the database."""
+
     id: int | None = None
     name: str = ""
     dob: str = ""
@@ -115,8 +119,17 @@ class LifeEventsDB:
         cursor = self._conn.execute(
             "INSERT INTO charts (name, dob, tob, place, lagna, moon_sign, moon_nakshatra, gender, is_anonymous) "
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-            (chart.name, chart.dob, chart.tob, chart.place, chart.lagna,
-             chart.moon_sign, chart.moon_nakshatra, chart.gender, int(chart.is_anonymous)),
+            (
+                chart.name,
+                chart.dob,
+                chart.tob,
+                chart.place,
+                chart.lagna,
+                chart.moon_sign,
+                chart.moon_nakshatra,
+                chart.gender,
+                int(chart.is_anonymous),
+            ),
         )
         self._conn.commit()
         return cursor.lastrowid  # type: ignore[return-value]
@@ -127,9 +140,17 @@ class LifeEventsDB:
             "INSERT INTO events (chart_id, event_date, event_type, description, "
             "dasha_lord, antardasha_lord, houses_involved, planets_involved, outcome) "
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-            (event.chart_id, event.event_date, event.event_type, event.description,
-             event.dasha_lord, event.antardasha_lord, event.houses_involved,
-             event.planets_involved, event.outcome),
+            (
+                event.chart_id,
+                event.event_date,
+                event.event_type,
+                event.description,
+                event.dasha_lord,
+                event.antardasha_lord,
+                event.houses_involved,
+                event.planets_involved,
+                event.outcome,
+            ),
         )
         self._conn.commit()
         return cursor.lastrowid  # type: ignore[return-value]
@@ -142,7 +163,10 @@ class LifeEventsDB:
         return [LifeEvent(**dict(r)) for r in rows]
 
     def find_similar_events(
-        self, event_type: str, dasha_lord: str = "", limit: int = 20,
+        self,
+        event_type: str,
+        dasha_lord: str = "",
+        limit: int = 20,
     ) -> list[LifeEvent]:
         """Find similar events across all charts for pattern matching."""
         if dasha_lord:
@@ -153,8 +177,7 @@ class LifeEventsDB:
             ).fetchall()
         else:
             rows = self._conn.execute(
-                "SELECT * FROM events WHERE event_type = ? "
-                "ORDER BY event_date DESC LIMIT ?",
+                "SELECT * FROM events WHERE event_type = ? ORDER BY event_date DESC LIMIT ?",
                 (event_type, limit),
             ).fetchall()
         return [LifeEvent(**dict(r)) for r in rows]
@@ -189,18 +212,14 @@ class LifeEventsDB:
 
     def get_chart(self, chart_id: int) -> ChartRecord | None:
         """Get a chart by ID."""
-        row = self._conn.execute(
-            "SELECT * FROM charts WHERE id = ?", (chart_id,)
-        ).fetchone()
+        row = self._conn.execute("SELECT * FROM charts WHERE id = ?", (chart_id,)).fetchone()
         if row:
             return ChartRecord(**dict(row))
         return None
 
     def get_chart_id(self, name: str) -> int | None:
         """Get chart ID by name. Returns None if not found."""
-        row = self._conn.execute(
-            "SELECT id FROM charts WHERE name = ? LIMIT 1", (name,)
-        ).fetchone()
+        row = self._conn.execute("SELECT id FROM charts WHERE name = ? LIMIT 1", (name,)).fetchone()
         return row["id"] if row else None
 
     def get_or_create_chart_from_data(self, chart_data: Any) -> int:
@@ -269,7 +288,5 @@ class LifeEventsDB:
         self._conn.close()
 
     def __del__(self) -> None:
-        try:
+        with contextlib.suppress(Exception):
             self._conn.close()
-        except Exception:
-            pass

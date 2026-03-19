@@ -1,6 +1,5 @@
 """Test Ashtakoot (36 guna) matching."""
 
-import pytest
 from jyotish_engine.compute.matching import compute_ashtakoot
 
 
@@ -8,9 +7,9 @@ class TestAshtakootMatching:
     def test_matching_returns_score_out_of_36(self):
         result = compute_ashtakoot(
             person1_nakshatra_index=3,  # Rohini
-            person1_moon_sign=1,        # Taurus
-            person2_nakshatra_index=12, # Hasta
-            person2_moon_sign=5,        # Virgo
+            person1_moon_sign=1,  # Taurus
+            person2_nakshatra_index=12,  # Hasta
+            person2_moon_sign=5,  # Virgo
         )
         assert result.total_max == 36.0
         assert 0 <= result.total_obtained <= 36.0
@@ -19,9 +18,9 @@ class TestAshtakootMatching:
         """Same nakshatra should give 0 points for Nadi."""
         result = compute_ashtakoot(
             person1_nakshatra_index=3,  # Rohini
-            person1_moon_sign=1,        # Taurus
+            person1_moon_sign=1,  # Taurus
             person2_nakshatra_index=3,  # Rohini (same)
-            person2_moon_sign=1,        # Taurus
+            person2_moon_sign=1,  # Taurus
         )
         nadi = next(k for k in result.kootas if k.name == "Nadi")
         assert nadi.obtained == 0.0
@@ -31,9 +30,9 @@ class TestAshtakootMatching:
         # Ashwini (Aadi) vs Rohini (Madhya)
         result = compute_ashtakoot(
             person1_nakshatra_index=0,  # Ashwini (Aadi)
-            person1_moon_sign=0,        # Aries
+            person1_moon_sign=0,  # Aries
             person2_nakshatra_index=3,  # Rohini (Madhya)
-            person2_moon_sign=1,        # Taurus
+            person2_moon_sign=1,  # Taurus
         )
         nadi = next(k for k in result.kootas if k.name == "Nadi")
         assert nadi.obtained == 8.0
@@ -62,7 +61,7 @@ class TestAshtakootMatching:
         result = compute_ashtakoot(
             person1_nakshatra_index=0,  # Ashwini (Horse)
             person1_moon_sign=0,
-            person2_nakshatra_index=23, # Shatabhisha (Horse)
+            person2_nakshatra_index=23,  # Shatabhisha (Horse)
             person2_moon_sign=10,
         )
         yoni = next(k for k in result.kootas if k.name == "Yoni")
@@ -72,7 +71,7 @@ class TestAshtakootMatching:
         """Enemy animals should give 0 yoni points."""
         # Horse (Ashwini=0) vs Buffalo (Hasta=12)
         result = compute_ashtakoot(
-            person1_nakshatra_index=0,   # Ashwini (Horse)
+            person1_nakshatra_index=0,  # Ashwini (Horse)
             person1_moon_sign=0,
             person2_nakshatra_index=12,  # Hasta (Buffalo)
             person2_moon_sign=5,

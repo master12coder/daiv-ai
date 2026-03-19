@@ -1,11 +1,11 @@
 """Tests for the predictions plugin engine."""
+
 from __future__ import annotations
 
-import tempfile
 from pathlib import Path
 
-from jyotish_products.plugins.predictions.engine import get_dashboard_stats, format_dashboard
-from jyotish_products.store.predictions import PredictionTracker, Prediction
+from jyotish_products.plugins.predictions.engine import format_dashboard, get_dashboard_stats
+from jyotish_products.store.predictions import Prediction, PredictionTracker
 
 
 class TestPredictionsPlugin:
@@ -24,14 +24,22 @@ class TestPredictionsPlugin:
 
         # Seed some predictions
         tracker = PredictionTracker(db_path=str(db_path))
-        pid1 = tracker.log_prediction(Prediction(
-            prediction_date="2024-01-01", category="career",
-            prediction="Promotion expected", confidence=0.8,
-        ))
-        pid2 = tracker.log_prediction(Prediction(
-            prediction_date="2024-01-01", category="career",
-            prediction="Job change", confidence=0.6,
-        ))
+        pid1 = tracker.log_prediction(
+            Prediction(
+                prediction_date="2024-01-01",
+                category="career",
+                prediction="Promotion expected",
+                confidence=0.8,
+            )
+        )
+        pid2 = tracker.log_prediction(
+            Prediction(
+                prediction_date="2024-01-01",
+                category="career",
+                prediction="Job change",
+                confidence=0.6,
+            )
+        )
         tracker.update_outcome(pid1, "confirmed")
         tracker.update_outcome(pid2, "not_occurred")
         tracker.close()

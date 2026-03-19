@@ -1,22 +1,23 @@
 """Integration test — full pipeline from birth details to report."""
 
-import pytest
-from jyotish_engine.compute.chart import compute_chart
-from jyotish_engine.compute.dasha import compute_mahadashas
-from jyotish_engine.compute.yoga import detect_all_yogas
-from jyotish_engine.compute.dosha import detect_all_doshas
-from jyotish_engine.compute.divisional import compute_navamsha, compute_varga
-from jyotish_engine.compute.matching import compute_ashtakoot
-from jyotish_engine.compute.panchang import compute_panchang
-from jyotish_engine.compute.transit import compute_transits
-from jyotish_engine.compute.strength import compute_planet_strengths
 from jyotish_engine.compute.ashtakavarga import compute_ashtakavarga
 from jyotish_engine.compute.bhava_chalit import compute_bhava_chalit
-from jyotish_engine.compute.kp import compute_kp_positions
-from jyotish_engine.compute.upagraha import compute_all_upagrahas
+from jyotish_engine.compute.chart import compute_chart
+from jyotish_engine.compute.dasha import compute_mahadashas
 from jyotish_engine.compute.dasha_extra import (
-    compute_yogini_dasha, compute_ashtottari_dasha, compute_chara_dasha,
+    compute_ashtottari_dasha,
+    compute_chara_dasha,
+    compute_yogini_dasha,
 )
+from jyotish_engine.compute.divisional import compute_navamsha, compute_varga
+from jyotish_engine.compute.dosha import detect_all_doshas
+from jyotish_engine.compute.kp import compute_kp_positions
+from jyotish_engine.compute.matching import compute_ashtakoot
+from jyotish_engine.compute.panchang import compute_panchang
+from jyotish_engine.compute.strength import compute_planet_strengths
+from jyotish_engine.compute.transit import compute_transits
+from jyotish_engine.compute.upagraha import compute_all_upagrahas
+from jyotish_engine.compute.yoga import detect_all_yogas
 
 
 class TestFullPipeline:
@@ -25,8 +26,13 @@ class TestFullPipeline:
     def test_manish_full_pipeline(self) -> None:
         """Full pipeline for Manish's chart."""
         chart = compute_chart(
-            name="Manish Chaurasia", dob="13/03/1989", tob="12:17",
-            lat=25.3176, lon=83.0067, tz_name="Asia/Kolkata", gender="Male",
+            name="Manish Chaurasia",
+            dob="13/03/1989",
+            tob="12:17",
+            lat=25.3176,
+            lon=83.0067,
+            tz_name="Asia/Kolkata",
+            gender="Male",
         )
         assert chart.lagna_sign == "Mithuna"
 
@@ -90,14 +96,28 @@ class TestFullPipeline:
 
     def test_matching_pipeline(self) -> None:
         """Test Ashtakoot matching between two charts."""
-        c1 = compute_chart(name="Person1", dob="15/08/1990", tob="06:30",
-                           lat=26.9, lon=75.8, tz_name="Asia/Kolkata")
-        c2 = compute_chart(name="Person2", dob="20/03/1992", tob="14:00",
-                           lat=28.6, lon=77.2, tz_name="Asia/Kolkata")
+        c1 = compute_chart(
+            name="Person1",
+            dob="15/08/1990",
+            tob="06:30",
+            lat=26.9,
+            lon=75.8,
+            tz_name="Asia/Kolkata",
+        )
+        c2 = compute_chart(
+            name="Person2",
+            dob="20/03/1992",
+            tob="14:00",
+            lat=28.6,
+            lon=77.2,
+            tz_name="Asia/Kolkata",
+        )
 
         result = compute_ashtakoot(
-            c1.planets["Moon"].nakshatra_index, c1.planets["Moon"].sign_index,
-            c2.planets["Moon"].nakshatra_index, c2.planets["Moon"].sign_index,
+            c1.planets["Moon"].nakshatra_index,
+            c1.planets["Moon"].sign_index,
+            c2.planets["Moon"].nakshatra_index,
+            c2.planets["Moon"].sign_index,
         )
         assert 0 <= result.total_obtained <= 36
         assert len(result.kootas) == 8

@@ -6,9 +6,9 @@ import pytest
 
 from jyotish_engine.scriptures.query import (
     get_all_references,
+    get_citation,
     query_by_planet,
     query_by_topic,
-    get_citation,
     reload,
 )
 

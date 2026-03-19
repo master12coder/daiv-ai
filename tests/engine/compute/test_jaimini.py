@@ -55,9 +55,7 @@ class TestCharaKarakas:
         """Rahu and Ketu must not appear in the 7-karaka scheme."""
         karakas = compute_chara_karakas(manish_chart)
         for k in karakas:
-            assert k.planet not in ("Rahu", "Ketu"), (
-                f"Node {k.planet} found in Chara Karakas"
-            )
+            assert k.planet not in ("Rahu", "Ketu"), f"Node {k.planet} found in Chara Karakas"
 
     def test_karaka_names_complete(self, manish_chart):
         """All 7 karaka abbreviations should be present in order."""
@@ -91,9 +89,7 @@ class TestJaiminiAspects:
         """Fixed signs should aspect exactly 3 movable signs."""
         for sign in FIXED_SIGNS:
             aspects = get_jaimini_aspects(sign)
-            assert len(aspects) == 3, (
-                f"Fixed sign {sign} aspects {len(aspects)} signs, expected 3"
-            )
+            assert len(aspects) == 3, f"Fixed sign {sign} aspects {len(aspects)} signs, expected 3"
             for aspected in aspects:
                 assert aspected in MOVABLE_SIGNS, (
                     f"Fixed sign {sign} aspects non-movable sign {aspected}"
@@ -103,16 +99,10 @@ class TestJaiminiAspects:
         """Dual signs should aspect exactly 3 other dual signs."""
         for sign in DUAL_SIGNS:
             aspects = get_jaimini_aspects(sign)
-            assert len(aspects) == 3, (
-                f"Dual sign {sign} aspects {len(aspects)} signs, expected 3"
-            )
+            assert len(aspects) == 3, f"Dual sign {sign} aspects {len(aspects)} signs, expected 3"
             for aspected in aspects:
-                assert aspected in DUAL_SIGNS, (
-                    f"Dual sign {sign} aspects non-dual sign {aspected}"
-                )
-            assert sign not in aspects, (
-                f"Dual sign {sign} should not aspect itself"
-            )
+                assert aspected in DUAL_SIGNS, f"Dual sign {sign} aspects non-dual sign {aspected}"
+            assert sign not in aspects, f"Dual sign {sign} should not aspect itself"
 
     def test_movable_excludes_adjacent_fixed(self):
         """Movable sign must not aspect the fixed sign adjacent (next) to it.
@@ -189,6 +179,7 @@ class TestArudhaPadas:
     def test_pada_sign_names_match_indices(self, manish_chart):
         """Pada sign name should correspond to its sign index."""
         from jyotish_engine.constants import SIGNS
+
         padas = compute_arudha_padas(manish_chart)
         for pada in padas:
             assert pada.sign == SIGNS[pada.sign_index], (

@@ -1,8 +1,7 @@
 """Test yoga detection."""
 
-import pytest
-from jyotish_engine.compute.yoga import detect_all_yogas, YogaResult
 from jyotish_engine.compute.chart import compute_chart
+from jyotish_engine.compute.yoga import detect_all_yogas
 
 
 class TestYogaDetection:

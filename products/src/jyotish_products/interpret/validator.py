@@ -7,6 +7,7 @@ import logging
 import re
 from typing import Any
 
+
 logger = logging.getLogger(__name__)
 
 # Regex words that indicate a POSITIVE recommendation context

@@ -2,19 +2,27 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timedelta
+from datetime import timedelta
 
+from jyotish_engine.compute.datetime_utils import parse_birth_datetime
 from jyotish_engine.constants import (
-    SIGNS, NAKSHATRA_SPAN_DEG,
-    YOGINI_TOTAL_YEARS as _YOGINI_TOTAL_YEARS,
     ASHTOTTARI_TOTAL_YEARS as _ASHTOTTARI_TOTAL_YEARS,
+)
+from jyotish_engine.constants import (
+    NAKSHATRA_SPAN_DEG,
     SIGN_LORDS,
+    SIGNS,
+)
+from jyotish_engine.constants import (
+    YOGINI_TOTAL_YEARS as _YOGINI_TOTAL_YEARS,
 )
 from jyotish_engine.models.chart import ChartData
 from jyotish_engine.models.dasha_extra import (
-    YoginiDashaPeriod, AshtottariDashaPeriod, CharaDashaPeriod,
+    AshtottariDashaPeriod,
+    CharaDashaPeriod,
+    YoginiDashaPeriod,
 )
-from jyotish_engine.compute.datetime_utils import parse_birth_datetime
+
 
 # ── Yogini Dasha (36-year cycle) ────────────────────────────────────────────
 
@@ -29,6 +37,7 @@ YOGINI_SEQUENCE = [
     ("Sankata", "Rahu", 8),
 ]
 YOGINI_TOTAL_YEARS = _YOGINI_TOTAL_YEARS
+
 
 # Yogini start nakshatra mapping: nakshatra_index % 8 -> yogini index
 def _yogini_start_index(nakshatra_index: int) -> int:
@@ -70,10 +79,15 @@ def compute_yogini_dasha(chart: ChartData) -> list[YoginiDashaPeriod]:
         days = effective_years * 365.25
         end = current_start + timedelta(days=days)
 
-        periods.append(YoginiDashaPeriod(
-            yogini_name=name, planet=planet,
-            years=years, start=current_start, end=end,
-        ))
+        periods.append(
+            YoginiDashaPeriod(
+                yogini_name=name,
+                planet=planet,
+                years=years,
+                start=current_start,
+                end=end,
+            )
+        )
         current_start = end
 
     return periods
@@ -82,21 +96,27 @@ def compute_yogini_dasha(chart: ChartData) -> list[YoginiDashaPeriod]:
 # ── Ashtottari Dasha (108-year cycle) ──────────────────────────────────────
 
 ASHTOTTARI_SEQUENCE = [
-    ("Sun", 6), ("Moon", 15), ("Mars", 8), ("Mercury", 17),
-    ("Saturn", 10), ("Jupiter", 19), ("Rahu", 12), ("Venus", 21),
+    ("Sun", 6),
+    ("Moon", 15),
+    ("Mars", 8),
+    ("Mercury", 17),
+    ("Saturn", 10),
+    ("Jupiter", 19),
+    ("Rahu", 12),
+    ("Venus", 21),
 ]
 ASHTOTTARI_TOTAL_YEARS = _ASHTOTTARI_TOTAL_YEARS
 
 # Ashtottari uses only specific nakshatras (Ardra-based system)
 ASHTOTTARI_NAK_LORDS = {
-    5: "Sun",      # Ardra
-    6: "Moon",     # Punarvasu
-    7: "Mars",     # Pushya
+    5: "Sun",  # Ardra
+    6: "Moon",  # Punarvasu
+    7: "Mars",  # Pushya
     8: "Mercury",  # Ashlesha
-    9: "Saturn",   # Magha
-    10: "Jupiter", # P.Phalguni
-    11: "Rahu",    # U.Phalguni
-    12: "Venus",   # Hasta
+    9: "Saturn",  # Magha
+    10: "Jupiter",  # P.Phalguni
+    11: "Rahu",  # U.Phalguni
+    12: "Venus",  # Hasta
 }
 
 
@@ -138,15 +158,21 @@ def compute_ashtottari_dasha(chart: ChartData) -> list[AshtottariDashaPeriod]:
         days = effective_years * 365.25
         end = current_start + timedelta(days=days)
 
-        periods.append(AshtottariDashaPeriod(
-            planet=planet, years=years, start=current_start, end=end,
-        ))
+        periods.append(
+            AshtottariDashaPeriod(
+                planet=planet,
+                years=years,
+                start=current_start,
+                end=end,
+            )
+        )
         current_start = end
 
     return periods
 
 
 # ── Chara Dasha (Jaimini, sign-based) ──────────────────────────────────────
+
 
 def _chara_dasha_years(sign_index: int, chart: ChartData) -> float:
     """Calculate Chara Dasha years for a sign.
@@ -199,10 +225,15 @@ def compute_chara_dasha(chart: ChartData) -> list[CharaDashaPeriod]:
         days = years * 365.25
         end = current_start + timedelta(days=days)
 
-        periods.append(CharaDashaPeriod(
-            sign=SIGNS[sign_idx], sign_index=sign_idx,
-            years=years, start=current_start, end=end,
-        ))
+        periods.append(
+            CharaDashaPeriod(
+                sign=SIGNS[sign_idx],
+                sign_index=sign_idx,
+                years=years,
+                start=current_start,
+                end=end,
+            )
+        )
         current_start = end
 
     return periods

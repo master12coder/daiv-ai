@@ -4,6 +4,7 @@ Computes recommended gemstone weight using planetary strength indicators from th
 birth chart. Each stone gets a base weight (body_weight_kg / divisor) modified by
 10 astrological factors. Includes website comparison and free alternatives.
 """
+
 from __future__ import annotations
 
 from typing import Any
@@ -18,8 +19,15 @@ from jyotish_products.interpret.context import build_lordship_context
 
 # ── Planet → base weight divisor (body_weight_kg / divisor) ──────────────
 _BASE_DIVISOR: dict[str, float] = {
-    "Sun": 10, "Moon": 10, "Mars": 10, "Mercury": 12,
-    "Jupiter": 10, "Venus": 20, "Saturn": 15, "Rahu": 10, "Ketu": 12,
+    "Sun": 10,
+    "Moon": 10,
+    "Mars": 10,
+    "Mercury": 12,
+    "Jupiter": 10,
+    "Venus": 20,
+    "Saturn": 15,
+    "Rahu": 10,
+    "Ketu": 12,
 }
 
 # ── Planet → stone name (EN, HI) ────────────────────────────────────────
@@ -38,23 +46,59 @@ PLANET_STONE: dict[str, tuple[str, str]] = {
 # ── Factor multiplier tables ────────────────────────────────────────────
 AVASTHA_MULT = {"Bala": 0.80, "Kumara": 0.90, "Yuva": 1.00, "Vriddha": 0.75, "Mruta": 0.65}
 DIGNITY_MULT = {
-    "exalted": 0.75, "mooltrikona": 0.80, "own": 0.85,
-    "neutral": 1.00, "enemy": 0.95, "debilitated": 0.90,
+    "exalted": 0.75,
+    "mooltrikona": 0.80,
+    "own": 0.85,
+    "neutral": 1.00,
+    "enemy": 0.95,
+    "debilitated": 0.90,
 }
 STONE_ENERGY = {"Diamond": 0.35, "Blue Sapphire": 0.75, "Cat's Eye": 0.90}
 PURPOSE_MULT = {"protection": 0.60, "growth": 0.90, "maximum": 1.00}
 
 # ── Free alternatives per planet ────────────────────────────────────────
 _FREE_ALT: dict[str, dict[str, str]] = {
-    "Sun": {"mantra": "ओम् सूर्याय नमः (7000x)", "daan": "Wheat + Jaggery on Sunday", "color": "Red/Orange"},
-    "Moon": {"mantra": "ओम् नमः शिवाय (11000x)", "daan": "Rice + Milk on Monday", "color": "White/Silver"},
+    "Sun": {
+        "mantra": "ओम् सूर्याय नमः (7000x)",
+        "daan": "Wheat + Jaggery on Sunday",
+        "color": "Red/Orange",
+    },
+    "Moon": {
+        "mantra": "ओम् नमः शिवाय (11000x)",
+        "daan": "Rice + Milk on Monday",
+        "color": "White/Silver",
+    },
     "Mars": {"mantra": "ओम् भौमाय नमः (10000x)", "daan": "Red lentils on Tuesday", "color": "Red"},
-    "Mercury": {"mantra": "ओम् बुधाय नमः (9000x)", "daan": "Green moong on Wednesday", "color": "Green"},
-    "Jupiter": {"mantra": "ओम् गुरुवे नमः (19000x)", "daan": "Turmeric + Chana on Thursday", "color": "Yellow"},
-    "Venus": {"mantra": "ओम् शुक्राय नमः (16000x)", "daan": "Rice + Ghee on Friday", "color": "White/Pastel"},
-    "Saturn": {"mantra": "ओम् शनैश्चराय नमः (23000x)", "daan": "Black til + Iron on Saturday", "color": "Black/Blue"},
-    "Rahu": {"mantra": "ओम् राहवे नमः (18000x)", "daan": "Coconut + Blanket on Saturday", "color": "Grey/Smoke"},
-    "Ketu": {"mantra": "ओम् केतवे नमः (17000x)", "daan": "Blanket for dog on Tuesday", "color": "Brown/Grey"},
+    "Mercury": {
+        "mantra": "ओम् बुधाय नमः (9000x)",
+        "daan": "Green moong on Wednesday",
+        "color": "Green",
+    },
+    "Jupiter": {
+        "mantra": "ओम् गुरुवे नमः (19000x)",
+        "daan": "Turmeric + Chana on Thursday",
+        "color": "Yellow",
+    },
+    "Venus": {
+        "mantra": "ओम् शुक्राय नमः (16000x)",
+        "daan": "Rice + Ghee on Friday",
+        "color": "White/Pastel",
+    },
+    "Saturn": {
+        "mantra": "ओम् शनैश्चराय नमः (23000x)",
+        "daan": "Black til + Iron on Saturday",
+        "color": "Black/Blue",
+    },
+    "Rahu": {
+        "mantra": "ओम् राहवे नमः (18000x)",
+        "daan": "Coconut + Blanket on Saturday",
+        "color": "Grey/Smoke",
+    },
+    "Ketu": {
+        "mantra": "ओम् केतवे नमः (17000x)",
+        "daan": "Blanket for dog on Tuesday",
+        "color": "Brown/Grey",
+    },
 }
 
 _GOOD_HOUSES = {1, 4, 5, 7, 9, 10}
@@ -63,8 +107,10 @@ _TRIK_HOUSES = {6, 8, 12}
 
 # ── Result models ────────────────────────────────────────────────────────
 
+
 class WeightFactor(BaseModel):
     """One factor contributing to the gemstone weight computation."""
+
     model_config = ConfigDict(frozen=True)
     name: str
     raw_value: str
@@ -74,6 +120,7 @@ class WeightFactor(BaseModel):
 
 class GemstoneWeightResult(BaseModel):
     """Full gemstone weight recommendation for one stone."""
+
     model_config = ConfigDict(frozen=True)
     planet: str
     stone_name: str
@@ -89,6 +136,7 @@ class GemstoneWeightResult(BaseModel):
 
 
 # ── Core computation ─────────────────────────────────────────────────────
+
 
 def compute_gemstone_weights(
     chart: ChartData,
@@ -131,9 +179,18 @@ def compute_gemstone_weights(
 
         base = body_weight_kg / _BASE_DIVISOR.get(planet, 10)
         factors = _compute_factors(
-            p_data, planet, base, body_weight_kg, ashtakavarga,
-            md, ad, benefics, malefics, houses_map.get(planet, []),
-            stone_en, purpose,
+            p_data,
+            planet,
+            base,
+            body_weight_kg,
+            ashtakavarga,
+            md,
+            ad,
+            benefics,
+            malefics,
+            houses_map.get(planet, []),
+            stone_en,
+            purpose,
         )
         total_mult = 1.0
         for f in factors:
@@ -141,16 +198,21 @@ def compute_gemstone_weights(
         recommended = round(base * total_mult * 4) / 4  # round to nearest 0.25
         recommended = max(recommended, 1.0)  # absolute floor 1 ratti
 
-        results.append(GemstoneWeightResult(
-            planet=planet, stone_name=stone_en, stone_name_hi=stone_hi,
-            status="recommended" if status == "recommended" else "test_with_caution",
-            base_ratti=round(base, 2), recommended_ratti=recommended,
-            factors=factors,
-            website_comparisons=_website_estimates(body_weight_kg, planet),
-            pros_cons=_pros_cons(recommended, base),
-            free_alternatives=_FREE_ALT.get(planet, {}),
-            prohibition_reason=None,
-        ))
+        results.append(
+            GemstoneWeightResult(
+                planet=planet,
+                stone_name=stone_en,
+                stone_name_hi=stone_hi,
+                status="recommended" if status == "recommended" else "test_with_caution",
+                base_ratti=round(base, 2),
+                recommended_ratti=recommended,
+                factors=factors,
+                website_comparisons=_website_estimates(body_weight_kg, planet),
+                pros_cons=_pros_cons(recommended, base),
+                free_alternatives=_FREE_ALT.get(planet, {}),
+                prohibition_reason=None,
+            )
+        )
 
     order = {"recommended": 0, "test_with_caution": 1, "prohibited": 2}
     results.sort(key=lambda r: order.get(r.status, 9))
@@ -158,81 +220,145 @@ def compute_gemstone_weights(
 
 
 def _compute_factors(
-    p: Any, planet: str, base: float, kg: float, sav: Any,
-    md: Any, ad: Any, benefics: set, malefics: set,
-    houses: list[int], stone: str, purpose: str,
+    p: Any,
+    planet: str,
+    base: float,
+    kg: float,
+    sav: Any,
+    md: Any,
+    ad: Any,
+    benefics: set,
+    malefics: set,
+    houses: list[int],
+    stone: str,
+    purpose: str,
 ) -> list[WeightFactor]:
     """Build all 10 weight factors for a single planet."""
     factors: list[WeightFactor] = []
 
     # 1. Body weight
-    factors.append(WeightFactor(
-        name="Body Weight", raw_value=f"{kg} kg",
-        multiplier=1.00, explanation=f"Base = {kg} / {_BASE_DIVISOR.get(planet, 10)} = {base:.1f} ratti",
-    ))
+    factors.append(
+        WeightFactor(
+            name="Body Weight",
+            raw_value=f"{kg} kg",
+            multiplier=1.00,
+            explanation=f"Base = {kg} / {_BASE_DIVISOR.get(planet, 10)} = {base:.1f} ratti",
+        )
+    )
     # 2. Avastha
     av_m = AVASTHA_MULT.get(p.avastha, 1.0)
-    factors.append(WeightFactor(
-        name="Avastha", raw_value=f"{p.avastha} ({p.degree_in_sign:.0f}°)",
-        multiplier=av_m, explanation=_avastha_note(p.avastha),
-    ))
+    factors.append(
+        WeightFactor(
+            name="Avastha",
+            raw_value=f"{p.avastha} ({p.degree_in_sign:.0f}°)",
+            multiplier=av_m,
+            explanation=_avastha_note(p.avastha),
+        )
+    )
     # 3. Ashtakavarga
     bav_m, bav_v = _ashtakavarga_factor(planet, p.sign_index, sav)
-    factors.append(WeightFactor(
-        name="Ashtakavarga", raw_value=f"{bav_v} bindus",
-        multiplier=bav_m, explanation="Strong planet needs less stone" if bav_m < 1 else "Average" if bav_m == 1 else "Weak — needs more support",
-    ))
+    factors.append(
+        WeightFactor(
+            name="Ashtakavarga",
+            raw_value=f"{bav_v} bindus",
+            multiplier=bav_m,
+            explanation="Strong planet needs less stone"
+            if bav_m < 1
+            else "Average"
+            if bav_m == 1
+            else "Weak — needs more support",
+        )
+    )
     # 4. Dignity
     dig_m = DIGNITY_MULT.get(p.dignity, 1.0)
-    factors.append(WeightFactor(
-        name="Dignity", raw_value=p.dignity,
-        multiplier=dig_m, explanation=_dignity_note(p.dignity),
-    ))
+    factors.append(
+        WeightFactor(
+            name="Dignity",
+            raw_value=p.dignity,
+            multiplier=dig_m,
+            explanation=_dignity_note(p.dignity),
+        )
+    )
     # 5. Combustion
     comb_m = 0.85 if p.is_combust else 1.0
-    factors.append(WeightFactor(
-        name="Combustion", raw_value="combust" if p.is_combust else "clear",
-        multiplier=comb_m, explanation="Combust — stone effectiveness reduced" if p.is_combust else "Not combust",
-    ))
+    factors.append(
+        WeightFactor(
+            name="Combustion",
+            raw_value="combust" if p.is_combust else "clear",
+            multiplier=comb_m,
+            explanation="Combust — stone effectiveness reduced" if p.is_combust else "Not combust",
+        )
+    )
     # 6. Retrograde
     ret_m = 1.0
-    factors.append(WeightFactor(
-        name="Retrograde", raw_value="retrograde" if p.is_retrograde else "direct",
-        multiplier=ret_m, explanation="Retrograde — delayed effect, standard weight" if p.is_retrograde else "Direct motion",
-    ))
+    factors.append(
+        WeightFactor(
+            name="Retrograde",
+            raw_value="retrograde" if p.is_retrograde else "direct",
+            multiplier=ret_m,
+            explanation="Retrograde — delayed effect, standard weight"
+            if p.is_retrograde
+            else "Direct motion",
+        )
+    )
     # 7. Current Dasha
     dasha_m = 0.85 if md.lord == planet else (0.90 if ad.lord == planet else 1.0)
     dasha_label = f"MD={md.lord}, AD={ad.lord}"
-    factors.append(WeightFactor(
-        name="Current Dasha", raw_value=dasha_label,
-        multiplier=dasha_m,
-        explanation=f"Running own {'MD' if md.lord == planet else 'AD'} — planet amplified, less stone needed" if dasha_m < 1 else "Not in own dasha period",
-    ))
+    factors.append(
+        WeightFactor(
+            name="Current Dasha",
+            raw_value=dasha_label,
+            multiplier=dasha_m,
+            explanation=f"Running own {'MD' if md.lord == planet else 'AD'} — planet amplified, less stone needed"
+            if dasha_m < 1
+            else "Not in own dasha period",
+        )
+    )
     # 8. Lordship quality
     lord_m = _lordship_factor(planet, benefics, malefics, houses)
-    factors.append(WeightFactor(
-        name="Lordship", raw_value=f"houses {houses}",
-        multiplier=lord_m,
-        explanation="Pure benefic houses" if lord_m <= 0.90 else "Mixed lordship" if lord_m <= 1.0 else "Has trik house",
-    ))
+    factors.append(
+        WeightFactor(
+            name="Lordship",
+            raw_value=f"houses {houses}",
+            multiplier=lord_m,
+            explanation="Pure benefic houses"
+            if lord_m <= 0.90
+            else "Mixed lordship"
+            if lord_m <= 1.0
+            else "Has trik house",
+        )
+    )
     # 9. Stone energy density
     se_m = STONE_ENERGY.get(stone, 1.0)
-    factors.append(WeightFactor(
-        name="Stone Energy", raw_value=stone,
-        multiplier=se_m,
-        explanation="High potency per ratti — less needed" if se_m < 1 else "Standard energy density",
-    ))
+    factors.append(
+        WeightFactor(
+            name="Stone Energy",
+            raw_value=stone,
+            multiplier=se_m,
+            explanation="High potency per ratti — less needed"
+            if se_m < 1
+            else "Standard energy density",
+        )
+    )
     # 10. Purpose
     pu_m = PURPOSE_MULT.get(purpose, 0.9)
-    factors.append(WeightFactor(
-        name="Purpose", raw_value=purpose,
-        multiplier=pu_m,
-        explanation={"protection": "Minimal for protection", "growth": "Moderate for growth", "maximum": "Full strength"}.get(purpose, purpose),
-    ))
+    factors.append(
+        WeightFactor(
+            name="Purpose",
+            raw_value=purpose,
+            multiplier=pu_m,
+            explanation={
+                "protection": "Minimal for protection",
+                "growth": "Moderate for growth",
+                "maximum": "Full strength",
+            }.get(purpose, purpose),
+        )
+    )
     return factors
 
 
 # ── Helpers ──────────────────────────────────────────────────────────────
+
 
 def _build_recommendation_map(ctx: dict) -> dict[str, tuple[str, str]]:
     """Map planet name → (status, reason) from lordship context."""
@@ -281,11 +407,19 @@ def _lordship_factor(planet: str, benefics: set, malefics: set, houses: list[int
     return 1.00
 
 
-def _prohibited_result(planet: str, stone_en: str, stone_hi: str, reason: str) -> GemstoneWeightResult:
+def _prohibited_result(
+    planet: str, stone_en: str, stone_hi: str, reason: str
+) -> GemstoneWeightResult:
     return GemstoneWeightResult(
-        planet=planet, stone_name=stone_en, stone_name_hi=stone_hi,
-        status="prohibited", base_ratti=0, recommended_ratti=0,
-        factors=[], website_comparisons={}, pros_cons={},
+        planet=planet,
+        stone_name=stone_en,
+        stone_name_hi=stone_hi,
+        status="prohibited",
+        base_ratti=0,
+        recommended_ratti=0,
+        factors=[],
+        website_comparisons={},
+        pros_cons={},
         free_alternatives=_FREE_ALT.get(planet, {}),
         prohibition_reason=reason[:120] if reason else f"{planet} stone prohibited for this lagna",
     )

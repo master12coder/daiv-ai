@@ -2,14 +2,11 @@
 
 from __future__ import annotations
 
-import pytest
-
 from jyotish_products.interpret.context import (
     build_lordship_context,
-    build_gemstone_context,
     build_scripture_context,
-    get_lordship_data,
     get_gemstone_data,
+    get_lordship_data,
 )
 
 
@@ -21,8 +18,18 @@ class TestLordshipDataLoading:
         data = get_lordship_data()
         lagnas = data.get("lagnas", {})
         expected = [
-            "mesha", "vrishabha", "mithuna", "karka", "simha", "kanya",
-            "tula", "vrischika", "dhanu", "makara", "kumbha", "meena",
+            "mesha",
+            "vrishabha",
+            "mithuna",
+            "karka",
+            "simha",
+            "kanya",
+            "tula",
+            "vrischika",
+            "dhanu",
+            "makara",
+            "kumbha",
+            "meena",
         ]
         for lagna in expected:
             assert lagna in lagnas, f"Missing lagna: {lagna}"
@@ -49,7 +56,17 @@ class TestGemstoneDataLoading:
         """Should have gemstone data for all 9 planets."""
         data = get_gemstone_data()
         gemstones = data.get("gemstones", {})
-        for planet in ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu", "Ketu"]:
+        for planet in [
+            "Sun",
+            "Moon",
+            "Mars",
+            "Mercury",
+            "Jupiter",
+            "Venus",
+            "Saturn",
+            "Rahu",
+            "Ketu",
+        ]:
             assert planet in gemstones, f"Missing gemstone for {planet}"
 
     def test_contraindications_exist(self) -> None:
@@ -88,9 +105,14 @@ class TestLordshipContextBuilding:
         """Mithuna context should have all required keys."""
         ctx = build_lordship_context("Mithuna")
         required_keys = [
-            "sign_lord", "yogakaraka", "functional_benefics",
-            "functional_malefics", "maraka", "house_lords",
-            "recommended_stones", "prohibited_stones",
+            "sign_lord",
+            "yogakaraka",
+            "functional_benefics",
+            "functional_malefics",
+            "maraka",
+            "house_lords",
+            "recommended_stones",
+            "prohibited_stones",
         ]
         for key in required_keys:
             assert key in ctx, f"Missing key: {key}"

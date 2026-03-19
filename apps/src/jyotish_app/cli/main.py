@@ -1,4 +1,5 @@
 """Main CLI entry point — core commands + auto-import of commands.py."""
+
 from __future__ import annotations
 
 import logging
@@ -78,9 +79,15 @@ def chart(name: str, dob: str, tob: str, place: str | None, gender: str) -> None
         table.add_column(col)
     for p in chart_data.planets.values():
         table.add_row(
-            p.name, p.sign, str(p.house), f"{p.degree_in_sign:.1f}°",
-            p.nakshatra, str(p.pada), p.dignity,
-            "R" if p.is_retrograde else "", "C" if p.is_combust else "",
+            p.name,
+            p.sign,
+            str(p.house),
+            f"{p.degree_in_sign:.1f}°",
+            p.nakshatra,
+            str(p.pada),
+            p.dignity,
+            "R" if p.is_retrograde else "",
+            "C" if p.is_combust else "",
         )
     console.print(table)
 
@@ -126,14 +133,20 @@ def save(name: str, dob: str, tob: str, place: str | None, gender: str, output: 
 @click.option("--chart", default=None, help="Saved chart JSON path")
 @click.option("--llm", default="none", help="LLM backend")
 def report(
-    name: str | None, dob: str | None, tob: str | None,
-    place: str | None, gender: str, chart: str | None, llm: str,
+    name: str | None,
+    dob: str | None,
+    tob: str | None,
+    place: str | None,
+    gender: str,
+    chart: str | None,
+    llm: str,
 ) -> None:
     """Generate full chart report with interpretation."""
     chart_data = _load_chart_from_args(name, dob, tob, place, gender, chart)
 
     try:
         from jyotish_products.plugins.kundali.report import generate_report
+
         result = generate_report(chart_data)
         console.print(result)
     except ImportError:
@@ -163,6 +176,7 @@ def report(
 def cli() -> None:
     """Entry point that registers all commands then runs main."""
     import jyotish_app.cli.commands  # noqa: F401 — registers commands on main group
+
     main()
 
 

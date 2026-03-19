@@ -16,8 +16,8 @@ class DashaPeriod(BaseModel):
 
     model_config = ConfigDict(frozen=True)
 
-    level: str            # "MD", "AD", "PD"
-    lord: str             # Planet name
+    level: str  # "MD", "AD", "PD"
+    lord: str  # Planet name
     start: datetime
     end: datetime
     parent_lord: str | None = None  # For AD/PD — the parent dasha lord

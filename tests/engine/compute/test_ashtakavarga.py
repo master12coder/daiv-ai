@@ -4,15 +4,15 @@ from __future__ import annotations
 
 import pytest
 
-from jyotish_engine.models.chart import ChartData, PlanetData
-from jyotish_engine.models.ashtakavarga import AshtakavargaResult
 from jyotish_engine.compute.ashtakavarga import compute_ashtakavarga, get_transit_strength
+from jyotish_engine.models.chart import ChartData, PlanetData
 
 
 # ---------------------------------------------------------------------------
 # Fixture: a synthetic chart with known sign positions for deterministic tests.
 # Planets placed at fixed sign indices so results are reproducible.
 # ---------------------------------------------------------------------------
+
 
 def _make_planet(name: str, sign_index: int) -> PlanetData:
     """Create a minimal PlanetData for testing."""
@@ -53,7 +53,7 @@ def _make_chart() -> ChartData:
         julian_day=2447912.5,
         ayanamsha=23.7,
         lagna_longitude=280.0,
-        lagna_sign_index=9,   # Capricorn
+        lagna_sign_index=9,  # Capricorn
         lagna_sign="Makara",
         lagna_sign_en="Capricorn",
         lagna_sign_hi="मकर",
@@ -61,15 +61,15 @@ def _make_chart() -> ChartData:
     )
     # Place planets at specific signs for reproducibility.
     positions = {
-        "Sun": 9,       # Capricorn
-        "Moon": 3,      # Cancer
-        "Mars": 0,      # Aries
+        "Sun": 9,  # Capricorn
+        "Moon": 3,  # Cancer
+        "Mars": 0,  # Aries
         "Mercury": 10,  # Aquarius
-        "Jupiter": 5,   # Virgo
-        "Venus": 11,    # Pisces
-        "Saturn": 8,    # Sagittarius
-        "Rahu": 6,      # Libra
-        "Ketu": 0,      # Aries
+        "Jupiter": 5,  # Virgo
+        "Venus": 11,  # Pisces
+        "Saturn": 8,  # Sagittarius
+        "Rahu": 6,  # Libra
+        "Ketu": 0,  # Aries
     }
     for name, sign_idx in positions.items():
         chart.planets[name] = _make_planet(name, sign_idx)
@@ -79,6 +79,7 @@ def _make_chart() -> ChartData:
 # ---------------------------------------------------------------------------
 # Tests
 # ---------------------------------------------------------------------------
+
 
 class TestAshtakavarga:
     """Core Ashtakavarga computation tests."""
@@ -104,17 +105,12 @@ class TestAshtakavarga:
         for planet, bindus in self.result.bhinna.items():
             assert len(bindus) == 12, f"{planet} should have 12 sign entries"
             for i, value in enumerate(bindus):
-                assert 0 <= value <= 8, (
-                    f"{planet} sign {i}: bindu {value} out of range 0-8"
-                )
+                assert 0 <= value <= 8, f"{planet} sign {i}: bindu {value} out of range 0-8"
 
     def test_sarva_is_sum_of_bhinna(self):
         """Sarvashtakavarga must equal column-wise sum of all Bhinna tables."""
         for sign in range(12):
-            expected = sum(
-                self.result.bhinna[p][sign]
-                for p in self.result.bhinna
-            )
+            expected = sum(self.result.bhinna[p][sign] for p in self.result.bhinna)
             assert self.result.sarva[sign] == expected, (
                 f"Sign {sign}: sarva {self.result.sarva[sign]} != bhinna sum {expected}"
             )
@@ -170,11 +166,14 @@ class TestTransitStrength:
 class TestMultipleCharts:
     """Verify the 337 invariant holds for different planetary configurations."""
 
-    @pytest.mark.parametrize("lagna_sign,sun_sign,moon_sign", [
-        (0, 0, 6),    # Aries lagna, Sun in Aries, Moon in Libra
-        (4, 9, 1),    # Leo lagna, Sun in Capricorn, Moon in Taurus
-        (11, 5, 8),   # Pisces lagna, Sun in Virgo, Moon in Sagittarius
-    ])
+    @pytest.mark.parametrize(
+        "lagna_sign,sun_sign,moon_sign",
+        [
+            (0, 0, 6),  # Aries lagna, Sun in Aries, Moon in Libra
+            (4, 9, 1),  # Leo lagna, Sun in Capricorn, Moon in Taurus
+            (11, 5, 8),  # Pisces lagna, Sun in Virgo, Moon in Sagittarius
+        ],
+    )
     def test_337_invariant_across_charts(self, lagna_sign, sun_sign, moon_sign):
         """Total must be 337 regardless of planetary positions."""
         chart = _make_chart()

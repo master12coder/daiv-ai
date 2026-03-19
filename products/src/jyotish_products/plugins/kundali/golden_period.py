@@ -3,6 +3,7 @@
 Identifies the most favorable dasha period in the next 10-20 years based on
 functional benefic status and generates a highlighted card for the PDF.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -58,11 +59,13 @@ def render_golden_period(
     ]
 
     if golden is None:
-        elements.append(Paragraph(
-            "No strongly benefic period found in the next 20 years. "
-            "Focus on remedies and mantra practice.",
-            _make_style(font, 10, TEXT_DARK),
-        ))
+        elements.append(
+            Paragraph(
+                "No strongly benefic period found in the next 20 years. "
+                "Focus on remedies and mantra practice.",
+                _make_style(font, 10, TEXT_DARK),
+            )
+        )
         return elements
 
     lord_hi = PLANET_HI.get(golden.lord, golden.lord)
@@ -77,20 +80,24 @@ def render_golden_period(
     ]
 
     card = Table(card_data, colWidths=[15 * cm])
-    card.setStyle(TableStyle([
-        ("BACKGROUND", (0, 0), (-1, -1), LIGHT_SAFFRON),
-        ("BOX", (0, 0), (-1, -1), 2, GOLD),
-        ("FONTNAME", (0, 0), (-1, -1), font),
-        ("FONTSIZE", (0, 0), (0, 0), 13),
-        ("FONTSIZE", (0, 1), (0, 1), 11),
-        ("FONTSIZE", (0, 2), (-1, -1), 9),
-        ("TEXTCOLOR", (0, 0), (0, 0), INDIGO),
-        ("TEXTCOLOR", (0, 1), (0, 1), DEEP_GREEN),
-        ("TEXTCOLOR", (0, 2), (-1, -1), TEXT_DARK),
-        ("ALIGN", (0, 0), (-1, -1), "CENTER"),
-        ("TOPPADDING", (0, 0), (-1, -1), 8),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
-    ]))
+    card.setStyle(
+        TableStyle(
+            [
+                ("BACKGROUND", (0, 0), (-1, -1), LIGHT_SAFFRON),
+                ("BOX", (0, 0), (-1, -1), 2, GOLD),
+                ("FONTNAME", (0, 0), (-1, -1), font),
+                ("FONTSIZE", (0, 0), (0, 0), 13),
+                ("FONTSIZE", (0, 1), (0, 1), 11),
+                ("FONTSIZE", (0, 2), (-1, -1), 9),
+                ("TEXTCOLOR", (0, 0), (0, 0), INDIGO),
+                ("TEXTCOLOR", (0, 1), (0, 1), DEEP_GREEN),
+                ("TEXTCOLOR", (0, 2), (-1, -1), TEXT_DARK),
+                ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+                ("TOPPADDING", (0, 0), (-1, -1), 8),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
+            ]
+        )
+    )
     elements.append(card)
     elements.append(Spacer(1, 0.3 * cm))
 
@@ -129,27 +136,38 @@ def _find_golden_period(
 def _period_advice(lord: str, yogakaraka: str) -> str:
     """Generate brief advice for the golden period."""
     if lord == yogakaraka:
-        return ("योगकारक ग्रह की दशा — career growth, spiritual progress, "
-                "and material gains are all favorable. Start long-term projects now.")
-    return ("शुभ दशा — favorable for education, relationships, and health. "
-            "Strengthen this planet with its gemstone and mantra.")
+        return (
+            "योगकारक ग्रह की दशा — career growth, spiritual progress, "
+            "and material gains are all favorable. Start long-term projects now."
+        )
+    return (
+        "शुभ दशा — favorable for education, relationships, and health. "
+        "Strengthen this planet with its gemstone and mantra."
+    )
 
 
 def _get_font() -> str:
     """Return available font name."""
     try:
         from reportlab.pdfbase.pdfmetrics import getFont
+
         getFont("NotoDevanagari")
         return "NotoDevanagari"
     except KeyError:
         return "Helvetica"
 
 
-def _make_style(font: str, size: int, color: Any, space_after: int = 4,
-                space_before: int = 0) -> Any:
+def _make_style(
+    font: str, size: int, color: Any, space_after: int = 4, space_before: int = 0
+) -> Any:
     """Create a simple ParagraphStyle."""
     from reportlab.lib.styles import ParagraphStyle
+
     return ParagraphStyle(
-        f"GP_{size}_{id(color)}", fontName=font, fontSize=size,
-        textColor=color, spaceAfter=space_after, spaceBefore=space_before,
+        f"GP_{size}_{id(color)}",
+        fontName=font,
+        fontSize=size,
+        textColor=color,
+        spaceAfter=space_after,
+        spaceBefore=space_before,
     )

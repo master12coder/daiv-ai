@@ -32,10 +32,23 @@ LAGNA_MARAKA = {
 class TestLordshipContext:
     """Tests for lordship context loading."""
 
-    @pytest.mark.parametrize("lagna", [
-        "Mesha", "Vrishabha", "Mithuna", "Karka", "Simha", "Kanya",
-        "Tula", "Vrischika", "Dhanu", "Makara", "Kumbha", "Meena",
-    ])
+    @pytest.mark.parametrize(
+        "lagna",
+        [
+            "Mesha",
+            "Vrishabha",
+            "Mithuna",
+            "Karka",
+            "Simha",
+            "Kanya",
+            "Tula",
+            "Vrischika",
+            "Dhanu",
+            "Makara",
+            "Kumbha",
+            "Meena",
+        ],
+    )
     def test_lordship_context_loads_for_all_lagnas(self, lagna: str) -> None:
         """Every lagna should have lordship context."""
         ctx = build_lordship_context(lagna)
@@ -44,19 +57,45 @@ class TestLordshipContext:
         assert ctx.get("functional_benefics"), f"No benefics for {lagna}"
         assert ctx.get("maraka"), f"No maraka for {lagna}"
 
-    @pytest.mark.parametrize("lagna", [
-        "Mesha", "Vrishabha", "Mithuna", "Karka", "Simha", "Kanya",
-        "Tula", "Vrischika", "Dhanu", "Makara", "Kumbha", "Meena",
-    ])
+    @pytest.mark.parametrize(
+        "lagna",
+        [
+            "Mesha",
+            "Vrishabha",
+            "Mithuna",
+            "Karka",
+            "Simha",
+            "Kanya",
+            "Tula",
+            "Vrischika",
+            "Dhanu",
+            "Makara",
+            "Kumbha",
+            "Meena",
+        ],
+    )
     def test_prohibited_stones_exist_for_all_lagnas(self, lagna: str) -> None:
         """Every lagna should have at least one prohibited stone."""
         ctx = build_lordship_context(lagna)
         assert ctx.get("prohibited_stones"), f"No prohibited stones for {lagna}"
 
-    @pytest.mark.parametrize("lagna", [
-        "Mesha", "Vrishabha", "Mithuna", "Karka", "Simha", "Kanya",
-        "Tula", "Vrischika", "Dhanu", "Makara", "Kumbha", "Meena",
-    ])
+    @pytest.mark.parametrize(
+        "lagna",
+        [
+            "Mesha",
+            "Vrishabha",
+            "Mithuna",
+            "Karka",
+            "Simha",
+            "Kanya",
+            "Tula",
+            "Vrischika",
+            "Dhanu",
+            "Makara",
+            "Kumbha",
+            "Meena",
+        ],
+    )
     def test_recommended_stones_exist_for_all_lagnas(self, lagna: str) -> None:
         """Every lagna should have at least one recommended stone."""
         ctx = build_lordship_context(lagna)

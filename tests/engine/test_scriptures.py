@@ -1,13 +1,14 @@
 """Tests for scripture database in new engine package."""
+
 from __future__ import annotations
 
+from jyotish_engine.models.scripture import ScriptureReference
 from jyotish_engine.scriptures.query import (
     get_all_references,
     query_by_planet,
     query_by_topic,
     reload,
 )
-from jyotish_engine.models.scripture import ScriptureReference
 
 
 class TestScriptureDB:

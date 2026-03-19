@@ -8,6 +8,7 @@ Renders a traditional North Indian (diamond) birth chart as PNG image with:
 - House significance labels
 - Aspect lines (dotted) for special aspects
 """
+
 from __future__ import annotations
 
 import io
@@ -44,12 +45,17 @@ from jyotish_products.plugins.kundali.theme import (
 _CENTER_X, _CENTER_Y = 2.5, 2.5
 _HOUSE_XY: dict[int, tuple[float, float]] = {
     12: (2.5, 4.2),
-    1:  (1.0, 3.3),  11: (4.0, 3.3),
-    2:  (0.4, 2.5),  10: (4.6, 2.5),
-    3:  (1.0, 1.7),  9:  (4.0, 1.7),
-    4:  (2.5, 0.8),
-    5:  (1.0, 0.4),  7:  (4.0, 0.4),
-    6:  (2.5, 0.0),  8:  (4.6, 1.0),
+    1: (1.0, 3.3),
+    11: (4.0, 3.3),
+    2: (0.4, 2.5),
+    10: (4.6, 2.5),
+    3: (1.0, 1.7),
+    9: (4.0, 1.7),
+    4: (2.5, 0.8),
+    5: (1.0, 0.4),
+    7: (4.0, 0.4),
+    6: (2.5, 0.0),
+    8: (4.6, 1.0),
 }
 
 # ── Markers ──────────────────────────────────────────────────────────────
@@ -86,8 +92,15 @@ def render_d1_chart(
 
     # ── Saffron header band ──
     ax.axhspan(5.2, 5.7, color=MPL_SAFFRON, alpha=0.9)
-    ax.text(_CENTER_X, 5.45, f"कुंडली — {chart.name}",
-            ha="center", va="center", fontproperties=fp_title, color="white")
+    ax.text(
+        _CENTER_X,
+        5.45,
+        f"कुंडली — {chart.name}",
+        ha="center",
+        va="center",
+        fontproperties=fp_title,
+        color="white",
+    )
 
     # ── Diamond outline ──
     _draw_diamond(ax)
@@ -103,13 +116,27 @@ def render_d1_chart(
         sign_hi = SIGNS_HI[sign_idx]
 
         # House number + sign
-        ax.text(x, y + 0.35, f"{house} {sign_hi}",
-                ha="center", va="center", fontproperties=fp_small, color=MPL_GRAY)
+        ax.text(
+            x,
+            y + 0.35,
+            f"{house} {sign_hi}",
+            ha="center",
+            va="center",
+            fontproperties=fp_small,
+            color=MPL_GRAY,
+        )
         # House significance
         label = HOUSE_LABEL_HI.get(house, "")
-        ax.text(x, y + 0.22, label,
-                ha="center", va="center", fontproperties=_get_font_props(size=5.5),
-                color=MPL_GRAY, alpha=0.7)
+        ax.text(
+            x,
+            y + 0.22,
+            label,
+            ha="center",
+            va="center",
+            fontproperties=_get_font_props(size=5.5),
+            color=MPL_GRAY,
+            alpha=0.7,
+        )
 
         # Planets in this house
         planets = houses_by_planet.get(house, [])
@@ -117,31 +144,49 @@ def render_d1_chart(
             py = y - 0.02 - i * 0.18
             color = _planet_color(p.name, benefic_set, malefic_set, yogakaraka)
             label = _planet_label(p, chart)
-            ax.text(x, py, label, ha="center", va="center",
-                    fontproperties=fp_planet, color=color)
+            ax.text(x, py, label, ha="center", va="center", fontproperties=fp_planet, color=color)
 
     # ── Lagna marker ──
-    ax.text(_CENTER_X, _CENTER_Y, "लग्न",
-            ha="center", va="center", fontproperties=_get_font_props(size=14),
-            color=MPL_GREEN, alpha=0.3)
-    ax.text(_CENTER_X, _CENTER_Y - 0.25,
-            f"{chart.lagna_sign_hi} {chart.lagna_degree:.0f}°",
-            ha="center", va="center", fontproperties=fp_small, color=MPL_INDIGO)
+    ax.text(
+        _CENTER_X,
+        _CENTER_Y,
+        "लग्न",
+        ha="center",
+        va="center",
+        fontproperties=_get_font_props(size=14),
+        color=MPL_GREEN,
+        alpha=0.3,
+    )
+    ax.text(
+        _CENTER_X,
+        _CENTER_Y - 0.25,
+        f"{chart.lagna_sign_hi} {chart.lagna_degree:.0f}°",
+        ha="center",
+        va="center",
+        fontproperties=fp_small,
+        color=MPL_INDIGO,
+    )
 
     # ── Aspect lines ──
     _draw_aspects(ax, chart, houses_by_planet)
 
     # ── Footer ──
-    ax.text(_CENTER_X, -0.65,
-            f"{chart.dob} | {chart.tob} | {chart.place} | vedic-ai-framework",
-            ha="center", va="center", fontproperties=_get_font_props(size=6),
-            color=MPL_GRAY)
+    ax.text(
+        _CENTER_X,
+        -0.65,
+        f"{chart.dob} | {chart.tob} | {chart.place} | vedic-ai-framework",
+        ha="center",
+        va="center",
+        fontproperties=_get_font_props(size=6),
+        color=MPL_GRAY,
+    )
 
     plt.tight_layout(pad=0.5)
     return _save_or_bytes(fig, output_path)
 
 
 # ── Drawing helpers ──────────────────────────────────────────────────────
+
 
 def _draw_diamond(ax: Any) -> None:
     """Draw the traditional diamond outline and grid lines."""
@@ -178,9 +223,14 @@ def _draw_aspects(ax: Any, chart: ChartData, houses: dict[int, list[PlanetData]]
             dst = _HOUSE_XY.get(target_house)
             if dst is None:
                 continue
-            ax.plot([src[0], dst[0]], [src[1], dst[1]],
-                    linestyle=":", linewidth=0.5, alpha=0.3,
-                    color=MPL_GRAY)
+            ax.plot(
+                [src[0], dst[0]],
+                [src[1], dst[1]],
+                linestyle=":",
+                linewidth=0.5,
+                alpha=0.3,
+                color=MPL_GRAY,
+            )
 
 
 def _planet_label(p: PlanetData, chart: ChartData) -> str:
@@ -201,7 +251,10 @@ def _planet_label(p: PlanetData, chart: ChartData) -> str:
 
 
 def _planet_color(
-    name: str, benefics: set[str], malefics: set[str], yogakaraka: str,
+    name: str,
+    benefics: set[str],
+    malefics: set[str],
+    yogakaraka: str,
 ) -> str:
     """Return matplotlib color string based on functional role for THIS lagna."""
     if name == yogakaraka:
@@ -232,6 +285,7 @@ def _planets_per_house(chart: ChartData) -> dict[int, list[PlanetData]]:
 
 # ── Font helper ──────────────────────────────────────────────────────────
 
+
 def _get_font_props(size: float = 10) -> FontProperties:
     """Get matplotlib FontProperties with Devanagari support."""
     fp_path = get_font_path()
@@ -245,13 +299,20 @@ def _save_or_bytes(fig: Any, output_path: str | Path | None) -> bytes | None:
     if output_path:
         path = Path(output_path)
         path.parent.mkdir(parents=True, exist_ok=True)
-        fig.savefig(str(path), dpi=150, bbox_inches="tight",
-                    facecolor=fig.get_facecolor(), edgecolor="none")
+        fig.savefig(
+            str(path), dpi=150, bbox_inches="tight", facecolor=fig.get_facecolor(), edgecolor="none"
+        )
         plt.close(fig)
         return None
     buf = io.BytesIO()
-    fig.savefig(buf, format="png", dpi=150, bbox_inches="tight",
-                facecolor=fig.get_facecolor(), edgecolor="none")
+    fig.savefig(
+        buf,
+        format="png",
+        dpi=150,
+        bbox_inches="tight",
+        facecolor=fig.get_facecolor(),
+        edgecolor="none",
+    )
     plt.close(fig)
     buf.seek(0)
     return buf.read()

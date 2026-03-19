@@ -3,6 +3,7 @@
 Each route gets data from the database or computes via products/ layer,
 then passes it to a Jinja2 template. Zero computation in this file.
 """
+
 from __future__ import annotations
 
 import json
@@ -34,9 +35,13 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
         if user:
             return RedirectResponse(url="/dashboard", status_code=302)
         error = request.query_params.get("error", "")
-        return templates.TemplateResponse("login.html", {
-            "request": request, "error": error,
-        })
+        return templates.TemplateResponse(
+            "login.html",
+            {
+                "request": request,
+                "error": error,
+            },
+        )
 
     @app.get("/dashboard", response_class=HTMLResponse)
     async def dashboard(request: Request):
@@ -46,22 +51,36 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
         client_data = []
         for c in clients:
             chart = json.loads(c.chart_json)
-            client_data.append({
-                "id": c.id, "name": c.name, "dob": c.dob,
-                "place": c.place, "lagna": chart.get("lagna_sign", ""),
-                "lagna_hi": chart.get("lagna_sign_hi", ""),
-            })
-        return templates.TemplateResponse("dashboard.html", {
-            "request": request, "user": user, "clients": client_data,
-        })
+            client_data.append(
+                {
+                    "id": c.id,
+                    "name": c.name,
+                    "dob": c.dob,
+                    "place": c.place,
+                    "lagna": chart.get("lagna_sign", ""),
+                    "lagna_hi": chart.get("lagna_sign_hi", ""),
+                }
+            )
+        return templates.TemplateResponse(
+            "dashboard.html",
+            {
+                "request": request,
+                "user": user,
+                "clients": client_data,
+            },
+        )
 
     @app.get("/new", response_class=HTMLResponse)
     async def new_client_form(request: Request):
         """Show the birth data input form."""
         user = require_auth(request)
-        return templates.TemplateResponse("input_form.html", {
-            "request": request, "user": user,
-        })
+        return templates.TemplateResponse(
+            "input_form.html",
+            {
+                "request": request,
+                "user": user,
+            },
+        )
 
     @app.post("/generate")
     async def generate_chart(
@@ -84,15 +103,26 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
             lat, lon = 28.6139, 77.2090  # Default Delhi
 
         chart = compute_chart(
-            name=name, dob=dob, tob=tob,
-            lat=lat, lon=lon, tz_name=tz_name, gender=gender,
+            name=name,
+            dob=dob,
+            tob=tob,
+            lat=lat,
+            lon=lon,
+            tz_name=tz_name,
+            gender=gender,
         )
         chart_json = chart.model_dump_json()
 
         client = create_client(
-            user_id=user["id"], name=name, dob=dob, tob=tob,
-            place=place or "India", lat=lat, lon=lon,
-            gender=gender, chart_json=chart_json,
+            user_id=user["id"],
+            name=name,
+            dob=dob,
+            tob=tob,
+            place=place or "India",
+            lat=lat,
+            lon=lon,
+            gender=gender,
+            chart_json=chart_json,
         )
 
         return RedirectResponse(url=f"/client/{client.id}", status_code=302)
@@ -108,10 +138,16 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
         chart_data = json.loads(client.chart_json)
         ctx = _build_chart_context(chart_data)
 
-        return templates.TemplateResponse("overview.html", {
-            "request": request, "user": user,
-            "client": client, "chart": chart_data, **ctx,
-        })
+        return templates.TemplateResponse(
+            "overview.html",
+            {
+                "request": request,
+                "user": user,
+                "client": client,
+                "chart": chart_data,
+                **ctx,
+            },
+        )
 
     @app.get("/client/{client_id}/dasha", response_class=HTMLResponse)
     async def dasha_page(request: Request, client_id: int):
@@ -124,10 +160,16 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
         chart_data = json.loads(client.chart_json)
         ctx = _build_chart_context(chart_data)
 
-        return templates.TemplateResponse("dasha.html", {
-            "request": request, "user": user,
-            "client": client, "chart": chart_data, **ctx,
-        })
+        return templates.TemplateResponse(
+            "dasha.html",
+            {
+                "request": request,
+                "user": user,
+                "client": client,
+                "chart": chart_data,
+                **ctx,
+            },
+        )
 
     @app.get("/client/{client_id}/ratna", response_class=HTMLResponse)
     async def ratna_page(request: Request, client_id: int):
@@ -140,10 +182,16 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
         chart_data = json.loads(client.chart_json)
         ctx = _build_chart_context(chart_data)
 
-        return templates.TemplateResponse("ratna.html", {
-            "request": request, "user": user,
-            "client": client, "chart": chart_data, **ctx,
-        })
+        return templates.TemplateResponse(
+            "ratna.html",
+            {
+                "request": request,
+                "user": user,
+                "client": client,
+                "chart": chart_data,
+                **ctx,
+            },
+        )
 
     @app.get("/client/{client_id}/pdf")
     async def download_pdf(request: Request, client_id: int):
@@ -160,6 +208,7 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
         pdf_bytes = generate_pdf(chart, fmt="detailed")
 
         import io
+
         return StreamingResponse(
             io.BytesIO(pdf_bytes),
             media_type="application/pdf",
@@ -182,10 +231,16 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
         chart = ChartData.model_validate(chart_data)
         suggestion = compute_daily_suggestion(chart)
 
-        return templates.TemplateResponse("daily.html", {
-            "request": request, "user": user, "client": client,
-            "chart": chart_data, "suggestion": suggestion,
-        })
+        return templates.TemplateResponse(
+            "daily.html",
+            {
+                "request": request,
+                "user": user,
+                "client": client,
+                "chart": chart_data,
+                "suggestion": suggestion,
+            },
+        )
 
     @app.get("/client/{client_id}/navamsha", response_class=HTMLResponse)
     async def navamsha_page(request: Request, client_id: int):
@@ -208,11 +263,18 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
         d9_positions = compute_navamsha(chart)
         vargottam = get_vargottam_planets(chart)
 
-        return templates.TemplateResponse("navamsha.html", {
-            "request": request, "user": user, "client": client,
-            "chart": chart_data, "d9_positions": d9_positions,
-            "vargottam": vargottam, **ctx,
-        })
+        return templates.TemplateResponse(
+            "navamsha.html",
+            {
+                "request": request,
+                "user": user,
+                "client": client,
+                "chart": chart_data,
+                "d9_positions": d9_positions,
+                "vargottam": vargottam,
+                **ctx,
+            },
+        )
 
     @app.get("/api/chart/{client_id}")
     async def api_chart(request: Request, client_id: int):

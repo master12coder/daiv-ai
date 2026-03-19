@@ -1,19 +1,21 @@
 """Daily companion plugin — 3 levels of guidance."""
+
 from __future__ import annotations
 
 import logging
-from enum import Enum
+from enum import StrEnum
 
-from jyotish_engine.compute.daily import compute_daily_suggestion, DailySuggestion
-from jyotish_engine.compute.chart import ChartData, get_house_lord
+from jyotish_engine.compute.chart import ChartData
+from jyotish_engine.compute.daily import DailySuggestion, compute_daily_suggestion
 from jyotish_engine.compute.dasha import compute_mahadashas, find_current_dasha
-from jyotish_engine.constants import SIGNS
+
 
 logger = logging.getLogger(__name__)
 
 
-class DailyLevel(str, Enum):
+class DailyLevel(StrEnum):
     """Output detail level for daily guidance."""
+
     SIMPLE = "simple"
     MEDIUM = "medium"
     DETAILED = "detailed"
@@ -22,14 +24,14 @@ class DailyLevel(str, Enum):
 def format_simple(suggestion: DailySuggestion) -> str:
     """One-line format: rating | color | mantra | avoid time.
 
-    Example: "7/10 | Green | ओम् बुधाय नमः × 11 | Avoid 3-4:30 PM"
+    Example: "7/10 | Green | ओम् बुधाय नमः x 11 | Avoid 3-4:30 PM"
     """
     rating = suggestion.day_rating
     color = suggestion.recommended_color.split(",")[0].strip()
     mantra = suggestion.recommended_mantra.split("(")[0].strip()
     rahu = suggestion.rahu_kaal
 
-    return f"{rating}/10 | {color} | {mantra} × 11 | Avoid {rahu}"
+    return f"{rating}/10 | {color} | {mantra} x 11 | Avoid {rahu}"
 
 
 def format_medium(suggestion: DailySuggestion, chart: ChartData) -> str:
@@ -45,7 +47,7 @@ def format_medium(suggestion: DailySuggestion, chart: ChartData) -> str:
     # Line 2: Color + Mantra
     lines.append(f"🎨 Color: {suggestion.recommended_color}")
     mantra = suggestion.recommended_mantra.split("(")[0].strip()
-    lines.append(f"🙏 Mantra: {mantra} × 11")
+    lines.append(f"🙏 Mantra: {mantra} x 11")
     lines.append("")
 
     # Line 3: Good/Avoid

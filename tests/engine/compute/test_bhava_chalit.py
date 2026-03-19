@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-import pytest
-
 from jyotish_engine.compute.bhava_chalit import (
     compute_bhava_chalit,
     get_bhava_shifted_planets,
@@ -23,9 +21,7 @@ class TestBhavaChalitComputation:
     def test_cusps_in_valid_range(self, manish_chart):
         result = compute_bhava_chalit(manish_chart)
         for i, cusp in enumerate(result.cusps):
-            assert 0.0 <= cusp < 360.0, (
-                f"Cusp {i + 1} = {cusp} is out of 0-360 range"
-            )
+            assert 0.0 <= cusp < 360.0, f"Cusp {i + 1} = {cusp} is out of 0-360 range"
 
     def test_all_planets_present(self, manish_chart):
         result = compute_bhava_chalit(manish_chart)

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel
 
 
 class ShadbalaResult(BaseModel):
@@ -14,17 +14,17 @@ class ShadbalaResult(BaseModel):
     """
 
     planet: str
-    sthana_bala: float      # Positional (dignity, varga, house type)
-    dig_bala: float         # Directional (house position)
-    kala_bala: float        # Temporal (day/night, paksha, hora)
-    cheshta_bala: float     # Motional (speed, retrogression)
+    sthana_bala: float  # Positional (dignity, varga, house type)
+    dig_bala: float  # Directional (house position)
+    kala_bala: float  # Temporal (day/night, paksha, hora)
+    cheshta_bala: float  # Motional (speed, retrogression)
     naisargika_bala: float  # Natural (fixed per planet)
-    drik_bala: float        # Aspectual (aspects received)
-    total: float            # Sum of all 6
-    required: float         # Minimum required for strength
-    ratio: float            # total / required (>1 = strong)
-    is_strong: bool         # ratio >= 1.0
-    rank: int               # Rank among planets (1 = strongest)
+    drik_bala: float  # Aspectual (aspects received)
+    total: float  # Sum of all 6
+    required: float  # Minimum required for strength
+    ratio: float  # total / required (>1 = strong)
+    is_strong: bool  # ratio >= 1.0
+    rank: int  # Rank among planets (1 = strongest)
 
 
 class PlanetStrength(BaseModel):
@@ -35,9 +35,9 @@ class PlanetStrength(BaseModel):
     """
 
     planet: str
-    sthana_bala: float     # Positional strength (0-1)
-    dig_bala: float        # Directional strength (0-1)
-    kala_bala: float       # Temporal strength (0-1, simplified)
+    sthana_bala: float  # Positional strength (0-1)
+    dig_bala: float  # Directional strength (0-1)
+    kala_bala: float  # Temporal strength (0-1, simplified)
     total_relative: float  # Combined relative strength (0-1)
-    rank: int               # Rank among all planets (1=strongest)
+    rank: int  # Rank among all planets (1=strongest)
     is_strong: bool

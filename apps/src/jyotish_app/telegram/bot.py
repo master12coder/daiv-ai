@@ -1,4 +1,5 @@
 """Telegram bot for daily companion delivery."""
+
 from __future__ import annotations
 
 import logging
@@ -16,17 +17,15 @@ def start_bot(token: str | None = None) -> None:
     """
     try:
         from telegram.ext import ApplicationBuilder
-    except ImportError:
+    except ImportError as err:
         raise ImportError(
             "Telegram bot requires python-telegram-bot. "
             "Install with: pip install 'jyotish[telegram]'"
-        )
+        ) from err
 
     bot_token = token or os.environ.get("TELEGRAM_BOT_TOKEN")
     if not bot_token:
-        raise ValueError(
-            "No bot token provided. Set TELEGRAM_BOT_TOKEN env var or pass --token."
-        )
+        raise ValueError("No bot token provided. Set TELEGRAM_BOT_TOKEN env var or pass --token.")
 
     from jyotish_app.telegram.handlers import register_handlers
 

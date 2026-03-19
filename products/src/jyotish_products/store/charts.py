@@ -8,6 +8,7 @@ from dataclasses import asdict
 from pathlib import Path
 from typing import Any
 
+
 logger = logging.getLogger(__name__)
 
 _DEFAULT_DIR = Path("data/saved_charts")
@@ -109,13 +110,15 @@ class ChartStore:
             try:
                 with open(path) as f:
                     data = json.load(f)
-                charts.append({
-                    "chart_id": data.get("_chart_id", path.stem),
-                    "name": data.get("name", "Unknown"),
-                    "dob": data.get("dob", ""),
-                    "lagna": data.get("lagna_sign", data.get("lagna", "")),
-                    "path": str(path),
-                })
+                charts.append(
+                    {
+                        "chart_id": data.get("_chart_id", path.stem),
+                        "name": data.get("name", "Unknown"),
+                        "dob": data.get("dob", ""),
+                        "lagna": data.get("lagna_sign", data.get("lagna", "")),
+                        "path": str(path),
+                    }
+                )
             except (json.JSONDecodeError, OSError):
                 continue
         return charts

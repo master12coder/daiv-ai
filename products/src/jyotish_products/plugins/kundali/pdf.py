@@ -4,6 +4,7 @@ Orchestrates all renderers into a single PDF document.
 Three formats: summary (2p), detailed (12-15p), pandit (technical).
 This is the ONLY file that calls engine compute functions for the PDF pipeline.
 """
+
 from __future__ import annotations
 
 import io
@@ -103,6 +104,7 @@ def generate_pdf(
     if fmt in ("detailed", "pandit"):
         # Graha table
         from jyotish_products.plugins.kundali.graha_table import render_graha_table
+
         story.extend(render_graha_table(chart, shadbala, ctx))
         story.append(PageBreak())
 
@@ -120,6 +122,7 @@ def generate_pdf(
 
     # Yogas (all formats get at least summary)
     from jyotish_products.plugins.kundali.yoga_cards import render_yoga_cards
+
     story.extend(render_yoga_cards(yogas))
     story.append(PageBreak())
 
@@ -132,21 +135,25 @@ def generate_pdf(
 
         # Golden period
         from jyotish_products.plugins.kundali.golden_period import render_golden_period
+
         story.extend(render_golden_period(chart, mahadashas, ctx))
 
     # Gemstone card (summary + detailed)
     if gemstone_results:
         from jyotish_products.plugins.kundali.gemstone_card import render_gemstone_card
+
         story.extend(render_gemstone_card(gemstone_results))
         story.append(PageBreak())
 
         # Prohibited stones
         from jyotish_products.plugins.kundali.prohibited_stones import render_prohibited_stones
+
         story.extend(render_prohibited_stones(gemstone_results, chart.lagna_sign))
         story.append(PageBreak())
 
     # Accuracy certificate (all formats)
     from jyotish_products.plugins.kundali.accuracy_cert import render_accuracy_cert
+
     story.extend(render_accuracy_cert(chart))
 
     # ── Build PDF ──
@@ -155,6 +162,7 @@ def generate_pdf(
 
 # ── Page builders ────────────────────────────────────────────────────────
 
+
 def _title_page(chart: ChartData, md: Any, ad: Any, st: dict) -> list[Any]:
     """Build title page elements."""
     return [
@@ -162,19 +170,21 @@ def _title_page(chart: ChartData, md: Any, ad: Any, st: dict) -> list[Any]:
         Paragraph("ॐ", st["om"]),
         Paragraph(f"{chart.name}", st["title"]),
         Paragraph(
-            f"जन्म: {chart.dob} | {chart.tob} | {chart.place}", st["subtitle"],
+            f"जन्म: {chart.dob} | {chart.tob} | {chart.place}",
+            st["subtitle"],
         ),
         Spacer(1, 0.3 * inch),
         Paragraph(
-            f"लग्न: {chart.lagna_sign_hi} ({chart.lagna_sign_en}) "
-            f"— {chart.lagna_degree:.1f}°", st["body_hi"],
+            f"लग्न: {chart.lagna_sign_hi} ({chart.lagna_sign_en}) — {chart.lagna_degree:.1f}°",
+            st["body_hi"],
         ),
         Paragraph(
-            f"चन्द्र: {chart.planets['Moon'].nakshatra} "
-            f"Pada {chart.planets['Moon'].pada}", st["body_hi"],
+            f"चन्द्र: {chart.planets['Moon'].nakshatra} Pada {chart.planets['Moon'].pada}",
+            st["body_hi"],
         ),
         Paragraph(
-            f"वर्तमान दशा: {md.lord} > {ad.lord}", st["body_hi"],
+            f"वर्तमान दशा: {md.lord} > {ad.lord}",
+            st["body_hi"],
         ),
         Spacer(1, 1 * inch),
         Paragraph("vedic-ai-framework", st["footer"]),
@@ -189,9 +199,11 @@ def _embed_image(png_bytes: bytes, width: float) -> Image:
 
 # ── Renderer wrappers (catch errors gracefully) ─────────────────────────
 
+
 def _render_d1(chart: ChartData, ctx: dict) -> bytes | None:
     try:
         from jyotish_products.plugins.kundali.diamond import render_d1_chart
+
         return render_d1_chart(chart, ctx)
     except Exception as e:
         logger.warning("D1 render failed: %s", e)
@@ -201,16 +213,19 @@ def _render_d1(chart: ChartData, ctx: dict) -> bytes | None:
 def _render_divisional(chart: ChartData, positions: list, name: str, label: str) -> bytes | None:
     try:
         from jyotish_products.plugins.kundali.divisional import render_divisional_chart
+
         return render_divisional_chart(chart, positions, name, label)
     except Exception as e:
         logger.warning("Divisional render failed: %s", e)
         return None
 
 
-def _render_dasha(chart: ChartData, mds: list, md: Any, ad: Any,
-                  ads: list, ctx: dict) -> bytes | None:
+def _render_dasha(
+    chart: ChartData, mds: list, md: Any, ad: Any, ads: list, ctx: dict
+) -> bytes | None:
     try:
         from jyotish_products.plugins.kundali.dasha_gantt import render_dasha_gantt
+
         return render_dasha_gantt(chart, mds, md, ad, ads, ctx)
     except Exception as e:
         logger.warning("Dasha render failed: %s", e)
@@ -222,6 +237,7 @@ def _render_avk(chart: ChartData, avk: Any) -> bytes | None:
         from jyotish_products.plugins.kundali.ashtakavarga_heatmap import (
             render_ashtakavarga_heatmap,
         )
+
         return render_ashtakavarga_heatmap(chart, avk)
     except Exception as e:
         logger.warning("Ashtakavarga render failed: %s", e)
@@ -231,6 +247,7 @@ def _render_avk(chart: ChartData, avk: Any) -> bytes | None:
 def _render_shadbala(chart: ChartData, sb: list) -> bytes | None:
     try:
         from jyotish_products.plugins.kundali.shadbala_chart import render_shadbala_chart
+
         return render_shadbala_chart(chart, sb)
     except Exception as e:
         logger.warning("Shadbala render failed: %s", e)
@@ -241,9 +258,12 @@ def _build_pdf(story: list[Any], output_path: str | Path | None) -> bytes | None
     """Build the final PDF document."""
     buf = io.BytesIO()
     doc = SimpleDocTemplate(
-        buf, pagesize=A4,
-        leftMargin=1.5 * cm, rightMargin=1.5 * cm,
-        topMargin=1.5 * cm, bottomMargin=1.5 * cm,
+        buf,
+        pagesize=A4,
+        leftMargin=1.5 * cm,
+        rightMargin=1.5 * cm,
+        topMargin=1.5 * cm,
+        bottomMargin=1.5 * cm,
     )
     doc.build(story)
     pdf_bytes = buf.getvalue()

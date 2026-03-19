@@ -1,4 +1,5 @@
 """Shared test fixtures — all tests import from here."""
+
 from __future__ import annotations
 
 import pytest

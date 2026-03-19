@@ -7,13 +7,19 @@ Upagrahas are mathematical points derived from planetary positions.
 
 from __future__ import annotations
 
-from jyotish_engine.constants import SIGNS, GULIKA_SLOT
+import logging
+
 from jyotish_engine.compute.datetime_utils import (
-    to_jd, compute_sunrise, compute_sunset, from_jd, parse_birth_datetime,
+    compute_sunrise,
+    compute_sunset,
+    from_jd,
+    parse_birth_datetime,
+    to_jd,
 )
+from jyotish_engine.constants import GULIKA_SLOT, SIGNS
 from jyotish_engine.models.chart import ChartData
 from jyotish_engine.models.upagraha import UpagrahaPosition
-import logging
+
 
 logger = logging.getLogger(__name__)
 
@@ -21,13 +27,13 @@ logger = logging.getLogger(__name__)
 # Each day starts with the day lord, then follows the sequence
 DAY_HORA_SEQUENCE = ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"]
 UPAGRAHA_PLANET_ORDER = {
-    0: ["Sun", "Venus", "Mercury", "Moon", "Saturn", "Jupiter", "Mars"],      # Sunday
-    1: ["Moon", "Saturn", "Jupiter", "Mars", "Sun", "Venus", "Mercury"],      # Monday
-    2: ["Mars", "Sun", "Venus", "Mercury", "Moon", "Saturn", "Jupiter"],      # Tuesday
-    3: ["Mercury", "Moon", "Saturn", "Jupiter", "Mars", "Sun", "Venus"],      # Wednesday
-    4: ["Jupiter", "Mars", "Sun", "Venus", "Mercury", "Moon", "Saturn"],      # Thursday
-    5: ["Venus", "Mercury", "Moon", "Saturn", "Jupiter", "Mars", "Sun"],      # Friday
-    6: ["Saturn", "Jupiter", "Mars", "Sun", "Venus", "Mercury", "Moon"],      # Saturday
+    0: ["Sun", "Venus", "Mercury", "Moon", "Saturn", "Jupiter", "Mars"],  # Sunday
+    1: ["Moon", "Saturn", "Jupiter", "Mars", "Sun", "Venus", "Mercury"],  # Monday
+    2: ["Mars", "Sun", "Venus", "Mercury", "Moon", "Saturn", "Jupiter"],  # Tuesday
+    3: ["Mercury", "Moon", "Saturn", "Jupiter", "Mars", "Sun", "Venus"],  # Wednesday
+    4: ["Jupiter", "Mars", "Sun", "Venus", "Mercury", "Moon", "Saturn"],  # Thursday
+    5: ["Venus", "Mercury", "Moon", "Saturn", "Jupiter", "Mars", "Sun"],  # Friday
+    6: ["Saturn", "Jupiter", "Mars", "Sun", "Venus", "Mercury", "Moon"],  # Saturday
 }
 
 
@@ -38,7 +44,6 @@ def compute_gulika_longitude(chart: ChartData) -> float:
     Its longitude = the lagna rising at the start of Saturn's segment.
     """
     import swisseph as swe
-    from jyotish_engine.compute.datetime_utils import parse_birth_datetime
 
     birth_dt = parse_birth_datetime(chart.dob, chart.tob, chart.timezone_name)
     jd = to_jd(birth_dt)
@@ -94,10 +99,14 @@ def compute_sun_upagrahas(chart: ChartData) -> list[UpagrahaPosition]:
         deg = lon - sign_idx * 30.0
         house = ((sign_idx - lagna_sign) % 12) + 1
         return UpagrahaPosition(
-            name=name, name_hi=name_hi,
-            longitude=round(lon, 4), sign_index=sign_idx,
-            sign=SIGNS[sign_idx], degree_in_sign=round(deg, 4),
-            house=house, source_planet=source,
+            name=name,
+            name_hi=name_hi,
+            longitude=round(lon, 4),
+            sign_index=sign_idx,
+            sign=SIGNS[sign_idx],
+            degree_in_sign=round(deg, 4),
+            house=house,
+            source_planet=source,
         )
 
     return [
@@ -123,19 +132,31 @@ def compute_all_upagrahas(chart: ChartData) -> list[UpagrahaPosition]:
         sign_idx = int(gulika_lon / 30.0)
         deg = gulika_lon - sign_idx * 30.0
         house = ((sign_idx - chart.lagna_sign_index) % 12) + 1
-        results.append(UpagrahaPosition(
-            name="Gulika", name_hi="गुलिक",
-            longitude=round(gulika_lon, 4), sign_index=sign_idx,
-            sign=SIGNS[sign_idx], degree_in_sign=round(deg, 4),
-            house=house, source_planet="Saturn",
-        ))
+        results.append(
+            UpagrahaPosition(
+                name="Gulika",
+                name_hi="गुलिक",
+                longitude=round(gulika_lon, 4),
+                sign_index=sign_idx,
+                sign=SIGNS[sign_idx],
+                degree_in_sign=round(deg, 4),
+                house=house,
+                source_planet="Saturn",
+            )
+        )
         # Mandi = same as Gulika in most systems
-        results.append(UpagrahaPosition(
-            name="Mandi", name_hi="मान्दि",
-            longitude=round(gulika_lon, 4), sign_index=sign_idx,
-            sign=SIGNS[sign_idx], degree_in_sign=round(deg, 4),
-            house=house, source_planet="Saturn",
-        ))
+        results.append(
+            UpagrahaPosition(
+                name="Mandi",
+                name_hi="मान्दि",
+                longitude=round(gulika_lon, 4),
+                sign_index=sign_idx,
+                sign=SIGNS[sign_idx],
+                degree_in_sign=round(deg, 4),
+                house=house,
+                source_planet="Saturn",
+            )
+        )
     except Exception as e:
         logger.warning("Could not compute Gulika/Mandi: %s", e)
 

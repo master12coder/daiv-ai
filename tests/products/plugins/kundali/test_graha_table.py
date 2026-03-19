@@ -1,4 +1,5 @@
 """Tests for the graha (planet) position table renderer."""
+
 from __future__ import annotations
 
 import pytest
@@ -13,8 +14,13 @@ from jyotish_products.plugins.kundali.graha_table import render_graha_table
 @pytest.fixture
 def manish_chart() -> ChartData:
     return compute_chart(
-        name="Manish Chaurasia", dob="13/03/1989", tob="12:17",
-        lat=25.3176, lon=83.0067, tz_name="Asia/Kolkata", gender="Male",
+        name="Manish Chaurasia",
+        dob="13/03/1989",
+        tob="12:17",
+        lat=25.3176,
+        lon=83.0067,
+        tz_name="Asia/Kolkata",
+        gender="Male",
     )
 
 
@@ -32,7 +38,9 @@ class TestGrahaTable:
         assert len(elements) >= 2  # heading + table + spacer
 
     def test_table_has_header_plus_nine_rows(
-        self, manish_chart: ChartData, mithuna_ctx: dict,
+        self,
+        manish_chart: ChartData,
+        mithuna_ctx: dict,
     ) -> None:
         """Table should have 1 header row + 9 planet rows."""
         shadbala = compute_shadbala(manish_chart)

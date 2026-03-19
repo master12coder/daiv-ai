@@ -1,4 +1,5 @@
 """Tests for the kundali report plugin."""
+
 from __future__ import annotations
 
 import pytest
@@ -12,8 +13,13 @@ from jyotish_products.plugins.kundali.report import REPORT_SECTIONS, generate_re
 @pytest.fixture
 def manish_chart() -> ChartData:
     return compute_chart(
-        name="Manish Chaurasia", dob="13/03/1989", tob="12:17",
-        lat=25.3176, lon=83.0067, tz_name="Asia/Kolkata", gender="Male",
+        name="Manish Chaurasia",
+        dob="13/03/1989",
+        tob="12:17",
+        lat=25.3176,
+        lon=83.0067,
+        tz_name="Asia/Kolkata",
+        gender="Male",
     )
 
 

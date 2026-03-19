@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta
 
+from jyotish_engine.compute.panchang import compute_panchang
 from jyotish_engine.constants import (
-    MUHURTA_FAVORABLE_NAKSHATRAS, NAKSHATRAS, DAY_NAMES,
+    MUHURTA_FAVORABLE_NAKSHATRAS,
 )
-from jyotish_engine.compute.panchang import compute_panchang, PanchangData
 from jyotish_engine.models.muhurta import MuhurtaCandidate
 
 
@@ -84,24 +84,33 @@ def find_muhurta(
 
         # Favorable panchang yogas
         favorable_yogas = {
-            "Siddhi", "Shiva", "Siddha", "Sadhya", "Shubha",
-            "Priti", "Ayushman", "Saubhagya", "Shobhana",
+            "Siddhi",
+            "Shiva",
+            "Siddha",
+            "Sadhya",
+            "Shubha",
+            "Priti",
+            "Ayushman",
+            "Saubhagya",
+            "Shobhana",
         }
         if panchang.yoga_name in favorable_yogas:
             score += 1.5
             reasons.append(f"Auspicious yoga: {panchang.yoga_name}")
 
         if score > 0:
-            candidates.append(MuhurtaCandidate(
-                date=date_str,
-                day=panchang.vara,
-                nakshatra=panchang.nakshatra_name,
-                tithi=panchang.tithi_name,
-                yoga=panchang.yoga_name,
-                rahu_kaal=panchang.rahu_kaal,
-                score=round(score, 1),
-                reasons=reasons,
-            ))
+            candidates.append(
+                MuhurtaCandidate(
+                    date=date_str,
+                    day=panchang.vara,
+                    nakshatra=panchang.nakshatra_name,
+                    tithi=panchang.tithi_name,
+                    yoga=panchang.yoga_name,
+                    rahu_kaal=panchang.rahu_kaal,
+                    score=round(score, 1),
+                    reasons=reasons,
+                )
+            )
 
         current += timedelta(days=1)
 

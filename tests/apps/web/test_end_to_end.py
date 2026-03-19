@@ -3,6 +3,7 @@
 Tests the full pipeline: form submission → engine computation → DB save → page render.
 Uses BYPASS_AUTH=true to skip Google OAuth for testing.
 """
+
 from __future__ import annotations
 
 import json
@@ -29,6 +30,7 @@ def _setup(tmp_path, monkeypatch):
 def client():
     """TestClient with auth bypass."""
     from jyotish_app.web.app import create_app
+
     return TestClient(create_app())
 
 
@@ -37,15 +39,19 @@ class TestFullChartFlow:
 
     def _submit_manish(self, client: TestClient) -> int:
         """Submit Manish's form and return client ID from redirect."""
-        resp = client.post("/generate", data={
-            "name": "Manish Chaurasia",
-            "dob": "13/03/1989",
-            "tob": "12:17",
-            "place": "Varanasi",
-            "lat": "25.3176",
-            "lon": "83.0067",
-            "gender": "Male",
-        }, follow_redirects=False)
+        resp = client.post(
+            "/generate",
+            data={
+                "name": "Manish Chaurasia",
+                "dob": "13/03/1989",
+                "tob": "12:17",
+                "place": "Varanasi",
+                "lat": "25.3176",
+                "lon": "83.0067",
+                "gender": "Male",
+            },
+            follow_redirects=False,
+        )
         assert resp.status_code == 302
         location = resp.headers["location"]
         return int(location.split("/client/")[1])

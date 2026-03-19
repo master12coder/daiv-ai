@@ -1,4 +1,5 @@
 """Muhurta plugin engine — wraps engine muhurta computation."""
+
 from __future__ import annotations
 
 from datetime import datetime

@@ -4,6 +4,7 @@ Same diamond layout as D1, but renders divisional chart positions.
 Vargottam planets marked with a star. Accepts pre-computed DivisionalPosition
 list from report.py (no engine calls inside this renderer).
 """
+
 from __future__ import annotations
 
 import io
@@ -36,12 +37,17 @@ from jyotish_products.plugins.kundali.theme import (
 _CENTER_X, _CENTER_Y = 2.5, 2.5
 _HOUSE_XY: dict[int, tuple[float, float]] = {
     12: (2.5, 4.2),
-    1: (1.0, 3.3), 11: (4.0, 3.3),
-    2: (0.4, 2.5), 10: (4.6, 2.5),
-    3: (1.0, 1.7), 9: (4.0, 1.7),
+    1: (1.0, 3.3),
+    11: (4.0, 3.3),
+    2: (0.4, 2.5),
+    10: (4.6, 2.5),
+    3: (1.0, 1.7),
+    9: (4.0, 1.7),
     4: (2.5, 0.8),
-    5: (1.0, 0.4), 7: (4.0, 0.4),
-    6: (2.5, 0.0), 8: (4.6, 1.0),
+    5: (1.0, 0.4),
+    7: (4.0, 0.4),
+    6: (2.5, 0.0),
+    8: (4.6, 1.0),
 }
 
 
@@ -77,8 +83,15 @@ def render_divisional_chart(
 
     # Saffron header
     ax.axhspan(5.2, 5.6, color=MPL_SAFFRON, alpha=0.9)
-    ax.text(_CENTER_X, 5.4, f"{varga_name} — {varga_label_hi} — {chart.name}",
-            ha="center", va="center", fontproperties=fp_title, color="white")
+    ax.text(
+        _CENTER_X,
+        5.4,
+        f"{varga_name} — {varga_label_hi} — {chart.name}",
+        ha="center",
+        va="center",
+        fontproperties=fp_title,
+        color="white",
+    )
 
     # Diamond outline
     _draw_diamond(ax)
@@ -94,8 +107,15 @@ def render_divisional_chart(
         sign_idx = house - 1
         sign_hi = SIGNS_HI[sign_idx]
 
-        ax.text(x, y + 0.35, f"{house} {sign_hi}",
-                ha="center", va="center", fontproperties=fp_small, color=MPL_GRAY)
+        ax.text(
+            x,
+            y + 0.35,
+            f"{house} {sign_hi}",
+            ha="center",
+            va="center",
+            fontproperties=fp_small,
+            color=MPL_GRAY,
+        )
 
         # Planets in this sign
         sign_planets = planets_by_sign.get(sign_idx, [])
@@ -106,34 +126,59 @@ def render_divisional_chart(
             if pos.is_vargottam:
                 label += " *"
             color = MPL_GOLD if pos.is_vargottam else MPL_TEXT
-            ax.text(x, py, label, ha="center", va="center",
-                    fontproperties=fp_planet, color=color)
+            ax.text(x, py, label, ha="center", va="center", fontproperties=fp_planet, color=color)
 
     # Center label
-    ax.text(_CENTER_X, _CENTER_Y + 0.1, varga_label_hi,
-            ha="center", va="center", fontproperties=_get_font_props(size=13),
-            color=MPL_INDIGO, alpha=0.3)
-    ax.text(_CENTER_X, _CENTER_Y - 0.15,
-            f"Lagna: {chart.lagna_sign_hi}",
-            ha="center", va="center", fontproperties=fp_small, color=MPL_INDIGO)
+    ax.text(
+        _CENTER_X,
+        _CENTER_Y + 0.1,
+        varga_label_hi,
+        ha="center",
+        va="center",
+        fontproperties=_get_font_props(size=13),
+        color=MPL_INDIGO,
+        alpha=0.3,
+    )
+    ax.text(
+        _CENTER_X,
+        _CENTER_Y - 0.15,
+        f"Lagna: {chart.lagna_sign_hi}",
+        ha="center",
+        va="center",
+        fontproperties=fp_small,
+        color=MPL_INDIGO,
+    )
 
     # Vargottam legend
     if vargottam_set:
         varg_names = ", ".join(PLANET_HI.get(p, p) for p in sorted(vargottam_set))
-        ax.text(_CENTER_X, -0.45, f"* वर्गोत्तम: {varg_names}",
-                ha="center", va="center", fontproperties=_get_font_props(size=7),
-                color=MPL_GOLD)
+        ax.text(
+            _CENTER_X,
+            -0.45,
+            f"* वर्गोत्तम: {varg_names}",
+            ha="center",
+            va="center",
+            fontproperties=_get_font_props(size=7),
+            color=MPL_GOLD,
+        )
 
     # Footer
-    ax.text(_CENTER_X, -0.65, f"{chart.dob} | {chart.tob} | vedic-ai-framework",
-            ha="center", va="center", fontproperties=_get_font_props(size=6),
-            color=MPL_GRAY)
+    ax.text(
+        _CENTER_X,
+        -0.65,
+        f"{chart.dob} | {chart.tob} | vedic-ai-framework",
+        ha="center",
+        va="center",
+        fontproperties=_get_font_props(size=6),
+        color=MPL_GRAY,
+    )
 
     plt.tight_layout(pad=0.5)
     return _save_or_bytes(fig, output_path)
 
 
 # ── Helpers ──────────────────────────────────────────────────────────────
+
 
 def _group_by_sign(positions: list[DivisionalPosition]) -> dict[int, list[DivisionalPosition]]:
     """Group DivisionalPosition by divisional_sign_index."""
@@ -169,13 +214,20 @@ def _save_or_bytes(fig: Any, output_path: str | Path | None) -> bytes | None:
     if output_path:
         path = Path(output_path)
         path.parent.mkdir(parents=True, exist_ok=True)
-        fig.savefig(str(path), dpi=150, bbox_inches="tight",
-                    facecolor=fig.get_facecolor(), edgecolor="none")
+        fig.savefig(
+            str(path), dpi=150, bbox_inches="tight", facecolor=fig.get_facecolor(), edgecolor="none"
+        )
         plt.close(fig)
         return None
     buf = io.BytesIO()
-    fig.savefig(buf, format="png", dpi=150, bbox_inches="tight",
-                facecolor=fig.get_facecolor(), edgecolor="none")
+    fig.savefig(
+        buf,
+        format="png",
+        dpi=150,
+        bbox_inches="tight",
+        facecolor=fig.get_facecolor(),
+        edgecolor="none",
+    )
     plt.close(fig)
     buf.seek(0)
     return buf.read()

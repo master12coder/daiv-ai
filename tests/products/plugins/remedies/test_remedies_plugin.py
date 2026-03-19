@@ -1,4 +1,5 @@
 """Tests for the remedies plugin engine."""
+
 from __future__ import annotations
 
 import pytest
@@ -12,8 +13,13 @@ from jyotish_products.plugins.remedies.engine import get_gemstone_recommendation
 def manish_chart() -> ChartData:
     """Reference chart: Manish Chaurasia — Mithuna lagna."""
     return compute_chart(
-        name="Manish Chaurasia", dob="13/03/1989", tob="12:17",
-        lat=25.3176, lon=83.0067, tz_name="Asia/Kolkata", gender="Male",
+        name="Manish Chaurasia",
+        dob="13/03/1989",
+        tob="12:17",
+        lat=25.3176,
+        lon=83.0067,
+        tz_name="Asia/Kolkata",
+        gender="Male",
     )
 
 
@@ -37,7 +43,9 @@ class TestRemediesPlugin:
         assert "Pukhraj" in result or "Yellow Sapphire" in result
         # Pukhraj must appear in PROHIBITED section, not RECOMMENDED
         prohibited_start = result.index("PROHIBITED")
-        pukhraj_pos = result.index("Pukhraj") if "Pukhraj" in result else result.index("Yellow Sapphire")
+        pukhraj_pos = (
+            result.index("Pukhraj") if "Pukhraj" in result else result.index("Yellow Sapphire")
+        )
         assert pukhraj_pos > prohibited_start
 
     def test_emerald_recommended_for_mithuna(self, manish_chart: ChartData) -> None:

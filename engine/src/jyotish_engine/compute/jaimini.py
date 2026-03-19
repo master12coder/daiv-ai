@@ -13,15 +13,21 @@ from __future__ import annotations
 
 from jyotish_engine.compute.chart import ChartData
 from jyotish_engine.compute.divisional import compute_navamsha_sign
-from jyotish_engine.models.jaimini import ArudhaPada, CharaKaraka, JaiminiResult
 from jyotish_engine.constants import SIGN_LORDS, SIGNS
+from jyotish_engine.models.jaimini import ArudhaPada, CharaKaraka, JaiminiResult
 
 
 # ── Constants ────────────────────────────────────────────────────────────────
 
 # Planets eligible for Chara Karaka assignment (7-planet scheme, excluding nodes)
 CHARA_KARAKA_PLANETS: list[str] = [
-    "Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn",
+    "Sun",
+    "Moon",
+    "Mars",
+    "Mercury",
+    "Jupiter",
+    "Venus",
+    "Saturn",
 ]
 
 # Karaka names in order from highest to lowest degree in sign
@@ -95,13 +101,15 @@ def compute_chara_karakas(chart: ChartData) -> list[CharaKaraka]:
 
     karakas: list[CharaKaraka] = []
     for i, (planet_name, degree) in enumerate(planet_degrees):
-        karakas.append(CharaKaraka(
-            karaka=KARAKA_NAMES[i],
-            karaka_full=KARAKA_FULL_NAMES[i],
-            karaka_hi=KARAKA_HINDI_NAMES[i],
-            planet=planet_name,
-            degree_in_sign=degree,
-        ))
+        karakas.append(
+            CharaKaraka(
+                karaka=KARAKA_NAMES[i],
+                karaka_full=KARAKA_FULL_NAMES[i],
+                karaka_hi=KARAKA_HINDI_NAMES[i],
+                planet=planet_name,
+                degree_in_sign=degree,
+            )
+        )
 
     return karakas
 
@@ -236,12 +244,14 @@ def compute_arudha_padas(chart: ChartData) -> list[ArudhaPada]:
         # Compute arudha
         arudha_sign = _compute_single_arudha(house_sign, lord_sign)
 
-        padas.append(ArudhaPada(
-            house=house_num,
-            name=f"A{house_num}",
-            sign_index=arudha_sign,
-            sign=SIGNS[arudha_sign],
-        ))
+        padas.append(
+            ArudhaPada(
+                house=house_num,
+                name=f"A{house_num}",
+                sign_index=arudha_sign,
+                sign=SIGNS[arudha_sign],
+            )
+        )
 
     return padas
 

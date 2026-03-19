@@ -1,6 +1,5 @@
 """Test Upagraha (shadow planet) computation."""
 
-import pytest
 from jyotish_engine.compute.upagraha import compute_all_upagrahas, compute_sun_upagrahas
 
 

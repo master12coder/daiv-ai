@@ -7,33 +7,44 @@ and ashtakavarga bindus. Works fully offline.
 from __future__ import annotations
 
 import logging
-from datetime import date, datetime
+from datetime import date
 from pathlib import Path
 from typing import Any
 
 import yaml
 
-from jyotish_engine.compute.chart import ChartData
-from jyotish_engine.compute.transit import compute_transits
-from jyotish_engine.compute.panchang import compute_panchang
 from jyotish_engine.compute.ashtakavarga import compute_ashtakavarga
-from jyotish_engine.constants import SIGNS, MAX_DAY_RATING
-from jyotish_engine.models.daily import TransitImpact, DailySuggestion
+from jyotish_engine.compute.chart import ChartData
+from jyotish_engine.compute.panchang import compute_panchang
+from jyotish_engine.compute.transit import compute_transits
+from jyotish_engine.constants import MAX_DAY_RATING, SIGNS
+from jyotish_engine.models.daily import DailySuggestion, TransitImpact
+
 
 logger = logging.getLogger(__name__)
 
 _WEEKLY_YAML = Path(__file__).parent.parent / "knowledge" / "weekly_routine.yaml"
 
 VARA_PLANETS = {
-    "Sunday": "Sun", "Monday": "Moon", "Tuesday": "Mars",
-    "Wednesday": "Mercury", "Thursday": "Jupiter",
-    "Friday": "Venus", "Saturday": "Saturn",
+    "Sunday": "Sun",
+    "Monday": "Moon",
+    "Tuesday": "Mars",
+    "Wednesday": "Mercury",
+    "Thursday": "Jupiter",
+    "Friday": "Venus",
+    "Saturday": "Saturn",
 }
 
 PLANET_COLORS = {
-    "Sun": "Red/Saffron", "Moon": "White/Cream", "Mars": "Red/Orange",
-    "Mercury": "Green", "Jupiter": "Yellow", "Venus": "White/Pink",
-    "Saturn": "Blue/Black", "Rahu": "Grey/Smoky", "Ketu": "Brown/Grey",
+    "Sun": "Red/Saffron",
+    "Moon": "White/Cream",
+    "Mars": "Red/Orange",
+    "Mercury": "Green",
+    "Jupiter": "Yellow",
+    "Venus": "White/Pink",
+    "Saturn": "Blue/Black",
+    "Rahu": "Grey/Smoky",
+    "Ketu": "Brown/Grey",
 }
 
 
@@ -105,12 +116,16 @@ def compute_daily_suggestion(
             f"{t.name} in {t.sign} (house {t.natal_house_activated}): "
             f"{bindus} bindus — {'favorable' if is_favorable else 'challenging'}"
         )
-        transit_impacts.append(TransitImpact(
-            planet=t.name, transit_sign=t.sign,
-            natal_house=t.natal_house_activated,
-            bindus=bindus, is_favorable=is_favorable,
-            description=desc,
-        ))
+        transit_impacts.append(
+            TransitImpact(
+                planet=t.name,
+                transit_sign=t.sign,
+                natal_house=t.natal_house_activated,
+                bindus=bindus,
+                is_favorable=is_favorable,
+                description=desc,
+            )
+        )
 
     # Build good_for / avoid lists from day routine
     good_for = []
@@ -137,8 +152,10 @@ def compute_daily_suggestion(
     try:
         panchang = compute_panchang(
             target_date.strftime("%d/%m/%Y"),
-            chart.latitude, chart.longitude,
-            chart.timezone_name, chart.place,
+            chart.latitude,
+            chart.longitude,
+            chart.timezone_name,
+            chart.place,
         )
         nakshatra = panchang.nakshatra_name
         tithi = f"{panchang.tithi_name} ({panchang.paksha})"

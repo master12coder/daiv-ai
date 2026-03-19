@@ -19,20 +19,20 @@ class PanchangData(BaseModel):
     place: str
     latitude: float = Field(ge=-90, le=90)
     longitude: float = Field(ge=-180, le=180)
-    vara: str                    # Day of week
+    vara: str  # Day of week
     vara_hi: str
     vara_planet: str
     tithi_index: int = Field(ge=0, le=29)  # 0-29
     tithi_name: str
-    paksha: str                  # Shukla/Krishna
+    paksha: str  # Shukla/Krishna
     nakshatra_index: int = Field(ge=0, le=26)  # 0-26
     nakshatra_name: str
     yoga_index: int = Field(ge=0, le=26)  # 0-26
     yoga_name: str
     karana_index: int
     karana_name: str
-    sunrise: str                 # HH:MM local time
-    sunset: str                  # HH:MM local time
-    rahu_kaal: str               # "HH:MM - HH:MM"
+    sunrise: str  # HH:MM local time
+    sunset: str  # HH:MM local time
+    rahu_kaal: str  # "HH:MM - HH:MM"
     yamaghanda: str
     gulika: str

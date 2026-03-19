@@ -7,14 +7,18 @@ Also preserves the backward-compatible ``compute_planet_strengths`` API.
 
 from __future__ import annotations
 
-from jyotish_engine.constants import (
-    EXALTATION, DEBILITATION, OWN_SIGNS, MOOLTRIKONA,
-    KENDRAS, SIGN_LORDS, PLANETS, SPECIAL_ASPECTS,
-    EXALTATION_DEGREE,
-)
 from jyotish_engine.compute.divisional import compute_navamsha_sign
+from jyotish_engine.constants import (
+    DEBILITATION,
+    EXALTATION,
+    EXALTATION_DEGREE,
+    KENDRAS,
+    MOOLTRIKONA,
+    OWN_SIGNS,
+    SPECIAL_ASPECTS,
+)
 from jyotish_engine.models.chart import ChartData
-from jyotish_engine.models.strength import ShadbalaResult, PlanetStrength
+from jyotish_engine.models.strength import PlanetStrength, ShadbalaResult
 
 
 # ---------------------------------------------------------------------------
@@ -48,10 +52,13 @@ REQUIRED_SHADBALA: dict[str, float] = {
 
 # Dig Bala best houses
 _DIG_BEST: dict[str, int] = {
-    "Sun": 10, "Mars": 10,
-    "Jupiter": 1, "Mercury": 1,
+    "Sun": 10,
+    "Mars": 10,
+    "Jupiter": 1,
+    "Mercury": 1,
     "Saturn": 7,
-    "Moon": 4, "Venus": 4,
+    "Moon": 4,
+    "Venus": 4,
 }
 
 # Natural benefics and malefics
@@ -66,6 +73,7 @@ _APOKLIMA = {3, 6, 9, 12}
 # ---------------------------------------------------------------------------
 # 1. Sthana Bala (positional strength)
 # ---------------------------------------------------------------------------
+
 
 def _uchcha_bala(planet_name: str, longitude: float) -> float:
     """Exaltation strength: max 60 at exact exaltation degree, 0 at debilitation."""
@@ -184,6 +192,7 @@ def _sthana_bala(chart: ChartData, planet_name: str) -> float:
 # 2. Dig Bala (directional strength)
 # ---------------------------------------------------------------------------
 
+
 def _dig_bala(chart: ChartData, planet_name: str) -> float:
     """Directional strength: 60 at best house, 0 at worst (opposite)."""
     p = chart.planets[planet_name]
@@ -198,6 +207,7 @@ def _dig_bala(chart: ChartData, planet_name: str) -> float:
 # ---------------------------------------------------------------------------
 # 3. Kala Bala (temporal strength, simplified)
 # ---------------------------------------------------------------------------
+
 
 def _kala_bala(chart: ChartData, planet_name: str) -> float:
     """Simplified temporal strength.
@@ -232,6 +242,7 @@ def _kala_bala(chart: ChartData, planet_name: str) -> float:
 # 4. Cheshta Bala (motional strength)
 # ---------------------------------------------------------------------------
 
+
 def _cheshta_bala(chart: ChartData, planet_name: str) -> float:
     """Motional strength based on speed and retrogression.
 
@@ -253,8 +264,13 @@ def _cheshta_bala(chart: ChartData, planet_name: str) -> float:
 
     # Average daily speeds for comparison (approximate)
     avg_speeds: dict[str, float] = {
-        "Mars": 0.524, "Mercury": 1.383, "Jupiter": 0.083,
-        "Venus": 1.2, "Saturn": 0.034, "Rahu": 0.053, "Ketu": 0.053,
+        "Mars": 0.524,
+        "Mercury": 1.383,
+        "Jupiter": 0.083,
+        "Venus": 1.2,
+        "Saturn": 0.034,
+        "Rahu": 0.053,
+        "Ketu": 0.053,
     }
     avg = avg_speeds.get(planet_name, 0.5)
     if speed >= avg:
@@ -266,6 +282,7 @@ def _cheshta_bala(chart: ChartData, planet_name: str) -> float:
 # 5. Naisargika Bala (natural strength — fixed)
 # ---------------------------------------------------------------------------
 
+
 def _naisargika_bala(planet_name: str) -> float:
     """Fixed natural strength per planet."""
     return NAISARGIKA.get(planet_name, 0.0)
@@ -274,6 +291,7 @@ def _naisargika_bala(planet_name: str) -> float:
 # ---------------------------------------------------------------------------
 # 6. Drik Bala (aspectual strength, simplified)
 # ---------------------------------------------------------------------------
+
 
 def _drik_bala(chart: ChartData, planet_name: str) -> float:
     """Simplified aspectual strength from aspects received.
@@ -319,6 +337,7 @@ def _aspects_house(planet_name: str, planet_house: int, target_house: int) -> bo
 # Main Shadbala computation
 # ---------------------------------------------------------------------------
 
+
 def compute_shadbala(chart: ChartData) -> list[ShadbalaResult]:
     """Compute full six-fold Shadbala for the seven classical planets.
 
@@ -338,20 +357,22 @@ def compute_shadbala(chart: ChartData) -> list[ShadbalaResult]:
         req = REQUIRED_SHADBALA[planet_name]
         ratio = round(total / req, 3) if req > 0 else 0.0
 
-        results.append(ShadbalaResult(
-            planet=planet_name,
-            sthana_bala=sb,
-            dig_bala=db,
-            kala_bala=kb,
-            cheshta_bala=cb,
-            naisargika_bala=nb,
-            drik_bala=drk,
-            total=total,
-            required=req,
-            ratio=ratio,
-            is_strong=ratio >= 1.0,
-            rank=0,
-        ))
+        results.append(
+            ShadbalaResult(
+                planet=planet_name,
+                sthana_bala=sb,
+                dig_bala=db,
+                kala_bala=kb,
+                cheshta_bala=cb,
+                naisargika_bala=nb,
+                drik_bala=drk,
+                total=total,
+                required=req,
+                ratio=ratio,
+                is_strong=ratio >= 1.0,
+                rank=0,
+            )
+        )
 
     # Assign ranks by total descending
     results.sort(key=lambda r: r.total, reverse=True)
@@ -364,6 +385,7 @@ def compute_shadbala(chart: ChartData) -> list[ShadbalaResult]:
 # ---------------------------------------------------------------------------
 # Backward-compatible API (used by interpreter / formatter)
 # ---------------------------------------------------------------------------
+
 
 def compute_planet_strengths(chart: ChartData) -> list[PlanetStrength]:
     """Compute relative strengths for all planets (backward-compatible).
@@ -384,38 +406,45 @@ def compute_planet_strengths(chart: ChartData) -> list[PlanetStrength]:
         norm_kala = min(1.0, r.kala_bala / 120.0)
         total_rel = min(1.0, r.total / max_total) if max_total > 0 else 0.0
 
-        strengths.append(PlanetStrength(
-            planet=r.planet,
-            sthana_bala=round(norm_sthana, 3),
-            dig_bala=round(norm_dig, 3),
-            kala_bala=round(norm_kala, 3),
-            total_relative=round(total_rel, 3),
-            rank=0,
-            is_strong=r.is_strong,
-        ))
+        strengths.append(
+            PlanetStrength(
+                planet=r.planet,
+                sthana_bala=round(norm_sthana, 3),
+                dig_bala=round(norm_dig, 3),
+                kala_bala=round(norm_kala, 3),
+                total_relative=round(total_rel, 3),
+                rank=0,
+                is_strong=r.is_strong,
+            )
+        )
 
     # Add simplified entries for Rahu and Ketu
     for node_name in ("Rahu", "Ketu"):
         if node_name in chart.planets:
             p = chart.planets[node_name]
             dignity_scores = {
-                "exalted": 1.0, "mooltrikona": 0.85,
-                "own": 0.75, "neutral": 0.4, "debilitated": 0.1,
+                "exalted": 1.0,
+                "mooltrikona": 0.85,
+                "own": 0.75,
+                "neutral": 0.4,
+                "debilitated": 0.1,
             }
             sb = dignity_scores.get(p.dignity, 0.4)
             # Simplified dig/kala for nodes
             db = 0.5
             kb = 0.5
             total_rel = sb * 0.5 + db * 0.25 + kb * 0.25
-            strengths.append(PlanetStrength(
-                planet=node_name,
-                sthana_bala=round(sb, 3),
-                dig_bala=round(db, 3),
-                kala_bala=round(kb, 3),
-                total_relative=round(total_rel, 3),
-                rank=0,
-                is_strong=total_rel >= 0.55,
-            ))
+            strengths.append(
+                PlanetStrength(
+                    planet=node_name,
+                    sthana_bala=round(sb, 3),
+                    dig_bala=round(db, 3),
+                    kala_bala=round(kb, 3),
+                    total_relative=round(total_rel, 3),
+                    rank=0,
+                    is_strong=total_rel >= 0.55,
+                )
+            )
 
     # Assign ranks by total_relative descending
     strengths.sort(key=lambda s: s.total_relative, reverse=True)

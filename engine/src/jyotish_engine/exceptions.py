@@ -30,15 +30,15 @@ class ConfigurationError(JyotishError):
     """Configuration is invalid or missing."""
 
 
-class SafetyViolation(JyotishError):
+class SafetyViolationError(JyotishError):
     """Gemstone or interpretation safety violation."""
 
 
-class ScriptureNotFound(JyotishError):
+class ScriptureNotFoundError(JyotishError):
     """Scripture reference not found."""
 
 
-class ChartNotFound(JyotishError):
+class ChartNotFoundError(JyotishError):
     """Saved chart file not found."""
 
 

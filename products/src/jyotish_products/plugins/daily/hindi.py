@@ -1,13 +1,19 @@
 """Hindi language formatter for daily guidance."""
+
 from __future__ import annotations
 
 from jyotish_engine.compute.daily import DailySuggestion
 from jyotish_engine.models.chart import ChartData
 
+
 _VARA_HI = {
-    "Sunday": "रविवार", "Monday": "सोमवार", "Tuesday": "मंगलवार",
-    "Wednesday": "बुधवार", "Thursday": "गुरुवार",
-    "Friday": "शुक्रवार", "Saturday": "शनिवार",
+    "Sunday": "रविवार",
+    "Monday": "सोमवार",
+    "Tuesday": "मंगलवार",
+    "Wednesday": "बुधवार",
+    "Thursday": "गुरुवार",
+    "Friday": "शुक्रवार",
+    "Saturday": "शनिवार",
 }
 
 _DIGITS_HI = str.maketrans("0123456789", "०१२३४५६७८९")
@@ -22,7 +28,7 @@ def format_hindi_simple(suggestion: DailySuggestion) -> str:
     """One-line Hindi format."""
     rating = _to_hindi_num(suggestion.day_rating)
     vara = _VARA_HI.get(suggestion.vara.split()[0], suggestion.vara)
-    return f"{rating}/१० | {vara} | {suggestion.recommended_mantra} × ११"
+    return f"{rating}/१० | {vara} | {suggestion.recommended_mantra} x ११"
 
 
 def format_hindi_medium(suggestion: DailySuggestion, chart: ChartData) -> str:

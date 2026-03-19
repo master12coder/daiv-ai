@@ -1,7 +1,6 @@
 """Test KP sub-lord calculations."""
 
-import pytest
-from jyotish_engine.compute.kp import get_kp_position, compute_kp_positions, get_significators
+from jyotish_engine.compute.kp import compute_kp_positions, get_kp_position, get_significators
 from jyotish_engine.constants import DASHA_SEQUENCE
 
 

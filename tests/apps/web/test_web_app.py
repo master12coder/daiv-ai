@@ -1,4 +1,5 @@
 """Tests for the FastAPI web application."""
+
 from __future__ import annotations
 
 import os
@@ -30,6 +31,7 @@ def _tmp_db(tmp_path):
 def app():
     """Create the FastAPI app."""
     from jyotish_app.web.app import create_app
+
     return create_app()
 
 

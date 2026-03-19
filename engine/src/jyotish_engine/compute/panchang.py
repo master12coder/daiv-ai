@@ -2,17 +2,26 @@
 
 from __future__ import annotations
 
-from datetime import datetime
-
 import swisseph as swe
 
-from jyotish_engine.constants import (
-    TITHI_NAMES, NAKSHATRAS, PANCHANG_YOGA_NAMES, KARANA_NAMES,
-    DAY_NAMES, DAY_NAMES_HI, DAY_PLANET, RAHU_KAAL_SLOT,
-    YAMAGHANDA_SLOT, GULIKA_SLOT,
-)
 from jyotish_engine.compute.datetime_utils import (
-    to_jd, compute_sunrise, compute_sunset, from_jd, parse_birth_datetime,
+    compute_sunrise,
+    compute_sunset,
+    from_jd,
+    parse_birth_datetime,
+    to_jd,
+)
+from jyotish_engine.constants import (
+    DAY_NAMES,
+    DAY_NAMES_HI,
+    DAY_PLANET,
+    GULIKA_SLOT,
+    KARANA_NAMES,
+    NAKSHATRAS,
+    PANCHANG_YOGA_NAMES,
+    RAHU_KAAL_SLOT,
+    TITHI_NAMES,
+    YAMAGHANDA_SLOT,
 )
 from jyotish_engine.models.panchang import PanchangData
 
@@ -91,6 +100,7 @@ def compute_panchang(
         sunset_dt = from_jd(sunset_jd)
 
         import pytz
+
         tz = pytz.timezone(tz_name)
         sunrise_local = sunrise_dt.astimezone(tz)
         sunset_local = sunset_dt.astimezone(tz)
@@ -105,6 +115,7 @@ def compute_panchang(
             start_min = (slot_num - 1) * slot_minutes
             end_min = slot_num * slot_minutes
             from datetime import timedelta
+
             start_t = sunrise_local + timedelta(minutes=start_min)
             end_t = sunrise_local + timedelta(minutes=end_min)
             return f"{start_t.strftime('%H:%M')} - {end_t.strftime('%H:%M')}"

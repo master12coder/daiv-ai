@@ -1,4 +1,5 @@
 """Scheduler for daily Telegram messages at 5:30 AM IST."""
+
 from __future__ import annotations
 
 import logging
@@ -6,7 +7,12 @@ import os
 import time
 from datetime import datetime, timedelta
 from pathlib import Path
+from typing import TYPE_CHECKING
 from zoneinfo import ZoneInfo
+
+
+if TYPE_CHECKING:
+    from jyotish_engine.models.chart import ChartData
 
 
 logger = logging.getLogger(__name__)
@@ -43,11 +49,13 @@ def _send_telegram_message(token: str, chat_id: str, message: str) -> bool:
     import urllib.request
 
     url = f"https://api.telegram.org/bot{token}/sendMessage"
-    data = urllib.parse.urlencode({
-        "chat_id": chat_id,
-        "text": message,
-        "parse_mode": "Markdown",
-    }).encode()
+    data = urllib.parse.urlencode(
+        {
+            "chat_id": chat_id,
+            "text": message,
+            "parse_mode": "Markdown",
+        }
+    ).encode()
 
     try:
         req = urllib.request.Request(url, data=data)

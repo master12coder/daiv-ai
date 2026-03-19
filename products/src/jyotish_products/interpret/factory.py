@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-import os
 import logging
+import os
 from typing import Protocol, runtime_checkable
+
 
 logger = logging.getLogger(__name__)
 
@@ -52,7 +53,7 @@ class OllamaBackend:
         try:
             import ollama
         except ImportError:
-            raise RuntimeError("Ollama package not installed. Run: pip install ollama")
+            raise RuntimeError("Ollama package not installed. Run: pip install ollama") from None
         try:
             client = ollama.Client(host=self._base_url)
             response = client.chat(
@@ -69,7 +70,7 @@ class OllamaBackend:
                 f"Ollama error: {e}\n"
                 f"Make sure Ollama is running: ollama serve\n"
                 f"And model is pulled: ollama pull {self._model}"
-            )
+            ) from e
 
     def name(self) -> str:
         """Return backend identifier."""
@@ -79,6 +80,7 @@ class OllamaBackend:
         """Check if Ollama server is running and model exists."""
         try:
             import ollama
+
             client = ollama.Client(host=self._base_url)
             client.list()
             return True
@@ -99,7 +101,7 @@ class GroqBackend:
         try:
             from groq import Groq
         except ImportError:
-            raise RuntimeError("Groq package not installed. Run: pip install groq")
+            raise RuntimeError("Groq package not installed. Run: pip install groq") from None
         if not self._api_key:
             raise RuntimeError("GROQ_API_KEY not set. Get one at https://console.groq.com")
         client = Groq(api_key=self._api_key)
@@ -136,7 +138,7 @@ class ClaudeBackend:
         try:
             import anthropic
         except ImportError:
-            raise RuntimeError("Anthropic package not installed. Run: pip install anthropic")
+            raise RuntimeError("Anthropic package not installed. Run: pip install anthropic") from None
         if not self._api_key:
             raise RuntimeError("ANTHROPIC_API_KEY not set.")
         client = anthropic.Anthropic(api_key=self._api_key)
@@ -171,7 +173,7 @@ class OpenAIBackend:
         try:
             from openai import OpenAI
         except ImportError:
-            raise RuntimeError("OpenAI package not installed. Run: pip install openai")
+            raise RuntimeError("OpenAI package not installed. Run: pip install openai") from None
         if not self._api_key:
             raise RuntimeError("OPENAI_API_KEY not set.")
         client = OpenAI(api_key=self._api_key)
@@ -240,9 +242,7 @@ def get_backend(
 
     backend_class = _BACKENDS.get(name)
     if backend_class is None:
-        raise ValueError(
-            f"Unknown backend: {name}. Options: {', '.join(_BACKENDS.keys())}"
-        )
+        raise ValueError(f"Unknown backend: {name}. Options: {', '.join(_BACKENDS.keys())}")
 
     if name == "none":
         return NoLLMBackend()

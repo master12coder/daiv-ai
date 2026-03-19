@@ -1,9 +1,18 @@
 """Telegram bot handlers — /start, /daily, /level, /kundali commands."""
+
 from __future__ import annotations
 
 import json
 import logging
 from pathlib import Path
+from typing import TYPE_CHECKING
+
+
+if TYPE_CHECKING:
+    from telegram import Update
+    from telegram.ext import Application, ContextTypes
+
+    from jyotish_engine.models.chart import ChartData
 
 
 logger = logging.getLogger(__name__)
@@ -128,8 +137,13 @@ async def handle_kundali(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
     # Send computation-only sections (no LLM needed)
     sections = [
-        "chart_summary", "diamond_chart", "yogas", "doshas",
-        "mahadasha_timeline", "current_dasha", "gemstones",
+        "chart_summary",
+        "diamond_chart",
+        "yogas",
+        "doshas",
+        "mahadasha_timeline",
+        "current_dasha",
+        "gemstones",
     ]
     report = generate_report(chart, sections=sections)
 
@@ -139,7 +153,7 @@ async def handle_kundali(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         await update.message.reply_text(f"```\n{report}\n```", parse_mode="Markdown")
     else:
         # Split into chunks
-        chunks = [report[i:i + max_len] for i in range(0, len(report), max_len)]
+        chunks = [report[i : i + max_len] for i in range(0, len(report), max_len)]
         for chunk in chunks:
             await update.message.reply_text(f"```\n{chunk}\n```", parse_mode="Markdown")
 

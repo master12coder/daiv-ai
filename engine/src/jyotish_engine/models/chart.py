@@ -18,21 +18,21 @@ class PlanetData(BaseModel):
     name_hi: str
     longitude: float = Field(ge=0, lt=360)  # Sidereal longitude (0-360)
     sign_index: int = Field(ge=0, le=11)  # 0-11
-    sign: str                 # Vedic sign name
-    sign_en: str              # Western sign name
-    sign_hi: str              # Hindi sign name
+    sign: str  # Vedic sign name
+    sign_en: str  # Western sign name
+    sign_hi: str  # Hindi sign name
     degree_in_sign: float = Field(ge=0, lt=30)  # 0-30
     nakshatra_index: int = Field(ge=0, le=26)  # 0-26
-    nakshatra: str            # Nakshatra name
-    nakshatra_lord: str       # Dasha lord of nakshatra
+    nakshatra: str  # Nakshatra name
+    nakshatra_lord: str  # Dasha lord of nakshatra
     pada: int = Field(ge=1, le=4)  # 1-4
     house: int = Field(ge=1, le=12)  # 1-12 from lagna
     is_retrograde: bool
-    speed: float              # deg/day
-    dignity: str              # exalted/debilitated/own/mooltrikona/neutral
-    avastha: str              # Bala/Kumara/Yuva/Vriddha/Mruta
+    speed: float  # deg/day
+    dignity: str  # exalted/debilitated/own/mooltrikona/neutral
+    avastha: str  # Bala/Kumara/Yuva/Vriddha/Mruta
     is_combust: bool
-    sign_lord: str            # Lord of the sign planet is in
+    sign_lord: str  # Lord of the sign planet is in
 
 
 class ChartData(BaseModel):

@@ -1,9 +1,9 @@
 """Test additional dasha systems — Yogini, Ashtottari, Chara."""
 
-import pytest
 from jyotish_engine.compute.dasha_extra import (
-    compute_yogini_dasha, compute_ashtottari_dasha, compute_chara_dasha,
-    YOGINI_TOTAL_YEARS, ASHTOTTARI_TOTAL_YEARS,
+    compute_ashtottari_dasha,
+    compute_chara_dasha,
+    compute_yogini_dasha,
 )
 
 
@@ -20,8 +20,16 @@ class TestYoginiDasha:
 
     def test_yogini_names_valid(self, manish_chart):
         periods = compute_yogini_dasha(manish_chart)
-        valid_names = {"Mangala", "Pingala", "Dhanya", "Bhramari",
-                       "Bhadrika", "Ulka", "Siddha", "Sankata"}
+        valid_names = {
+            "Mangala",
+            "Pingala",
+            "Dhanya",
+            "Bhramari",
+            "Bhadrika",
+            "Ulka",
+            "Siddha",
+            "Sankata",
+        }
         for p in periods:
             assert p.yogini_name in valid_names
 

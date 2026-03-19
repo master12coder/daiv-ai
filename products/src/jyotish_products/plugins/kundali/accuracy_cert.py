@@ -2,6 +2,7 @@
 
 Shows computation metadata, cross-verification note, and disclaimer.
 """
+
 from __future__ import annotations
 
 from typing import Any
@@ -56,49 +57,61 @@ def render_accuracy_cert(chart: ChartData) -> list[Any]:
     ]
 
     t = Table(data, colWidths=[5 * cm, 12 * cm])
-    t.setStyle(TableStyle([
-        ("BACKGROUND", (0, 0), (-1, 0), SAFFRON),
-        ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
-        ("FONTNAME", (0, 0), (-1, -1), font),
-        ("FONTSIZE", (0, 0), (-1, -1), 9),
-        ("GRID", (0, 0), (-1, -1), 0.5, colors.lightgrey),
-        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, LIGHT_SAFFRON]),
-        ("TOPPADDING", (0, 0), (-1, -1), 4),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
-    ]))
+    t.setStyle(
+        TableStyle(
+            [
+                ("BACKGROUND", (0, 0), (-1, 0), SAFFRON),
+                ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+                ("FONTNAME", (0, 0), (-1, -1), font),
+                ("FONTSIZE", (0, 0), (-1, -1), 9),
+                ("GRID", (0, 0), (-1, -1), 0.5, colors.lightgrey),
+                ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, LIGHT_SAFFRON]),
+                ("TOPPADDING", (0, 0), (-1, -1), 4),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+            ]
+        )
+    )
     elements.append(t)
     elements.append(Spacer(1, 0.4 * cm))
 
     # Cross-verification
     elements.append(Paragraph("Cross-verification", heading))
-    elements.append(Paragraph(
-        "Planet longitudes can be verified against DrikPanchang.com or "
-        "any Swiss Ephemeris-based software using Lahiri ayanamsha.",
-        green,
-    ))
+    elements.append(
+        Paragraph(
+            "Planet longitudes can be verified against DrikPanchang.com or "
+            "any Swiss Ephemeris-based software using Lahiri ayanamsha.",
+            green,
+        )
+    )
 
     elements.append(Spacer(1, 0.4 * cm))
 
     # Disclaimer
     elements.append(Paragraph("अस्वीकरण — Disclaimer", heading))
-    elements.append(Paragraph(
-        "यह computational tool है, Pandit Ji का विकल्प नहीं।",
-        body,
-    ))
-    elements.append(Paragraph(
-        "This is a computational tool, not a replacement for an experienced "
-        "astrologer. Jyotish is a complex vidya that requires human wisdom "
-        "beyond mathematical computation. Use this report as a starting point "
-        "for discussion with your Pandit Ji, not as a final answer.",
-        small,
-    ))
+    elements.append(
+        Paragraph(
+            "यह computational tool है, Pandit Ji का विकल्प नहीं।",
+            body,
+        )
+    )
+    elements.append(
+        Paragraph(
+            "This is a computational tool, not a replacement for an experienced "
+            "astrologer. Jyotish is a complex vidya that requires human wisdom "
+            "beyond mathematical computation. Use this report as a starting point "
+            "for discussion with your Pandit Ji, not as a final answer.",
+            small,
+        )
+    )
     elements.append(Spacer(1, 0.3 * cm))
 
     # GitHub
-    elements.append(Paragraph(
-        "Open source: github.com/vedic-ai-framework",
-        _style(font, 8, TEXT_LIGHT, sa=2),
-    ))
+    elements.append(
+        Paragraph(
+            "Open source: github.com/vedic-ai-framework",
+            _style(font, 8, TEXT_LIGHT, sa=2),
+        )
+    )
 
     return elements
 
@@ -106,6 +119,7 @@ def render_accuracy_cert(chart: ChartData) -> list[Any]:
 def _get_font() -> str:
     try:
         from reportlab.pdfbase.pdfmetrics import getFont
+
         getFont("NotoDevanagari")
         return "NotoDevanagari"
     except KeyError:
@@ -114,7 +128,12 @@ def _get_font() -> str:
 
 def _style(font: str, size: int, color: Any, sa: int = 4, sb: int = 0) -> Any:
     from reportlab.lib.styles import ParagraphStyle
+
     return ParagraphStyle(
-        f"AC_{size}_{id(color)}_{sa}", fontName=font, fontSize=size,
-        textColor=color, spaceAfter=sa, spaceBefore=sb,
+        f"AC_{size}_{id(color)}_{sa}",
+        fontName=font,
+        fontSize=size,
+        textColor=color,
+        spaceAfter=sa,
+        spaceBefore=sb,
     )

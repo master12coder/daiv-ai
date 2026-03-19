@@ -1,10 +1,14 @@
 """Test all 16+ varga chart computations."""
 
 import pytest
+
 from jyotish_engine.compute.divisional import (
-    compute_navamsha_sign, compute_dasamsha_sign,
-    compute_hora_sign, compute_drekkana_sign,
-    compute_varga, VARGA_FUNCTIONS,
+    VARGA_FUNCTIONS,
+    compute_dasamsha_sign,
+    compute_drekkana_sign,
+    compute_hora_sign,
+    compute_navamsha_sign,
+    compute_varga,
     get_vargottam_planets,
 )
 
@@ -33,8 +37,25 @@ class TestVargaCharts:
             assert 0 <= result <= 11
 
     def test_all_16_vargas_available(self):
-        expected = {"D2", "D3", "D4", "D5", "D6", "D7", "D9", "D10",
-                    "D12", "D16", "D20", "D24", "D27", "D30", "D40", "D45", "D60"}
+        expected = {
+            "D2",
+            "D3",
+            "D4",
+            "D5",
+            "D6",
+            "D7",
+            "D9",
+            "D10",
+            "D12",
+            "D16",
+            "D20",
+            "D24",
+            "D27",
+            "D30",
+            "D40",
+            "D45",
+            "D60",
+        }
         assert expected == set(VARGA_FUNCTIONS.keys())
 
     def test_compute_varga_d9(self, manish_chart):
@@ -49,7 +70,9 @@ class TestVargaCharts:
             result = compute_varga(manish_chart, varga_name)
             assert len(result) == 9, f"{varga_name} returned {len(result)} planets"
             for pos in result:
-                assert 0 <= pos.divisional_sign_index <= 11, f"{varga_name} {pos.planet}: invalid sign {pos.divisional_sign_index}"
+                assert 0 <= pos.divisional_sign_index <= 11, (
+                    f"{varga_name} {pos.planet}: invalid sign {pos.divisional_sign_index}"
+                )
 
     def test_unknown_varga_raises(self, manish_chart):
         with pytest.raises(ValueError, match="Unknown varga"):
@@ -59,4 +82,14 @@ class TestVargaCharts:
         vp = get_vargottam_planets(manish_chart)
         assert isinstance(vp, list)
         for p in vp:
-            assert p in ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu", "Ketu"]
+            assert p in [
+                "Sun",
+                "Moon",
+                "Mars",
+                "Mercury",
+                "Jupiter",
+                "Venus",
+                "Saturn",
+                "Rahu",
+                "Ketu",
+            ]

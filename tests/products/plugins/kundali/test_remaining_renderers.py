@@ -1,4 +1,5 @@
 """Tests for golden_period, prohibited_stones, and accuracy_cert renderers."""
+
 from __future__ import annotations
 
 import pytest
@@ -16,8 +17,13 @@ from jyotish_products.plugins.remedies.gemstone import compute_gemstone_weights
 @pytest.fixture
 def manish_chart() -> ChartData:
     return compute_chart(
-        name="Manish Chaurasia", dob="13/03/1989", tob="12:17",
-        lat=25.3176, lon=83.0067, tz_name="Asia/Kolkata", gender="Male",
+        name="Manish Chaurasia",
+        dob="13/03/1989",
+        tob="12:17",
+        lat=25.3176,
+        lon=83.0067,
+        tz_name="Asia/Kolkata",
+        gender="Male",
     )
 
 

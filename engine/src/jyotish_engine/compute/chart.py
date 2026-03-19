@@ -2,23 +2,37 @@
 
 from __future__ import annotations
 
-from datetime import datetime
-
 import swisseph as swe
 
+from jyotish_engine.compute.datetime_utils import parse_birth_datetime, to_jd
+from jyotish_engine.compute.geo import resolve_or_manual
 from jyotish_engine.constants import (
-    SIGNS, SIGNS_EN, SIGNS_HI, PLANETS, PLANETS_HI, SWE_PLANETS,
-    SIGN_LORDS, NAKSHATRAS, NAKSHATRA_LORDS, EXALTATION, DEBILITATION,
-    OWN_SIGNS, MOOLTRIKONA, COMBUSTION_LIMITS, COMBUSTION_LIMITS_RETROGRADE,
-    AVASTHAS, SPECIAL_ASPECTS,
-    NUM_NAKSHATRAS, MAX_NAKSHATRA_INDEX, NAKSHATRA_SPAN_DEG,
-    PADAS_PER_NAKSHATRA, HALF_CIRCLE_DEG, FULL_CIRCLE_DEG,
-    DEGREES_PER_SIGN, DEFAULT_CONJUNCTION_ORB,
+    AVASTHAS,
+    COMBUSTION_LIMITS,
+    COMBUSTION_LIMITS_RETROGRADE,
+    DEBILITATION,
+    DEFAULT_CONJUNCTION_ORB,
+    DEGREES_PER_SIGN,
+    EXALTATION,
+    FULL_CIRCLE_DEG,
+    HALF_CIRCLE_DEG,
+    MAX_NAKSHATRA_INDEX,
+    MOOLTRIKONA,
+    NAKSHATRA_LORDS,
+    NAKSHATRA_SPAN_DEG,
+    NAKSHATRAS,
+    OWN_SIGNS,
+    PADAS_PER_NAKSHATRA,
+    PLANETS,
+    PLANETS_HI,
+    SIGN_LORDS,
+    SIGNS,
+    SIGNS_EN,
+    SIGNS_HI,
+    SPECIAL_ASPECTS,
+    SWE_PLANETS,
 )
-from jyotish_engine.compute.datetime_utils import to_jd, parse_birth_datetime
-from jyotish_engine.compute.geo import resolve_or_manual, GeoLocation
-
-from jyotish_engine.models.chart import PlanetData, ChartData
+from jyotish_engine.models.chart import ChartData, PlanetData
 
 
 def get_nakshatra(lon: float) -> tuple[int, int]:
@@ -115,7 +129,7 @@ def compute_chart(
     ayanamsha = swe.get_ayanamsa(jd)
 
     # Compute Lagna (Ascendant)
-    cusps, ascmc = swe.houses_ex(jd, geo.latitude, geo.longitude, b"W")
+    _cusps, ascmc = swe.houses_ex(jd, geo.latitude, geo.longitude, b"W")
     lagna_tropical = ascmc[0]
     lagna_sidereal = (lagna_tropical - ayanamsha) % 360.0
     lagna_sign_index = int(lagna_sidereal / DEGREES_PER_SIGN)
@@ -231,7 +245,9 @@ def get_planet_house(chart: ChartData, planet_name: str) -> int:
     return chart.planets[planet_name].house
 
 
-def are_conjunct(chart: ChartData, planet1: str, planet2: str, orb: float = DEFAULT_CONJUNCTION_ORB) -> bool:
+def are_conjunct(
+    chart: ChartData, planet1: str, planet2: str, orb: float = DEFAULT_CONJUNCTION_ORB
+) -> bool:
     """Check if two planets are conjunct (in same sign or within orb)."""
     p1 = chart.planets[planet1]
     p2 = chart.planets[planet2]

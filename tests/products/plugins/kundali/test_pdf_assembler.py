@@ -1,4 +1,5 @@
 """Tests for the PDF assembler — 3 format modes."""
+
 from __future__ import annotations
 
 import tempfile
@@ -14,8 +15,13 @@ from jyotish_products.plugins.kundali.pdf import generate_pdf
 @pytest.fixture
 def manish_chart() -> ChartData:
     return compute_chart(
-        name="Manish Chaurasia", dob="13/03/1989", tob="12:17",
-        lat=25.3176, lon=83.0067, tz_name="Asia/Kolkata", gender="Male",
+        name="Manish Chaurasia",
+        dob="13/03/1989",
+        tob="12:17",
+        lat=25.3176,
+        lon=83.0067,
+        tz_name="Asia/Kolkata",
+        gender="Male",
     )
 
 
@@ -85,8 +91,13 @@ class TestPdfEndToEnd:
     def test_different_chart(self) -> None:
         """Should work with non-Mithuna charts."""
         chart = compute_chart(
-            name="Test Person", dob="01/01/2000", tob="06:00",
-            lat=28.6139, lon=77.2090, tz_name="Asia/Kolkata", gender="Female",
+            name="Test Person",
+            dob="01/01/2000",
+            tob="06:00",
+            lat=28.6139,
+            lon=77.2090,
+            tz_name="Asia/Kolkata",
+            gender="Female",
         )
         result = generate_pdf(chart, fmt="summary")
         assert result is not None

@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone, timedelta
+from datetime import UTC, datetime, timedelta, timezone
 
-import swisseph as swe
 import pytz
+import swisseph as swe
 
 
 IST = timezone(timedelta(hours=5, minutes=30))
@@ -13,7 +13,7 @@ IST = timezone(timedelta(hours=5, minutes=30))
 
 def to_jd(dt: datetime) -> float:
     """Convert a datetime to Julian Day (UT)."""
-    utc_dt = dt.astimezone(timezone.utc)
+    utc_dt = dt.astimezone(UTC)
     hour_frac = utc_dt.hour + utc_dt.minute / 60.0 + utc_dt.second / 3600.0
     jd = swe.julday(utc_dt.year, utc_dt.month, utc_dt.day, hour_frac)
     return jd
@@ -26,7 +26,7 @@ def from_jd(jd: float) -> datetime:
     remainder = (hour_frac - hours) * 60
     minutes = int(remainder)
     seconds = int((remainder - minutes) * 60)
-    return datetime(year, month, day, hours, minutes, seconds, tzinfo=timezone.utc)
+    return datetime(year, month, day, hours, minutes, seconds, tzinfo=UTC)
 
 
 def parse_birth_datetime(

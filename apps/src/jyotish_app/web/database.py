@@ -3,6 +3,7 @@
 Single-file database with users, clients, and daily cache.
 Zero config — creates SQLite file on first use.
 """
+
 from __future__ import annotations
 
 import os
@@ -80,8 +81,10 @@ def reset_engine() -> None:
 
 # ── User CRUD ────────────────────────────────────────────────────────────
 
-def get_or_create_user(google_id: str, email: str, name: str,
-                       picture_url: str | None = None) -> User:
+
+def get_or_create_user(
+    google_id: str, email: str, name: str, picture_url: str | None = None
+) -> User:
     """Find existing user by Google ID or create a new one."""
     with get_session() as session:
         stmt = select(User).where(User.google_id == google_id)
@@ -97,7 +100,9 @@ def get_or_create_user(google_id: str, email: str, name: str,
             return user
 
         user = User(
-            google_id=google_id, email=email, name=name,
+            google_id=google_id,
+            email=email,
+            name=name,
             picture_url=picture_url,
         )
         # First user becomes owner
@@ -118,13 +123,30 @@ def get_user_by_id(user_id: int) -> User | None:
 
 # ── Client CRUD ──────────────────────────────────────────────────────────
 
-def create_client(user_id: int, name: str, dob: str, tob: str, place: str,
-                  lat: float, lon: float, gender: str, chart_json: str) -> Client:
+
+def create_client(
+    user_id: int,
+    name: str,
+    dob: str,
+    tob: str,
+    place: str,
+    lat: float,
+    lon: float,
+    gender: str,
+    chart_json: str,
+) -> Client:
     """Create a new client record with computed chart data."""
     with get_session() as session:
         client = Client(
-            user_id=user_id, name=name, dob=dob, tob=tob, place=place,
-            lat=lat, lon=lon, gender=gender, chart_json=chart_json,
+            user_id=user_id,
+            name=name,
+            dob=dob,
+            tob=tob,
+            place=place,
+            lat=lat,
+            lon=lon,
+            gender=gender,
+            chart_json=chart_json,
         )
         session.add(client)
         session.commit()

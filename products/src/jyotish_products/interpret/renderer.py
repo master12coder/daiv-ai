@@ -13,19 +13,20 @@ from typing import Any
 
 from jinja2 import Template
 
-from jyotish_engine.models.chart import ChartData
 from jyotish_engine.compute.dasha import compute_mahadashas, find_current_dasha
-from jyotish_engine.compute.yoga import detect_all_yogas
+from jyotish_engine.compute.divisional import get_vargottam_planets
 from jyotish_engine.compute.dosha import detect_all_doshas
 from jyotish_engine.compute.strength import compute_planet_strengths
-from jyotish_engine.compute.divisional import compute_navamsha, get_vargottam_planets
-from jyotish_products.interpret.factory import LLMBackend, get_backend
+from jyotish_engine.compute.yoga import detect_all_yogas
+from jyotish_engine.models.chart import ChartData
 from jyotish_products.interpret.context import (
-    build_lordship_context,
     build_gemstone_context,
+    build_lordship_context,
     build_scripture_context,
 )
+from jyotish_products.interpret.factory import LLMBackend, get_backend
 from jyotish_products.interpret.validator import validate_interpretation
+
 
 logger = logging.getLogger(__name__)
 
@@ -85,32 +86,50 @@ def _build_chart_context(chart: ChartData) -> dict[str, Any]:
             "ad_end": ad.end.strftime("%d/%m/%Y"),
         }
     except Exception:
-        current_dasha = {"mahadasha": "Unknown", "antardasha": "Unknown", "pratyantardasha": "Unknown"}
+        current_dasha = {
+            "mahadasha": "Unknown",
+            "antardasha": "Unknown",
+            "pratyantardasha": "Unknown",
+        }
 
     planet_summary = []
     for p in chart.planets.values():
-        planet_summary.append({
-            "name": p.name,
-            "sign": p.sign,
-            "sign_en": p.sign_en,
-            "house": p.house,
-            "degree": f"{p.degree_in_sign:.1f}\u00b0",
-            "nakshatra": p.nakshatra,
-            "pada": p.pada,
-            "dignity": p.dignity,
-            "retrograde": p.is_retrograde,
-            "combust": p.is_combust,
-            "sign_lord": p.sign_lord,
-        })
+        planet_summary.append(
+            {
+                "name": p.name,
+                "sign": p.sign,
+                "sign_en": p.sign_en,
+                "house": p.house,
+                "degree": f"{p.degree_in_sign:.1f}\u00b0",
+                "nakshatra": p.nakshatra,
+                "pada": p.pada,
+                "dignity": p.dignity,
+                "retrograde": p.is_retrograde,
+                "combust": p.is_combust,
+                "sign_lord": p.sign_lord,
+            }
+        )
 
     yoga_summary = [
-        {"name": y.name, "name_hindi": y.name_hindi, "description": y.description, "effect": y.effect}
-        for y in yogas if y.is_present
+        {
+            "name": y.name,
+            "name_hindi": y.name_hindi,
+            "description": y.description,
+            "effect": y.effect,
+        }
+        for y in yogas
+        if y.is_present
     ]
 
     dosha_summary = [
-        {"name": d.name, "name_hindi": d.name_hindi, "severity": d.severity, "description": d.description}
-        for d in doshas if d.is_present
+        {
+            "name": d.name,
+            "name_hindi": d.name_hindi,
+            "severity": d.severity,
+            "description": d.description,
+        }
+        for d in doshas
+        if d.is_present
     ]
 
     strength_summary = [
@@ -129,6 +148,7 @@ def _build_chart_context(chart: ChartData) -> dict[str, Any]:
     pandit_teachings = ""
     try:
         from jyotish_products.store.corrections import PanditCorrectionStore
+
         pandit_store = PanditCorrectionStore()
         pandit_teachings = pandit_store.get_prompt_additions(lagna=chart.lagna_sign)
     except Exception:
@@ -146,7 +166,9 @@ def _build_chart_context(chart: ChartData) -> dict[str, Any]:
     lagnesh = lordship_ctx.get("sign_lord", "")
     lagnesh_stone = ""
     yogakaraka_info = lordship_ctx.get("yogakaraka", {})
-    yogakaraka_planet = yogakaraka_info.get("planet", "") if isinstance(yogakaraka_info, dict) else ""
+    yogakaraka_planet = (
+        yogakaraka_info.get("planet", "") if isinstance(yogakaraka_info, dict) else ""
+    )
     yogakaraka_stone = ""
 
     gem_recs = lordship_ctx.get("gemstone_recommendations", {})
@@ -196,7 +218,11 @@ def _build_chart_context(chart: ChartData) -> dict[str, Any]:
         "vargottam_planets": vargottam,
         "current_dasha": current_dasha,
         "mahadashas": [
-            {"lord": md.lord, "start": md.start.strftime("%d/%m/%Y"), "end": md.end.strftime("%d/%m/%Y")}
+            {
+                "lord": md.lord,
+                "start": md.start.strftime("%d/%m/%Y"),
+                "end": md.end.strftime("%d/%m/%Y"),
+            }
             for md in mahadashas
         ],
         # --- Lordship context ---
@@ -280,12 +306,16 @@ def interpret_chart(
 
             # Post-generation safety validation
             validated, validation_errors = validate_interpretation(
-                response, chart.lagna_sign, lordship_ctx,
+                response,
+                chart.lagna_sign,
+                lordship_ctx,
             )
             if validation_errors:
                 logger.warning(
                     "Validation errors in %s for %s lagna: %s",
-                    section, chart.lagna_sign, validation_errors,
+                    section,
+                    chart.lagna_sign,
+                    validation_errors,
                 )
             results[section] = validated
 
@@ -330,11 +360,17 @@ def get_daily_suggestion(
         backend = get_backend()
 
     from jyotish_engine.compute.transit import compute_transits
+
     transit_data = compute_transits(chart)
 
     context = _build_chart_context(chart)
     context["transits"] = [
-        {"name": t.name, "sign": t.sign, "house": t.natal_house_activated, "retrograde": t.is_retrograde}
+        {
+            "name": t.name,
+            "sign": t.sign,
+            "house": t.natal_house_activated,
+            "retrograde": t.is_retrograde,
+        }
         for t in transit_data.transits
     ]
     context["major_transits"] = transit_data.major_transits

@@ -1,4 +1,5 @@
 """Pandit plugin engine — wraps the corrections store."""
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -64,7 +65,6 @@ def list_corrections(
     lines.append("=" * 45)
     for c in corrections:
         lines.append(
-            f"  [{c.id}] {c.category} | {c.chart_name} | "
-            f"{c.status} | {c.pandit_said[:60]}"
+            f"  [{c.id}] {c.category} | {c.chart_name} | {c.status} | {c.pandit_said[:60]}"
         )
     return "\n".join(lines)

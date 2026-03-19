@@ -9,9 +9,9 @@ from __future__ import annotations
 
 import swisseph as swe
 
-from jyotish_engine.constants import PLANETS, FULL_CIRCLE_DEG, HALF_CIRCLE_DEG
-from jyotish_engine.models.chart import ChartData
+from jyotish_engine.constants import FULL_CIRCLE_DEG, HALF_CIRCLE_DEG, PLANETS
 from jyotish_engine.models.bhava_chalit import BhavaChalitResult, BhavaPlanet
+from jyotish_engine.models.chart import ChartData
 
 
 def _normalize(deg: float) -> float:
@@ -104,7 +104,7 @@ def compute_bhava_chalit(chart: ChartData) -> BhavaChalitResult:
 
     # Compute Placidus cusps (tropical) — swe.houses returns (cusps, ascmc)
     # cusps is a tuple of 12 values (indices 0-11 for houses 1-12)
-    tropical_cusps, _ = swe.houses(jd, lat, lon, b'P')
+    tropical_cusps, _ = swe.houses(jd, lat, lon, b"P")
 
     # Convert to sidereal
     sidereal_cusps: list[float] = []

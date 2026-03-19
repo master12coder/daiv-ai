@@ -3,6 +3,7 @@
 Provides a unified visual identity for all kundali PDF renderers.
 Every renderer imports constants from here instead of defining its own.
 """
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -82,6 +83,7 @@ def get_font_path() -> Path | None:
 
 # ── ReportLab paragraph styles ───────────────────────────────────────────
 
+
 def pdf_styles() -> dict[str, ParagraphStyle]:
     """Create themed paragraph styles for the kundali PDF.
 
@@ -92,58 +94,124 @@ def pdf_styles() -> dict[str, ParagraphStyle]:
 
     return {
         "title": ParagraphStyle(
-            "KTitle", parent=ss["Title"], fontName=font,
-            fontSize=24, textColor=INDIGO, spaceAfter=12, alignment=1,
+            "KTitle",
+            parent=ss["Title"],
+            fontName=font,
+            fontSize=24,
+            textColor=INDIGO,
+            spaceAfter=12,
+            alignment=1,
         ),
         "subtitle": ParagraphStyle(
-            "KSubtitle", parent=ss["Normal"], fontName=font,
-            fontSize=14, textColor=SAFFRON, spaceAfter=8, alignment=1,
+            "KSubtitle",
+            parent=ss["Normal"],
+            fontName=font,
+            fontSize=14,
+            textColor=SAFFRON,
+            spaceAfter=8,
+            alignment=1,
         ),
         "h1": ParagraphStyle(
-            "KH1", parent=ss["Heading1"], fontName=font,
-            fontSize=16, textColor=INDIGO, spaceAfter=8, spaceBefore=14,
+            "KH1",
+            parent=ss["Heading1"],
+            fontName=font,
+            fontSize=16,
+            textColor=INDIGO,
+            spaceAfter=8,
+            spaceBefore=14,
         ),
         "h2": ParagraphStyle(
-            "KH2", parent=ss["Heading2"], fontName=font,
-            fontSize=13, textColor=SAFFRON, spaceAfter=6, spaceBefore=10,
+            "KH2",
+            parent=ss["Heading2"],
+            fontName=font,
+            fontSize=13,
+            textColor=SAFFRON,
+            spaceAfter=6,
+            spaceBefore=10,
         ),
         "body": ParagraphStyle(
-            "KBody", parent=ss["Normal"], fontName=font,
-            fontSize=10, textColor=TEXT_DARK, spaceAfter=4, leading=14,
+            "KBody",
+            parent=ss["Normal"],
+            fontName=font,
+            fontSize=10,
+            textColor=TEXT_DARK,
+            spaceAfter=4,
+            leading=14,
         ),
         "body_hi": ParagraphStyle(
-            "KBodyHi", parent=ss["Normal"], fontName=font,
-            fontSize=11, textColor=TEXT_DARK, spaceAfter=4, leading=16,
+            "KBodyHi",
+            parent=ss["Normal"],
+            fontName=font,
+            fontSize=11,
+            textColor=TEXT_DARK,
+            spaceAfter=4,
+            leading=16,
         ),
         "small": ParagraphStyle(
-            "KSmall", parent=ss["Normal"], fontName=font,
-            fontSize=8, textColor=TEXT_LIGHT, leading=10,
+            "KSmall",
+            parent=ss["Normal"],
+            fontName=font,
+            fontSize=8,
+            textColor=TEXT_LIGHT,
+            leading=10,
         ),
         "footer": ParagraphStyle(
-            "KFooter", parent=ss["Normal"], fontName=font,
-            fontSize=7, textColor=TEXT_LIGHT, alignment=1,
+            "KFooter",
+            parent=ss["Normal"],
+            fontName=font,
+            fontSize=7,
+            textColor=TEXT_LIGHT,
+            alignment=1,
         ),
         "om": ParagraphStyle(
-            "KOm", parent=ss["Title"], fontName=font,
-            fontSize=48, textColor=SAFFRON, alignment=1, spaceAfter=20,
+            "KOm",
+            parent=ss["Title"],
+            fontName=font,
+            fontSize=48,
+            textColor=SAFFRON,
+            alignment=1,
+            spaceAfter=20,
         ),
     }
 
 
 # ── Devanagari planet abbreviations ──────────────────────────────────────
 PLANET_HI: dict[str, str] = {
-    "Sun": "सू", "Moon": "चं", "Mars": "मं", "Mercury": "बु",
-    "Jupiter": "गु", "Venus": "शु", "Saturn": "श", "Rahu": "रा", "Ketu": "के",
+    "Sun": "सू",
+    "Moon": "चं",
+    "Mars": "मं",
+    "Mercury": "बु",
+    "Jupiter": "गु",
+    "Venus": "शु",
+    "Saturn": "श",
+    "Rahu": "रा",
+    "Ketu": "के",
 }
 
 PLANET_EN_SHORT: dict[str, str] = {
-    "Sun": "Su", "Moon": "Mo", "Mars": "Ma", "Mercury": "Me",
-    "Jupiter": "Ju", "Venus": "Ve", "Saturn": "Sa", "Rahu": "Ra", "Ketu": "Ke",
+    "Sun": "Su",
+    "Moon": "Mo",
+    "Mars": "Ma",
+    "Mercury": "Me",
+    "Jupiter": "Ju",
+    "Venus": "Ve",
+    "Saturn": "Sa",
+    "Rahu": "Ra",
+    "Ketu": "Ke",
 }
 
 # ── House labels (Hindi) ────────────────────────────────────────────────
 HOUSE_LABEL_HI: dict[int, str] = {
-    1: "तनु", 2: "धन", 3: "सहज", 4: "सुख",
-    5: "सन्तान", 6: "रोग", 7: "जाया", 8: "मृत्यु",
-    9: "भाग्य", 10: "कर्म", 11: "लाभ", 12: "व्यय",
+    1: "तनु",
+    2: "धन",
+    3: "सहज",
+    4: "सुख",
+    5: "सन्तान",
+    6: "रोग",
+    7: "जाया",
+    8: "मृत्यु",
+    9: "भाग्य",
+    10: "कर्म",
+    11: "लाभ",
+    12: "व्यय",
 }

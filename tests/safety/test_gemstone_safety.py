@@ -1,4 +1,5 @@
 """Safety tests — gemstone recommendations must follow lordship rules."""
+
 from __future__ import annotations
 
 import pytest
@@ -11,8 +12,13 @@ from jyotish_engine.models.chart import ChartData
 @pytest.fixture
 def manish_chart() -> ChartData:
     return compute_chart(
-        name="Manish", dob="13/03/1989", tob="12:17",
-        lat=25.3176, lon=83.0067, tz_name="Asia/Kolkata", gender="Male",
+        name="Manish",
+        dob="13/03/1989",
+        tob="12:17",
+        lat=25.3176,
+        lon=83.0067,
+        tz_name="Asia/Kolkata",
+        gender="Male",
     )
 
 
@@ -48,11 +54,15 @@ class TestMithunaGemstones:
 
         # Check recommended stones include Panna
         recommended = mithuna.get("recommended_stones", [])
-        rec_names = [s.get("name", "").lower() if isinstance(s, dict) else s.lower() for s in recommended]
+        rec_names = [
+            s.get("name", "").lower() if isinstance(s, dict) else s.lower() for s in recommended
+        ]
 
         # Check prohibited stones include Pukhraj
         prohibited = mithuna.get("prohibited_stones", [])
-        pro_names = [s.get("name", "").lower() if isinstance(s, dict) else s.lower() for s in prohibited]
+        pro_names = [
+            s.get("name", "").lower() if isinstance(s, dict) else s.lower() for s in prohibited
+        ]
 
         # At minimum verify the rules exist
         assert len(rec_names) + len(pro_names) > 0, "No stone rules found for Mithuna"

@@ -1,4 +1,5 @@
 """Kundali report orchestrator — 18-section report builder."""
+
 from __future__ import annotations
 
 import logging
@@ -169,6 +170,7 @@ def _section_mahadasha(chart: ChartData) -> str:
     lines = ["═══ Vimshottari Mahadasha Timeline ═══"]
 
     from datetime import datetime
+
     now = datetime.now(tz=dashas[0].start.tzinfo) if dashas else datetime.now()
 
     for md in dashas:
@@ -202,6 +204,7 @@ def _section_ashtakavarga(chart: ChartData) -> str:
         avk = compute_ashtakavarga(chart)
         lines = ["═══ Ashtakavarga (Sarva) ═══"]
         from jyotish_engine.constants import SIGNS
+
         for i, bindus in enumerate(avk.sarva):
             sign = SIGNS[i]
             bar = "█" * (bindus // 3) + "░" * ((8 - bindus) // 3)
@@ -216,6 +219,7 @@ def _section_gemstones(chart: ChartData) -> str:
     """Gemstone recommendations from lordship rules."""
     try:
         from jyotish_products.interpret.context import build_lordship_context
+
         ctx = build_lordship_context(chart.lagna_sign)
 
         lines = ["═══ Gemstone Recommendations ═══"]

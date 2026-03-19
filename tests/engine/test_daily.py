@@ -4,9 +4,7 @@ from __future__ import annotations
 
 from datetime import date
 
-import pytest
-
-from jyotish_engine.compute.daily import compute_daily_suggestion, DailySuggestion
+from jyotish_engine.compute.daily import DailySuggestion, compute_daily_suggestion
 
 
 class TestDailySuggestion:

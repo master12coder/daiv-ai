@@ -2,18 +2,15 @@
 
 from __future__ import annotations
 
-import pytest
-
 from jyotish_engine.compute.strength import (
-    compute_shadbala,
-    compute_planet_strengths,
-    get_strongest_planet,
-    get_weakest_planet,
     NAISARGIKA,
     REQUIRED_SHADBALA,
     SHADBALA_PLANETS,
+    compute_planet_strengths,
+    compute_shadbala,
+    get_strongest_planet,
+    get_weakest_planet,
 )
-from jyotish_engine.models.strength import ShadbalaResult, PlanetStrength
 
 
 class TestShadbalaComputation:
@@ -44,12 +41,15 @@ class TestShadbalaComputation:
         results = compute_shadbala(manish_chart)
         for r in results:
             expected = round(
-                r.sthana_bala + r.dig_bala + r.kala_bala
-                + r.cheshta_bala + r.naisargika_bala + r.drik_bala, 2
+                r.sthana_bala
+                + r.dig_bala
+                + r.kala_bala
+                + r.cheshta_bala
+                + r.naisargika_bala
+                + r.drik_bala,
+                2,
             )
-            assert abs(r.total - expected) < 0.1, (
-                f"{r.planet}: total={r.total}, sum={expected}"
-            )
+            assert abs(r.total - expected) < 0.1, f"{r.planet}: total={r.total}, sum={expected}"
 
     def test_naisargika_values_match_fixed_table(self, manish_chart):
         results = compute_shadbala(manish_chart)
@@ -92,9 +92,7 @@ class TestShadbalaComputation:
     def test_dig_bala_range(self, manish_chart):
         results = compute_shadbala(manish_chart)
         for r in results:
-            assert 0.0 <= r.dig_bala <= 60.0, (
-                f"{r.planet} dig_bala={r.dig_bala} out of range"
-            )
+            assert 0.0 <= r.dig_bala <= 60.0, f"{r.planet} dig_bala={r.dig_bala} out of range"
 
     def test_cheshta_bala_sun_moon(self, manish_chart):
         results = compute_shadbala(manish_chart)

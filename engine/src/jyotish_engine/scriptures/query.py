@@ -1,13 +1,14 @@
 """Scripture query interface — load and search classical text references."""
+
 from __future__ import annotations
 
 import logging
 from pathlib import Path
-from typing import Any
 
 import yaml
 
 from jyotish_engine.models.scripture import ScriptureReference
+
 
 logger = logging.getLogger(__name__)
 
@@ -28,18 +29,20 @@ def _load_yaml_rules(yaml_path: Path) -> list[ScriptureReference]:
 
     refs = []
     for rule in rules:
-        refs.append(ScriptureReference(
-            book=book,
-            chapter=chapter,
-            verse=rule.get("verse"),
-            topic=rule.get("topic", ""),
-            planets=rule.get("planets", []),
-            houses=rule.get("houses", []),
-            text_sanskrit=rule.get("text_sanskrit", ""),
-            text_english=rule.get("text_english", ""),
-            text_hindi=rule.get("text_hindi", ""),
-            rule_type=rule.get("rule_type", "general"),
-        ))
+        refs.append(
+            ScriptureReference(
+                book=book,
+                chapter=chapter,
+                verse=rule.get("verse"),
+                topic=rule.get("topic", ""),
+                planets=rule.get("planets", []),
+                houses=rule.get("houses", []),
+                text_sanskrit=rule.get("text_sanskrit", ""),
+                text_english=rule.get("text_english", ""),
+                text_hindi=rule.get("text_hindi", ""),
+                rule_type=rule.get("rule_type", "general"),
+            )
+        )
     return refs
 
 
@@ -85,8 +88,7 @@ def query_by_topic(topic: str) -> list[ScriptureReference]:
     refs = _load_all()
     topic_lower = topic.lower()
     return [
-        r for r in refs
-        if topic_lower in r.topic.lower() or topic_lower in r.text_english.lower()
+        r for r in refs if topic_lower in r.topic.lower() or topic_lower in r.text_english.lower()
     ]
 
 

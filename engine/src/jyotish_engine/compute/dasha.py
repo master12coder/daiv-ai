@@ -5,8 +5,10 @@ from __future__ import annotations
 from datetime import datetime, timedelta
 
 from jyotish_engine.constants import (
-    DASHA_SEQUENCE, DASHA_YEARS, DASHA_TOTAL_YEARS,
-    NAKSHATRA_LORDS, NAKSHATRA_SPAN_DEG,
+    DASHA_SEQUENCE,
+    DASHA_TOTAL_YEARS,
+    DASHA_YEARS,
+    NAKSHATRA_SPAN_DEG,
 )
 from jyotish_engine.models.chart import ChartData
 from jyotish_engine.models.dasha import DashaPeriod
@@ -33,6 +35,7 @@ def compute_mahadashas(chart: ChartData) -> list[DashaPeriod]:
     balance = _balance_of_dasha(moon.longitude)
 
     from jyotish_engine.compute.datetime_utils import parse_birth_datetime
+
     birth_dt = parse_birth_datetime(chart.dob, chart.tob, chart.timezone_name)
 
     periods: list[DashaPeriod] = []
@@ -52,12 +55,14 @@ def compute_mahadashas(chart: ChartData) -> list[DashaPeriod]:
         days = years * 365.25
         end = current_start + timedelta(days=days)
 
-        periods.append(DashaPeriod(
-            level="MD",
-            lord=lord,
-            start=current_start,
-            end=end,
-        ))
+        periods.append(
+            DashaPeriod(
+                level="MD",
+                lord=lord,
+                start=current_start,
+                end=end,
+            )
+        )
 
         current_start = end
 
@@ -80,20 +85,22 @@ def compute_antardashas(md: DashaPeriod) -> list[DashaPeriod]:
         ad_years = DASHA_YEARS[ad_lord]
 
         # AD duration = (MD_years * AD_years / 120) proportional to MD duration
-        proportion = (md_years * ad_years) / (DASHA_TOTAL_YEARS * md_years)
+        _proportion = (md_years * ad_years) / (DASHA_TOTAL_YEARS * md_years)
         ad_days = md_duration_days * (ad_years / DASHA_TOTAL_YEARS)
 
         end = current_start + timedelta(days=ad_days)
         if end > md.end:
             end = md.end
 
-        periods.append(DashaPeriod(
-            level="AD",
-            lord=ad_lord,
-            start=current_start,
-            end=end,
-            parent_lord=md_lord,
-        ))
+        periods.append(
+            DashaPeriod(
+                level="AD",
+                lord=ad_lord,
+                start=current_start,
+                end=end,
+                parent_lord=md_lord,
+            )
+        )
 
         current_start = end
 
@@ -119,13 +126,15 @@ def compute_pratyantardashas(ad: DashaPeriod) -> list[DashaPeriod]:
         if end > ad.end:
             end = ad.end
 
-        periods.append(DashaPeriod(
-            level="PD",
-            lord=pd_lord,
-            start=current_start,
-            end=end,
-            parent_lord=ad.lord,
-        ))
+        periods.append(
+            DashaPeriod(
+                level="PD",
+                lord=pd_lord,
+                start=current_start,
+                end=end,
+                parent_lord=ad.lord,
+            )
+        )
 
         current_start = end
 
@@ -142,6 +151,7 @@ def find_current_dasha(
     """
     if target_date is None:
         from jyotish_engine.compute.datetime_utils import now_ist
+
         target_date = now_ist()
 
     mahadashas = compute_mahadashas(chart)
@@ -191,11 +201,13 @@ def get_dasha_timeline(chart: ChartData) -> list[dict]:
             }
             for ad in antardashas
         ]
-        timeline.append({
-            "level": "MD",
-            "lord": md.lord,
-            "start": md.start.strftime("%d/%m/%Y"),
-            "end": md.end.strftime("%d/%m/%Y"),
-            "antardashas": ad_list,
-        })
+        timeline.append(
+            {
+                "level": "MD",
+                "lord": md.lord,
+                "start": md.start.strftime("%d/%m/%Y"),
+                "end": md.end.strftime("%d/%m/%Y"),
+                "antardashas": ad_list,
+            }
+        )
     return timeline

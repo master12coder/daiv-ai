@@ -3,6 +3,7 @@
 These routes do NOT require a client in the database; they compute
 on-the-fly from form input. Still require authentication.
 """
+
 from __future__ import annotations
 
 import logging
@@ -34,9 +35,13 @@ def register_standalone_routes(app: FastAPI, templates: Jinja2Templates) -> None
     async def match_form(request: Request):
         """Show the two-person compatibility form."""
         user = require_auth(request)
-        return templates.TemplateResponse("match_form.html", {
-            "request": request, "user": user,
-        })
+        return templates.TemplateResponse(
+            "match_form.html",
+            {
+                "request": request,
+                "user": user,
+            },
+        )
 
     @app.post("/match/result", response_class=HTMLResponse)
     async def match_result(
@@ -61,12 +66,20 @@ def register_standalone_routes(app: FastAPI, templates: Jinja2Templates) -> None
         from jyotish_engine.compute.matching import compute_ashtakoot
 
         chart1 = compute_chart(
-            name=name1, dob=dob1, tob=tob1,
-            lat=lat1, lon=lon1, gender=gender1,
+            name=name1,
+            dob=dob1,
+            tob=tob1,
+            lat=lat1,
+            lon=lon1,
+            gender=gender1,
         )
         chart2 = compute_chart(
-            name=name2, dob=dob2, tob=tob2,
-            lat=lat2, lon=lon2, gender=gender2,
+            name=name2,
+            dob=dob2,
+            tob=tob2,
+            lat=lat2,
+            lon=lon2,
+            gender=gender2,
         )
 
         moon1 = chart1.planets["Moon"]
@@ -79,11 +92,16 @@ def register_standalone_routes(app: FastAPI, templates: Jinja2Templates) -> None
             person2_moon_sign=moon2.sign_index,
         )
 
-        return templates.TemplateResponse("match_result.html", {
-            "request": request, "user": user,
-            "name1": name1, "name2": name2,
-            "result": result,
-        })
+        return templates.TemplateResponse(
+            "match_result.html",
+            {
+                "request": request,
+                "user": user,
+                "name1": name1,
+                "name2": name2,
+                "result": result,
+            },
+        )
 
     # ── Muhurta ────────────────────────────────────────────────────────
 
@@ -91,9 +109,13 @@ def register_standalone_routes(app: FastAPI, templates: Jinja2Templates) -> None
     async def muhurta_form(request: Request):
         """Show the muhurta search form."""
         user = require_auth(request)
-        return templates.TemplateResponse("muhurta_form.html", {
-            "request": request, "user": user,
-        })
+        return templates.TemplateResponse(
+            "muhurta_form.html",
+            {
+                "request": request,
+                "user": user,
+            },
+        )
 
     @app.post("/muhurta/result", response_class=HTMLResponse)
     async def muhurta_result(
@@ -115,13 +137,22 @@ def register_standalone_routes(app: FastAPI, templates: Jinja2Templates) -> None
         end = parse_birth_datetime(to_date, "23:59", tz_name)
 
         results = find_muhurta(
-            purpose=purpose, lat=lat, lon=lon,
-            tz_name=tz_name, start_date=start, end_date=end,
+            purpose=purpose,
+            lat=lat,
+            lon=lon,
+            tz_name=tz_name,
+            start_date=start,
+            end_date=end,
         )
 
         purpose_hi = _PURPOSE_HINDI.get(purpose, purpose)
 
-        return templates.TemplateResponse("muhurta_result.html", {
-            "request": request, "user": user,
-            "results": results, "purpose_hi": purpose_hi,
-        })
+        return templates.TemplateResponse(
+            "muhurta_result.html",
+            {
+                "request": request,
+                "user": user,
+                "results": results,
+                "purpose_hi": purpose_hi,
+            },
+        )

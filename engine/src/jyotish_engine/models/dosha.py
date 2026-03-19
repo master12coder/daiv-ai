@@ -18,7 +18,7 @@ class DoshaResult(BaseModel):
     name: str
     name_hindi: str
     is_present: bool
-    severity: str          # "full", "partial", "cancelled", "none"
+    severity: str  # "full", "partial", "cancelled", "none"
     planets_involved: list[str]
     houses_involved: list[int]
     description: str

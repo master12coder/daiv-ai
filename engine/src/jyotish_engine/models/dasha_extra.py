@@ -12,9 +12,9 @@ class YoginiDashaPeriod(BaseModel):
 
     model_config = ConfigDict(frozen=True)
 
-    yogini_name: str       # Mangala, Pingala, Dhanya, etc.
-    planet: str            # Associated planet
-    years: int             # Duration in years
+    yogini_name: str  # Mangala, Pingala, Dhanya, etc.
+    planet: str  # Associated planet
+    years: int  # Duration in years
     start: datetime
     end: datetime
 

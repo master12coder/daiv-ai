@@ -1,7 +1,6 @@
 """Test chart computation against known verified values."""
 
-import pytest
-from jyotish_engine.compute.chart import compute_chart, get_house_lord, get_planets_in_house
+from jyotish_engine.compute.chart import compute_chart, get_house_lord
 
 
 class TestManishChart:
@@ -30,6 +29,7 @@ class TestManishChart:
 
     def test_planet_signs_valid(self, manish_chart):
         from jyotish_engine.constants import SIGNS
+
         for p in manish_chart.planets.values():
             assert p.sign in SIGNS
             assert 0 <= p.sign_index <= 11
@@ -44,6 +44,7 @@ class TestManishChart:
 
     def test_planet_nakshatras_valid(self, manish_chart):
         from jyotish_engine.constants import NAKSHATRAS
+
         for p in manish_chart.planets.values():
             assert p.nakshatra in NAKSHATRAS
             assert 1 <= p.pada <= 4

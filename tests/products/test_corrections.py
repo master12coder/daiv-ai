@@ -1,8 +1,9 @@
 """Test Pandit Ji correction system."""
 
-import pytest
 import tempfile
-from pathlib import Path
+
+import pytest
+
 from jyotish_products.store.corrections import PanditCorrection, PanditCorrectionStore
 
 
@@ -90,8 +91,10 @@ class TestPanditCorrections:
 
     def test_get_relevant_rules(self, temp_store):
         c = PanditCorrection(
-            chart_name="Test", lagna="Mithuna",
-            category="gemstone", status="validated",
+            chart_name="Test",
+            lagna="Mithuna",
+            category="gemstone",
+            status="validated",
             confidence=0.8,
             planets_involved=["Jupiter"],
             pandit_said="Jupiter is maraka",
@@ -104,8 +107,10 @@ class TestPanditCorrections:
 
     def test_get_prompt_additions(self, temp_store):
         c = PanditCorrection(
-            chart_name="Test", lagna="Mithuna",
-            category="gemstone", status="validated",
+            chart_name="Test",
+            lagna="Mithuna",
+            category="gemstone",
+            status="validated",
             confidence=0.8,
             pandit_said="Jupiter is maraka for Mithuna",
             pandit_reasoning="7th lord",

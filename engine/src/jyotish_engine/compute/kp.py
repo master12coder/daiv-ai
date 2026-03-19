@@ -7,11 +7,14 @@ Each nakshatra (13°20') is divided into 9 sub-parts proportional to dasha years
 from __future__ import annotations
 
 from jyotish_engine.constants import (
-    NAKSHATRAS, NAKSHATRA_LORDS, SIGN_LORDS,
-    DASHA_SEQUENCE, DASHA_YEARS, DASHA_TOTAL_YEARS,
+    DASHA_SEQUENCE,
+    DASHA_TOTAL_YEARS,
+    DASHA_YEARS,
+    NAKSHATRA_LORDS,
+    SIGN_LORDS,
 )
-from jyotish_engine.models.kp import KPPosition
 from jyotish_engine.models.chart import ChartData
+from jyotish_engine.models.kp import KPPosition
 
 
 # Pre-compute the 249 sub-divisions
@@ -49,13 +52,15 @@ def _build_sub_table() -> list[tuple[float, float, str, str, str]]:
                 ss_lord = DASHA_SEQUENCE[ss_lord_idx]
                 ss_span = sub_span * DASHA_YEARS[ss_lord] / DASHA_TOTAL_YEARS
 
-                table.append((
-                    round(ss_start, 6),
-                    round(ss_start + ss_span, 6),
-                    nak_lord,
-                    sub_lord,
-                    ss_lord,
-                ))
+                table.append(
+                    (
+                        round(ss_start, 6),
+                        round(ss_start + ss_span, 6),
+                        nak_lord,
+                        sub_lord,
+                        ss_lord,
+                    )
+                )
                 ss_start += ss_span
 
             sub_start += sub_span
@@ -98,15 +103,17 @@ def compute_kp_positions(chart: ChartData) -> list[KPPosition]:
     results = []
     for planet_name, planet_data in chart.planets.items():
         nak_lord, sub_lord, ss_lord = get_kp_position(planet_data.longitude)
-        results.append(KPPosition(
-            name=planet_name,
-            longitude=planet_data.longitude,
-            sign_lord=SIGN_LORDS[planet_data.sign_index],
-            nakshatra_lord=nak_lord,
-            sub_lord=sub_lord,
-            sub_sub_lord=ss_lord,
-            nakshatra=planet_data.nakshatra,
-        ))
+        results.append(
+            KPPosition(
+                name=planet_name,
+                longitude=planet_data.longitude,
+                sign_lord=SIGN_LORDS[planet_data.sign_index],
+                nakshatra_lord=nak_lord,
+                sub_lord=sub_lord,
+                sub_sub_lord=ss_lord,
+                nakshatra=planet_data.nakshatra,
+            )
+        )
     return results
 
 
@@ -131,13 +138,13 @@ def get_significators(chart: ChartData, planet_name: str) -> dict[str, list[int]
         star_lord_houses.append(star_lord.house)
         # Add houses owned by star lord
         for p in chart.planets.values():
-            if p.sign_lord == star_lord_name:
-                if p.house not in star_lord_houses:
-                    star_lord_houses.append(p.house)
+            if p.sign_lord == star_lord_name and p.house not in star_lord_houses:
+                star_lord_houses.append(p.house)
 
     # Houses the planet itself owns
     owns = []
     from jyotish_engine.compute.chart import get_house_lord
+
     for h in range(1, 13):
         if get_house_lord(chart, h) == planet_name:
             owns.append(h)

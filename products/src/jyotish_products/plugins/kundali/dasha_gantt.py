@@ -2,6 +2,7 @@
 
 Renders 9 color-coded MD bars (birth to 120y) with current MD expanded to show ADs.
 """
+
 from __future__ import annotations
 
 import io
@@ -138,23 +139,31 @@ def render_dasha_gantt(
     ax.set_facecolor(MPL_CREAM)
 
     # Saffron header band
-    ax.add_patch(FancyBboxPatch(
-        (0, n_rows * (md_row_height + row_gap) + 0.1),
-        1.0, header_height - 0.2,
-        boxstyle="round,pad=0.05",
-        facecolor=MPL_SAFFRON, edgecolor="none",
-        transform=ax.get_yaxis_transform(),
-    ))
+    ax.add_patch(
+        FancyBboxPatch(
+            (0, n_rows * (md_row_height + row_gap) + 0.1),
+            1.0,
+            header_height - 0.2,
+            boxstyle="round,pad=0.05",
+            facecolor=MPL_SAFFRON,
+            edgecolor="none",
+            transform=ax.get_yaxis_transform(),
+        )
+    )
 
     title = f"दशा कालचक्र — {chart.name}"
     subtitle = f"Lagna: {chart.lagna_sign} | DOB: {chart.dob} {chart.tob}"
     title_y = n_rows * (md_row_height + row_gap) + header_height * 0.65
     sub_y = n_rows * (md_row_height + row_gap) + header_height * 0.25
 
-    title_kw: dict[str, Any] = {"ha": "center", "va": "center", "fontsize": 15,
-                                 "fontweight": "bold", "color": "white"}
-    sub_kw: dict[str, Any] = {"ha": "center", "va": "center", "fontsize": 10,
-                               "color": "white"}
+    title_kw: dict[str, Any] = {
+        "ha": "center",
+        "va": "center",
+        "fontsize": 15,
+        "fontweight": "bold",
+        "color": "white",
+    }
+    sub_kw: dict[str, Any] = {"ha": "center", "va": "center", "fontsize": 10, "color": "white"}
     if font_props:
         title_kw["fontproperties"] = font_props
         sub_kw["fontproperties"] = font_props
@@ -181,9 +190,12 @@ def render_dasha_gantt(
 
         # Draw MD bar
         bar = FancyBboxPatch(
-            (x_start, row_y), width, md_row_height,
+            (x_start, row_y),
+            width,
+            md_row_height,
             boxstyle="round,pad=0.02",
-            facecolor=color, edgecolor=MPL_INDIGO,
+            facecolor=color,
+            edgecolor=MPL_INDIGO,
             linewidth=1.5 if i == current_md_index else 0.8,
             alpha=1.0 if i == current_md_index else 0.75,
         )
@@ -195,11 +207,16 @@ def render_dasha_gantt(
         date_range = f"{_date_label(md.start)}-{_date_label(md.end)}"
 
         label_kw: dict[str, Any] = {
-            "ha": "center", "va": "center", "fontsize": 8,
-            "fontweight": "bold", "color": "white",
+            "ha": "center",
+            "va": "center",
+            "fontsize": 8,
+            "fontweight": "bold",
+            "color": "white",
         }
         date_kw: dict[str, Any] = {
-            "ha": "center", "va": "center", "fontsize": 6.5,
+            "ha": "center",
+            "va": "center",
+            "fontsize": 6.5,
             "color": "white",
         }
         if font_props:
@@ -217,8 +234,11 @@ def render_dasha_gantt(
                 "▼ NOW",
                 xy=(now_x, row_y + md_row_height),
                 xytext=(now_x, row_y + md_row_height + 0.35),
-                fontsize=8, fontweight="bold", color=MPL_SAFFRON,
-                ha="center", va="bottom",
+                fontsize=8,
+                fontweight="bold",
+                color=MPL_SAFFRON,
+                ha="center",
+                va="bottom",
                 arrowprops={"arrowstyle": "->", "color": MPL_SAFFRON, "lw": 2},
             )
 
@@ -228,8 +248,16 @@ def render_dasha_gantt(
         if i == current_md_index and has_ads and not ad_inserted:
             ad_inserted = True
             _draw_ad_row(
-                ax, antardashas, current_ad, timeline_start,
-                row_y, ad_row_height, benefics, malefics, yogakaraka, maraka,
+                ax,
+                antardashas,
+                current_ad,
+                timeline_start,
+                row_y,
+                ad_row_height,
+                benefics,
+                malefics,
+                yogakaraka,
+                maraka,
                 font_props,
             )
             row_y -= ad_row_height + row_gap
@@ -246,14 +274,14 @@ def render_dasha_gantt(
     if output_path:
         path = Path(output_path)
         path.parent.mkdir(parents=True, exist_ok=True)
-        fig.savefig(str(path), dpi=150, bbox_inches="tight",
-                    facecolor=MPL_CREAM, edgecolor="none")
+        fig.savefig(str(path), dpi=150, bbox_inches="tight", facecolor=MPL_CREAM, edgecolor="none")
         plt.close(fig)
         return None
 
     buf = io.BytesIO()
-    fig.savefig(buf, format="png", dpi=150, bbox_inches="tight",
-                facecolor=MPL_CREAM, edgecolor="none")
+    fig.savefig(
+        buf, format="png", dpi=150, bbox_inches="tight", facecolor=MPL_CREAM, edgecolor="none"
+    )
     plt.close(fig)
     buf.seek(0)
     return buf.read()
@@ -277,12 +305,15 @@ def _draw_ad_row(
         x_start = (ad.start - timeline_start).total_seconds() / 86400.0
         width = (ad.end - ad.start).total_seconds() / 86400.0
         color = _planet_color(ad.lord, benefics, malefics, yogakaraka, maraka)
-        is_current = (ad.lord == current_ad.lord and ad.start == current_ad.start)
+        is_current = ad.lord == current_ad.lord and ad.start == current_ad.start
 
         bar = FancyBboxPatch(
-            (x_start, row_y), width, row_h,
+            (x_start, row_y),
+            width,
+            row_h,
             boxstyle="round,pad=0.01",
-            facecolor=color, edgecolor=MPL_INDIGO,
+            facecolor=color,
+            edgecolor=MPL_INDIGO,
             linewidth=1.5 if is_current else 0.5,
             alpha=1.0 if is_current else 0.6,
         )
@@ -290,8 +321,11 @@ def _draw_ad_row(
 
         hi_abbr = PLANET_HI.get(ad.lord, ad.lord[:2])
         label_kw: dict[str, Any] = {
-            "ha": "center", "va": "center", "fontsize": 6,
-            "color": "white", "fontweight": "bold" if is_current else "normal",
+            "ha": "center",
+            "va": "center",
+            "fontsize": 6,
+            "color": "white",
+            "fontweight": "bold" if is_current else "normal",
         }
         if font_props:
             label_kw["fontproperties"] = font_props

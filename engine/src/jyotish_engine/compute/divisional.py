@@ -2,9 +2,8 @@
 
 from __future__ import annotations
 
-
-from jyotish_engine.constants import SIGNS, PLANETS
 from jyotish_engine.compute.chart import ChartData
+from jyotish_engine.constants import PLANETS, SIGNS
 from jyotish_engine.models.divisional import DivisionalPosition
 
 
@@ -27,16 +26,16 @@ def compute_navamsha_sign(longitude: float) -> int:
     fire_signs = {0, 4, 8}
     earth_signs = {1, 5, 9}
     air_signs = {2, 6, 10}
-    water_signs = {3, 7, 11}
+    _water_signs = {3, 7, 11}
 
     if sign_index in fire_signs:
-        start = 0   # Aries
+        start = 0  # Aries
     elif sign_index in earth_signs:
-        start = 9   # Capricorn
+        start = 9  # Capricorn
     elif sign_index in air_signs:
-        start = 6   # Libra
+        start = 6  # Libra
     else:  # water
-        start = 3   # Cancer
+        start = 3  # Cancer
 
     return (start + navamsha_part) % 12
 
@@ -103,13 +102,15 @@ def compute_navamsha(chart: ChartData) -> list[DivisionalPosition]:
     for planet_name in PLANETS:
         p = chart.planets[planet_name]
         d9_sign = compute_navamsha_sign(p.longitude)
-        results.append(DivisionalPosition(
-            planet=planet_name,
-            d1_sign_index=p.sign_index,
-            divisional_sign_index=d9_sign,
-            divisional_sign=SIGNS[d9_sign],
-            is_vargottam=(p.sign_index == d9_sign),
-        ))
+        results.append(
+            DivisionalPosition(
+                planet=planet_name,
+                d1_sign_index=p.sign_index,
+                divisional_sign_index=d9_sign,
+                divisional_sign=SIGNS[d9_sign],
+                is_vargottam=(p.sign_index == d9_sign),
+            )
+        )
     return results
 
 
@@ -119,13 +120,15 @@ def compute_dasamsha(chart: ChartData) -> list[DivisionalPosition]:
     for planet_name in PLANETS:
         p = chart.planets[planet_name]
         d10_sign = compute_dasamsha_sign(p.longitude)
-        results.append(DivisionalPosition(
-            planet=planet_name,
-            d1_sign_index=p.sign_index,
-            divisional_sign_index=d10_sign,
-            divisional_sign=SIGNS[d10_sign],
-            is_vargottam=(p.sign_index == d10_sign),
-        ))
+        results.append(
+            DivisionalPosition(
+                planet=planet_name,
+                d1_sign_index=p.sign_index,
+                divisional_sign_index=d10_sign,
+                divisional_sign=SIGNS[d10_sign],
+                is_vargottam=(p.sign_index == d10_sign),
+            )
+        )
     return results
 
 
@@ -135,13 +138,15 @@ def compute_saptamsha(chart: ChartData) -> list[DivisionalPosition]:
     for planet_name in PLANETS:
         p = chart.planets[planet_name]
         d7_sign = compute_saptamsha_sign(p.longitude)
-        results.append(DivisionalPosition(
-            planet=planet_name,
-            d1_sign_index=p.sign_index,
-            divisional_sign_index=d7_sign,
-            divisional_sign=SIGNS[d7_sign],
-            is_vargottam=(p.sign_index == d7_sign),
-        ))
+        results.append(
+            DivisionalPosition(
+                planet=planet_name,
+                d1_sign_index=p.sign_index,
+                divisional_sign_index=d7_sign,
+                divisional_sign=SIGNS[d7_sign],
+                is_vargottam=(p.sign_index == d7_sign),
+            )
+        )
     return results
 
 
@@ -151,13 +156,15 @@ def compute_dwadashamsha(chart: ChartData) -> list[DivisionalPosition]:
     for planet_name in PLANETS:
         p = chart.planets[planet_name]
         d12_sign = compute_dwadashamsha_sign(p.longitude)
-        results.append(DivisionalPosition(
-            planet=planet_name,
-            d1_sign_index=p.sign_index,
-            divisional_sign_index=d12_sign,
-            divisional_sign=SIGNS[d12_sign],
-            is_vargottam=(p.sign_index == d12_sign),
-        ))
+        results.append(
+            DivisionalPosition(
+                planet=planet_name,
+                d1_sign_index=p.sign_index,
+                divisional_sign_index=d12_sign,
+                divisional_sign=SIGNS[d12_sign],
+                is_vargottam=(p.sign_index == d12_sign),
+            )
+        )
     return results
 
 
@@ -330,26 +337,26 @@ def compute_trimshamsha_sign(longitude: float) -> int:
 
     if sign_index % 2 == 0:  # Odd sign
         if degree_in_sign < 5:
-            ruler = 0   # Mars -> Aries
+            ruler = 0  # Mars -> Aries
         elif degree_in_sign < 10:
             ruler = 10  # Saturn -> Aquarius
         elif degree_in_sign < 18:
-            ruler = 8   # Jupiter -> Sagittarius
+            ruler = 8  # Jupiter -> Sagittarius
         elif degree_in_sign < 25:
-            ruler = 2   # Mercury -> Gemini
+            ruler = 2  # Mercury -> Gemini
         else:
-            ruler = 6   # Venus -> Libra
+            ruler = 6  # Venus -> Libra
     else:  # Even sign
         if degree_in_sign < 5:
-            ruler = 1   # Venus -> Taurus
+            ruler = 1  # Venus -> Taurus
         elif degree_in_sign < 12:
-            ruler = 5   # Mercury -> Virgo
+            ruler = 5  # Mercury -> Virgo
         elif degree_in_sign < 20:
             ruler = 11  # Jupiter -> Pisces
         elif degree_in_sign < 25:
-            ruler = 9   # Saturn -> Capricorn
+            ruler = 9  # Saturn -> Capricorn
         else:
-            ruler = 7   # Mars -> Scorpio
+            ruler = 7  # Mars -> Scorpio
     return ruler
 
 
@@ -439,11 +446,13 @@ def compute_varga(chart: ChartData, varga: str) -> list[DivisionalPosition]:
     for planet_name in PLANETS:
         p = chart.planets[planet_name]
         div_sign = func(p.longitude)
-        results.append(DivisionalPosition(
-            planet=planet_name,
-            d1_sign_index=p.sign_index,
-            divisional_sign_index=div_sign,
-            divisional_sign=SIGNS[div_sign],
-            is_vargottam=(p.sign_index == div_sign),
-        ))
+        results.append(
+            DivisionalPosition(
+                planet=planet_name,
+                d1_sign_index=p.sign_index,
+                divisional_sign_index=div_sign,
+                divisional_sign=SIGNS[div_sign],
+                is_vargottam=(p.sign_index == div_sign),
+            )
+        )
     return results

@@ -1,9 +1,11 @@
 """Test dosha detection."""
 
-import pytest
 from jyotish_engine.compute.dosha import (
-    detect_mangal_dosha, detect_kaal_sarp_dosha,
-    detect_sadesati, detect_pitra_dosha, detect_all_doshas,
+    detect_all_doshas,
+    detect_kaal_sarp_dosha,
+    detect_mangal_dosha,
+    detect_pitra_dosha,
+    detect_sadesati,
 )
 
 

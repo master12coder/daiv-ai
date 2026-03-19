@@ -1,4 +1,5 @@
 """Tests for the reusable divisional chart renderer."""
+
 from __future__ import annotations
 
 import pytest
@@ -17,8 +18,13 @@ from jyotish_products.plugins.kundali.divisional import render_divisional_chart
 def manish_chart() -> ChartData:
     """Reference chart: Manish Chaurasia — Mithuna lagna."""
     return compute_chart(
-        name="Manish Chaurasia", dob="13/03/1989", tob="12:17",
-        lat=25.3176, lon=83.0067, tz_name="Asia/Kolkata", gender="Male",
+        name="Manish Chaurasia",
+        dob="13/03/1989",
+        tob="12:17",
+        lat=25.3176,
+        lon=83.0067,
+        tz_name="Asia/Kolkata",
+        gender="Male",
     )
 
 
@@ -29,7 +35,10 @@ class TestD9NavamshaChart:
         """D9 chart should render as valid PNG bytes."""
         positions = compute_navamsha(manish_chart)
         result = render_divisional_chart(
-            manish_chart, positions, "D9 Navamsha", "नवमांश",
+            manish_chart,
+            positions,
+            "D9 Navamsha",
+            "नवमांश",
         )
         assert result is not None
         assert result[:4] == b"\x89PNG"
@@ -62,7 +71,10 @@ class TestD10DasamashaChart:
         """D10 chart should render as valid PNG bytes."""
         positions = compute_dasamsha(manish_chart)
         result = render_divisional_chart(
-            manish_chart, positions, "D10 Dasamsha", "दशमांश",
+            manish_chart,
+            positions,
+            "D10 Dasamsha",
+            "दशमांश",
         )
         assert result is not None
         assert result[:4] == b"\x89PNG"
@@ -79,8 +91,13 @@ class TestDivisionalChartReusability:
     def test_renders_with_different_chart(self) -> None:
         """Should work with non-Mithuna charts."""
         chart = compute_chart(
-            name="Test Person", dob="01/01/2000", tob="06:00",
-            lat=28.6139, lon=77.2090, tz_name="Asia/Kolkata", gender="Female",
+            name="Test Person",
+            dob="01/01/2000",
+            tob="06:00",
+            lat=28.6139,
+            lon=77.2090,
+            tz_name="Asia/Kolkata",
+            gender="Female",
         )
         positions = compute_navamsha(chart)
         result = render_divisional_chart(chart, positions, "D9", "नवमांश")

@@ -1,4 +1,5 @@
 """Tests for the Dasha Gantt chart renderer."""
+
 from __future__ import annotations
 
 import pytest
@@ -52,7 +53,10 @@ class TestDashaGantt:
     """Tests for render_dasha_gantt."""
 
     def test_returns_png_bytes(
-        self, manish_chart: ChartData, dasha_data: dict, mithuna_ctx: dict,
+        self,
+        manish_chart: ChartData,
+        dasha_data: dict,
+        mithuna_ctx: dict,
     ) -> None:
         """Should return valid PNG bytes when no output_path given."""
         result = render_dasha_gantt(
@@ -69,7 +73,11 @@ class TestDashaGantt:
         assert result[:8] == b"\x89PNG\r\n\x1a\n"
 
     def test_saves_to_file(
-        self, manish_chart: ChartData, dasha_data: dict, mithuna_ctx: dict, tmp_path,
+        self,
+        manish_chart: ChartData,
+        dasha_data: dict,
+        mithuna_ctx: dict,
+        tmp_path,
     ) -> None:
         """Should save PNG to disk and return None."""
         out = tmp_path / "dasha_gantt.png"
@@ -89,7 +97,10 @@ class TestDashaGantt:
         assert out.read_bytes()[:8] == b"\x89PNG\r\n\x1a\n"
 
     def test_with_empty_antardashas(
-        self, manish_chart: ChartData, dasha_data: dict, mithuna_ctx: dict,
+        self,
+        manish_chart: ChartData,
+        dasha_data: dict,
+        mithuna_ctx: dict,
     ) -> None:
         """Should handle empty antardasha list gracefully."""
         result = render_dasha_gantt(
@@ -105,7 +116,9 @@ class TestDashaGantt:
         assert result[:8] == b"\x89PNG\r\n\x1a\n"
 
     def test_with_empty_lordship_ctx(
-        self, manish_chart: ChartData, dasha_data: dict,
+        self,
+        manish_chart: ChartData,
+        dasha_data: dict,
     ) -> None:
         """Should handle missing lordship context (all bars gray)."""
         result = render_dasha_gantt(
@@ -120,7 +133,8 @@ class TestDashaGantt:
         assert result[:8] == b"\x89PNG\r\n\x1a\n"
 
     def test_current_md_is_jupiter_for_manish(
-        self, dasha_data: dict,
+        self,
+        dasha_data: dict,
     ) -> None:
         """Manish's current Mahadasha lord should be Jupiter."""
         assert dasha_data["current_md"].lord == "Jupiter"
@@ -130,7 +144,10 @@ class TestDashaGantt:
         assert len(dasha_data["mahadashas"]) == 9
 
     def test_returns_none_for_empty_mahadashas(
-        self, manish_chart: ChartData, dasha_data: dict, mithuna_ctx: dict,
+        self,
+        manish_chart: ChartData,
+        dasha_data: dict,
+        mithuna_ctx: dict,
     ) -> None:
         """Should return None if no mahadashas are provided."""
         result = render_dasha_gantt(

@@ -78,13 +78,19 @@ class TestComputeDayRating:
         """High bindu averages should yield a high day rating."""
         impacts = [
             TransitImpact(
-                planet="Jupiter", transit_sign="Mesha",
-                natal_house=1, bindus=7, is_favorable=True,
+                planet="Jupiter",
+                transit_sign="Mesha",
+                natal_house=1,
+                bindus=7,
+                is_favorable=True,
                 description="test",
             ),
             TransitImpact(
-                planet="Venus", transit_sign="Vrishabha",
-                natal_house=2, bindus=6, is_favorable=True,
+                planet="Venus",
+                transit_sign="Vrishabha",
+                natal_house=2,
+                bindus=6,
+                is_favorable=True,
                 description="test",
             ),
         ]
@@ -95,13 +101,19 @@ class TestComputeDayRating:
         """Low bindu averages should yield a low day rating."""
         impacts = [
             TransitImpact(
-                planet="Saturn", transit_sign="Kanya",
-                natal_house=6, bindus=0, is_favorable=False,
+                planet="Saturn",
+                transit_sign="Kanya",
+                natal_house=6,
+                bindus=0,
+                is_favorable=False,
                 description="test",
             ),
             TransitImpact(
-                planet="Mars", transit_sign="Vrischika",
-                natal_house=8, bindus=1, is_favorable=False,
+                planet="Mars",
+                transit_sign="Vrischika",
+                natal_house=8,
+                bindus=1,
+                is_favorable=False,
                 description="test",
             ),
         ]
@@ -112,8 +124,11 @@ class TestComputeDayRating:
         """Rating should never exceed MAX_DAY_RATING even with extreme bindus."""
         impacts = [
             TransitImpact(
-                planet="Jupiter", transit_sign="Mesha",
-                natal_house=1, bindus=8, is_favorable=True,
+                planet="Jupiter",
+                transit_sign="Mesha",
+                natal_house=1,
+                bindus=8,
+                is_favorable=True,
                 description="test",
             ),
         ]
@@ -124,8 +139,11 @@ class TestComputeDayRating:
         """Rating should never go below 1 even with zero bindus."""
         impacts = [
             TransitImpact(
-                planet="Saturn", transit_sign="Kanya",
-                natal_house=6, bindus=0, is_favorable=False,
+                planet="Saturn",
+                transit_sign="Kanya",
+                natal_house=6,
+                bindus=0,
+                is_favorable=False,
                 description="test",
             ),
         ]

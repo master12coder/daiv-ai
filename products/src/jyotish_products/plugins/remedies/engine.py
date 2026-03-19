@@ -1,4 +1,5 @@
 """Remedies plugin engine — gemstone recommendations with safety checks."""
+
 from __future__ import annotations
 
 from jyotish_engine.models.chart import ChartData

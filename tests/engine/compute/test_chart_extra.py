@@ -15,8 +15,8 @@ from jyotish_engine.compute.chart import (
 from jyotish_engine.constants import (
     NUM_NAKSHATRAS,
     PADAS_PER_NAKSHATRA,
+    SIGN_LORDS,
 )
-from jyotish_engine.constants import SIGN_LORDS
 
 
 class TestGetNakshatra:

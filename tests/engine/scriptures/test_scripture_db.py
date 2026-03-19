@@ -15,7 +15,15 @@ from jyotish_engine.scriptures.query import (
     reload,
 )
 
-_BPHS_DIR = Path(__file__).resolve().parents[3] / "engine" / "src" / "jyotish_engine" / "scriptures" / "bphs"
+
+_BPHS_DIR = (
+    Path(__file__).resolve().parents[3]
+    / "engine"
+    / "src"
+    / "jyotish_engine"
+    / "scriptures"
+    / "bphs"
+)
 
 # Expected YAML files in bphs/
 _EXPECTED_FILES = [
@@ -39,6 +47,7 @@ def fresh_load():
 # ------------------------------------------------------------------
 # Test: all YAML files load without error
 # ------------------------------------------------------------------
+
 
 class TestYAMLFilesLoad:
     """Verify every expected BPHS YAML file exists and is valid."""
@@ -76,6 +85,7 @@ class TestYAMLFilesLoad:
 # Test: query_by_planet
 # ------------------------------------------------------------------
 
+
 class TestQueryByPlanet:
     def test_query_by_planet_saturn(self) -> None:
         results = query_by_planet("Saturn")
@@ -100,8 +110,17 @@ class TestQueryByPlanet:
         assert results == []
 
     def test_all_nine_planets_have_references(self) -> None:
-        for planet in ["Sun", "Moon", "Mars", "Mercury", "Jupiter",
-                       "Venus", "Saturn", "Rahu", "Ketu"]:
+        for planet in [
+            "Sun",
+            "Moon",
+            "Mars",
+            "Mercury",
+            "Jupiter",
+            "Venus",
+            "Saturn",
+            "Rahu",
+            "Ketu",
+        ]:
             results = query_by_planet(planet)
             assert len(results) > 0, f"No references found for {planet}"
 
@@ -109,6 +128,7 @@ class TestQueryByPlanet:
 # ------------------------------------------------------------------
 # Test: query_by_topic
 # ------------------------------------------------------------------
+
 
 class TestQueryByTopic:
     def test_query_by_topic_marriage(self) -> None:
@@ -140,6 +160,7 @@ class TestQueryByTopic:
 # Test: query_by_chapter
 # ------------------------------------------------------------------
 
+
 class TestQueryByChapter:
     def test_query_by_chapter_bphs_3(self) -> None:
         results = query_by_chapter("BPHS", 3)
@@ -165,6 +186,7 @@ class TestQueryByChapter:
 # Test: citation and data quality
 # ------------------------------------------------------------------
 
+
 class TestDataQuality:
     def test_get_citation_format(self) -> None:
         refs = get_all_references()
@@ -189,11 +211,21 @@ class TestDataQuality:
 
     def test_rule_types_are_valid(self) -> None:
         valid_types = {
-            "general", "yoga", "dasha", "remedy",
-            "transit", "friendship", "gemstone",
-            "planet_house", "raja_yoga", "muhurta",
-            "lord_placement", "bhava_effect", "karaka_effect",
-            "ashtakavarga", "dasha_effect",
+            "general",
+            "yoga",
+            "dasha",
+            "remedy",
+            "transit",
+            "friendship",
+            "gemstone",
+            "planet_house",
+            "raja_yoga",
+            "muhurta",
+            "lord_placement",
+            "bhava_effect",
+            "karaka_effect",
+            "ashtakavarga",
+            "dasha_effect",
         }
         refs = get_all_references()
         for r in refs:

@@ -12,9 +12,12 @@ import yaml
 from jyotish_engine.models.chart import ChartData
 from jyotish_engine.scriptures import query as scripture_db
 
+
 logger = logging.getLogger(__name__)
 
-_KNOWLEDGE_DIR = Path(__file__).parent.parent.parent.parent / "engine" / "src" / "jyotish_engine" / "knowledge"
+_KNOWLEDGE_DIR = (
+    Path(__file__).parent.parent.parent.parent / "engine" / "src" / "jyotish_engine" / "knowledge"
+)
 
 # Fallback: try to find knowledge dir relative to installed jyotish_engine
 _knowledge_dir_resolved: Path | None = None
@@ -37,6 +40,7 @@ def _get_knowledge_dir() -> Path:
     # Try to find via jyotish_engine package
     try:
         import jyotish_engine.knowledge as kmod
+
         pkg_dir = Path(kmod.__file__).parent
         if pkg_dir.exists():
             _knowledge_dir_resolved = pkg_dir
@@ -125,15 +129,15 @@ def build_lordship_context(lagna_sign: str) -> dict[str, Any]:
             2: "2nd (maraka sthana)",
             7: "7th (maraka sthana)",
         }
-        house_str = " + ".join(
-            house_labels.get(h, f"{h}th") for h in houses
+        house_str = " + ".join(house_labels.get(h, f"{h}th") for h in houses)
+        maraka_formatted.append(
+            {
+                "planet": m.get("planet", ""),
+                "houses": houses,
+                "house_str": house_str,
+                "reasoning": m.get("reasoning", "").strip(),
+            }
         )
-        maraka_formatted.append({
-            "planet": m.get("planet", ""),
-            "houses": houses,
-            "house_str": house_str,
-            "reasoning": m.get("reasoning", "").strip(),
-        })
 
     return {
         "sign_lord": lagna_rules.get("sign_lord", ""),

@@ -2,10 +2,8 @@
 
 from __future__ import annotations
 
-from datetime import datetime
-
-from jyotish_engine.constants import SIGN_LORDS, SIGNS
 from jyotish_engine.compute.chart import ChartData, has_aspect
+from jyotish_engine.constants import SIGN_LORDS, SIGNS
 from jyotish_engine.models.dosha import DoshaResult
 
 
@@ -104,7 +102,7 @@ def detect_kaal_sarp_dosha(chart: ChartData) -> DoshaResult:
             name_hindi="काल सर्प दोष",
             is_present=True,
             severity="full",
-            planets_involved=["Rahu", "Ketu"] + planets_between,
+            planets_involved=["Rahu", "Ketu", *planets_between],
             houses_involved=[rahu.house, ketu.house],
             description="All 7 planets hemmed between Rahu-Ketu — full Kaal Sarp Dosha",
             cancellation_reasons=[],
@@ -115,7 +113,7 @@ def detect_kaal_sarp_dosha(chart: ChartData) -> DoshaResult:
             name_hindi="काल सर्प दोष",
             is_present=True,
             severity="partial",
-            planets_involved=["Rahu", "Ketu"] + planets_between,
+            planets_involved=["Rahu", "Ketu", *planets_between],
             houses_involved=[rahu.house, ketu.house],
             description=f"Partial Kaal Sarp — {planets_outside[0]} escapes the axis",
             cancellation_reasons=[f"{planets_outside[0]} outside Rahu-Ketu axis"],
@@ -150,8 +148,8 @@ def detect_sadesati(chart: ChartData, transit_saturn_sign: int | None = None) ->
 
     sadesati_signs = {
         (moon_sign - 1) % 12,  # 12th from Moon
-        moon_sign,               # 1st (over Moon)
-        (moon_sign + 1) % 12,   # 2nd from Moon
+        moon_sign,  # 1st (over Moon)
+        (moon_sign + 1) % 12,  # 2nd from Moon
     }
 
     if saturn_sign in sadesati_signs:

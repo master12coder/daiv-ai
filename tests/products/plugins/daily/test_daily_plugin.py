@@ -1,25 +1,28 @@
 """Tests for the daily companion plugin — 3 levels."""
+
 from __future__ import annotations
 
 import pytest
 
 from jyotish_engine.compute.chart import compute_chart
+from jyotish_engine.compute.daily import compute_daily_suggestion
 from jyotish_engine.models.chart import ChartData
 from jyotish_products.plugins.daily.engine import (
     DailyLevel,
     run_daily,
-    format_simple,
-    format_medium,
-    format_detailed,
 )
-from jyotish_engine.compute.daily import compute_daily_suggestion
 
 
 @pytest.fixture
 def manish_chart() -> ChartData:
     return compute_chart(
-        name="Manish Chaurasia", dob="13/03/1989", tob="12:17",
-        lat=25.3176, lon=83.0067, tz_name="Asia/Kolkata", gender="Male",
+        name="Manish Chaurasia",
+        dob="13/03/1989",
+        tob="12:17",
+        lat=25.3176,
+        lon=83.0067,
+        tz_name="Asia/Kolkata",
+        gender="Male",
     )
 
 

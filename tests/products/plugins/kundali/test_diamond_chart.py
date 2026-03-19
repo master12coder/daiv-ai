@@ -1,4 +1,5 @@
 """Tests for the D1 North Indian diamond chart visual renderer."""
+
 from __future__ import annotations
 
 import tempfile
@@ -16,8 +17,13 @@ from jyotish_products.plugins.kundali.diamond import render_d1_chart
 def manish_chart() -> ChartData:
     """Reference chart: Manish Chaurasia — Mithuna lagna."""
     return compute_chart(
-        name="Manish Chaurasia", dob="13/03/1989", tob="12:17",
-        lat=25.3176, lon=83.0067, tz_name="Asia/Kolkata", gender="Male",
+        name="Manish Chaurasia",
+        dob="13/03/1989",
+        tob="12:17",
+        lat=25.3176,
+        lon=83.0067,
+        tz_name="Asia/Kolkata",
+        gender="Male",
     )
 
 
@@ -85,7 +91,9 @@ class TestD1ChartContent:
         assert "Mars" in malefics
 
     def test_chart_image_is_reproducible(
-        self, manish_chart: ChartData, mithuna_ctx: dict,
+        self,
+        manish_chart: ChartData,
+        mithuna_ctx: dict,
     ) -> None:
         """Two renders of same chart should produce same-size images."""
         img1 = render_d1_chart(manish_chart, mithuna_ctx)
@@ -101,8 +109,13 @@ class TestD1ChartWithDifferentCharts:
     def test_renders_different_lagna(self) -> None:
         """Should render any lagna, not just Mithuna."""
         chart = compute_chart(
-            name="Test Person", dob="01/01/2000", tob="06:00",
-            lat=28.6139, lon=77.2090, tz_name="Asia/Kolkata", gender="Female",
+            name="Test Person",
+            dob="01/01/2000",
+            tob="06:00",
+            lat=28.6139,
+            lon=77.2090,
+            tz_name="Asia/Kolkata",
+            gender="Female",
         )
         ctx = build_lordship_context(chart.lagna_sign)
         result = render_d1_chart(chart, ctx)

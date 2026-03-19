@@ -1,4 +1,5 @@
 """North Indian diamond chart — text-based renderer."""
+
 from __future__ import annotations
 
 from jyotish_engine.constants import SIGNS
@@ -15,12 +16,19 @@ from jyotish_engine.models.chart import ChartData
 #     [5]    [7]
 #        [6]
 
+
 def _get_planets_by_house(chart: ChartData) -> dict[int, list[str]]:
     """Group planet abbreviations by house number."""
     abbrev = {
-        "Sun": "Su", "Moon": "Mo", "Mars": "Ma", "Mercury": "Me",
-        "Jupiter": "Ju", "Venus": "Ve", "Saturn": "Sa",
-        "Rahu": "Ra", "Ketu": "Ke",
+        "Sun": "Su",
+        "Moon": "Mo",
+        "Mars": "Ma",
+        "Mercury": "Me",
+        "Jupiter": "Ju",
+        "Venus": "Ve",
+        "Saturn": "Sa",
+        "Rahu": "Ra",
+        "Ketu": "Ke",
     }
     houses: dict[int, list[str]] = {h: [] for h in range(1, 13)}
     for p in chart.planets.values():
@@ -65,7 +73,7 @@ def render_diamond_text(chart: ChartData) -> str:
     header = f"  North Indian Chart — {chart.name}"
     subheader = f"  Lagna: {chart.lagna_sign} ({chart.lagna_sign_en}) {chart.lagna_degree:.1f}°"
 
-    return "\n".join([header, subheader, "─" * 56] + lines + ["─" * 56])
+    return "\n".join([header, subheader, "─" * 56, *lines, "─" * 56])
 
 
 def render_chart_summary(chart: ChartData) -> str:

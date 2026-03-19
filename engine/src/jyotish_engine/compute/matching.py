@@ -2,12 +2,19 @@
 
 from __future__ import annotations
 
-
 from jyotish_engine.constants import (
-    SIGN_ELEMENTS, SIGN_VARNA, VARNA_RANK, VASYA_TABLE,
-    NAKSHATRA_GANAS, NAKSHATRA_ANIMALS, NAKSHATRA_NADIS,
-    NAKSHATRA_LORDS, YONI_ENEMIES, BHAKOOT_NEGATIVE_COMBOS,
-    NATURAL_FRIENDS, NATURAL_ENEMIES,
+    BHAKOOT_NEGATIVE_COMBOS,
+    NAKSHATRA_ANIMALS,
+    NAKSHATRA_GANAS,
+    NAKSHATRA_LORDS,
+    NAKSHATRA_NADIS,
+    NATURAL_ENEMIES,
+    NATURAL_FRIENDS,
+    SIGN_ELEMENTS,
+    SIGN_VARNA,
+    VARNA_RANK,
+    VASYA_TABLE,
+    YONI_ENEMIES,
 )
 from jyotish_engine.models.matching import KootaScore, MatchingResult
 
@@ -23,8 +30,10 @@ def _varna_score(sign1: int, sign2: int) -> KootaScore:
 
     score = 1.0 if rank1 >= rank2 else 0.0
     return KootaScore(
-        name="Varna", name_hindi="वर्ण",
-        max_points=1.0, obtained=score,
+        name="Varna",
+        name_hindi="वर्ण",
+        max_points=1.0,
+        obtained=score,
         description=f"Boy: {varna1}, Girl: {varna2}",
     )
 
@@ -45,8 +54,10 @@ def _vasya_score(sign1: int, sign2: int) -> KootaScore:
         desc = "No Vasya"
 
     return KootaScore(
-        name="Vasya", name_hindi="वश्य",
-        max_points=2.0, obtained=score,
+        name="Vasya",
+        name_hindi="वश्य",
+        max_points=2.0,
+        obtained=score,
         description=desc,
     )
 
@@ -73,8 +84,10 @@ def _tara_score(nak1: int, nak2: int) -> KootaScore:
         score += 0.0
 
     return KootaScore(
-        name="Tara", name_hindi="तारा",
-        max_points=3.0, obtained=min(score, 3.0),
+        name="Tara",
+        name_hindi="तारा",
+        max_points=3.0,
+        obtained=min(score, 3.0),
         description=f"Tara boy→girl: {tara}, girl→boy: {tara_rev}",
     )
 
@@ -95,8 +108,10 @@ def _yoni_score(nak1: int, nak2: int) -> KootaScore:
         desc = f"Neutral yoni: {animal1} vs {animal2}"
 
     return KootaScore(
-        name="Yoni", name_hindi="योनि",
-        max_points=4.0, obtained=score,
+        name="Yoni",
+        name_hindi="योनि",
+        max_points=4.0,
+        obtained=score,
         description=desc,
     )
 
@@ -126,8 +141,10 @@ def _graha_maitri_score(nak1: int, nak2: int) -> KootaScore:
         desc = f"Neutral: {lord1} & {lord2}"
 
     return KootaScore(
-        name="Graha Maitri", name_hindi="ग्रह मैत्री",
-        max_points=5.0, obtained=score,
+        name="Graha Maitri",
+        name_hindi="ग्रह मैत्री",
+        max_points=5.0,
+        obtained=score,
         description=desc,
     )
 
@@ -142,17 +159,19 @@ def _gana_score(nak1: int, nak2: int) -> KootaScore:
         desc = f"Same gana: {gana1}"
     elif {gana1, gana2} == {"Deva", "Manushya"}:
         score = 3.0
-        desc = f"Deva-Manushya"
+        desc = "Deva-Manushya"
     elif {gana1, gana2} == {"Manushya", "Rakshasa"}:
         score = 1.0
-        desc = f"Manushya-Rakshasa"
+        desc = "Manushya-Rakshasa"
     else:  # Deva-Rakshasa
         score = 0.0
-        desc = f"Deva-Rakshasa — most challenging"
+        desc = "Deva-Rakshasa — most challenging"
 
     return KootaScore(
-        name="Gana", name_hindi="गण",
-        max_points=6.0, obtained=score,
+        name="Gana",
+        name_hindi="गण",
+        max_points=6.0,
+        obtained=score,
         description=desc,
     )
 
@@ -170,8 +189,10 @@ def _bhakoot_score(sign1: int, sign2: int) -> KootaScore:
         desc = f"Favorable distance: {dist_forward}/{dist_backward}"
 
     return KootaScore(
-        name="Bhakoot", name_hindi="भकूट",
-        max_points=7.0, obtained=score,
+        name="Bhakoot",
+        name_hindi="भकूट",
+        max_points=7.0,
+        obtained=score,
         description=desc,
     )
 
@@ -189,8 +210,10 @@ def _nadi_score(nak1: int, nak2: int) -> KootaScore:
         desc = f"Different nadi: {nadi1} vs {nadi2} — compatible"
 
     return KootaScore(
-        name="Nadi", name_hindi="नाड़ी",
-        max_points=8.0, obtained=score,
+        name="Nadi",
+        name_hindi="नाड़ी",
+        max_points=8.0,
+        obtained=score,
         description=desc,
     )
 
