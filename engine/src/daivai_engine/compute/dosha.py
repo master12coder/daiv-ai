@@ -237,10 +237,13 @@ def detect_pitra_dosha(chart: ChartData) -> DoshaResult:
 
 
 def detect_all_doshas(chart: ChartData) -> list[DoshaResult]:
-    """Detect all doshas in a chart."""
+    """Detect all doshas — 10 checks from BPHS, Phaladeepika."""
+    from daivai_engine.compute.dosha_extended import detect_extended_doshas
+
     return [
         detect_mangal_dosha(chart),
         detect_kaal_sarp_dosha(chart),
         detect_sadesati(chart),
         detect_pitra_dosha(chart),
+        *detect_extended_doshas(chart),
     ]

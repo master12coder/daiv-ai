@@ -10,9 +10,10 @@ from daivai_engine.compute.dosha import (
 
 
 class TestDoshaDetection:
-    def test_detect_all_doshas_returns_four(self, manish_chart):
+    def test_detect_all_doshas_returns_ten(self, manish_chart):
+        """4 original + 6 extended = 10 dosha checks."""
         doshas = detect_all_doshas(manish_chart)
-        assert len(doshas) == 4
+        assert len(doshas) == 10
 
     def test_dosha_result_structure(self, manish_chart):
         doshas = detect_all_doshas(manish_chart)

@@ -1,7 +1,7 @@
 """Full chart analysis — compute ALL engine calculations in one call.
 
-Single entry point that runs every engine computation and returns
-a FullChartAnalysis model. Each module wrapped in safe_compute().
+Orchestrator that calls every engine module and returns a single typed
+FullChartAnalysis v4.0. Each module wrapped in safe_compute().
 
 NOTE: lordship_context must be passed in from the products layer.
 """
@@ -18,9 +18,17 @@ from daivai_engine.compute.avasthas import (
     compute_deeptadi_avasthas,
     compute_lajjitadi_avasthas,
 )
+from daivai_engine.compute.bhava_bala import compute_bhava_bala
+from daivai_engine.compute.bhava_chalit import compute_bhava_chalit
 from daivai_engine.compute.compatibility_advanced import compute_mangal_dosha_detailed
 from daivai_engine.compute.dasha import compute_mahadashas, find_current_dasha
 from daivai_engine.compute.dasha_advanced import compute_dasha_sandhi
+from daivai_engine.compute.dasha_extra import (
+    compute_ashtottari_dasha,
+    compute_chara_dasha,
+    compute_yogini_dasha,
+)
+from daivai_engine.compute.divisional import compute_navamsha, get_vargottam_planets
 from daivai_engine.compute.dosha import detect_all_doshas
 from daivai_engine.compute.double_transit import (
     check_double_transit,
@@ -30,9 +38,12 @@ from daivai_engine.compute.gandanta import check_gandanta
 from daivai_engine.compute.graha_yuddha import detect_planetary_war
 from daivai_engine.compute.house_comparison import compare_whole_sign_vs_chalit
 from daivai_engine.compute.ishta_kashta import compute_ishta_kashta
+from daivai_engine.compute.jaimini import compute_jaimini
+from daivai_engine.compute.kp import compute_kp_positions
 from daivai_engine.compute.longevity import compute_longevity
 from daivai_engine.compute.namkaran import check_gand_mool
 from daivai_engine.compute.narayana_dasha import compute_narayana_dasha
+from daivai_engine.compute.panchang import compute_panchang
 from daivai_engine.compute.saham import compute_sahams
 from daivai_engine.compute.special_lagnas import compute_special_lagnas
 from daivai_engine.compute.strength import compute_shadbala
@@ -42,6 +53,7 @@ from daivai_engine.compute.transit_advanced import (
     compute_rahu_ketu_transit,
     compute_sadesati_detailed,
 )
+from daivai_engine.compute.upagraha import compute_all_upagrahas
 from daivai_engine.compute.upapada import compute_upapada_lagna
 from daivai_engine.compute.varga_analysis import (
     analyze_d4_property,
@@ -63,17 +75,14 @@ def compute_full_analysis(
     chart: ChartData,
     lordship_context: dict[str, Any] | None = None,
 ) -> FullChartAnalysis:
-    """Run ALL engine computations and return a single typed result.
-
-    Each module is wrapped in safe_compute() — individual failures
-    don't crash the pipeline.
+    """Run ALL engine computations — 50+ modules, one typed result.
 
     Args:
         chart: Computed birth chart.
-        lordship_context: Pre-built lordship context from products layer.
+        lordship_context: From products layer (engine can't import products).
 
     Returns:
-        FullChartAnalysis v3.0 with all fields populated.
+        FullChartAnalysis v4.0 — the complete data contract.
     """
     if lordship_context is None:
         lordship_context = {}
@@ -87,6 +96,7 @@ def compute_full_analysis(
     avk = compute_ashtakavarga(chart)
 
     # Strength
+    bb = safe_compute(compute_bhava_bala, chart)
     vimshopaka = safe_compute(compute_vimshopaka_bala, chart)
     ishta_kashta = safe_compute(compute_ishta_kashta, chart, shadbala)
 
@@ -99,6 +109,10 @@ def compute_full_analysis(
     yuddha = safe_compute(detect_planetary_war, chart)
     gand_mool = safe_compute(check_gand_mool, chart)
 
+    # Divisional
+    navamsha = safe_compute(compute_navamsha, chart)
+    vargottam = safe_compute(get_vargottam_planets, chart)
+
     # Transit
     dt_lagna = safe_compute(check_double_transit, chart)
     dt_moon = safe_compute(check_double_transit_from_moon, chart)
@@ -107,11 +121,25 @@ def compute_full_analysis(
     rk_transit = safe_compute(compute_rahu_ketu_transit, chart)
 
     # Jaimini
+    jaimini = safe_compute(compute_jaimini, chart)
     upapada = compute_upapada_lagna(chart)
     argala = safe_compute(compute_argala, chart)
 
-    # Dashas
+    # KP
+    kp_pos = safe_compute(compute_kp_positions, chart)
+
+    # Bhava Chalit
+    bhava_chalit = safe_compute(compute_bhava_chalit, chart)
+    house_shifts = safe_compute(compare_whole_sign_vs_chalit, chart)
+
+    # Upagrahas
+    upagrahas = safe_compute(compute_all_upagrahas, chart)
+
+    # Dashas (all systems)
     narayana = safe_compute(compute_narayana_dasha, chart)
+    yogini = safe_compute(compute_yogini_dasha, chart)
+    ashtottari = safe_compute(compute_ashtottari_dasha, chart)
+    chara = safe_compute(compute_chara_dasha, chart)
     sandhi = safe_compute(compute_dasha_sandhi, mahadashas)
 
     # Special lagnas
@@ -119,13 +147,20 @@ def compute_full_analysis(
     if not isinstance(sp_lagnas, dict):
         sp_lagnas = {}
 
+    # Birth panchang
+    panchang = safe_compute(
+        compute_panchang,
+        chart.dob,
+        chart.latitude,
+        chart.longitude,
+        chart.timezone_name,
+        chart.place,
+    )
+
     # Sudarshan
     sudarshan = safe_compute(compute_sudarshan, chart)
 
-    # House comparison
-    house_shifts = safe_compute(compare_whole_sign_vs_chalit, chart)
-
-    # Saham points
+    # Sahams
     sahams = safe_compute(compute_sahams, chart)
 
     # Longevity
@@ -135,19 +170,16 @@ def compute_full_analysis(
     mangal = safe_compute(compute_mangal_dosha_detailed, chart)
 
     # Varga analysis
-    varga = {}
-    d7 = safe_compute(analyze_d7_children, chart)
-    d4 = safe_compute(analyze_d4_property, chart)
-    d24 = safe_compute(analyze_d24_education, chart)
-    d10 = safe_compute(analyze_d10_career, chart)
-    if d7:
-        varga["D7"] = d7
-    if d4:
-        varga["D4"] = d4
-    if d24:
-        varga["D24"] = d24
-    if d10:
-        varga["D10"] = d10
+    varga: dict[str, Any] = {}
+    for key, fn in [
+        ("D7", analyze_d7_children),
+        ("D4", analyze_d4_property),
+        ("D24", analyze_d24_education),
+        ("D10", analyze_d10_career),
+    ]:
+        result = safe_compute(fn, chart)
+        if result:
+            varga[key] = result
 
     # Verification
     verification = verify_chart_accuracy(chart)
@@ -158,10 +190,14 @@ def compute_full_analysis(
         current_md=md,
         current_ad=ad,
         narayana_dasha=narayana,
+        yogini_dasha=yogini,
+        ashtottari_dasha=ashtottari,
+        chara_dasha=chara,
         dasha_sandhi=sandhi,
         yogas=yogas,
         doshas=doshas,
         shadbala=shadbala,
+        bhava_bala=bb,
         ashtakavarga=avk,
         vimshopaka=vimshopaka,
         ishta_kashta=ishta_kashta,
@@ -170,16 +206,23 @@ def compute_full_analysis(
         gandanta=gandanta,
         graha_yuddha=yuddha,
         gand_mool=gand_mool,
+        navamsha_positions=navamsha,
+        vargottam_planets=vargottam if isinstance(vargottam, list) else [],
         double_transit=dt_lagna,
         double_transit_moon=dt_moon,
         sadesati=sadesati,
         jupiter_transit=jup_transit,
         rahu_ketu_transit=rk_transit,
+        jaimini=jaimini,
         upapada=upapada,
         argala=argala,
-        special_lagnas=sp_lagnas,
-        sudarshan=sudarshan,
+        kp_positions=kp_pos,
+        bhava_chalit=bhava_chalit,
         house_shifts=house_shifts,
+        upagrahas=upagrahas,
+        special_lagnas=sp_lagnas,
+        birth_panchang=panchang,
+        sudarshan=sudarshan,
         sahams=sahams,
         longevity=longevity,
         mangal_dosha=mangal,
@@ -190,7 +233,7 @@ def compute_full_analysis(
 
 
 def safe_compute(fn: Callable, *args: Any, **kwargs: Any) -> Any:
-    """Call a computation function. On crash, log error and return empty list."""
+    """Call a computation function. On crash, log and return empty list."""
     try:
         return fn(*args, **kwargs)
     except Exception as e:

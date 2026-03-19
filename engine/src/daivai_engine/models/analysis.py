@@ -32,29 +32,33 @@ from daivai_engine.models.yoga import YogaResult
 class FullChartAnalysis(BaseModel):
     """Complete pre-computed analysis — single source of truth.
 
-    Every field is deterministic: same input chart = same output, always.
+    v4.0: All orphaned modules wired in. 45+ fields.
     """
 
     model_config = ConfigDict(frozen=True)
 
-    version: str = "3.0"
+    version: str = "4.0"
 
-    # Core chart
+    # Core
     chart: ChartData
 
-    # Dashas
+    # Dashas (all systems)
     mahadashas: list[DashaPeriod]
     current_md: DashaPeriod
     current_ad: DashaPeriod
     narayana_dasha: list[DashaPeriod]
-    dasha_sandhi: list[Any]  # DashaSandhi
+    yogini_dasha: list[Any]  # YoginiDashaPeriod
+    ashtottari_dasha: list[Any]  # AshtottariDashaPeriod
+    chara_dasha: list[Any]  # CharaDashaPeriod (different model from DashaPeriod)
+    dasha_sandhi: list[Any]
 
     # Yogas & Doshas
-    yogas: list[YogaResult]
-    doshas: list[DoshaResult]
+    yogas: list[YogaResult]  # 80+ checks
+    doshas: list[DoshaResult]  # 10 checks
 
     # Strength
     shadbala: list[ShadbalaResult]
+    bhava_bala: list[Any]  # BhavaBalaResult — house strength
     ashtakavarga: AshtakavargaResult
     vimshopaka: list[VimshopakaBala]
     ishta_kashta: list[IshtaKashtaPhala]
@@ -66,39 +70,54 @@ class FullChartAnalysis(BaseModel):
     # Special checks
     gandanta: list[GandantaResult]
     graha_yuddha: list[GrahaYuddha]
-    gand_mool: Any | None  # GandMoolResult
+    gand_mool: Any | None
+
+    # Divisional charts
+    navamsha_positions: list[Any]  # D9 positions
+    vargottam_planets: list[str]
 
     # Transit
     double_transit: list[DoubleTransit]
     double_transit_moon: list[DoubleTransit]
-    sadesati: Any | None  # SadesatiDetail
-    jupiter_transit: Any | None  # JupiterTransitResult
-    rahu_ketu_transit: Any | None  # RahuKetuTransitResult
+    sadesati: Any | None
+    jupiter_transit: Any | None
+    rahu_ketu_transit: Any | None
 
     # Jaimini
+    jaimini: Any | None  # JaiminiResult — karakas + arudha + karakamsha
     upapada: UpapadaLagna
     argala: list[Any]
+
+    # KP
+    kp_positions: list[Any]  # KPPosition per planet
+
+    # Bhava Chalit
+    bhava_chalit: Any | None  # BhavaChalitResult
+    house_shifts: list[Any]
+
+    # Upagrahas
+    upagrahas: list[Any]
 
     # Special lagnas
     special_lagnas: dict[str, Any]
 
+    # Birth panchang
+    birth_panchang: Any | None
+
     # Sudarshan
     sudarshan: Any | None
-
-    # House comparison
-    house_shifts: list[Any]
 
     # Saham points
     sahams: list[Any]
 
-    # Longevity (internal use only)
-    longevity: Any | None  # LongevityResult
+    # Longevity
+    longevity: Any | None
 
     # Mangal dosha detailed
-    mangal_dosha: Any | None  # MangalDoshaDetail
+    mangal_dosha: Any | None
 
     # Varga analysis
-    varga_analysis: dict[str, Any]  # D7, D4, D24, D10
+    varga_analysis: dict[str, Any]
 
     # Lordship context
     lordship_context: dict

@@ -26,12 +26,15 @@ def _is_in_own_or_exalted(planet_name: str, sign_index: int) -> bool:
 
 
 def detect_all_yogas(chart: ChartData) -> list[YogaResult]:
-    """Detect all yogas in a chart."""
+    """Detect all yogas — 80+ checks from BPHS, Phaladeepika, Saravali."""
+    from daivai_engine.compute.yoga_extended import detect_extended_yogas
+
     yogas: list[YogaResult] = []
     yogas.extend(_detect_panch_mahapurush(chart))
     yogas.extend(_detect_raj_yogas(chart))
     yogas.extend(_detect_dhan_yogas(chart))
     yogas.extend(detect_other_yogas(chart))
+    yogas.extend(detect_extended_yogas(chart))
     return yogas
 
 

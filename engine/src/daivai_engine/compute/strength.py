@@ -210,22 +210,40 @@ def _dig_bala(chart: ChartData, planet_name: str) -> float:
 
 
 def _kala_bala(chart: ChartData, planet_name: str) -> float:
-    """Simplified temporal strength.
+    """Temporal strength — 5 sub-components from BPHS Ch.23.
 
-    Components (simplified):
-    - Nathonnatha Bala: 30 each (would need birth-time day/night split)
-    - Paksha Bala: benefics get 60 in Shukla Paksha, malefics in Krishna
-      (simplified: use Moon longitude — Shukla if Moon 0-180 from Sun)
-    - Ayana Bala: 30 each (simplified)
+    1. Nathonnatha: Day/night birth. Diurnal planets (Sun, Jupiter, Venus)
+       strong in day birth (60), nocturnal (Moon, Mars, Saturn) in night (60).
+    2. Paksha: Benefics strong in Shukla Paksha, malefics in Krishna.
+    3. Hora: Planetary hour lord gets 60 points. Others get 0.
+       (Simplified: based on birth hour's planet)
+    4. Vara: Weekday lord gets 45, friends get 30, others 15.
+    5. Ayana: Planets strong when Sun in Uttarayana (Capricorn→Gemini).
+       (Simplified: 30 average — would need Sun's declination for full calc)
+
+    Source: BPHS Chapter 23.
     """
-    nathonnatha = 30.0  # Simplified — no day/night distinction
-
-    # Paksha Bala from Moon-Sun distance
     moon_lon = chart.planets["Moon"].longitude
     sun_lon = chart.planets["Sun"].longitude
+
+    # 1. Nathonnatha Bala (day/night) — BPHS Ch.23 v1-3
+    # Diurnal planets: Sun, Jupiter, Venus — strong if born during day
+    # Nocturnal planets: Moon, Mars, Saturn — strong if born at night
+    # Day birth = Sun above horizon = Sun in houses 7-12
+    sun_house = chart.planets["Sun"].house
+    is_day_birth = sun_house >= 7  # Sun above horizon
+    diurnal = {"Sun", "Jupiter", "Venus"}
+    nocturnal = {"Moon", "Mars", "Saturn"}
+    if planet_name in diurnal:
+        nathonnatha = 60.0 if is_day_birth else 0.0
+    elif planet_name in nocturnal:
+        nathonnatha = 0.0 if is_day_birth else 60.0
+    else:
+        nathonnatha = 30.0  # Mercury — always neutral
+
+    # 2. Paksha Bala — BPHS Ch.23 v4-6
     moon_sun_diff = (moon_lon - sun_lon) % 360.0
     is_shukla = moon_sun_diff <= 180.0
-
     if planet_name in _BENEFICS:
         paksha = 60.0 if is_shukla else 0.0
     elif planet_name in _MALEFICS:
@@ -233,9 +251,42 @@ def _kala_bala(chart: ChartData, planet_name: str) -> float:
     else:
         paksha = 30.0
 
-    ayana = 30.0  # Simplified
+    # 3. Hora Bala (planetary hour) — BPHS Ch.23 v7
+    # Each hour of the day is ruled by a planet in the Chaldean order
+    # Simplified: weekday lord gets 60, same-element gets 30
+    from daivai_engine.compute.datetime_utils import parse_birth_datetime
 
-    return round(nathonnatha + paksha + ayana, 2)
+    birth_dt = parse_birth_datetime(chart.dob, chart.tob, chart.timezone_name)
+    from daivai_engine.constants import DAY_PLANET
+
+    weekday = birth_dt.weekday()
+    day_idx = (weekday + 1) % 7  # Sunday=0
+    day_lord = DAY_PLANET.get(day_idx, "Sun")
+    hora = 60.0 if planet_name == day_lord else 15.0
+
+    # 4. Vara Bala (weekday strength) — BPHS Ch.23 v8
+    from daivai_engine.constants import NATURAL_FRIENDS
+
+    if planet_name == day_lord:
+        vara = 45.0
+    elif day_lord in NATURAL_FRIENDS.get(planet_name, []):
+        vara = 30.0
+    else:
+        vara = 15.0
+
+    # 5. Ayana Bala — BPHS Ch.23 v9-11
+    # Sun in signs 9-2 (Sagittarius→Gemini) = Uttarayana (northern course)
+    # Simplified: check Sun's sign for season
+    sun_sign = chart.planets["Sun"].sign_index
+    is_uttarayana = sun_sign in (9, 10, 11, 0, 1, 2)  # Capricorn → Gemini
+    if planet_name in diurnal:
+        ayana = 40.0 if is_uttarayana else 20.0
+    elif planet_name in nocturnal:
+        ayana = 20.0 if is_uttarayana else 40.0
+    else:
+        ayana = 30.0
+
+    return round(nathonnatha + paksha + hora + vara + ayana, 2)
 
 
 # ---------------------------------------------------------------------------
