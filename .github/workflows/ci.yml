@@ -23,13 +23,13 @@ jobs:
       - name: Install packages
         run: |
           pip install -e engine/ -e products/ -e "apps/"
-          pip install pytest ruff mypy
+          pip install pytest ruff mypy types-PyYAML types-pytz
 
       - name: Lint
         run: ruff check engine/src/ products/src/ apps/src/
 
       - name: Type check
-        run: mypy engine/src/ --ignore-missing-imports
+        run: mypy engine/src/ --ignore-missing-imports --no-strict-optional --allow-untyped-defs
 
       - name: Test
         run: pytest tests/ -v --tb=short

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 from jyotish_engine.compute.chart import ChartData
 from jyotish_engine.constants import PLANETS, SIGNS
 from jyotish_engine.models.divisional import DivisionalPosition
@@ -407,7 +409,7 @@ def compute_shashtyamsha_sign(longitude: float) -> int:
 
 # ── Generic Varga Computation ───────────────────────────────────────────────
 
-VARGA_FUNCTIONS: dict[str, callable] = {
+VARGA_FUNCTIONS: dict[str, Any] = {
     "D2": compute_hora_sign,
     "D3": compute_drekkana_sign,
     "D4": compute_chaturthamsha_sign,
