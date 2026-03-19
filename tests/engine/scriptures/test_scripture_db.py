@@ -17,12 +17,7 @@ from daivai_engine.scriptures.query import (
 
 
 _BPHS_DIR = (
-    Path(__file__).resolve().parents[3]
-    / "engine"
-    / "src"
-    / "daivai_engine"
-    / "scriptures"
-    / "bphs"
+    Path(__file__).resolve().parents[3] / "engine" / "src" / "daivai_engine" / "scriptures" / "bphs"
 )
 
 # Expected YAML files in bphs/

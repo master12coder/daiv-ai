@@ -24,9 +24,7 @@ class TestGandanta:
         assert "Moon" in names
         assert "Rahu" in names
 
-    def test_gandanta_detected_at_cancer_leo_junction(
-        self, manish_chart: ChartData
-    ) -> None:
+    def test_gandanta_detected_at_cancer_leo_junction(self, manish_chart: ChartData) -> None:
         """Synthetic: if Moon were at 28 deg Cancer, should be gandanta."""
         # Modify Moon to be at end of Cancer (sign index 3, ~28 deg)
         from daivai_engine.compute.gandanta import _check_one

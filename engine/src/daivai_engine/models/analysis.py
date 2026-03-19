@@ -6,6 +6,8 @@ reads from this. Nothing computes on the fly.
 
 from __future__ import annotations
 
+from typing import Any
+
 from pydantic import BaseModel, ConfigDict
 
 from daivai_engine.models.ashtakavarga import AshtakavargaResult
@@ -28,29 +30,65 @@ from daivai_engine.models.yoga import YogaResult
 
 
 class FullChartAnalysis(BaseModel):
-    """Complete pre-computed analysis — single source of truth for all layers.
+    """Complete pre-computed analysis — single source of truth.
 
     Every field is deterministic: same input chart = same output, always.
+    Versioned so stored analyses can be identified and recomputed.
     """
 
     model_config = ConfigDict(frozen=True)
 
+    version: str = "2.0"
+
+    # Core chart
     chart: ChartData
+
+    # Dashas
     mahadashas: list[DashaPeriod]
     current_md: DashaPeriod
     current_ad: DashaPeriod
+    narayana_dasha: list[DashaPeriod]
+
+    # Yogas & Doshas
     yogas: list[YogaResult]
     doshas: list[DoshaResult]
+
+    # Strength
     shadbala: list[ShadbalaResult]
     ashtakavarga: AshtakavargaResult
-    gandanta: list[GandantaResult]
-    graha_yuddha: list[GrahaYuddha]
-    deeptadi_avasthas: list[DeeptadiAvastha]
-    lajjitadi_avasthas: list[LajjitadiAvastha]
     vimshopaka: list[VimshopakaBala]
     ishta_kashta: list[IshtaKashtaPhala]
+
+    # Avasthas
+    deeptadi_avasthas: list[DeeptadiAvastha]
+    lajjitadi_avasthas: list[LajjitadiAvastha]
+
+    # Special checks
+    gandanta: list[GandantaResult]
+    graha_yuddha: list[GrahaYuddha]
+
+    # Transit (for current date)
     double_transit: list[DoubleTransit]  # From lagna
     double_transit_moon: list[DoubleTransit]  # From Moon sign
+
+    # Jaimini
     upapada: UpapadaLagna
-    lordship_context: dict  # Functional benefic/malefic per lagna
-    verification_warnings: list[str]  # Accuracy check results
+    argala: list[Any]  # ArgalaResult (from compute/argala.py)
+
+    # Special lagnas
+    special_lagnas: dict[str, Any]  # hora, bhava, ghatika
+
+    # Sudarshan Chakra
+    sudarshan: Any | None  # SudarshanChakra
+
+    # Bhava chalit comparison
+    house_shifts: list[Any]  # HouseShift from house_comparison.py
+
+    # Saham points
+    sahams: list[Any]  # SahamPoint
+
+    # Lordship context
+    lordship_context: dict
+
+    # Verification
+    verification_warnings: list[str]

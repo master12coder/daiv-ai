@@ -1,6 +1,9 @@
-"""Chart accuracy verification — internal consistency checks.
+"""Triple-layer chart accuracy verification.
 
-Catches OUR bugs in Swiss Ephemeris usage, not Swiss Ephemeris bugs.
+Layer 1: Mathematical — sign/nakshatra/house consistency
+Layer 2: Astronomical — Mercury/Venus max elongation, Moon speed, retrograde rules
+Layer 3: Jyotish — dignity cross-check, dosha consistency
+
 Run automatically after every chart computation.
 """
 
@@ -8,9 +11,12 @@ from __future__ import annotations
 
 import logging
 
+from pydantic import BaseModel
+
 from daivai_engine.constants import (
     COMBUSTION_LIMITS,
     COMBUSTION_LIMITS_RETROGRADE,
+    EXALTATION,
     NAKSHATRA_SPAN_DEG,
     NAKSHATRAS,
     NUM_NAKSHATRAS,
@@ -21,59 +27,91 @@ from daivai_engine.models.chart import ChartData
 logger = logging.getLogger(__name__)
 
 
-def verify_chart_accuracy(chart: ChartData) -> list[str]:
-    """Run internal consistency checks on a computed chart.
+class VerificationReport(BaseModel):
+    """Triple-layer verification result."""
 
-    Returns list of warning strings. Empty = all checks passed.
+    mathematical: list[str]  # Layer 1 issues
+    astronomical: list[str]  # Layer 2 issues
+    jyotish: list[str]  # Layer 3 issues
+    is_clean: bool  # True if all layers empty
+
+    @property
+    def all_warnings(self) -> list[str]:
+        """Flat list of all warnings."""
+        return self.mathematical + self.astronomical + self.jyotish
+
+
+def verify_chart_accuracy(chart: ChartData) -> list[str]:
+    """Run all verification checks. Returns flat warning list.
+
+    Backward-compatible wrapper around triple_verify().
+    """
+    report = triple_verify(chart)
+    return report.all_warnings
+
+
+def triple_verify(chart: ChartData) -> VerificationReport:
+    """Run triple-layer verification on a computed chart.
 
     Args:
         chart: Computed birth chart.
 
     Returns:
-        List of warning/error strings. Empty if clean.
+        VerificationReport with issues categorized by layer.
     """
-    warnings: list[str] = []
+    math_w = _layer1_mathematical(chart)
+    astro_w = _layer2_astronomical(chart)
+    jyotish_w = _layer3_jyotish(chart)
 
-    # CHECK 1: All longitudes in valid range
+    for w in math_w + astro_w + jyotish_w:
+        logger.warning("Chart verification: %s", w)
+
+    return VerificationReport(
+        mathematical=math_w,
+        astronomical=astro_w,
+        jyotish=jyotish_w,
+        is_clean=not (math_w or astro_w or jyotish_w),
+    )
+
+
+# ── Layer 1: Mathematical Verification ───────────────────────────────────
+
+
+def _layer1_mathematical(chart: ChartData) -> list[str]:
+    """Check internal mathematical consistency."""
+    w: list[str] = []
+
+    # All longitudes 0-360
     for name, p in chart.planets.items():
         if not (0 <= p.longitude < 360):
-            warnings.append(f"ERROR: {name} longitude {p.longitude} out of [0,360)")
+            w.append(f"L1: {name} longitude {p.longitude} out of [0,360)")
 
-    # CHECK 2: Sign index matches longitude
+    # Sign index matches longitude
     for name, p in chart.planets.items():
-        expected_sign = int(p.longitude / 30.0) % 12
-        if expected_sign != p.sign_index:
-            warnings.append(
-                f"ERROR: {name} sign mismatch: longitude gives sign {expected_sign}, "
-                f"stored sign_index={p.sign_index}"
-            )
+        expected = int(p.longitude / 30.0) % 12
+        if expected != p.sign_index:
+            w.append(f"L1: {name} sign mismatch: expected {expected}, got {p.sign_index}")
 
-    # CHECK 3: Degree in sign consistent with longitude
+    # Degree in sign consistent
     for name, p in chart.planets.items():
         expected_deg = p.longitude - p.sign_index * 30.0
         if abs(expected_deg - p.degree_in_sign) > 0.001:
-            warnings.append(
-                f"ERROR: {name} degree_in_sign mismatch: "
-                f"expected {expected_deg:.4f}, got {p.degree_in_sign:.4f}"
-            )
+            w.append(f"L1: {name} degree_in_sign off by {abs(expected_deg - p.degree_in_sign):.4f}")
 
-    # CHECK 4: Nakshatra index matches longitude
+    # Nakshatra index matches longitude
     for name, p in chart.planets.items():
-        expected_nak = int(p.longitude / NAKSHATRA_SPAN_DEG)
-        if expected_nak >= NUM_NAKSHATRAS:
-            expected_nak = NUM_NAKSHATRAS - 1
+        expected_nak = min(int(p.longitude / NAKSHATRA_SPAN_DEG), NUM_NAKSHATRAS - 1)
         if expected_nak != p.nakshatra_index:
-            warnings.append(
-                f"WARNING: {name} nakshatra mismatch: expected index {expected_nak} "
-                f"({NAKSHATRAS[expected_nak]}), got {p.nakshatra_index} ({p.nakshatra})"
+            w.append(
+                f"L1: {name} nakshatra mismatch: expected {NAKSHATRAS[expected_nak]}, got {p.nakshatra}"
             )
 
-    # CHECK 5: House numbers all 1-12
+    # House numbers 1-12
     for name, p in chart.planets.items():
         if not (1 <= p.house <= 12):
-            warnings.append(f"ERROR: {name} invalid house number {p.house}")
+            w.append(f"L1: {name} invalid house {p.house}")
 
-    # CHECK 6: Rahu and Ketu exactly 180 deg apart
+    # Rahu-Ketu 180° apart
     rahu = chart.planets.get("Rahu")
     ketu = chart.planets.get("Ketu")
     if rahu and ketu:
@@ -81,62 +119,120 @@ def verify_chart_accuracy(chart: ChartData) -> list[str]:
         if diff > 180:
             diff = 360 - diff
         if abs(diff - 180) > 0.01:
-            warnings.append(f"ERROR: Rahu-Ketu not 180° apart: diff={diff:.4f}")
+            w.append(f"L1: Rahu-Ketu not 180° apart: {diff:.4f}")
 
-    # CHECK 7: Ayanamsha reasonable for modern era (23-25° Lahiri)
+    # Ayanamsha 23-25° (Lahiri modern era)
     if not (23.0 < chart.ayanamsha < 25.0):
-        warnings.append(f"WARNING: Ayanamsha {chart.ayanamsha:.4f} outside expected 23-25° range")
+        w.append(f"L1: Ayanamsha {chart.ayanamsha:.4f} outside 23-25°")
 
-    # CHECK 8: Lagna sign index matches lagna longitude
-    expected_lagna_sign = int(chart.lagna_longitude / 30.0) % 12
-    if expected_lagna_sign != chart.lagna_sign_index:
-        warnings.append(
-            f"ERROR: Lagna sign mismatch: longitude gives {expected_lagna_sign}, "
-            f"stored {chart.lagna_sign_index}"
+    # Lagna sign matches lagna longitude
+    expected_lagna = int(chart.lagna_longitude / 30.0) % 12
+    if expected_lagna != chart.lagna_sign_index:
+        w.append(
+            f"L1: Lagna sign mismatch: expected {expected_lagna}, got {chart.lagna_sign_index}"
         )
 
-    # CHECK 9: Combustion status consistent with Sun distance
+    # No NaN/None in required fields
+    for name, p in chart.planets.items():
+        if p.longitude != p.longitude:  # NaN check
+            w.append(f"L1: {name} longitude is NaN")
+
+    return w
+
+
+# ── Layer 2: Astronomical Cross-Check ────────────────────────────────────
+
+
+def _layer2_astronomical(chart: ChartData) -> list[str]:
+    """Verify astronomical constraints that must always hold."""
+    w: list[str] = []
     sun_lon = chart.planets["Sun"].longitude
-    for name in ["Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"]:
+
+    # Mercury never more than 28° from Sun (astronomical fact — Surya Siddhanta)
+    merc = chart.planets["Mercury"]
+    merc_dist = _circular_dist(merc.longitude, sun_lon)
+    if merc_dist > 28.0:
+        w.append(f"L2: Mercury {merc_dist:.1f}° from Sun (max 28° — astronomical limit)")
+
+    # Venus never more than 47° from Sun (astronomical fact)
+    venus = chart.planets["Venus"]
+    venus_dist = _circular_dist(venus.longitude, sun_lon)
+    if venus_dist > 47.0:
+        w.append(f"L2: Venus {venus_dist:.1f}° from Sun (max 47° — astronomical limit)")
+
+    # Moon speed between 11.7°/day and 15.4°/day
+    moon = chart.planets["Moon"]
+    if not (11.5 <= abs(moon.speed) <= 15.5):
+        w.append(f"L2: Moon speed {moon.speed:.2f}°/day outside normal range 11.5-15.5")
+
+    # Sun is NEVER retrograde
+    sun = chart.planets["Sun"]
+    if sun.is_retrograde:
+        w.append("L2: Sun marked retrograde — this is astronomically impossible")
+
+    # Rahu/Ketu are ALWAYS retrograde
+    for node in ("Rahu", "Ketu"):
+        p = chart.planets.get(node)
+        if p and not p.is_retrograde:
+            w.append(f"L2: {node} not marked retrograde — nodes are always retrograde")
+
+    # Combustion distances match planet-specific BPHS limits (Ch.25)
+    for name in ("Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"):
         p = chart.planets[name]
-        dist = abs(p.longitude - sun_lon)
-        if dist > 180:
-            dist = 360 - dist
+        dist = _circular_dist(p.longitude, sun_lon)
         limit = COMBUSTION_LIMITS.get(name, 999)
         if p.is_retrograde and name in COMBUSTION_LIMITS_RETROGRADE:
             limit = COMBUSTION_LIMITS_RETROGRADE[name]
-        computed_combust = dist < limit
-        if p.is_combust != computed_combust:
-            warnings.append(
-                f"WARNING: {name} combustion mismatch: distance={dist:.2f}, "
-                f"limit={limit}, stored={p.is_combust}, computed={computed_combust}"
-            )
+        computed = dist < limit
+        if p.is_combust != computed:
+            w.append(f"L2: {name} combustion mismatch: dist={dist:.2f}° limit={limit}°")
 
-    # CHECK 10: Retrograde matches negative speed
+    # Retrograde matches negative speed (except nodes)
     for name, p in chart.planets.items():
         if name in ("Rahu", "Ketu"):
-            continue  # Always retrograde by convention
+            continue
         if p.speed < 0 and not p.is_retrograde:
-            warnings.append(
-                f"WARNING: {name} has negative speed ({p.speed:.4f}) but is_retrograde=False"
-            )
+            w.append(f"L2: {name} speed={p.speed:.4f} but not retrograde")
         if p.speed > 0 and p.is_retrograde:
-            warnings.append(
-                f"WARNING: {name} has positive speed ({p.speed:.4f}) but is_retrograde=True"
+            w.append(f"L2: {name} speed={p.speed:.4f} but marked retrograde")
+
+    return w
+
+
+# ── Layer 3: Jyotish Consistency ─────────────────────────────────────────
+
+
+def _layer3_jyotish(chart: ChartData) -> list[str]:
+    """Verify Jyotish-specific consistency rules."""
+    w: list[str] = []
+
+    # Exaltation sign must match stored dignity
+    for name, p in chart.planets.items():
+        if name in ("Rahu", "Ketu"):
+            continue  # Rahu/Ketu exaltation debated
+        if p.dignity == "exalted" and EXALTATION.get(name) != p.sign_index:
+            w.append(
+                f"L3: {name} dignity='exalted' but sign {p.sign_index} "
+                f"is not exaltation sign {EXALTATION.get(name)}"
+            )
+        if EXALTATION.get(name) == p.sign_index and p.dignity != "exalted":
+            w.append(
+                f"L3: {name} in exaltation sign {p.sign_index} "
+                f"but dignity='{p.dignity}' (should be 'exalted')"
             )
 
-    # CHECK 11: No two planets (except Rahu/Ketu) have identical longitude
+    # No two planets (except Rahu/Ketu) at identical longitude
     lons: dict[str, float] = {}
     for name, p in chart.planets.items():
-        for prev_name, prev_lon in lons.items():
-            if abs(p.longitude - prev_lon) < 0.0001 and {name, prev_name} != {"Rahu", "Ketu"}:
-                warnings.append(
-                    f"WARNING: {name} and {prev_name} have near-identical "
-                    f"longitude ({p.longitude:.4f})"
-                )
+        for prev, prev_lon in lons.items():
+            if abs(p.longitude - prev_lon) < 0.0001 and {name, prev} != {"Rahu", "Ketu"}:
+                w.append(f"L3: {name} and {prev} at identical longitude {p.longitude:.4f}")
         lons[name] = p.longitude
 
-    for w in warnings:
-        logger.warning("Chart verification: %s", w)
+    return w
 
-    return warnings
+
+def _circular_dist(lon1: float, lon2: float) -> float:
+    """Minimum angular distance between two longitudes."""
+    diff = abs(lon1 - lon2) % 360.0
+    return min(diff, 360.0 - diff)

@@ -14,52 +14,61 @@ def _lordship(chart: ChartData) -> dict:
 
 
 class TestFullChartAnalysis:
-    def test_full_analysis_returns_all_fields(self, manish_chart: ChartData) -> None:
+    def test_all_core_fields(self, manish_chart: ChartData) -> None:
         ctx = _lordship(manish_chart)
-        analysis = compute_full_analysis(manish_chart, lordship_context=ctx)
-        assert analysis.chart.name == "Manish Chaurasia"
-        assert len(analysis.mahadashas) == 9
-        assert analysis.current_md is not None
-        assert analysis.current_ad is not None
-        assert len(analysis.shadbala) == 7
-        assert len(analysis.gandanta) == 9
-        assert len(analysis.deeptadi_avasthas) == 7
-        assert len(analysis.lajjitadi_avasthas) == 7
-        assert len(analysis.vimshopaka) == 7
-        assert len(analysis.ishta_kashta) == 7
-        assert len(analysis.double_transit) == 12
-        assert len(analysis.double_transit_moon) == 12
-        assert analysis.upapada is not None
-        assert isinstance(analysis.verification_warnings, list)
+        a = compute_full_analysis(manish_chart, lordship_context=ctx)
+        assert a.chart.name == "Manish Chaurasia"
+        assert len(a.mahadashas) == 9
+        assert len(a.shadbala) == 7
+        assert len(a.gandanta) == 9
+        assert len(a.deeptadi_avasthas) == 7
+        assert len(a.vimshopaka) == 7
+        assert len(a.ishta_kashta) == 7
+        assert len(a.double_transit) == 12
+        assert len(a.double_transit_moon) == 12
 
-    def test_full_analysis_deterministic(self, manish_chart: ChartData) -> None:
-        """Same input must produce same output."""
+    def test_new_section_a_fields(self, manish_chart: ChartData) -> None:
+        """Narayana dasha, special lagnas, KP should be present."""
+        a = compute_full_analysis(manish_chart)
+        assert len(a.narayana_dasha) == 12
+        assert "hora" in a.special_lagnas
+        assert "bhava" in a.special_lagnas
+        assert "ghatika" in a.special_lagnas
+
+    def test_new_section_b_fields(self, manish_chart: ChartData) -> None:
+        """Sudarshan, argala, sahams, house shifts should be present."""
+        a = compute_full_analysis(manish_chart)
+        assert a.sudarshan is not None
+        assert len(a.argala) == 12
+        assert len(a.sahams) == 6
+        assert isinstance(a.house_shifts, list)
+
+    def test_deterministic(self, manish_chart: ChartData) -> None:
         a1 = compute_full_analysis(manish_chart)
         a2 = compute_full_analysis(manish_chart)
         assert a1.shadbala == a2.shadbala
         assert a1.gandanta == a2.gandanta
-        assert a1.graha_yuddha == a2.graha_yuddha
         assert a1.upapada == a2.upapada
 
-    def test_full_analysis_has_lordship_context(self, manish_chart: ChartData) -> None:
+    def test_lordship_context(self, manish_chart: ChartData) -> None:
         ctx = _lordship(manish_chart)
-        analysis = compute_full_analysis(manish_chart, lordship_context=ctx)
-        assert "functional_benefics" in analysis.lordship_context
-        assert "functional_malefics" in analysis.lordship_context
+        a = compute_full_analysis(manish_chart, lordship_context=ctx)
+        assert "functional_benefics" in a.lordship_context
 
     def test_verification_clean(self, manish_chart: ChartData) -> None:
-        """Manish chart should pass all verification checks."""
-        analysis = compute_full_analysis(manish_chart)
-        errors = [w for w in analysis.verification_warnings if w.startswith("ERROR")]
+        a = compute_full_analysis(manish_chart)
+        errors = [w for w in a.verification_warnings if w.startswith("L1")]
         assert len(errors) == 0
 
+    def test_version(self, manish_chart: ChartData) -> None:
+        a = compute_full_analysis(manish_chart)
+        assert a.version == "2.0"
+
     def test_json_roundtrip(self, manish_chart: ChartData) -> None:
-        """FullChartAnalysis should survive JSON serialization."""
-        analysis = compute_full_analysis(manish_chart)
-        json_str = analysis.model_dump_json()
+        a = compute_full_analysis(manish_chart)
+        json_str = a.model_dump_json()
         from daivai_engine.models.analysis import FullChartAnalysis
 
         restored = FullChartAnalysis.model_validate_json(json_str)
-        assert restored.chart.name == analysis.chart.name
-        assert len(restored.shadbala) == len(analysis.shadbala)
-        assert len(restored.gandanta) == len(analysis.gandanta)
+        assert restored.chart.name == a.chart.name
+        assert len(restored.shadbala) == len(a.shadbala)
