@@ -75,6 +75,30 @@ spica:
     rectangular projection; Surya Siddhanta uses polar projection.
     These give slightly different longitudes.
 
+# ── VERIFIED VALUES for 13 March 1989 ────────────────────────
+# Cross-verified against 2 independent external sources:
+#   Source 1: Online Ayanamsa Calculator → 23:42:20
+#   Source 2: Ayanamsa Prediction tool → 23:42:22 (23.70617403°)
+#   Our engine (Swiss Ephemeris SIDM_LAHIRI) → 23:42:22.23 (23.70617398°)
+#   Delta: Source 1 = 2.23", Source 2 = 0.00" (exact match to 5 decimals)
+verified_values_1989_march_13:
+  lahiri:
+    engine_value: "23°42'22.23\" (23.70617398°)"
+    source_1: "23°42'20\" (Ayanamsa Calculator)"
+    source_2: "23°42'22\" (Ayanamsa Prediction, 23.70617403°)"
+    delta_arcseconds: 2.23
+    status: "VERIFIED — all 3 sources agree within 2.2 arcseconds"
+  raman:
+    source_1: "22°15'40\""
+    source_2: "22°15'35\""
+    delta_from_lahiri: "1°26'40\""
+  kp_old:
+    source_1: "23°36'42\""
+    delta_from_lahiri: "5'38\""
+  kp_new:
+    source_1: "23°36'57\""
+    delta_from_lahiri: "5'23\""
+
 manish_sensitivity:
   moon_distance_from_nakshatra_boundary_degrees: 8.65
   pada_change_under_raman: true
