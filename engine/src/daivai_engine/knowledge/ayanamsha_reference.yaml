@@ -83,3 +83,33 @@ manish_sensitivity:
   conclusion: "Safe under all Lahiri-family variants. Raman changes pada."
 
 boundary_alert_threshold_degrees: 1.5
+
+coordinate_frame:
+  engine_uses: "geocentric"
+  required_by: "Vedic tradition and Indian government standards (IAE)"
+  warning: >
+    NEVER use topocentric positions for Vedic chart computation.
+    The Moon's topocentric position can differ from geocentric by up
+    to 1 degree (~25 arcminutes typical). This dwarfs the ayanamsha
+    precision (~1 arcsecond). Using topocentric Moon would shift
+    nakshatra pada and dasha balance for many charts.
+  implementation: >
+    chart.py uses swe.FLG_SIDEREAL | swe.FLG_SPEED (geocentric).
+    swe.FLG_TOPOCTR is NOT used. This is correct.
+  source: "Scholarly consensus. IAE uses geocentric apparent longitudes."
+
+precession_model:
+  engine_uses: "Vondrák/Capitaine/Wallace 2011 (via Swiss Ephemeris)"
+  iae_uses: "Modified Newcomb / IAU 1976 (Lieske)"
+  delta: "Sub-arcsecond for modern dates. ~0.362\" correction documented."
+  note: >
+    The ~6.5\" difference between our engine (23°42'22\") and the
+    research's hand-calculation (23°42'28\") is because the research
+    used linear interpolation from a Jan 1 base value, while Swiss
+    Ephemeris uses the full non-linear Vondrák 2011 model. Swiss
+    Ephemeris is MORE accurate than the hand calculation.
+
+nutation:
+  engine_uses: "true (includes short-period nutation via Swiss Ephemeris)"
+  impact: "True vs mean ayanamsha differ by up to 17 arcseconds"
+  note: "Most astrologers use true values without knowing the distinction."
