@@ -1,0 +1,256 @@
+# =============================================================================
+# Avakhada Chakra — Complete Mapping Tables
+# Source: Brihat Parasara Hora Shastra and classical Jyotish texts
+# =============================================================================
+# The Avakhada Chakra ("birth table") contains 18 classical qualities derived
+# primarily from the Moon's nakshatra, pada, and sign position relative to the
+# lagna. Used in birth analysis and Ashta Koota horoscope matching.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# PAYA (base metal) — determined by Moon's nakshatra number (1–27)
+# -----------------------------------------------------------------------------
+# Classical cyclical method: nakshatra_number % 4 determines the metal.
+# The four metals cycle continuously through all 27 nakshatras.
+#
+# Verification:  Rohini = nakshatra 4,  4 % 4 = 0  →  Iron  ✓ (InstaAstro)
+#                Ashwini = nakshatra 1, 1 % 4 = 1  →  Gold
+#                Bharani = nakshatra 2, 2 % 4 = 2  →  Silver
+#                Krittika = nakshatra 3, 3 % 4 = 3 →  Copper
+# -----------------------------------------------------------------------------
+paya:
+  method: nakshatra_cyclic
+  description: >
+    Moon's 1-indexed nakshatra number modulo 4 determines Paya (base metal).
+    Remainder 0=Iron, 1=Gold, 2=Silver, 3=Copper. Repeats every 4 nakshatras.
+  mod_map:
+    0: Iron
+    1: Gold
+    2: Silver
+    3: Copper
+  interpretation:
+    Gold:   "Most auspicious — divine grace, prosperity, leadership quality"
+    Silver: "Auspicious — social success, comfort, aesthetic refinement"
+    Copper: "Mixed — moderate effort yields moderate results"
+    Iron:   "Challenging — strong will needed; spiritual strength through trials"
+
+# -----------------------------------------------------------------------------
+# TATVA (element) — determined by Moon's nakshatra pada (1–4)
+# -----------------------------------------------------------------------------
+# The four padas of every nakshatra correspond to the four Purusharthas
+# (life goals) which map to four of the five Panchamahabhuta elements.
+# This is independent of the nakshatra itself — only the pada matters.
+#
+# Verification:  Manish Chaurasia, Rohini Pada 2  →  Tatva = Earth  ✓ (InstaAstro)
+# -----------------------------------------------------------------------------
+tatva:
+  method: pada_based
+  description: >
+    Moon's pada (1–4) maps to Panchamahabhuta (five great elements).
+    Pada 1=Fire (Dharma/Agni), Pada 2=Earth (Artha/Prithvi),
+    Pada 3=Air (Kama/Vayu), Pada 4=Water (Moksha/Jala).
+  pada_map:
+    1: Fire
+    2: Earth
+    3: Air
+    4: Water
+  sanskrit_names:
+    Fire:  Agni
+    Earth: Prithvi
+    Air:   Vayu
+    Water: Jala
+
+# -----------------------------------------------------------------------------
+# YUNJA (birth group) — based on Moon's nakshatra number (1–27)
+# -----------------------------------------------------------------------------
+# The 27 nakshatras are divided into three equal groups of 9.
+# Each group is called a Yunja (junction/period).
+# Verification:  Rohini = nakshatra 4, falls in group 1–9  →  Poorva  ✓
+# -----------------------------------------------------------------------------
+yunja:
+  method: nakshatra_thirds
+  description: >
+    27 nakshatras divided into three equal groups of 9.
+    Poorva (former, nakshatras 1–9), Madhya (middle, 10–18),
+    Uttara (latter, 19–27).
+  groups:
+    Poorva:
+      range: [1, 9]
+      nakshatras:
+        - Ashwini
+        - Bharani
+        - Krittika
+        - Rohini
+        - Mrigashira
+        - Ardra
+        - Punarvasu
+        - Pushya
+        - Ashlesha
+    Madhya:
+      range: [10, 18]
+      nakshatras:
+        - Magha
+        - Purva Phalguni
+        - Uttara Phalguni
+        - Hasta
+        - Chitra
+        - Swati
+        - Vishakha
+        - Anuradha
+        - Jyeshtha
+    Uttara:
+      range: [19, 27]
+      nakshatras:
+        - Moola
+        - Purva Ashadha
+        - Uttara Ashadha
+        - Shravana
+        - Dhanishta
+        - Shatabhisha
+        - Purva Bhadrapada
+        - Uttara Bhadrapada
+        - Revati
+
+# -----------------------------------------------------------------------------
+# VASHYA (dominance/creature type) — based on Moon's sign (0–11)
+# -----------------------------------------------------------------------------
+# Each zodiac sign is associated with a class of creature. In Avakhada Chakra,
+# this indicates the native's Vashya type for temperament and compatibility.
+# -----------------------------------------------------------------------------
+vashya:
+  method: sign_based
+  description: >
+    Moon's sign (0-indexed, 0=Aries) determines the Vashya type —
+    the class of creature the native represents in Avakhada Chakra.
+  sign_map:
+    0: Chatushpad   # Mesha (Aries) — four-legged/quadruped
+    1: Chatushpad   # Vrishabha (Taurus) — four-legged/quadruped
+    2: Manav        # Mithuna (Gemini) — human/biped
+    3: Jalachara    # Karka (Cancer) — aquatic creature
+    4: Vanchar      # Simha (Leo) — wild/forest animal
+    5: Manav        # Kanya (Virgo) — human/biped
+    6: Manav        # Tula (Libra) — human/biped
+    7: Keet         # Vrischika (Scorpio) — insect/reptile
+    8: Chatushpad   # Dhanu (Sagittarius) — four-legged
+    9: Chatushpad   # Makara (Capricorn) — four-legged (some: Jalachara)
+    10: Manav       # Kumbha (Aquarius) — human/biped
+    11: Jalachara   # Meena (Pisces) — aquatic creature
+
+# -----------------------------------------------------------------------------
+# NAME ALPHABETS (Akshar) — based on nakshatra (0-indexed) and pada (1–4)
+# -----------------------------------------------------------------------------
+# Each of the 27 nakshatras × 4 padas = 108 syllables (Aksharas).
+# The native's given name traditionally begins with the Akshar for their
+# Moon nakshatra + pada combination.
+#
+# Verification:  Rohini Pada 2 (index 3, pada 2)  →  "Va"  ✓
+# -----------------------------------------------------------------------------
+name_alphabets:
+  - nakshatra: Ashwini
+    number: 1
+    index: 0
+    padas: [Chu, Che, Cho, La]
+  - nakshatra: Bharani
+    number: 2
+    index: 1
+    padas: [Li, Lu, Le, Lo]
+  - nakshatra: Krittika
+    number: 3
+    index: 2
+    padas: [A, I, U, E]
+  - nakshatra: Rohini
+    number: 4
+    index: 3
+    padas: [O, Va, Vi, Vu]
+  - nakshatra: Mrigashira
+    number: 5
+    index: 4
+    padas: [Ve, Vo, Ka, Ki]
+  - nakshatra: Ardra
+    number: 6
+    index: 5
+    padas: [Ku, Gha, Na, Cha]
+  - nakshatra: Punarvasu
+    number: 7
+    index: 6
+    padas: [Ke, Ko, Ha, Hi]
+  - nakshatra: Pushya
+    number: 8
+    index: 7
+    padas: [Hu, He, Ho, Da]
+  - nakshatra: Ashlesha
+    number: 9
+    index: 8
+    padas: [Di, Du, De, Do]
+  - nakshatra: Magha
+    number: 10
+    index: 9
+    padas: [Ma, Mi, Mu, Me]
+  - nakshatra: Purva Phalguni
+    number: 11
+    index: 10
+    padas: [Mo, Ta, Ti, Tu]
+  - nakshatra: Uttara Phalguni
+    number: 12
+    index: 11
+    padas: [Te, To, Pa, Pi]
+  - nakshatra: Hasta
+    number: 13
+    index: 12
+    padas: [Pu, Sha, Na, Tha]
+  - nakshatra: Chitra
+    number: 14
+    index: 13
+    padas: [Pe, Po, Ra, Ri]
+  - nakshatra: Swati
+    number: 15
+    index: 14
+    padas: [Ru, Re, Ro, Ta]
+  - nakshatra: Vishakha
+    number: 16
+    index: 15
+    padas: [Ti, Tu, Te, To]
+  - nakshatra: Anuradha
+    number: 17
+    index: 16
+    padas: [Na, Ni, Nu, Ne]
+  - nakshatra: Jyeshtha
+    number: 18
+    index: 17
+    padas: [No, Ya, Yi, Yu]
+  - nakshatra: Moola
+    number: 19
+    index: 18
+    padas: [Ye, Yo, Bha, Bhi]
+  - nakshatra: Purva Ashadha
+    number: 20
+    index: 19
+    padas: [Bhu, Dha, Pha, Da]
+  - nakshatra: Uttara Ashadha
+    number: 21
+    index: 20
+    padas: [Be, Bo, Ja, Ji]
+  - nakshatra: Shravana
+    number: 22
+    index: 21
+    padas: [Khi, Khu, Khe, Kho]
+  - nakshatra: Dhanishta
+    number: 23
+    index: 22
+    padas: [Ga, Gi, Gu, Ge]
+  - nakshatra: Shatabhisha
+    number: 24
+    index: 23
+    padas: [Go, Sa, Si, Su]
+  - nakshatra: Purva Bhadrapada
+    number: 25
+    index: 24
+    padas: [Se, So, Da, Di]
+  - nakshatra: Uttara Bhadrapada
+    number: 26
+    index: 25
+    padas: [Du, Tha, Jha, Na]
+  - nakshatra: Revati
+    number: 27
+    index: 26
+    padas: [De, Do, Cha, Chi]

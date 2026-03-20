@@ -9,13 +9,14 @@ from __future__ import annotations
 
 from daivai_engine.compute.divisional import compute_navamsha_sign
 from daivai_engine.constants import (
+    ASPECT_STRENGTH_DEFAULT,
+    ASPECT_STRENGTHS,
     DEBILITATION,
     EXALTATION,
     EXALTATION_DEGREE,
     KENDRAS,
     MOOLTRIKONA,
     OWN_SIGNS,
-    SPECIAL_ASPECTS,
 )
 from daivai_engine.models.chart import ChartData
 from daivai_engine.models.strength import PlanetStrength, ShadbalaResult
@@ -205,21 +206,137 @@ def _dig_bala(chart: ChartData, planet_name: str) -> float:
 
 
 # ---------------------------------------------------------------------------
-# 3. Kala Bala (temporal strength, simplified)
+# 3. Kala Bala (temporal strength)
 # ---------------------------------------------------------------------------
+
+# Module-level cache so Abda/Masa lords are computed once per chart.
+# Key: (dob, tob, timezone_name) → (abda_lord, masa_lord)
+_abda_masa_cache: dict[tuple[str, str, str], tuple[str, str]] = {}
+
+
+def _find_solar_ingress(target_sign: int, jd_near: float) -> float:
+    """Find the JD when the Sun entered *target_sign*, searching backward.
+
+    Uses a two-phase approach: step back day-by-day until the Sun is in the
+    prior sign, then binary-search for the precise ingress moment.
+
+    Args:
+        target_sign: Sign index (0-11) the Sun is currently in.
+        jd_near: Julian Day near or after the ingress.
+
+    Returns:
+        Julian Day of solar ingress into target_sign.
+    """
+    import swisseph as swe
+
+    swe.set_sid_mode(swe.SIDM_LAHIRI)
+
+    # Step backward by whole days until Sun is in prior sign (max 35 days)
+    jd_prev = jd_near
+    for _ in range(36):
+        jd_prev -= 1.0
+        lon = swe.calc_ut(jd_prev, swe.SUN, swe.FLG_SIDEREAL)[0][0]
+        if int(lon / 30.0) != target_sign:
+            break
+
+    # Binary search for ingress moment (within ~1 second accuracy)
+    lo, hi = jd_prev, jd_prev + 2.0
+    for _ in range(50):
+        mid = (lo + hi) / 2.0
+        lon_mid = swe.calc_ut(mid, swe.SUN, swe.FLG_SIDEREAL)[0][0]
+        if int(lon_mid / 30.0) == target_sign:
+            hi = mid
+        else:
+            lo = mid
+
+    return (lo + hi) / 2.0
+
+
+def _jd_to_day_planet(jd: float, tz_name: str) -> str:
+    """Return the planet ruling the weekday corresponding to *jd*.
+
+    Converts the Julian Day to local time and maps Mon-Sun to the
+    classical Vedic weekday planet (Sun=0 → Sun, Mon=1 → Moon, …).
+
+    Args:
+        jd: Julian Day number.
+        tz_name: Timezone name for local-time conversion.
+
+    Returns:
+        Planet name (e.g., "Sun", "Moon", "Mars", …).
+    """
+    import pytz
+
+    from daivai_engine.compute.datetime_utils import from_jd
+    from daivai_engine.constants import DAY_PLANET
+
+    utc_dt = from_jd(jd)
+    local_dt = utc_dt.astimezone(pytz.timezone(tz_name))
+
+    # Python weekday: Mon=0 … Sun=6 → convert to Sun=0 … Sat=6
+    py_wd = local_dt.weekday()
+    sun_zero = {0: 1, 1: 2, 2: 3, 3: 4, 4: 5, 5: 6, 6: 0}
+    return DAY_PLANET[sun_zero[py_wd]]
+
+
+def _compute_abda_masa_lords(chart: ChartData) -> tuple[str, str]:
+    """Compute the Abda Lord (year) and Masa Lord (month) for Kala Bala.
+
+    Abda Lord:  Planet ruling the weekday of Sun's entry into Aries (Mesha
+                Sankranti) in the birth year. Receives 15 Virupas.
+    Masa Lord:  Planet ruling the weekday of Sun's entry into its current
+                sign at birth (start of the solar month). Receives 30 Virupas.
+
+    Source: BPHS Chapter 23, v13-18.
+
+    Returns:
+        (abda_lord, masa_lord) — planet names as strings.
+    """
+    from datetime import datetime
+
+    import pytz
+    import swisseph as swe
+
+    from daivai_engine.compute.datetime_utils import parse_birth_datetime, to_jd
+
+    birth_dt = parse_birth_datetime(chart.dob, chart.tob, chart.timezone_name)
+    jd_birth = to_jd(birth_dt)
+
+    # 1. Masa Lord: find when Sun entered its current sign
+    sun_sign = chart.planets["Sun"].sign_index
+    jd_masa = _find_solar_ingress(sun_sign, jd_birth)
+    masa_lord = _jd_to_day_planet(jd_masa, chart.timezone_name)
+
+    # 2. Abda Lord: find Mesha Sankranti (Sun enters Aries, sign 0) in
+    # the birth year. Sidereal Mesha Sankranti falls around April 13-15.
+    swe.set_sid_mode(swe.SIDM_LAHIRI)
+    tz = pytz.timezone(chart.timezone_name)
+
+    # Search ±20 days around April 14 of birth year
+    jd_april14 = to_jd(tz.localize(datetime(birth_dt.year, 4, 14, 12, 0)))
+    jd_abda = jd_birth  # fallback
+
+    for delta in range(-20, 21):
+        jd_try = jd_april14 + delta
+        lon_try = swe.calc_ut(jd_try, swe.SUN, swe.FLG_SIDEREAL)[0][0]
+        if int(lon_try / 30.0) == 0:  # Sun is in Aries
+            jd_abda = _find_solar_ingress(0, jd_try)
+            break
+
+    abda_lord = _jd_to_day_planet(jd_abda, chart.timezone_name)
+    return abda_lord, masa_lord
 
 
 def _kala_bala(chart: ChartData, planet_name: str) -> float:
-    """Temporal strength — 5 sub-components from BPHS Ch.23.
+    """Temporal strength — 7 sub-components from BPHS Ch.23.
 
-    1. Nathonnatha: Day/night birth. Diurnal planets (Sun, Jupiter, Venus)
-       strong in day birth (60), nocturnal (Moon, Mars, Saturn) in night (60).
-    2. Paksha: Benefics strong in Shukla Paksha, malefics in Krishna.
-    3. Hora: Planetary hour lord gets 60 points. Others get 0.
-       (Simplified: based on birth hour's planet)
-    4. Vara: Weekday lord gets 45, friends get 30, others 15.
-    5. Ayana: Planets strong when Sun in Uttarayana (Capricorn→Gemini).
-       (Simplified: 30 average — would need Sun's declination for full calc)
+    1. Nathonnatha (60): Day/night birth preference per planet.
+    2. Paksha (60): Lunar-fortnight preference (benefics/malefics).
+    3. Hora (60): Planetary hour lord at birth.
+    4. Vara (45): Weekday lord strength.
+    5. Ayana (40/20): Uttarayana / Dakshinayana preference.
+    6. Masa (30): Solar month lord receives 30 Virupas.  [BPHS Ch.23 v13-15]
+    7. Abda (15): Solar year lord receives 15 Virupas.   [BPHS Ch.23 v16-18]
 
     Source: BPHS Chapter 23.
     """
@@ -227,9 +344,6 @@ def _kala_bala(chart: ChartData, planet_name: str) -> float:
     sun_lon = chart.planets["Sun"].longitude
 
     # 1. Nathonnatha Bala (day/night) — BPHS Ch.23 v1-3
-    # Diurnal planets: Sun, Jupiter, Venus — strong if born during day
-    # Nocturnal planets: Moon, Mars, Saturn — strong if born at night
-    # Day birth = Sun above horizon = Sun in houses 7-12
     sun_house = chart.planets["Sun"].house
     is_day_birth = sun_house >= 7  # Sun above horizon
     diurnal = {"Sun", "Jupiter", "Venus"}
@@ -252,15 +366,12 @@ def _kala_bala(chart: ChartData, planet_name: str) -> float:
         paksha = 30.0
 
     # 3. Hora Bala (planetary hour) — BPHS Ch.23 v7
-    # Each hour of the day is ruled by a planet in the Chaldean order
-    # Simplified: weekday lord gets 60, same-element gets 30
     from daivai_engine.compute.datetime_utils import parse_birth_datetime
-
-    birth_dt = parse_birth_datetime(chart.dob, chart.tob, chart.timezone_name)
     from daivai_engine.constants import DAY_PLANET
 
+    birth_dt = parse_birth_datetime(chart.dob, chart.tob, chart.timezone_name)
     weekday = birth_dt.weekday()
-    day_idx = (weekday + 1) % 7  # Sunday=0
+    day_idx = (weekday + 1) % 7  # Sun=0
     day_lord = DAY_PLANET.get(day_idx, "Sun")
     hora = 60.0 if planet_name == day_lord else 15.0
 
@@ -275,8 +386,6 @@ def _kala_bala(chart: ChartData, planet_name: str) -> float:
         vara = 15.0
 
     # 5. Ayana Bala — BPHS Ch.23 v9-11
-    # Sun in signs 9-2 (Sagittarius→Gemini) = Uttarayana (northern course)
-    # Simplified: check Sun's sign for season
     sun_sign = chart.planets["Sun"].sign_index
     is_uttarayana = sun_sign in (9, 10, 11, 0, 1, 2)  # Capricorn → Gemini
     if planet_name in diurnal:
@@ -286,7 +395,16 @@ def _kala_bala(chart: ChartData, planet_name: str) -> float:
     else:
         ayana = 30.0
 
-    return round(nathonnatha + paksha + hora + vara + ayana, 2)
+    # 6 & 7. Masa Bala + Abda Bala — BPHS Ch.23 v13-18
+    cache_key = (chart.dob, chart.tob, chart.timezone_name)
+    if cache_key not in _abda_masa_cache:
+        _abda_masa_cache[cache_key] = _compute_abda_masa_lords(chart)
+    abda_lord, masa_lord = _abda_masa_cache[cache_key]
+
+    masa = 30.0 if planet_name == masa_lord else 0.0
+    abda = 15.0 if planet_name == abda_lord else 0.0
+
+    return round(nathonnatha + paksha + hora + vara + ayana + masa + abda, 2)
 
 
 # ---------------------------------------------------------------------------
@@ -340,14 +458,39 @@ def _naisargika_bala(planet_name: str) -> float:
 
 
 # ---------------------------------------------------------------------------
-# 6. Drik Bala (aspectual strength, simplified)
+# 6. Drik Bala (aspectual strength with graduated BPHS percentages)
 # ---------------------------------------------------------------------------
 
 
-def _drik_bala(chart: ChartData, planet_name: str) -> float:
-    """Simplified aspectual strength from aspects received.
+def _get_aspect_strength(planet_name: str, planet_house: int, target_house: int) -> float:
+    """Return the aspect strength fraction (0.0-1.0) cast by *planet_name*.
 
-    +15 for each benefic aspect, -15 for each malefic aspect.
+    Uses BPHS graduated aspect strengths from ASPECT_STRENGTHS in constants:
+      - All planets: 7th house = 1.0 (Poorna Drishti / full aspect)
+      - Mars:    4th = 0.75, 8th = 1.0
+      - Jupiter: 5th = 0.50, 9th = 1.0
+      - Saturn:  3rd = 0.25, 10th = 1.0
+      - Rahu/Ketu: 5th = 0.50, 9th = 1.0
+
+    Args:
+        planet_name: Name of the aspecting planet.
+        planet_house: House (1-12) the planet occupies.
+        target_house: House (1-12) being aspected.
+
+    Returns:
+        Strength fraction in [0.0, 1.0].
+    """
+    # "Nth house from planet" — 1-indexed forward count
+    which = (target_house - planet_house) % 12 + 1
+    strengths = ASPECT_STRENGTHS.get(planet_name, ASPECT_STRENGTH_DEFAULT)
+    return strengths.get(which, 0.0)
+
+
+def _drik_bala(chart: ChartData, planet_name: str) -> float:
+    """Aspectual strength using BPHS graduated aspect percentages.
+
+    Benefic aspects: +15 x strength_fraction
+    Malefic aspects: -15 x strength_fraction
     """
     p = chart.planets[planet_name]
     target_house = p.house
@@ -357,31 +500,22 @@ def _drik_bala(chart: ChartData, planet_name: str) -> float:
         if other_name == planet_name:
             continue
         other = chart.planets[other_name]
-        other_house = other.house
-
-        # Check if other planet aspects this planet's house
-        if _aspects_house(other_name, other_house, target_house):
+        strength = _get_aspect_strength(other_name, other.house, target_house)
+        if strength > 0.0:
             if other_name in _BENEFICS:
-                score += 15.0
+                score += 15.0 * strength
             elif other_name in _MALEFICS:
-                score -= 15.0
+                score -= 15.0 * strength
 
     return round(score, 2)
 
 
 def _aspects_house(planet_name: str, planet_house: int, target_house: int) -> bool:
-    """Check if a planet aspects a target house (7th + special aspects)."""
-    # Standard 7th aspect
-    seventh = ((planet_house - 1 + 6) % 12) + 1
-    if seventh == target_house:
-        return True
-    # Special aspects
-    if planet_name in SPECIAL_ASPECTS:
-        for asp_offset in SPECIAL_ASPECTS[planet_name]:
-            aspected = ((planet_house - 1 + asp_offset - 1) % 12) + 1
-            if aspected == target_house:
-                return True
-    return False
+    """Return True if planet casts any aspect on target_house.
+
+    Retained for backward compatibility with code that calls this directly.
+    """
+    return _get_aspect_strength(planet_name, planet_house, target_house) > 0.0
 
 
 # ---------------------------------------------------------------------------

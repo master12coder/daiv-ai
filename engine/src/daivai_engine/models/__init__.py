@@ -4,6 +4,7 @@ All core model classes are re-exported here for convenient access.
 """
 
 from daivai_engine.models.ashtakavarga import AshtakavargaResult
+from daivai_engine.models.avakhada import AvakhadaChakra
 from daivai_engine.models.bhava_chalit import BhavaChalitResult, BhavaPlanet
 from daivai_engine.models.chart import ChartData, PlanetData
 from daivai_engine.models.daily import DailySuggestion, TransitImpact
@@ -34,6 +35,8 @@ __all__ = [
     # ashtakavarga.py
     "AshtakavargaResult",
     "AshtottariDashaPeriod",
+    # avakhada.py
+    "AvakhadaChakra",
     "BhavaChalitResult",
     # bhava_chalit.py
     "BhavaPlanet",
