@@ -58,3 +58,76 @@ mutual_aspects:
   examples:
     - "Mars in 1st, Saturn in 7th = mutual 7th aspect"
     - "Jupiter in 1st, Saturn in 3rd = Jupiter aspects Saturn (5th), Saturn aspects Jupiter (3rd)"
+
+# =============================================================================
+# ASPECT STRENGTH PERCENTAGES (Drik Bala weights)
+# Source: BPHS Chapter 23 — Kala Bala / Drik Bala computation
+# =============================================================================
+# Base rule: ALL planets cast 100% (Poorna Drishti) on the 7th house from them.
+# Special planets cast graduated aspects on additional houses.
+# All other house positions receive 0% (no aspect strength).
+#
+# Percentages represent fraction of full aspect strength:
+#   100% = Poorna Drishti (full sight)
+#    75% = Tritiya Drishti (three-quarter sight)
+#    50% = Ardha Drishti (half sight)
+#    25% = Pada Drishti (quarter sight)
+# =============================================================================
+aspect_strengths:
+
+  # ── Standard 7th aspect (all planets) ──────────────────────────────────────
+  standard:
+    house_7: 100     # Poorna Drishti — all 9 planets
+    description: "Every planet aspects the 7th house from its position at full strength"
+
+  # ── Mars special aspects ───────────────────────────────────────────────────
+  # Mars rules aggression, property (4th), and transformation (8th).
+  Mars:
+    house_4:  75     # Tritiya Drishti — three-quarter aspect
+    house_7: 100     # Poorna Drishti — standard full aspect
+    house_8: 100     # Poorna Drishti — special full aspect
+
+  # ── Jupiter special aspects ────────────────────────────────────────────────
+  # Jupiter rules wisdom (5th/progeny) and dharma/fortune (9th).
+  Jupiter:
+    house_5:  50     # Ardha Drishti — half aspect
+    house_7: 100     # Poorna Drishti — standard full aspect
+    house_9: 100     # Poorna Drishti — special full aspect
+
+  # ── Saturn special aspects ─────────────────────────────────────────────────
+  # Saturn tests courage/effort (3rd) and disciplines karma/career (10th).
+  Saturn:
+    house_3:  25     # Pada Drishti — quarter aspect
+    house_7: 100     # Poorna Drishti — standard full aspect
+    house_10: 100    # Poorna Drishti — special full aspect
+
+  # ── Rahu special aspects (Parashari tradition) ─────────────────────────────
+  # Rahu is given Jupiter-style aspects in the Parashari system.
+  Rahu:
+    house_5:  50
+    house_7: 100
+    house_9: 100
+
+  # ── Ketu special aspects ───────────────────────────────────────────────────
+  # Ketu mirrors Jupiter's aspects with a spiritually detaching quality.
+  Ketu:
+    house_5:  50
+    house_7: 100
+    house_9: 100
+
+# Unified house-offset reference table
+# Shows the maximum strength any planet can cast on each house position.
+# (Actual strength depends on the specific planet aspecting.)
+house_strength_reference:
+  house_1:  0     # No aspect (conjunction is not an aspect in Parashari)
+  house_2:  0     # No aspect
+  house_3:  25    # Saturn only (Pada Drishti)
+  house_4:  75    # Mars only (Tritiya Drishti)
+  house_5:  50    # Jupiter / Rahu / Ketu (Ardha Drishti)
+  house_6:  0     # No aspect
+  house_7:  100   # All planets (Poorna Drishti)
+  house_8:  100   # Mars only (Poorna Drishti)
+  house_9:  100   # Jupiter / Rahu / Ketu (Poorna Drishti)
+  house_10: 100   # Saturn only (Poorna Drishti)
+  house_11: 0     # No aspect
+  house_12: 0     # No aspect
