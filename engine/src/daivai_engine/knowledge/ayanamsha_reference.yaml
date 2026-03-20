@@ -1,0 +1,85 @@
+# ═══════════════════════════════════════════════════════════════
+# AYANAMSHA REFERENCE — Complete documentation for the engine's
+# most fundamental constant. EVERY calculation depends on this.
+# ═══════════════════════════════════════════════════════════════
+#
+# Source: Indian Calendar Reform Committee (1956), Swiss Ephemeris
+# documentation, BPHS (does NOT specify any ayanamsha system).
+#
+# This file documents WHY we use Lahiri, what alternatives exist,
+# and when the choice of ayanamsha changes the chart.
+# ═══════════════════════════════════════════════════════════════
+
+engine_default: lahiri
+confidence: scholarly_consensus
+note: >
+  BPHS does NOT specify any ayanamsha system. The choice is
+  empirical and conventional. Lahiri is the pragmatic default
+  because ~90% of Indian astrologers use it and it is the
+  Indian government standard since 1956.
+
+systems:
+  lahiri:
+    full_name: "Lahiri Chitrapaksha Ayanamsha"
+    swiss_ephemeris_code: "SIDM_LAHIRI"
+    epoch: "23°15'00.658\" on 21 March 1956 0:00 ET"
+    zero_date_ce: 285
+    reference_star: "Spica (Alpha Virginis / Chitra)"
+    reference_position: "0° Libra (180° ecliptic)"
+    government_standard: true
+    adopted_year: 1956
+    revised_year: 1985
+    usage_percentage: 90
+    precession_model: "IAU 1976 (Lieske)"
+    source: "Calendar Reform Committee Report (1955), CSIR"
+    note: >
+      Official Lahiri does NOT track Spica dynamically. Uses a
+      fixed epoch value + precession formula. Drifts from Spica's
+      actual position by 30-60 arcseconds over decades.
+
+  true_chitra:
+    full_name: "True Chitra Paksha Ayanamsha"
+    swiss_ephemeris_code: "SIDM_TRUE_CITRA"
+    delta_from_lahiri: "30\" to 60\" (varies)"
+    advantage: "Astronomically precise, self-correcting"
+    note: "Dynamically tracks Spica's actual ecliptic position."
+
+  raman:
+    full_name: "B.V. Raman Ayanamsha"
+    swiss_ephemeris_code: "SIDM_RAMAN"
+    zero_date_ce: 397
+    delta_from_lahiri: "~1°27' (~1.44°)"
+    precession_rate_arcsec_per_year: 50.333
+    founder: "Dr. B.V. Raman (1912-1998)"
+    note: >
+      1.44° gap from Lahiri means ~1 in 30 charts has a planet
+      in the Lahiri-Raman difference zone. Pada changes are common.
+
+  kp:
+    full_name: "Krishnamurti Paddhati Ayanamsha"
+    swiss_ephemeris_code: "SIDM_KRISHNAMURTI"
+    delta_from_lahiri: "~6 arcminutes (0.1°)"
+    zero_date_ce: 291
+    critical_for: "Sub-lord calculations (249 divisions)"
+    note: "6 arcminutes = 15% of smallest sub-lord span."
+
+bphs_verse: null  # BPHS does NOT specify any ayanamsha system
+
+spica:
+  ecliptic_latitude_degrees: -2.06
+  proper_motion_ra_mas_per_year: -42.35
+  proper_motion_dec_mas_per_year: -31.73
+  note: >
+    Spica is 2.06° SOUTH of the ecliptic. Must be projected
+    onto ecliptic to get zodiacal longitude. Lahiri uses
+    rectangular projection; Surya Siddhanta uses polar projection.
+    These give slightly different longitudes.
+
+manish_sensitivity:
+  moon_distance_from_nakshatra_boundary_degrees: 8.65
+  pada_change_under_raman: true
+  nakshatra_change_under_raman: false
+  pada_change_under_true_chitra: false
+  conclusion: "Safe under all Lahiri-family variants. Raman changes pada."
+
+boundary_alert_threshold_degrees: 1.5

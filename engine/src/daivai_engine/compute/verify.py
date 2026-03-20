@@ -70,7 +70,8 @@ def triple_verify(chart: ChartData) -> VerificationReport:
         mathematical=math_w,
         astronomical=astro_w,
         jyotish=jyotish_w,
-        is_clean=not (math_w or astro_w or jyotish_w),
+        # is_clean ignores AYANAMSHA SENSITIVE alerts (informational, not errors)
+        is_clean=not (math_w or astro_w or [w for w in jyotish_w if "SENSITIVE" not in w]),
     )
 
 
@@ -228,6 +229,23 @@ def _layer3_jyotish(chart: ChartData) -> list[str]:
             if abs(p.longitude - prev_lon) < 0.0001 and {name, prev} != {"Rahu", "Ketu"}:
                 w.append(f"L3: {name} and {prev} at identical longitude {p.longitude:.4f}")
         lons[name] = p.longitude
+
+    # Ayanamsha boundary sensitivity — flag planets where Lahiri vs Raman
+    # would change sign/nakshatra/pada (delta ~1.5°)
+    ayan_delta = 1.5  # Lahiri-Raman gap in degrees
+    for name, p in chart.planets.items():
+        sign_boundary = p.degree_in_sign
+        nak_boundary = p.longitude % 13.3333
+        if sign_boundary < ayan_delta or sign_boundary > (30.0 - ayan_delta):
+            w.append(
+                f"L3: AYANAMSHA SENSITIVE — {name} at {sign_boundary:.2f}° in sign, "
+                f"would change SIGN under Raman ayanamsha"
+            )
+        if nak_boundary < ayan_delta or nak_boundary > (13.333 - ayan_delta):
+            w.append(
+                f"L3: AYANAMSHA SENSITIVE — {name} at nak boundary, "
+                f"would change NAKSHATRA under Raman ayanamsha"
+            )
 
     return w
 

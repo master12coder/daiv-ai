@@ -29,16 +29,21 @@
 # ── CORE CHART ────────────────────────────────────────────────
 
 ayanamsha:
-  source: "Indian Calendar Reform Committee (1957), adopted by Lahiri"
-  rule: "Sidereal zodiac offset from tropical. Lahiri (Chitrapaksha) ayanamsha."
+  source: "Calendar Reform Committee (1955-56), N.C. Lahiri. See knowledge/ayanamsha_reference.yaml for complete research."
+  rule: "Spica (Chitra) at 0° Libra. Epoch: 23°15'00.658\" on 21 March 1956. Precession model: IAU 1976."
+  definition: "sidereal_longitude = tropical_longitude - ayanamsha. Applied ONCE in chart.py."
+  bphs_verse: null  # "BPHS does NOT specify any ayanamsha system"
   alternatives:
-    - "Raman ayanamsha (B.V. Raman): differs by ~1-2 degrees"
-    - "KP (Krishnamurti): slightly different from Lahiri"
-    - "Yukteshwar: differs significantly (~23°)"
+    - "True Chitra (SIDM_TRUE_CITRA): tracks Spica dynamically, differs 30-60\" from Lahiri"
+    - "Raman (SIDM_RAMAN): zero-date 397 CE, differs ~1°27' from Lahiri. Changes pada for borderline charts."
+    - "KP (SIDM_KRISHNAMURTI): differs ~6 arcminutes. Critical for sub-lord calculations."
+    - "Yukteshwar: based on 24,000-year yuga cycle. Differs significantly."
   invalidation:
-    - "If using a different ayanamsha system, ALL positions shift"
-    - "Ayanamsha debate is ongoing — no single 'correct' value"
-  confidence: "high — Lahiri is the Indian government standard and most widely used"
+    - "BPHS does NOT mandate any ayanamsha — the choice is empirical, not scriptural"
+    - "Switching from Lahiri to Raman changes pada for ~1 in 30 charts"
+    - "Birth time uncertainty (±5 min) introduces MORE error than ayanamsha choice for lagna/houses"
+    - "For Manish: safe under Lahiri/True Chitra/KP. Raman would change Moon pada from 2 to 1."
+  confidence: "high — Lahiri used by ~90% of practitioners and Indian government since 1956"
 
 house_system:
   source: "BPHS Ch.5"

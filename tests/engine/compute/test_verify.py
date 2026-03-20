@@ -21,7 +21,9 @@ class TestTripleVerification:
 
     def test_layer3_jyotish(self, manish_chart: ChartData) -> None:
         report = triple_verify(manish_chart)
-        assert len(report.jyotish) == 0
+        # L3 may contain AYANAMSHA SENSITIVE alerts (informational, not errors)
+        errors = [w for w in report.jyotish if "SENSITIVE" not in w]
+        assert len(errors) == 0
 
     def test_backward_compat(self, manish_chart: ChartData) -> None:
         """verify_chart_accuracy() still returns flat list."""
