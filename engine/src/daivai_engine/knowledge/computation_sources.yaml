@@ -1,0 +1,282 @@
+# ═══════════════════════════════════════════════════════════════
+# COMPUTATION PROVENANCE — Source citations for every formula
+# ═══════════════════════════════════════════════════════════════
+#
+# Every computation in the engine has a classical text source.
+# This file documents: WHAT, WHY, HOW, ALTERNATIVES, INVALIDATION.
+#
+# Format:
+#   computation_name:
+#     source: Primary classical text reference
+#     chapter: Chapter and verse
+#     rule: The exact rule applied
+#     alternatives: Other valid interpretations
+#     invalidation: When this computation might be wrong
+#     confidence: high/medium/low
+#
+# When a Pandit questions any result, look it up here.
+# ═══════════════════════════════════════════════════════════════
+
+# ── CORE CHART ────────────────────────────────────────────────
+
+ayanamsha:
+  source: "Indian Calendar Reform Committee (1957), adopted by Lahiri"
+  rule: "Sidereal zodiac offset from tropical. Lahiri (Chitrapaksha) ayanamsha."
+  alternatives:
+    - "Raman ayanamsha (B.V. Raman): differs by ~1-2 degrees"
+    - "KP (Krishnamurti): slightly different from Lahiri"
+    - "Yukteshwar: differs significantly (~23°)"
+  invalidation:
+    - "If using a different ayanamsha system, ALL positions shift"
+    - "Ayanamsha debate is ongoing — no single 'correct' value"
+  confidence: "high — Lahiri is the Indian government standard and most widely used"
+
+house_system:
+  source: "BPHS Ch.5"
+  rule: "Whole sign houses — each sign = one house, lagna sign = 1st house"
+  alternatives:
+    - "Bhava Chalit (Placidus): used for bhava-level analysis"
+    - "Equal house: each house = 30 degrees from lagna"
+    - "Shripati: mid-point between Placidus and Equal"
+  invalidation:
+    - "Some modern astrologers prefer Placidus for event timing"
+    - "KP system uses Placidus houses exclusively"
+  confidence: "high — Parashari tradition universally uses whole sign"
+
+# ── PLANETARY DIGNITY ─────────────────────────────────────────
+
+exaltation:
+  source: "BPHS Ch.3 v49-50"
+  rule: "Each planet has one sign of exaltation at a specific degree"
+  values:
+    Sun: "10° Aries (Mesha)"
+    Moon: "3° Taurus (Vrishabha)"
+    Mars: "28° Capricorn (Makara)"
+    Mercury: "15° Virgo (Kanya)"
+    Jupiter: "5° Cancer (Karka)"
+    Venus: "27° Pisces (Meena)"
+    Saturn: "20° Libra (Tula)"
+    Rahu: "Taurus per BPHS"
+    Ketu: "Scorpio per BPHS"
+  alternatives:
+    - "Rahu: Some Nadi texts say Gemini, not Taurus"
+    - "Ketu: Some Nadi texts say Sagittarius, not Scorpio"
+    - "Exact exaltation degree of Rahu/Ketu is debated"
+  confidence: "high for Sun-Saturn (universal agreement), medium for Rahu/Ketu"
+
+mooltrikona:
+  source: "BPHS Ch.3 v51-52"
+  rule: "Each planet has a mooltrikona range within one sign"
+  values:
+    Sun: "Leo 0°-20°"
+    Moon: "Taurus 3°-30°"
+    Mars: "Aries 0°-12°"
+    Mercury: "Virgo 15°-20°"
+    Jupiter: "Sagittarius 0°-10°"
+    Venus: "Libra 0°-15°"
+    Saturn: "Aquarius 0°-20°"
+  alternatives:
+    - "Moon: Some texts say 4°-20° (not 3°-30°)"
+    - "Mercury: Some texts extend to 15°-25°"
+  confidence: "high — minor variations in Moon/Mercury ranges only"
+
+# ── FRIENDSHIP ────────────────────────────────────────────────
+
+natural_friendship:
+  source: "BPHS Ch.3 v53-56"
+  rule: "Fixed friendship/enmity between planets based on sign rulership"
+  note: "This is NAISARGIKA (natural) friendship, not tatkalika (temporary)"
+  alternatives:
+    - "Tatkalika friendship: based on current chart positions (2,3,4,10,11,12 = friend)"
+    - "Panchada friendship: combines naisargika + tatkalika for 5 levels"
+  invalidation:
+    - "Rahu/Ketu friendship is NOT in BPHS — we added it from tradition"
+    - "Moon having 'no enemies' is BPHS, but we added Rahu/Ketu as enemies"
+  confidence: "high for Sun-Saturn, medium for Rahu/Ketu additions"
+
+# ── COMBUSTION ────────────────────────────────────────────────
+
+combustion:
+  source: "BPHS Ch.25 v1-4"
+  rule: "Planet within specified degrees of Sun is combust (weakened)"
+  values:
+    Moon: "12° from Sun"
+    Mars: "17° from Sun"
+    Mercury: "14° direct, 12° retrograde"
+    Jupiter: "11° from Sun"
+    Venus: "10° direct, 8° retrograde"
+    Saturn: "15° from Sun"
+  alternatives:
+    - "Some texts use different limits for retrograde planets"
+    - "Surya Siddhanta has slightly different values"
+    - "KP system doesn't use combustion at all"
+  invalidation:
+    - "Combustion of Mercury is debated — some say Mercury thrives near Sun"
+    - "Moon combustion (Amavasya) is sometimes treated separately"
+  confidence: "high — BPHS values are standard across North Indian tradition"
+
+# ── SHADBALA ──────────────────────────────────────────────────
+
+shadbala:
+  source: "BPHS Ch.23-24"
+  rule: "Six-fold planetary strength measured in shashtiyamsas (60ths)"
+  components:
+    sthana_bala:
+      source: "BPHS Ch.23 v1-15"
+      includes: "Uchcha, Saptvargaja, Ojhayugma, Kendradi, Drekkana"
+    dig_bala:
+      source: "BPHS Ch.23 v16-18"
+      rule: "Sun/Mars strongest in 10th, Jupiter/Mercury in 1st, Saturn in 7th, Moon/Venus in 4th"
+    kala_bala:
+      source: "BPHS Ch.23 v19-30"
+      includes: "Nathonnatha (day/night), Paksha, Hora, Vara, Ayana"
+      note: "Our implementation has 5 of 8 sub-components. Missing: Masa, Abda, Tribhaga"
+    cheshta_bala:
+      source: "BPHS Ch.23 v31-35"
+      rule: "Based on planetary speed — retrograde=60, stationary=45, fast=30, slow=15"
+    naisargika_bala:
+      source: "BPHS Ch.23 v36"
+      rule: "Fixed per planet: Sun=60, Moon=51.43, Venus=42.86, Jupiter=34.28, Mercury=25.71, Mars=17.14, Saturn=8.57"
+    drik_bala:
+      source: "BPHS Ch.23 v37-40"
+      rule: "Aspectual strength — benefic aspects add, malefic subtract"
+  alternatives:
+    - "Some texts add Yuddha Bala (planetary war strength) as 7th component"
+    - "Kala Bala varies significantly between commentators"
+  confidence: "high for Naisargika/Dig/Uchcha; medium for Kala Bala (simplified)"
+
+# ── VIMSHOTTARI DASHA ─────────────────────────────────────────
+
+vimshottari:
+  source: "BPHS Ch.44"
+  rule: "120-year planetary dasha based on Moon's nakshatra"
+  sequence: "Ketu(7) → Venus(20) → Sun(6) → Moon(10) → Mars(7) → Rahu(18) → Jupiter(16) → Saturn(19) → Mercury(17)"
+  total: "120 years"
+  alternatives:
+    - "Some texts start dasha from Lagna nakshatra, not Moon"
+    - "Yogini Dasha (36-year cycle) is an alternative"
+    - "Ashtottari (108-year cycle) applies when Rahu is in kendra/trikona"
+  invalidation:
+    - "If birth time is wrong by even 5 minutes, dasha balance shifts significantly"
+    - "Vimshottari may not apply if specific conditions met (see Ashtottari rules)"
+  confidence: "high — most widely used dasha system, universally accepted"
+
+# ── KALACHAKRA DASHA ──────────────────────────────────────────
+
+kalachakra:
+  source: "BPHS Ch.46"
+  rule: "Sign-based dasha from Moon's nakshatra pada. 4 groups, 16 unique sequences."
+  grouping:
+    savya_i: "Ashwini, Krittika, Punarvasu, Ashlesha, Hasta, Swati, Moola, U.Ashadha, P.Bhadra, Revati"
+    savya_ii: "Bharani, Pushya, Chitra, P.Ashadha, U.Bhadra"
+    apasavya_i: "Rohini, Magha, Vishakha, Shravana"
+    apasavya_ii: "Mrigashira, Ardra, P.Phalguni, U.Phalguni, Anuradha, Jyeshtha, Dhanishta, Shatabhisha"
+  paramayus: "83, 85, 86, or 100 years (variable per pada)"
+  deha_jeeva: "DEHA = first sign (body), JEEVA = last sign (soul) — unique per pada"
+  alternatives:
+    - "PVR Narasimha Rao interprets sequences as Antardashas, not Mahadashas"
+    - "Some South Indian traditions use 'Portion Zero' method"
+    - "Continuous progression vs same-pada reset after cycle completion"
+  invalidation:
+    - "Extremely sensitive to birth time — 1 min error ≈ 3 months shift"
+    - "Ayanamsha choice can change Moon's pada entirely"
+    - "Parashar says apply only when Moon's Navamsa lord is strong"
+  confidence: "medium — sequences are from BPHS but interpretation varies"
+
+# ── YOGAS ─────────────────────────────────────────────────────
+
+gajakesari:
+  source: "Phaladeepika Ch.6 v1"
+  rule: "Jupiter in kendra (1/4/7/10) from MOON (not Lagna)"
+  alternatives:
+    - "Some texts check from Lagna too"
+    - "Some require Jupiter to be unafflicted (not combust/debilitated)"
+    - "Strength of yoga depends on Jupiter's dignity"
+  invalidation:
+    - "If Jupiter is combust or debilitated, yoga is weakened"
+    - "If checked from Lagna instead of Moon, results differ"
+  confidence: "high — universally accepted definition"
+
+budhaditya:
+  source: "BPHS, Saravali"
+  rule: "Sun and Mercury in the same sign"
+  alternatives:
+    - "Some texts require both to be in kendra/trikona"
+    - "Some require Mercury to not be combust for full effect"
+  invalidation:
+    - "Mercury is almost always near Sun (astronomically) — some argue this yoga is too common to be significant"
+  confidence: "high — definition is simple and universally agreed"
+
+neech_bhanga:
+  source: "BPHS Ch.28 v1-5"
+  rule: "Debilitation cancelled if specific conditions met"
+  cancellation_rules:
+    - "Lord of debilitation sign in kendra from Lagna or Moon"
+    - "Lord of exaltation sign in kendra from Lagna"
+    - "Debilitated planet itself in kendra"
+  alternatives:
+    - "Number of cancellation rules varies: some texts list 5, others 8"
+    - "Strength of cancellation debated — partial vs full"
+  confidence: "high — core concept; specific rules have minor variations"
+
+# ── DOSHAS ────────────────────────────────────────────────────
+
+mangal_dosha:
+  source: "BPHS, Muhurta Chintamani"
+  rule: "Mars in houses 1/2/4/7/8/12 from Lagna"
+  cancellations:
+    - "Mars in own sign (Aries/Scorpio)"
+    - "Mars exalted (Capricorn)"
+    - "Jupiter aspects Mars"
+    - "Venus aspects Mars"
+    - "Mars in Gemini/Virgo in 2nd house"
+    - "Mars in Taurus/Libra in 12th house"
+    - "Both partners have Mangal Dosha (mutual cancellation)"
+  alternatives:
+    - "Some check from Moon and Venus too, not just Lagna"
+    - "South Indian tradition uses stricter rules"
+    - "After age 28, effect diminishes (some traditions)"
+  invalidation:
+    - "If checked from Moon instead of Lagna, different houses affected"
+  confidence: "high — core concept, cancellation rules vary by tradition"
+
+# ── ASHTAKAVARGA ──────────────────────────────────────────────
+
+ashtakavarga:
+  source: "BPHS Ch.66-72"
+  rule: "7 planets + Lagna contribute bindus to 12 signs. SAV total = 337."
+  alternatives:
+    - "Some texts include Rahu in the computation (8 planets)"
+    - "Kaksha-based analysis (not just bindu count) is more precise"
+    - "Sodhya Pinda (reduction) method for timing"
+  invalidation:
+    - "If SAV total ≠ 337, computation has a bug"
+  confidence: "high — SAV=337 is mathematically proven"
+
+# ── GANDANTA ──────────────────────────────────────────────────
+
+gandanta:
+  source: "BPHS, Phaladeepika, widely used in muhurta"
+  rule: "Last 3°20' of water sign to first 3°20' of fire sign"
+  zones:
+    - "Cancer/Leo: 116°40' to 123°20'"
+    - "Scorpio/Sagittarius: 236°40' to 243°20'"
+    - "Pisces/Aries: 356°40' to 3°20' (wraps)"
+  alternatives:
+    - "Some texts define gandanta as last pada of water nakshatra only"
+    - "Severity classification varies between traditions"
+  confidence: "high — degree boundaries universally agreed"
+
+# ── DOUBLE TRANSIT ────────────────────────────────────────────
+
+double_transit:
+  source: "K.N. Rao methodology, derived from BPHS transit chapter"
+  rule: "Both Jupiter AND Saturn must aspect a house for major event"
+  note: "Should be checked from BOTH Moon sign and Lagna"
+  alternatives:
+    - "Some astrologers use only Moon-based transit"
+    - "Some add Rahu/Ketu axis to the double transit check"
+  invalidation:
+    - "Transit-only predictions are weak without dasha support"
+    - "Retrograde planets in transit may delay rather than trigger"
+  confidence: "high — widely used by professional astrologers"
