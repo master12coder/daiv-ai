@@ -1,8 +1,21 @@
-"""Bhava Chalit chart computation using Placidus house cusps.
+"""Bhava Chalit chart computation using Placidus/Sripati house cusps.
 
-Computes sidereal Placidus house cusps and determines which Bhava (house)
-each planet falls in, comparing with whole-sign Rashi placement to flag
-any "bhava shift" planets whose house assignment differs between systems.
+Computes sidereal house cusps and determines which Bhava each planet
+falls in, comparing with whole-sign Rashi placement to flag "bhava shift."
+
+NOTE ON HOUSE SYSTEM (from Sign/House research):
+- PRIMARY: Whole sign houses (Rashi = Bhava) per BPHS Ch.7, Ch.11
+- SECONDARY: Bhava Chalit for functional house fructification
+- TRADITIONAL VEDIC: Sripati Paddhati (11th c.) — arc trisection from MC/ASC
+  The ASC degree is the MIDPOINT of 1st house, NOT the starting point.
+  House boundaries (Sandhis) = midpoints between adjacent Madhyas.
+  Source: Sripati Paddhati, BPHS Ch.27 commentary on Shadbala.
+- PLACIDUS: Western system (time trisection). Used ONLY in KP system.
+  Default in Swiss Ephemeris. Not traditional Vedic.
+
+Current implementation uses Placidus (swe.houses with b'P') for
+compatibility with KP-based analysis. For traditional Parashari
+work, the whole-sign system (chart.py) is the primary reference.
 """
 
 from __future__ import annotations

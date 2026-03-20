@@ -70,8 +70,12 @@ def triple_verify(chart: ChartData) -> VerificationReport:
         mathematical=math_w,
         astronomical=astro_w,
         jyotish=jyotish_w,
-        # is_clean ignores AYANAMSHA SENSITIVE alerts (informational, not errors)
-        is_clean=not (math_w or astro_w or [w for w in jyotish_w if "SENSITIVE" not in w]),
+        # is_clean ignores informational alerts (SENSITIVE, SANDHI)
+        is_clean=not (
+            math_w
+            or astro_w
+            or [w for w in jyotish_w if "SENSITIVE" not in w and "SANDHI" not in w]
+        ),
     )
 
 
@@ -246,6 +250,21 @@ def _layer3_jyotish(chart: ChartData) -> list[str]:
                 f"L3: AYANAMSHA SENSITIVE — {name} at nak boundary, "
                 f"would change NAKSHATRA under Raman ayanamsha"
             )
+
+    # Sandhi zone — planets in last 1° of sign are weakened (BPHS sign boundary doctrine)
+    for name, p in chart.planets.items():
+        if p.degree_in_sign > 29.0:
+            w.append(
+                f"L3: SANDHI — {name} at {p.degree_in_sign:.2f}° in sign "
+                f"(last degree = transitional state)"
+            )
+
+    # Lagna Sandhi — birth time rectification critical if lagna near sign end
+    if chart.lagna_degree > 28.0:
+        w.append(
+            f"L3: LAGNA SANDHI — Lagna at {chart.lagna_degree:.2f}° "
+            f"(birth time error of 4 min could change lagna sign)"
+        )
 
     return w
 

@@ -46,12 +46,18 @@ ayanamsha:
   confidence: "high — Lahiri used by ~90% of practitioners and Indian government since 1956"
 
 house_system:
-  source: "BPHS Ch.5"
-  rule: "Whole sign houses — each sign = one house, lagna sign = 1st house"
+  source: "BPHS Ch.7, Ch.11, Ch.17; Scholarly consensus"
+  rule: "Whole sign houses (Rashi = Bhava) for lordship, dignity, and yogas."
+  secondary_system:
+    method: "Sripati Paddhati (traditional Vedic) or Placidus (KP only)"
+    sripati_source: "Sripati Paddhati (11th c.), BPHS Ch.27 commentary"
+    sripati_rule: "Quadrant arc trisection from MC/ASC. ASC = midpoint of 1st house."
+    placidus_note: "Placidus is Western (time trisection). Used ONLY in KP system, not Parashari."
+    current_implementation: "Placidus (for KP compat). Sripati documented as traditional Vedic standard."
   alternatives:
-    - "Bhava Chalit (Placidus): used for bhava-level analysis"
-    - "Equal house: each house = 30 degrees from lagna"
-    - "Shripati: mid-point between Placidus and Equal"
+    - "Sripati Paddhati: Traditional Vedic arc trisection. ASC = house MIDPOINT, not start."
+    - "Placidus: Western time trisection. Default in Swiss Ephemeris. KP system only."
+    - "Equal house: each house = 30 degrees centered on lagna degree."
   invalidation:
     - "Some modern astrologers prefer Placidus for event timing"
     - "KP system uses Placidus houses exclusively"

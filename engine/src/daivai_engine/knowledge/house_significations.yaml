@@ -8,6 +8,12 @@
 source: "BPHS Ch.5, Ch.20"
 confidence: canonical
 
+house_system_note: >
+  PRIMARY: Whole sign (Rashi = Bhava) for lordship, dignity, yogas.
+  SECONDARY: Bhava Chalit for functional fructification. Traditional Vedic
+  uses Sripati Paddhati (arc trisection, ASC = house midpoint). Placidus
+  is Western and applies only to KP system. See computation_sources.yaml.
+
 houses:
   1:
     name_hi: तनु
