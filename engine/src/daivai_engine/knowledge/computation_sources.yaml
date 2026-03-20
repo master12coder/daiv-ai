@@ -289,3 +289,328 @@ double_transit:
     - "Transit-only predictions are weak without dasha support"
     - "Retrograde planets in transit may delay rather than trigger"
   confidence: "high — widely used by professional astrologers"
+
+# ═══════════════════════════════════════════════════════════════
+# ADDITIONAL COMPUTATIONS — provenance for all remaining modules
+# ═══════════════════════════════════════════════════════════════
+
+# ── STRENGTH & AVASTHAS ───────────────────────────────────────
+
+ishta_kashta:
+  source: "BPHS Ch.27"
+  rule: "Ishta=sqrt(Uchcha*Cheshta), Kashta=sqrt((60-Uchcha)*(60-Cheshta)). Net=Ishta-Kashta."
+  alternatives:
+    - "Some texts use arithmetic mean instead of geometric (square root)"
+  invalidation:
+    - "Depends on accurate Shadbala Uchcha Bala and Cheshta Bala components"
+  confidence: "high — formula is explicit in BPHS"
+
+bhava_bala:
+  source: "BPHS Ch.24"
+  rule: "House strength from 3 components: Bhavadhipati (lord strength), Bhava Dig, Bhava Drishti"
+  alternatives:
+    - "Some texts add Bhava Paksha Bala as 4th component"
+  invalidation:
+    - "Depends on Shadbala accuracy for Bhavadhipati component"
+  confidence: "high — BPHS Ch.24 is explicit"
+
+deeptadi_avastha:
+  source: "BPHS Ch.45 v1-10"
+  rule: "9 states based on dignity: Deepta(exalted), Swastha(own), Mudita(friend), Shanta(mooltrikona), Deena(neutral), Vikala(combust), Dukhita(enemy+malefic), Khal(great enemy+malefic), Kopa(debilitated)"
+  alternatives:
+    - "Some texts have 8 states (merging Dukhita and Khal)"
+    - "Priority order debated: combustion vs debilitation first"
+  invalidation:
+    - "Depends on accurate dignity determination and combustion check"
+  confidence: "high — BPHS Ch.45 is authoritative"
+
+lajjitadi_avastha:
+  source: "BPHS Ch.45 v11-20"
+  rule: "6 states based on position and conjunction: Lajjita, Garvita, Kshudhita, Trushita, Mudita, Kshobhita"
+  alternatives:
+    - "Conjunction orb (same sign vs within degrees) varies by text"
+  invalidation:
+    - "Depends on accurate house and conjunction determination"
+  confidence: "high — BPHS Ch.45 is explicit"
+
+# ── DASHAS ────────────────────────────────────────────────────
+
+yogini_dasha:
+  source: "BPHS Ch.44, Uttara Kalamrita"
+  rule: "36-year cycle based on Moon nakshatra. 8 yoginis with 1-8 year periods."
+  alternatives:
+    - "Some texts use different starting nakshatra mapping"
+  invalidation:
+    - "Applicable only when ascendant is in night signs (some traditions)"
+  confidence: "high — well-established alternative to Vimshottari"
+
+ashtottari_dasha:
+  source: "BPHS Ch.44"
+  rule: "108-year cycle. Applicable when Rahu is in kendra/trikona from lagna lord."
+  alternatives:
+    - "Some traditions apply Ashtottari to all charts born at night"
+    - "Applicability conditions debated across texts"
+  invalidation:
+    - "If applicability condition not met, Vimshottari should be used instead"
+  confidence: "medium — applicability conditions debated"
+
+chara_dasha:
+  source: "Jaimini Upadesa Sutras Ch.2"
+  rule: "Sign-based dasha. Duration = distance from sign to its lord. Direction by sign type."
+  alternatives:
+    - "PVR Narasimha Rao vs K.N. Rao differ on duration calculation"
+    - "Dual lordship (Mars for Scorpio, Saturn for Aquarius) handling varies"
+  invalidation:
+    - "Jaimini interpretation is less standardized than Parashari"
+  confidence: "medium — multiple valid interpretations exist"
+
+narayana_dasha:
+  source: "Jaimini Upadesa Sutras, PVR Narasimha Rao interpretation"
+  rule: "Sign-based. Odd lagna=forward, even lagna=backward. Duration from lord's distance."
+  alternatives:
+    - "K.N. Rao school uses different direction rules"
+    - "Exception rules for lord in own sign vary"
+  invalidation:
+    - "Jaimini dasha interpretation varies significantly between schools"
+  confidence: "medium — PVR Narasimha Rao interpretation used"
+
+dasha_sandhi:
+  source: "Laghu Parashari, widely used in practice"
+  rule: "Last 10% of ending dasha + first 10% of starting dasha = turbulent transition"
+  alternatives:
+    - "Some use last/first 5% instead of 10%"
+    - "Some consider only the last portion, not the first of next"
+  invalidation:
+    - "Percentage threshold is convention, not from a specific verse"
+  confidence: "medium — widely practiced, no single authoritative verse"
+
+# ── SPECIAL CHECKS ────────────────────────────────────────────
+
+graha_yuddha:
+  source: "Surya Siddhanta, Brihat Samhita by Varahamihira"
+  rule: "Two of 5 tara grahas (Mars-Saturn) within 1 degree = planetary war"
+  alternatives:
+    - "Winner: higher longitude (Surya Siddhanta) vs brighter magnitude (Varahamihira)"
+    - "Some texts use 5 degree orb for 'approaching war'"
+  invalidation:
+    - "Sun, Moon, Rahu, Ketu never participate (astronomical impossibility for Sun/Moon)"
+  confidence: "high — concept universal, winner determination method varies"
+
+upapada:
+  source: "Jaimini Sutras Ch.1 Quarter 4"
+  rule: "Arudha of 12th house. Count from 12th to its lord, project same distance from lord."
+  alternatives:
+    - "Exception for 1st/7th placement differs between commentators"
+    - "Some use Upapada from D9 instead of D1"
+  invalidation:
+    - "Jaimini exception rules (1st/7th) implementation varies"
+  confidence: "high — Jaimini Sutras are explicit on the method"
+
+argala:
+  source: "Jaimini Sutras Ch.1 Quarter 1"
+  rule: "2nd=Dhana, 4th=Sukha, 11th=Labha, 5th=Putra argala. Obstructions from 12th/10th/3rd."
+  alternatives:
+    - "Some include 3rd house as special argala"
+    - "Obstruction cancellation rules vary (more vs fewer planets)"
+  invalidation:
+    - "Argala analysis requires accurate sign-based house positions"
+  confidence: "high — Jaimini Sutras are clear on basic argala"
+
+gand_mool:
+  source: "Traditional Jyotish practice, Muhurta texts"
+  rule: "Moon in Ashwini/Ashlesha/Magha/Jyeshtha/Moola/Revati = Gand Mool"
+  alternatives:
+    - "Different from Gandanta (degree-based) — this is nakshatra-based"
+    - "Severity by pada varies between North and South Indian traditions"
+  invalidation:
+    - "If Moon is very close to boundary, exact pada determination matters"
+  confidence: "high — 6-nakshatra list universally agreed"
+
+sadesati:
+  source: "Phaladeepika Ch.26, widely practiced"
+  rule: "Saturn transiting 12th/1st/2nd from Moon sign = 7.5 year cycle"
+  alternatives:
+    - "Some check from Lagna too"
+    - "Small Panoti (Dhaiya) = Saturn in 4th/8th from Moon"
+  invalidation:
+    - "Depends on accurate current Saturn transit position"
+  confidence: "high — universally practiced transit technique"
+
+# ── TRANSIT ───────────────────────────────────────────────────
+
+vedha:
+  source: "Phaladeepika transit chapter"
+  rule: "Vedha pairs 1-5, 2-12, 3-9, 4-10, 6-8 cancel transit benefits"
+  alternatives:
+    - "Some texts exempt houses 7 and 11 from vedha"
+    - "Vedha from Rahu/Ketu is debated"
+  invalidation:
+    - "Vedha effectiveness debated — some modern astrologers don't use it"
+  confidence: "medium — classical concept, practical application varies"
+
+moorthy_nirnaya:
+  source: "BPHS Ashtakavarga chapter"
+  rule: "SAV bindus classify transit: 5+=Swarna, 4=Rajata, 3=Tamra, 0-2=Loha"
+  alternatives:
+    - "Some use BAV (per-planet) instead of SAV (total)"
+    - "Threshold values vary slightly between texts"
+  invalidation:
+    - "Depends on accurate Ashtakavarga computation"
+  confidence: "high — SAV-based classification is well-established"
+
+# ── SPECIAL LAGNAS ────────────────────────────────────────────
+
+hora_lagna:
+  source: "BPHS Ch.5"
+  rule: "Hora Lagna = Sun longitude + (ghatikas from sunrise x 15 degrees)"
+  alternatives:
+    - "Some texts use different advancement rate"
+  invalidation:
+    - "Requires accurate sunrise time"
+  confidence: "high — BPHS Ch.5 is explicit"
+
+bhava_lagna:
+  source: "BPHS Ch.5"
+  rule: "Bhava Lagna = Lagna longitude + (ghatikas from sunrise x 6 degrees)"
+  alternatives:
+    - "Advancement rate varies in some commentaries"
+  invalidation:
+    - "Requires accurate sunrise time and birth lagna"
+  confidence: "high — BPHS Ch.5 is explicit"
+
+ghatika_lagna:
+  source: "BPHS Ch.5"
+  rule: "Ghatika Lagna = Lagna longitude + (ghatikas from sunrise x 30 degrees)"
+  alternatives:
+    - "Some texts use sunrise lagna instead of birth lagna as base"
+  invalidation:
+    - "Requires accurate sunrise time"
+  confidence: "high — BPHS Ch.5 is explicit"
+
+# ── KP SYSTEM ─────────────────────────────────────────────────
+
+kp_sublords:
+  source: "KP Reader 1-6 by K.S. Krishnamurti"
+  rule: "249 sub-divisions of zodiac. Each nakshatra divided proportionally by dasha years."
+  alternatives:
+    - "Sub-sub-lords add a 3rd level of division"
+    - "Some KP practitioners use mean node, others true node"
+  invalidation:
+    - "KP system is a 20th century system, not classical. Some traditionalists reject it."
+  confidence: "high within KP tradition — the 249-division table is mathematically precise"
+
+# ── MUHURTA & CALENDAR ────────────────────────────────────────
+
+muhurta_scoring:
+  source: "Muhurta Chintamani, BPHS muhurta chapter"
+  rule: "Score 0-100 based on 9 dosha checks: Panchak, Rikta, Bhadra, Krura, Gandanta, Yoga, Amavasya, Rahu Kaal, Tara Bala"
+  alternatives:
+    - "Traditional muhurta checks up to 21 doshas for vivah"
+    - "South Indian muhurta tradition has additional checks"
+  invalidation:
+    - "Simplified to 9 of 21 possible checks — may miss some doshas"
+  confidence: "medium — simplified implementation of a complex domain"
+
+choghadiya:
+  source: "Traditional panchang, based on weekday planetary hours"
+  rule: "Day/night each divided into 8 slots. Sequence starts from weekday lord."
+  alternatives:
+    - "Some regions use different starting sequences"
+  invalidation:
+    - "Depends on accurate sunrise/sunset times for the location"
+  confidence: "high — traditional system with clear rules"
+
+sankranti:
+  source: "Surya Siddhanta"
+  rule: "Sun crosses 30-degree sidereal sign boundary = Sankranti"
+  alternatives:
+    - "Tropical vs sidereal Sankranti (Makar Sankranti date differs)"
+  invalidation:
+    - "Ayanamsha choice affects the exact date by up to 1 day"
+  confidence: "high — Swiss Ephemeris computation is precise"
+
+# ── NAMKARAN ──────────────────────────────────────────────────
+
+namkaran_letters:
+  source: "Traditional Jyotish practice"
+  rule: "108 nakshatra padas mapped to starting letters (aksharas) for naming"
+  alternatives:
+    - "Letter assignments vary slightly between North and South Indian traditions"
+    - "Some families follow regional conventions over nakshatra letters"
+  invalidation:
+    - "Multiple valid letter sets exist — this is not a single 'correct' mapping"
+  confidence: "medium — widely practiced, regional variations exist"
+
+# ── VARSHPHAL & PRASHNA ──────────────────────────────────────
+
+varshphal:
+  source: "Tajaka Neelakanthi, Dr. B.V. Raman"
+  rule: "Solar return chart computed for exact moment Sun returns to natal longitude"
+  alternatives:
+    - "Tajaka system (Indian) vs Western solar return differ in interpretation"
+    - "Muntha progression varies between texts"
+  invalidation:
+    - "Requires accurate natal Sun longitude and Swiss Ephemeris search"
+  confidence: "high — solar return moment is astronomically precise"
+
+prashna:
+  source: "Prashna Marga, Prashna Tantra"
+  rule: "Horary chart for question moment. Lagna lord + Moon condition = verdict."
+  alternatives:
+    - "Western horary uses different rules (William Lilly)"
+    - "Question classification varies between practitioners"
+  invalidation:
+    - "Question must be spontaneous and sincere (BPHS requirement)"
+  confidence: "medium — interpretation rules vary widely"
+
+# ── ADVANCED ANALYSIS ─────────────────────────────────────────
+
+sudarshan_chakra:
+  source: "BPHS, widely used in North Indian practice"
+  rule: "Triple chart analysis from Lagna, Moon, and Sun simultaneously"
+  alternatives:
+    - "Some texts use only Lagna + Moon (2 references instead of 3)"
+    - "Weighting between the 3 references debated"
+  invalidation:
+    - "Aggregate strength classification is simplified"
+  confidence: "high — concept is clear, aggregation method varies"
+
+saham_points:
+  source: "Tajaka Neelakanthi, Uttarakalamrita"
+  rule: "Sensitive points: Punya=Lagna+Moon-Sun (day), Marriage=Lagna+Venus-7th cusp, etc."
+  alternatives:
+    - "Day/night formula reversal debated for some sahams"
+    - "Arabic Parts (Western) have parallel but different formulas"
+  invalidation:
+    - "Cusp-based sahams require accurate house cusps"
+  confidence: "medium — Tajaka tradition, not Parashari"
+
+varga_analysis:
+  source: "BPHS Ch.16-17"
+  rule: "Karaka planet + house lord analyzed in each divisional chart"
+  alternatives:
+    - "Some use D1 lord in varga, others use varga's own lord"
+  invalidation:
+    - "Varga analysis quality depends on accurate divisional chart computation"
+  confidence: "high — BPHS chapters on vargas are explicit"
+
+longevity_pindayu:
+  source: "BPHS Ch.40-42"
+  rule: "7 planets contribute years modified by dignity: exalted=4/3, debilitated=1/2, own=full, other=2/3"
+  alternatives:
+    - "Amshayu (navamsha-based) and Naisargika methods exist"
+    - "3 methods combined give higher confidence"
+  invalidation:
+    - "NEVER show as prediction to user — internal analysis only"
+    - "Single method = medium confidence. All 3 agreeing = high confidence."
+  confidence: "medium — single method implemented, BPHS recommends comparing all 3"
+
+bhava_chalit:
+  source: "BPHS, Placidus house system"
+  rule: "Non-equal house division based on birth location and time"
+  alternatives:
+    - "Placidus vs Equal vs Koch vs Shripati house systems"
+    - "Fails at extreme latitudes (>66 degrees)"
+  invalidation:
+    - "Whole sign is the PRIMARY system in Parashari tradition. Bhava Chalit is supplementary."
+  confidence: "high — Placidus computation is astronomically precise"
