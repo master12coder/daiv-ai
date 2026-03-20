@@ -194,11 +194,11 @@ SPECIAL_ASPECTS: dict[str, list[int]] = {
 # All planets cast 100% aspect on the 7th house.
 # Planets not listed here use the default (7th house only at 100%).
 ASPECT_STRENGTHS: dict[str, dict[int, float]] = {
-    "Mars":    {4: 0.75, 7: 1.0, 8: 1.0},   # 4th=¾, 7th=full, 8th=full
-    "Jupiter": {5: 0.50, 7: 1.0, 9: 1.0},   # 5th=½, 7th=full, 9th=full
-    "Saturn":  {3: 0.25, 7: 1.0, 10: 1.0},  # 3rd=¼, 7th=full, 10th=full
-    "Rahu":    {5: 0.50, 7: 1.0, 9: 1.0},   # Parashari: same as Jupiter
-    "Ketu":    {5: 0.50, 7: 1.0, 9: 1.0},   # Parashari: same as Jupiter
+    "Mars": {4: 0.75, 7: 1.0, 8: 1.0},  # 4th=¾, 7th=full, 8th=full
+    "Jupiter": {5: 0.50, 7: 1.0, 9: 1.0},  # 5th=½, 7th=full, 9th=full
+    "Saturn": {3: 0.25, 7: 1.0, 10: 1.0},  # 3rd=¼, 7th=full, 10th=full
+    "Rahu": {5: 0.50, 7: 1.0, 9: 1.0},  # Parashari: same as Jupiter
+    "Ketu": {5: 0.50, 7: 1.0, 9: 1.0},  # Parashari: same as Jupiter
 }
 # Default for Sun, Moon, Mercury, Venus: only 7th house at full strength
 ASPECT_STRENGTH_DEFAULT: dict[int, float] = {7: 1.0}

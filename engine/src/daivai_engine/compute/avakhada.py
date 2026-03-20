@@ -34,64 +34,64 @@ from daivai_engine.models.chart import ChartData
 # Verified: Rohini (index 3), pada 2 → index 1 → "Va" ✓
 # ---------------------------------------------------------------------------
 _NAME_ALPHABETS: list[list[str]] = [
-    ["Chu", "Che", "Cho", "La"],      # 0 Ashwini
-    ["Li", "Lu", "Le", "Lo"],          # 1 Bharani
-    ["A", "I", "U", "E"],              # 2 Krittika
-    ["O", "Va", "Vi", "Vu"],           # 3 Rohini
-    ["Ve", "Vo", "Ka", "Ki"],          # 4 Mrigashira
-    ["Ku", "Gha", "Na", "Cha"],        # 5 Ardra
-    ["Ke", "Ko", "Ha", "Hi"],          # 6 Punarvasu
-    ["Hu", "He", "Ho", "Da"],          # 7 Pushya
-    ["Di", "Du", "De", "Do"],          # 8 Ashlesha
-    ["Ma", "Mi", "Mu", "Me"],          # 9 Magha
-    ["Mo", "Ta", "Ti", "Tu"],          # 10 Purva Phalguni
-    ["Te", "To", "Pa", "Pi"],          # 11 Uttara Phalguni
-    ["Pu", "Sha", "Na", "Tha"],        # 12 Hasta
-    ["Pe", "Po", "Ra", "Ri"],          # 13 Chitra
-    ["Ru", "Re", "Ro", "Ta"],          # 14 Swati
-    ["Ti", "Tu", "Te", "To"],          # 15 Vishakha
-    ["Na", "Ni", "Nu", "Ne"],          # 16 Anuradha
-    ["No", "Ya", "Yi", "Yu"],          # 17 Jyeshtha
-    ["Ye", "Yo", "Bha", "Bhi"],        # 18 Moola
-    ["Bhu", "Dha", "Pha", "Da"],       # 19 Purva Ashadha
-    ["Be", "Bo", "Ja", "Ji"],          # 20 Uttara Ashadha
-    ["Khi", "Khu", "Khe", "Kho"],      # 21 Shravana
-    ["Ga", "Gi", "Gu", "Ge"],          # 22 Dhanishta
-    ["Go", "Sa", "Si", "Su"],          # 23 Shatabhisha
-    ["Se", "So", "Da", "Di"],          # 24 Purva Bhadrapada
-    ["Du", "Tha", "Jha", "Na"],        # 25 Uttara Bhadrapada
-    ["De", "Do", "Cha", "Chi"],        # 26 Revati
+    ["Chu", "Che", "Cho", "La"],  # 0 Ashwini
+    ["Li", "Lu", "Le", "Lo"],  # 1 Bharani
+    ["A", "I", "U", "E"],  # 2 Krittika
+    ["O", "Va", "Vi", "Vu"],  # 3 Rohini
+    ["Ve", "Vo", "Ka", "Ki"],  # 4 Mrigashira
+    ["Ku", "Gha", "Na", "Cha"],  # 5 Ardra
+    ["Ke", "Ko", "Ha", "Hi"],  # 6 Punarvasu
+    ["Hu", "He", "Ho", "Da"],  # 7 Pushya
+    ["Di", "Du", "De", "Do"],  # 8 Ashlesha
+    ["Ma", "Mi", "Mu", "Me"],  # 9 Magha
+    ["Mo", "Ta", "Ti", "Tu"],  # 10 Purva Phalguni
+    ["Te", "To", "Pa", "Pi"],  # 11 Uttara Phalguni
+    ["Pu", "Sha", "Na", "Tha"],  # 12 Hasta
+    ["Pe", "Po", "Ra", "Ri"],  # 13 Chitra
+    ["Ru", "Re", "Ro", "Ta"],  # 14 Swati
+    ["Ti", "Tu", "Te", "To"],  # 15 Vishakha
+    ["Na", "Ni", "Nu", "Ne"],  # 16 Anuradha
+    ["No", "Ya", "Yi", "Yu"],  # 17 Jyeshtha
+    ["Ye", "Yo", "Bha", "Bhi"],  # 18 Moola
+    ["Bhu", "Dha", "Pha", "Da"],  # 19 Purva Ashadha
+    ["Be", "Bo", "Ja", "Ji"],  # 20 Uttara Ashadha
+    ["Khi", "Khu", "Khe", "Kho"],  # 21 Shravana
+    ["Ga", "Gi", "Gu", "Ge"],  # 22 Dhanishta
+    ["Go", "Sa", "Si", "Su"],  # 23 Shatabhisha
+    ["Se", "So", "Da", "Di"],  # 24 Purva Bhadrapada
+    ["Du", "Tha", "Jha", "Na"],  # 25 Uttara Bhadrapada
+    ["De", "Do", "Cha", "Chi"],  # 26 Revati
 ]
 
 # Vashya (creature type) per sign index (0 = Aries … 11 = Pisces)
 _VASHYA: list[str] = [
-    "Chatushpad",   # 0  Mesha (Aries)
-    "Chatushpad",   # 1  Vrishabha (Taurus)
-    "Manav",        # 2  Mithuna (Gemini)
-    "Jalachara",    # 3  Karka (Cancer)
-    "Vanchar",      # 4  Simha (Leo)
-    "Manav",        # 5  Kanya (Virgo)
-    "Manav",        # 6  Tula (Libra)
-    "Keet",         # 7  Vrischika (Scorpio)
-    "Chatushpad",   # 8  Dhanu (Sagittarius)
-    "Chatushpad",   # 9  Makara (Capricorn)
-    "Manav",        # 10 Kumbha (Aquarius)
-    "Jalachara",    # 11 Meena (Pisces)
+    "Chatushpad",  # 0  Mesha (Aries)
+    "Chatushpad",  # 1  Vrishabha (Taurus)
+    "Manav",  # 2  Mithuna (Gemini)
+    "Jalachara",  # 3  Karka (Cancer)
+    "Vanchar",  # 4  Simha (Leo)
+    "Manav",  # 5  Kanya (Virgo)
+    "Manav",  # 6  Tula (Libra)
+    "Keet",  # 7  Vrischika (Scorpio)
+    "Chatushpad",  # 8  Dhanu (Sagittarius)
+    "Chatushpad",  # 9  Makara (Capricorn)
+    "Manav",  # 10 Kumbha (Aquarius)
+    "Jalachara",  # 11 Meena (Pisces)
 ]
 
 # Paya: nakshatra_number (1-indexed) % 4  →  metal
 _PAYA_MAP: dict[int, str] = {
-    0: "Iron",    # Rohini(4), Pushya(8), Chitra(14), Vishakha(16), ...
-    1: "Gold",    # Ashwini(1), Mrigashira(5), Magha(10), ...
+    0: "Iron",  # Rohini(4), Pushya(8), Chitra(14), Vishakha(16), ...
+    1: "Gold",  # Ashwini(1), Mrigashira(5), Magha(10), ...
     2: "Silver",  # Bharani(2), Ardra(6), Purva Phalguni(11), ...
     3: "Copper",  # Krittika(3), Punarvasu(7), Uttara Phalguni(12), ...
 }
 
 # Tatva: pada (1-4)  →  element
 _TATVA_MAP: dict[int, str] = {
-    1: "Fire",   # Dharma pada
+    1: "Fire",  # Dharma pada
     2: "Earth",  # Artha pada
-    3: "Air",    # Kama pada
+    3: "Air",  # Kama pada
     4: "Water",  # Moksha pada
 }
 
@@ -172,9 +172,9 @@ def compute_avakhada(chart: ChartData) -> AvakhadaChakra:
     moon = chart.planets["Moon"]
 
     # 0-indexed nakshatra index and 1-indexed number
-    nak_idx: int = moon.nakshatra_index   # 0-26
-    nak_num: int = nak_idx + 1            # 1-27
-    pada: int = moon.pada                 # 1-4
+    nak_idx: int = moon.nakshatra_index  # 0-26
+    nak_num: int = nak_idx + 1  # 1-27
+    pada: int = moon.pada  # 1-4
 
     tithi, karan = _tithi_karan(chart)
 

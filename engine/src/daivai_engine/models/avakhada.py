@@ -32,12 +32,8 @@ class AvakhadaChakra(BaseModel):
     charan: int = Field(ge=1, le=4, description="Nakshatra pada (quarter) 1-4")
 
     # ── Avakhada qualities ────────────────────────────────────────────────────
-    tatva: str = Field(
-        description="Panchamahabhuta element: Fire/Earth/Air/Water (from pada)"
-    )
-    paya: str = Field(
-        description="Base metal: Gold/Silver/Copper/Iron (from nakshatra number)"
-    )
+    tatva: str = Field(description="Panchamahabhuta element: Fire/Earth/Air/Water (from pada)")
+    paya: str = Field(description="Base metal: Gold/Silver/Copper/Iron (from nakshatra number)")
     yunja: str = Field(
         description="Nakshatra group: Poorva/Madhya/Uttara (nakshatras 1-9/10-18/19-27)"
     )
@@ -49,9 +45,7 @@ class AvakhadaChakra(BaseModel):
     varna: str = Field(
         description="Varna: Brahmin/Kshatriya/Vaishya/Shudra (from Moon's sign element)"
     )
-    vashya: str = Field(
-        description="Creature class: Manav/Chatushpad/Jalachara/Vanchar/Keet"
-    )
+    vashya: str = Field(description="Creature class: Manav/Chatushpad/Jalachara/Vanchar/Keet")
 
     # ── Panchang values ───────────────────────────────────────────────────────
     tithi: str = Field(description="Tithi (lunar day) at birth")
