@@ -50,6 +50,7 @@ class FullChartAnalysis(BaseModel):
     yogini_dasha: list[Any]  # YoginiDashaPeriod
     ashtottari_dasha: list[Any]  # AshtottariDashaPeriod
     chara_dasha: list[Any]  # CharaDashaPeriod (different model from DashaPeriod)
+    kalachakra_dasha: Any | None  # KalachakraDashaResult (BPHS Ch.46)
     dasha_sandhi: list[Any]
 
     # Yogas & Doshas

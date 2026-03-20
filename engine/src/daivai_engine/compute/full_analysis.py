@@ -39,6 +39,7 @@ from daivai_engine.compute.graha_yuddha import detect_planetary_war
 from daivai_engine.compute.house_comparison import compare_whole_sign_vs_chalit
 from daivai_engine.compute.ishta_kashta import compute_ishta_kashta
 from daivai_engine.compute.jaimini import compute_jaimini
+from daivai_engine.compute.kalachakra_dasha import compute_kalachakra_dasha
 from daivai_engine.compute.kp import compute_kp_positions
 from daivai_engine.compute.longevity import compute_longevity
 from daivai_engine.compute.namkaran import check_gand_mool
@@ -140,6 +141,7 @@ def compute_full_analysis(
     yogini = safe_compute(compute_yogini_dasha, chart)
     ashtottari = safe_compute(compute_ashtottari_dasha, chart)
     chara = safe_compute(compute_chara_dasha, chart)
+    kalachakra = safe_compute(compute_kalachakra_dasha, chart)
     sandhi = safe_compute(compute_dasha_sandhi, mahadashas)
 
     # Special lagnas
@@ -193,6 +195,7 @@ def compute_full_analysis(
         yogini_dasha=yogini,
         ashtottari_dasha=ashtottari,
         chara_dasha=chara,
+        kalachakra_dasha=kalachakra if not isinstance(kalachakra, list) else None,
         dasha_sandhi=sandhi,
         yogas=yogas,
         doshas=doshas,
