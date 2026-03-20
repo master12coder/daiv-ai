@@ -14,32 +14,63 @@ class TestProvenanceDatabase:
         """ALL computations must have provenance entries — 47 total."""
         required = [
             # Core (16 original)
-            "ayanamsha", "house_system", "exaltation", "mooltrikona",
-            "natural_friendship", "combustion", "shadbala", "vimshottari",
-            "kalachakra", "gajakesari", "budhaditya", "neech_bhanga",
-            "mangal_dosha", "ashtakavarga", "gandanta", "double_transit",
+            "ayanamsha",
+            "house_system",
+            "exaltation",
+            "mooltrikona",
+            "natural_friendship",
+            "combustion",
+            "shadbala",
+            "vimshottari",
+            "kalachakra",
+            "gajakesari",
+            "budhaditya",
+            "neech_bhanga",
+            "mangal_dosha",
+            "ashtakavarga",
+            "gandanta",
+            "double_transit",
             # Strength & Avasthas (4)
-            "ishta_kashta", "bhava_bala", "deeptadi_avastha", "lajjitadi_avastha",
+            "ishta_kashta",
+            "bhava_bala",
+            "deeptadi_avastha",
+            "lajjitadi_avastha",
             # Dashas (5)
-            "yogini_dasha", "ashtottari_dasha", "chara_dasha",
-            "narayana_dasha", "dasha_sandhi",
+            "yogini_dasha",
+            "ashtottari_dasha",
+            "chara_dasha",
+            "narayana_dasha",
+            "dasha_sandhi",
             # Special checks (4)
-            "graha_yuddha", "upapada", "argala", "gand_mool",
+            "graha_yuddha",
+            "upapada",
+            "argala",
+            "gand_mool",
             # Transit (3)
-            "sadesati", "vedha", "moorthy_nirnaya",
+            "sadesati",
+            "vedha",
+            "moorthy_nirnaya",
             # Special lagnas (3)
-            "hora_lagna", "bhava_lagna", "ghatika_lagna",
+            "hora_lagna",
+            "bhava_lagna",
+            "ghatika_lagna",
             # KP (1)
             "kp_sublords",
             # Muhurta & Calendar (3)
-            "muhurta_scoring", "choghadiya", "sankranti",
+            "muhurta_scoring",
+            "choghadiya",
+            "sankranti",
             # Namkaran (1)
             "namkaran_letters",
             # Varshphal & Prashna (2)
-            "varshphal", "prashna",
+            "varshphal",
+            "prashna",
             # Advanced (5)
-            "sudarshan_chakra", "saham_points", "varga_analysis",
-            "longevity_pindayu", "bhava_chalit",
+            "sudarshan_chakra",
+            "saham_points",
+            "varga_analysis",
+            "longevity_pindayu",
+            "bhava_chalit",
         ]
         sources = get_all_sources()
         for name in required:

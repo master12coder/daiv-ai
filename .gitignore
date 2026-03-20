@@ -69,3 +69,4 @@ node_modules/
 # ── Runtime config ──
 config.yaml
 config/
+knowledge/kalachakra_dasha_data.yaml
