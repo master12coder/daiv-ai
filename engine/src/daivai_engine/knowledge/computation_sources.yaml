@@ -326,14 +326,40 @@ bhava_bala:
   confidence: "high — BPHS Ch.24 is explicit"
 
 deeptadi_avastha:
-  source: "BPHS Ch.45 v1-10"
-  rule: "9 states based on dignity: Deepta(exalted), Swastha(own), Mudita(friend), Shanta(mooltrikona), Deena(neutral), Vikala(combust), Dukhita(enemy+malefic), Khal(great enemy+malefic), Kopa(debilitated)"
+  source: "BPHS Ch.45 v1-10, Ch.3 v53-58 (Panchada Maitri)"
+  rule: >
+    9 states using PANCHADA (5-fold combined) friendship:
+    Deepta(exalted), Swastha(own), Mudita(adhimitra), Shanta(mitra),
+    Deena(sama/neutral), Vikala(combust), Dukhita(shatru),
+    Khal(adhishatru), Kopa(debilitated).
+    Panchada = Naisargika (natural, Ch.3 v53-56) + Tatkalika (temporary,
+    Ch.3 v57-58). Temporary friend if sign lord is in 2,3,4,10,11,12 from planet.
+  priority: "debilitation > combustion > exaltation > own > panchada friendship"
+  cross_verification:
+    note: "Verified against external Kundli software for Manish (13 Mar 1989)"
+    matches: "Sun(Deena), Moon(Deepta), Mars(Shanta) — all match"
+    differences:
+      - planet: Mercury
+        ours: "Shanta (mitra: Saturn is neutral+temp friend)"
+        external: "Muditha"
+        verdict: "Ours correct. Mercury-Saturn = NEUTRAL per BPHS Ch.3. External has wrong friendship table."
+      - planet: Jupiter
+        ours: "Deena (sama: Venus is enemy+temp friend)"
+        external: "Shant"
+        verdict: "Ours correct. Jupiter-Venus = ENEMY per BPHS Ch.3. External ignores natural enmity."
+      - planet: Venus
+        ours: "Vikala (combust, 5.7° from Sun)"
+        external: "Shant"
+        verdict: "Both valid. BPHS Ch.45 says combustion overrides. Some software ignores combustion in Deeptadi. We follow BPHS strictly."
+      - planet: Saturn
+        ours: "Dukhita (shatru: Jupiter is neutral+temp enemy)"
+        external: "Swatha (own sign)"
+        verdict: "External has a BUG. Saturn owns Capricorn(9) and Aquarius(10). Sagittarius(8) is Jupiter's sign, NOT Saturn's."
   alternatives:
-    - "Some texts have 8 states (merging Dukhita and Khal)"
-    - "Priority order debated: combustion vs debilitation first"
-  invalidation:
-    - "Depends on accurate dignity determination and combustion check"
-  confidence: "high — BPHS Ch.45 is authoritative"
+    - "Some software uses only Naisargika (natural) without Tatkalika — simpler but less accurate"
+    - "Some software ignores combustion in Deeptadi classification"
+    - "Priority order of combustion vs sign-friendship debated across traditions"
+  confidence: "high — BPHS Ch.45 + Ch.3 Panchada is the correct standard"
 
 lajjitadi_avastha:
   source: "BPHS Ch.45 v11-20"
